@@ -1,4 +1,0 @@
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');if(menuBtn)menuBtn.onclick=()=>mobileNav.style.display=mobileNav.style.display==='block'?'none':'block';
-const search=document.getElementById('toolSearch'),cards=[...document.querySelectorAll('#toolGrid .tool-card')],empty=document.getElementById('noResults');
-function filter(){const q=(search?.value||'').trim().toLowerCase();let n=0;cards.forEach(c=>{const ok=!q||c.innerText.toLowerCase().includes(q)||c.dataset.category.toLowerCase().includes(q);c.style.display=ok?'block':'none';if(ok)n++});if(empty)empty.hidden=n!==0}
-if(search){search.addEventListener('input',filter);document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();search.focus()}})}
