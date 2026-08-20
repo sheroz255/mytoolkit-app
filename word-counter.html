@@ -1,7 +1,0 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Word Counter | MyToolkit</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
-<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">M</span><span>MyToolkit<small>FREE ONLINE TOOLS</small></span></a><a class="btn" href="../index.html">← Home</a></div></header>
-<main class="tool-page"><div class="container"><div class="kicker">Writing Tool</div><h1>Word Counter</h1><p class="section-desc">Count words, characters and sentences instantly.</p>
-<div class="tool-box" style="margin-top:25px"><textarea id="text" placeholder="Paste or type your text here..."></textarea><div class="stats"><div class="stat"><b id="words">0</b><span>Words</span></div><div class="stat"><b id="chars">0</b><span>Characters</span></div><div class="stat"><b id="sentences">0</b><span>Sentences</span></div></div></div></div></main>
-<footer class="site-footer"><div class="container footer-copy">© 2026 MyToolkit. All rights reserved.</div></footer>
-<script>const t=document.querySelector("#text"),w=document.querySelector("#words"),c=document.querySelector("#chars"),s=document.querySelector("#sentences");t.addEventListener("input",()=>{const v=t.value.trim();w.textContent=v?v.split(/\s+/).length:0;c.textContent=t.value.length;s.textContent=v?(v.match(/[.!?]+(?=\s|$)/g)||[]).length:0});</script></body></html>
