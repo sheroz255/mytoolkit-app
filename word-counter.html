@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Word Counter – Count Words, Characters &amp; Readability | MyToolkit</title>
+<meta name="description" content="Count words, characters, sentences, paragraphs, and reading time instantly with this free online Word Counter from MyToolkit. Includes keyword density &amp; readability score.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/word-counter.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Word Counter – Count Words, Characters & Readability | MyToolkit">
+<meta property="og:description" content="Count words, characters, sentences, paragraphs, and reading time instantly. Includes keyword density & readability score.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/word-counter.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-word-counter">
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://sheroz255.github.io/mytoolkit-app/word-counter.html#tool",
+        "name": "Word Counter - MyToolkit",
+        "url": "https://sheroz255.github.io/mytoolkit-app/word-counter.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Free, accurate, real-time online word counter tool. Counts words, characters with/without spaces, sentences, paragraphs, reading time, speaking time, keyword density, and Flesch readability grade.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time word and character counting",
+          "Character count with and without spaces",
+          "Sentence, paragraph, and line calculation",
+          "Estimated reading and speaking time",
+          "Flesch Reading Ease and Grade Level score",
+          "1-word, 2-word, and 3-word keyword density analysis",
+          "Social media character limit counters",
+          "Case conversion transformations",
+          "Export and download statistics report",
+          "100% Client-side privacy-first processing"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this online word counter calculate words accurately?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool uses Unicode-compliant regular expressions to identify distinct words separated by whitespace and punctuation boundaries. It correctly handles hyphens, contractions, numbers, and international Unicode characters without skipping or double-counting."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my text data stored or sent to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All text parsing and statistical analysis happens 100% locally in your web browser. No text is ever uploaded, logged, or transferred over the network, ensuring complete confidentiality for essays, articles, and private drafts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the standard reading and speaking time formula used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reading time is calculated using an established average silent reading rate of 225 words per minute (WPM). Speaking time is calculated based on a conversational presentation speed of 130 words per minute (WPM)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the Flesch Reading Ease score and how is it interpreted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Flesch Reading Ease formula computes a score between 0 and 100 based on average sentence length and average syllables per word. Scores between 60 and 70 represent plain standard English accessible to 8th and 9th graders, while scores above 80 indicate very easy reading."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is keyword density analysis important for writers and SEOs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keyword density tracking reveals the percentage of times specific words or multi-word phrases appear in your text. This helps copywriters avoid repetitive phrasing (keyword stuffing) and ensure key search terms are balanced naturally."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="mt-tool-sep">/</span>
+    <a href="index.html#mt-tools">Text Tools</a>
+    <span class="mt-tool-sep">/</span>
+    <span class="mt-tool-current" aria-current="page">Word Counter</span>
+  </nav>
+
+  <!-- Tool Header -->
+  <header class="mt-tool-header">
+    <div class="mt-tool-badge">Free Productivity Utility</div>
+    <h1 class="mt-tool-title">Online Word Counter &amp; Text Analyzer</h1>
+    <p class="mt-tool-subtitle">
+      Count words, characters, sentences, paragraphs, reading time, and keyword density in real-time. Fast, accurate, and completely private.
+    </p>
+  </header>
+
+  <!-- Main Application Card -->
+  <main class="mt-tool-card" id="mt-tool-main-app">
+    <!-- Live Metric Dashboard (Hero Stats) -->
+    <div class="mt-tool-stats-grid" id="mt-tool-hero-stats">
+      <div class="mt-tool-stat-card mt-tool-stat-primary">
+        <span class="mt-tool-stat-value" id="mt-stat-words">0</span>
+        <span class="mt-tool-stat-label">Words</span>
+      </div>
+      <div class="mt-tool-stat-card">
+        <span class="mt-tool-stat-value" id="mt-stat-chars-all">0</span>
+        <span class="mt-tool-stat-label">Characters</span>
+      </div>
+      <div class="mt-tool-stat-card">
+        <span class="mt-tool-stat-value" id="mt-stat-chars-no-space">0</span>
+        <span class="mt-tool-stat-label">Chars (No Spaces)</span>
+      </div>
+      <div class="mt-tool-stat-card">
+        <span class="mt-tool-stat-value" id="mt-stat-sentences">0</span>
+        <span class="mt-tool-stat-label">Sentences</span>
+      </div>
+      <div class="mt-tool-stat-card">
+        <span class="mt-tool-stat-value" id="mt-stat-paragraphs">0</span>
+        <span class="mt-tool-stat-label">Paragraphs</span>
+      </div>
+      <div class="mt-tool-stat-card">
+        <span class="mt-tool-stat-value" id="mt-stat-reading-time">0 min</span>
+        <span class="mt-tool-stat-label">Reading Time</span>
+      </div>
+    </div>
+
+    <!-- Toolbar Controls -->
+    <div class="mt-tool-toolbar">
+      <div class="mt-tool-toolbar-group">
+        <button type="button" class="mt-tool-btn mt-tool-btn-secondary" id="mt-btn-sample" title="Load sample article text">
+          Load Sample
+        </button>
+        <button type="button" class="mt-tool-btn mt-tool-btn-secondary" id="mt-btn-paste" title="Paste clipboard text">
+          Paste Text
+        </button>
+        <button type="button" class="mt-tool-btn mt-tool-btn-outline" id="mt-btn-clear" title="Clear all text">
+          Clear
+        </button>
+      </div>
+
+      <div class="mt-tool-toolbar-group">
+        <div class="mt-tool-dropdown-wrapper">
+          <button type="button" class="mt-tool-btn mt-tool-btn-secondary" id="mt-btn-case-toggle" aria-expanded="false">
+            Transform Case ▾
+          </button>
+          <div class="mt-tool-dropdown-menu" id="mt-case-menu">
+            <button type="button" class="mt-tool-dropdown-item" data-case="upper">UPPERCASE</button>
+            <button type="button" class="mt-tool-dropdown-item" data-case="lower">lowercase</button>
+            <button type="button" class="mt-tool-dropdown-item" data-case="title">Title Case</button>
+            <button type="button" class="mt-tool-dropdown-item" data-case="sentence">Sentence case</button>
+            <button type="button" class="mt-tool-dropdown-item" data-case="clean-spaces">Remove Extra Spaces</button>
+            <button type="button" class="mt-tool-dropdown-item" data-case="trim-lines">Trim Blank Lines</button>
+          </div>
+        </div>
+
+        <button type="button" class="mt-tool-btn mt-tool-btn-primary" id="mt-btn-copy" title="Copy text to clipboard">
+          Copy Text
+        </button>
+        <div class="mt-tool-dropdown-wrapper">
+          <button type="button" class="mt-tool-btn mt-tool-btn-primary" id="mt-btn-download" title="Download text or report">
+            Download ▾
+          </button>
+          <div class="mt-tool-dropdown-menu" id="mt-download-menu">
+            <button type="button" class="mt-tool-dropdown-item" id="mt-dl-txt">Download Text (.txt)</button>
+            <button type="button" class="mt-tool-dropdown-item" id="mt-dl-report">Download Stats Report (.txt)</button>
+            <button type="button" class="mt-tool-dropdown-item" id="mt-dl-json">Download JSON Data (.json)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Area Input -->
+    <div class="mt-tool-input-container">
+      <label for="mt-tool-textarea" class="mt-tool-sr-only">Enter or paste your text to analyze</label>
+      <textarea
+        id="mt-tool-textarea"
+        class="mt-tool-textarea"
+        placeholder="Type, paste, or drag and drop your text here to begin instant real-time counting..."
+        rows="10"
+        spellcheck="true"
+        aria-label="Text to count and analyze"
+      ></textarea>
+    </div>
+
+    <!-- Notification / Toast Feedback -->
+    <div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+    <!-- Secondary Insights (Reading speed, Grade Level, Pages) -->
+    <div class="mt-tool-insights-grid">
+      <div class="mt-tool-insight-box">
+        <div class="mt-tool-insight-title">Speaking Time</div>
+        <div class="mt-tool-insight-desc" id="mt-stat-speaking-time">0 min (at ~130 WPM)</div>
+      </div>
+      <div class="mt-tool-insight-box">
+        <div class="mt-tool-insight-title">Estimated Pages</div>
+        <div class="mt-tool-insight-desc" id="mt-stat-pages">0.0 pages (standard ~250 words/page)</div>
+      </div>
+      <div class="mt-tool-insight-box">
+        <div class="mt-tool-insight-title">Readability (Flesch Score)</div>
+        <div class="mt-tool-insight-desc" id="mt-stat-flesch">
+          <span id="mt-flesch-score">0 / 100</span> — <span id="mt-flesch-label">No text</span>
+        </div>
+      </div>
+      <div class="mt-tool-insight-box">
+        <div class="mt-tool-insight-title">Average Word &amp; Sentence Length</div>
+        <div class="mt-tool-insight-desc" id="mt-stat-averages">Avg word: 0 chars | Avg sentence: 0 words</div>
+      </div>
+    </div>
+
+    <!-- Social Media Character Limit Trackers -->
+    <div class="mt-tool-section-card">
+      <h2 class="mt-tool-card-heading">Social Media Character Counters</h2>
+      <p class="mt-tool-section-sub">Live limit tracker for major platforms to prevent truncation:</p>
+      
+      <div class="mt-tool-limits-grid">
+        <!-- Twitter / X -->
+        <div class="mt-tool-limit-item">
+          <div class="mt-tool-limit-header">
+            <span class="mt-tool-limit-name">X (Twitter) Post</span>
+            <span class="mt-tool-limit-val" id="mt-lim-x">0 / 280</span>
+          </div>
+          <div class="mt-tool-progress-bar">
+            <div class="mt-tool-progress-fill" id="mt-prog-x" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Instagram Caption -->
+        <div class="mt-tool-limit-item">
+          <div class="mt-tool-limit-header">
+            <span class="mt-tool-limit-name">Instagram Caption</span>
+            <span class="mt-tool-limit-val" id="mt-lim-ig">0 / 2,200</span>
+          </div>
+          <div class="mt-tool-progress-bar">
+            <div class="mt-tool-progress-fill" id="mt-prog-ig" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- LinkedIn Post -->
+        <div class="mt-tool-limit-item">
+          <div class="mt-tool-limit-header">
+            <span class="mt-tool-limit-name">LinkedIn Post</span>
+            <span class="mt-tool-limit-val" id="mt-lim-li">0 / 3,000</span>
+          </div>
+          <div class="mt-tool-progress-bar">
+            <div class="mt-tool-progress-fill" id="mt-prog-li" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- SEO Meta Description -->
+        <div class="mt-tool-limit-item">
+          <div class="mt-tool-limit-header">
+            <span class="mt-tool-limit-name">Google Meta Description</span>
+            <span class="mt-tool-limit-val" id="mt-lim-seo">0 / 160</span>
+          </div>
+          <div class="mt-tool-progress-bar">
+            <div class="mt-tool-progress-fill" id="mt-prog-seo" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyword Density Analysis -->
+    <div class="mt-tool-section-card">
+      <div class="mt-tool-density-header">
+        <div>
+          <h2 class="mt-tool-card-heading">Keyword Density &amp; Frequency</h2>
+          <p class="mt-tool-section-sub">Identify prominent keywords and detect repetitive phrasing:</p>
+        </div>
+        <div class="mt-tool-density-controls">
+          <label class="mt-tool-checkbox-label">
+            <input type="checkbox" id="mt-cb-stopwords" checked>
+            <span>Ignore Stop Words</span>
+          </label>
+          <div class="mt-tool-pill-tabs" role="tablist">
+            <button type="button" class="mt-tool-pill-tab mt-tool-pill-active" data-ngram="1">1 Word</button>
+            <button type="button" class="mt-tool-pill-tab" data-ngram="2">2 Words</button>
+            <button type="button" class="mt-tool-pill-tab" data-ngram="3">3 Words</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-tool-table-container">
+        <table class="mt-tool-table" id="mt-density-table">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50px;">#</th>
+              <th scope="col">Keyword / Phrase</th>
+              <th scope="col" style="width: 100px; text-align: right;">Count</th>
+              <th scope="col" style="width: 120px; text-align: right;">Density</th>
+              <th scope="col" style="width: 160px;">Visual Ratio</th>
+            </tr>
+          </thead>
+          <tbody id="mt-density-tbody">
+            <tr>
+              <td colspan="5" class="mt-tool-empty-table">Enter text above to see keyword frequency data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Comprehensive SEO Supporting Content & Guide -->
+  <section class="mt-tool-content-section">
+    <article class="mt-tool-article">
+      <h2>How the Free MyToolkit Word Counter Works</h2>
+      <p>
+        The <strong>MyToolkit Word Counter</strong> is a precision online text analyzer crafted specifically for content writers, editors, students, copywriters, and search engine optimization specialists. Whether you are drafting a university thesis, tuning Google ad copy, drafting social media captions, or preparing a speech, knowing exact word and character counts is essential.
+      </p>
+      <p>
+        Unlike rudimentary counter scripts that simply split by basic spaces, our tool uses high-precision <em>Unicode-aware boundary detection</em>. It accurately detects apostrophes, hyphenated phrases, contractions, multiple punctuation marks, and multi-byte emojis without generating false counts or broken metrics.
+      </p>
+
+      <h2>Key Features of Our Online Text Statistics Tool</h2>
+      <div class="mt-tool-features-grid">
+        <div class="mt-tool-feature-box">
+          <h3>⚡ Instant Real-Time Calculations</h3>
+          <p>Statistics refresh simultaneously with every keystroke. There is zero delay, no button clicking required, and no screen reloads.</p>
+        </div>
+        <div class="mt-tool-feature-box">
+          <h3>🔒 100% Privacy &amp; Local Processing</h3>
+          <p>Your writing never leaves your computer or smartphone. All computation is performed client-side inside your browser.</p>
+        </div>
+        <div class="mt-tool-feature-box">
+          <h3>📊 Keyword Density &amp; N-Gram Frequency</h3>
+          <p>Scan for overused phrases with 1-word, 2-word, and 3-word n-gram tables to protect your articles from keyword stuffing.</p>
+        </div>
+        <div class="mt-tool-feature-box">
+          <h3>⏱️ Reading &amp; Speaking Time Benchmarks</h3>
+          <p>Calculates exact read time at standard silent speeds (225 WPM) and speech time (130 WPM) to calibrate presentations.</p>
+        </div>
+        <div class="mt-tool-feature-box">
+          <h3>🎓 Flesch Readability Scoring</h3>
+          <p>Determine the reading grade level of your copy to ensure it aligns with your target demographic and accessibility standards.</p>
+        </div>
+        <div class="mt-tool-feature-box">
+          <h3>📱 Platform Character Limit Trackers</h3>
+          <p>Pre-configured gauges monitor length limits for X (Twitter), LinkedIn, Instagram captions, and SEO meta descriptions.</p>
+        </div>
+      </div>
+
+      <h2>Character Limits Reference Cheat Sheet</h2>
+      <div class="mt-tool-table-container">
+        <table class="mt-tool-table">
+          <thead>
+            <tr>
+              <th scope="col">Platform / Medium</th>
+              <th scope="col">Standard Limit</th>
+              <th scope="col">Recommended Optimal Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>X (Twitter) Standard</strong></td>
+              <td>280 characters</td>
+              <td>70 – 120 characters for highest engagement</td>
+            </tr>
+            <tr>
+              <td><strong>Instagram Caption</strong></td>
+              <td>2,200 characters (30 hashtags max)</td>
+              <td>125 – 150 characters before truncation</td>
+            </tr>
+            <tr>
+              <td><strong>LinkedIn Post</strong></td>
+              <td>3,000 characters</td>
+              <td>150 – 300 words (focused, scannable insights)</td>
+            </tr>
+            <tr>
+              <td><strong>Google SEO Title Tag</strong></td>
+              <td>~60 characters (approx. 580px width)</td>
+              <td>50 – 58 characters with primary keyword</td>
+            </tr>
+            <tr>
+              <td><strong>Google Meta Description</strong></td>
+              <td>~155 – 160 characters</td>
+              <td>145 – 155 characters with call-to-action</td>
+            </tr>
+            <tr>
+              <td><strong>Standard College Essay Page</strong></td>
+              <td>~250 words (double-spaced, 12pt font)</td>
+              <td>250 words/page (500 words single-spaced)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Understanding the Flesch Reading Ease Formula</h2>
+      <p>
+        The Flesch Reading Ease index is one of the most widely recognized readability tests. It is mathematically defined as:
+      </p>
+      <div class="mt-tool-formula-box">
+        <code>Score = 206.835 - (1.015 &times; ASL) - (84.6 &times; ASW)</code>
+        <div class="mt-tool-formula-legend">Where <strong>ASL</strong> = Average Sentence Length (Words / Sentences) and <strong>ASW</strong> = Average Syllables per Word (Syllables / Words).</div>
+      </div>
+      <p>
+        A score of 60 to 70 is considered plain English, easily understood by 13- to 15-year-old students. Web copywriters aim for scores between 60 and 80 to maximize retention and conversion rates across diverse audiences.
+      </p>
+
+      <!-- Frequently Asked Questions (Accordion) -->
+      <h2>Frequently Asked Questions</h2>
+      <div class="mt-tool-faq-accordion" id="mt-tool-faq">
+        <div class="mt-tool-faq-item">
+          <button type="button" class="mt-tool-faq-question" aria-expanded="false">
+            <span>How does this word counter handle hyphens and apostrophes?</span>
+            <span class="mt-tool-faq-icon">+</span>
+          </button>
+          <div class="mt-tool-faq-answer">
+            <p>Our algorithm adheres to standard English typography. Words connected by apostrophes (e.g., <em>don't</em>, <em>it's</em>) or hyphens (e.g., <em>well-known</em>, <em>state-of-the-art</em>) are treated as cohesive single word units, preventing incorrect word inflation.</p>
+          </div>
+        </div>
+
+        <div class="mt-tool-faq-item">
+          <button type="button" class="mt-tool-faq-question" aria-expanded="false">
+            <span>Is there a maximum character or word limit in this tool?</span>
+            <span class="mt-tool-faq-icon">+</span>
+          </button>
+          <div class="mt-tool-faq-answer">
+            <p>No arbitrary limit is enforced. You can paste thousands of paragraphs, full ebooks, dissertation chapters, or short ad snippets. Because the processing engine is built in native JavaScript, large texts process almost instantaneously.</p>
+          </div>
+        </div>
+
+        <div class="mt-tool-faq-item">
+          <button type="button" class="mt-tool-faq-question" aria-expanded="false">
+            <span>What are stop words and why should I ignore them in keyword density?</span>
+            <span class="mt-tool-faq-icon">+</span>
+          </button>
+          <div class="mt-tool-faq-answer">
+            <p>Stop words are high-frequency grammatical glue words such as <em>the</em>, <em>is</em>, <em>and</em>, <em>of</em>, and <em>to</em>. When analyzing keyword density for content strategy, filtering stop words highlights your actual substantive subject-matter terms rather than structural filler.</p>
+          </div>
+        </div>
+
+        <div class="mt-tool-faq-item">
+          <button type="button" class="mt-tool-faq-question" aria-expanded="false">
+            <span>Can I use this word counter on mobile phones and tablets?</span>
+            <span class="mt-tool-faq-icon">+</span>
+          </button>
+          <div class="mt-tool-faq-answer">
+            <p>Yes. The MyToolkit Word Counter is built with fully responsive CSS, large touch targets, and fluid layout scaling that adapts smoothly across smartphones, tablets, laptops, and ultra-wide desktop monitors.</p>
+          </div>
+        </div>
+
+        <div class="mt-tool-faq-item">
+          <button type="button" class="mt-tool-faq-question" aria-expanded="false">
+            <span>Can I export and download my text and analytics summary?</span>
+            <span class="mt-tool-faq-icon">+</span>
+          </button>
+          <div class="mt-tool-faq-answer">
+            <p>Yes. You can use the <em>Download</em> button to export your clean text as a <code>.txt</code> document, generate a formatted statistics report with reading scores, or download raw metrics in <code>.json</code> format for archiving.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <h2>Related Text &amp; Productivity Tools</h2>
+      <p>Explore other free web utilities from the MyToolkit suite to streamline your writing workflow:</p>
+      <div class="mt-tool-related-grid">
+        <a href="character-counter.html" class="mt-tool-related-card">
+          <div class="mt-tool-related-title">Character Counter</div>
+          <div class="mt-tool-related-desc">Precision character count with whitespace, byte length, and line breakdowns.</div>
+        </a>
+        <a href="case-converter.html" class="mt-tool-related-card">
+          <div class="mt-tool-related-title">Case Converter</div>
+          <div class="mt-tool-related-desc">Convert text between UPPERCASE, lowercase, Title Case, camelCase, and slug.</div>
+        </a>
+        <a href="text-cleaner.html" class="mt-tool-related-card">
+          <div class="mt-tool-related-title">Text Cleaner &amp; Formatter</div>
+          <div class="mt-tool-related-desc">Remove duplicate lines, normalize spaces, strip HTML tags, and sanitize text.</div>
+        </a>
+        <a href="lorem-ipsum-generator.html" class="mt-tool-related-card">
+          <div class="mt-tool-related-title">Lorem Ipsum Generator</div>
+          <div class="mt-tool-related-desc">Generate customized placeholder text, paragraphs, words, and bullet points.</div>
+        </a>
+      </div>
+
+      <!-- Final Thoughts -->
+      <div class="mt-tool-final-thoughts">
+        <h3>Final Thoughts</h3>
+        <p>
+          Accurate text metrics are essential for clear communication, academic integrity, and effective digital marketing. Bookmark the MyToolkit Word Counter today for rapid, confidential, and detailed writing statistics whenever you write.
+        </p>
+      </div>
+    </article>
+  </section>
+</div>
+
+<style>
+/* ==========================================================================
+   MyToolkit Word Counter - Scoped Stylesheet (mt-tool-)
+   ========================================================================== */
+.mt-tool-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+  line-height: 1.6;
+  font-size: 16px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  box-sizing: border-box;
+}
+
+.mt-tool-wrapper *,
+.mt-tool-wrapper *::before,
+.mt-tool-wrapper *::after {
+  box-sizing: border-box;
+}
+
+.mt-tool-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Breadcrumbs */
+.mt-tool-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+.mt-tool-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.mt-tool-breadcrumb a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+.mt-tool-sep {
+  color: #cbd5e1;
+}
+.mt-tool-current {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Header */
+.mt-tool-header {
+  margin-bottom: 24px;
+  text-align: left;
+}
+.mt-tool-badge {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+.mt-tool-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.mt-tool-subtitle {
+  font-size: 16px;
+  color: #475569;
+  margin: 0;
+  max-width: 760px;
+}
+
+/* Main Application Card */
+.mt-tool-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+/* Stats Hero Grid */
+.mt-tool-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.mt-tool-stat-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.mt-tool-stat-card:hover {
+  border-color: #cbd5e1;
+}
+.mt-tool-stat-primary {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+}
+.mt-tool-stat-primary .mt-tool-stat-value {
+  color: #1d4ed8;
+}
+.mt-tool-stat-value {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+.mt-tool-stat-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+/* Toolbar */
+.mt-tool-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.mt-tool-toolbar-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+}
+
+/* Buttons */
+.mt-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  min-height: 38px;
+}
+.mt-tool-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+.mt-tool-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.mt-tool-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+.mt-tool-btn-secondary {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #e2e8f0;
+}
+.mt-tool-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+.mt-tool-btn-outline {
+  background-color: transparent;
+  color: #ef4444;
+  border-color: #fecaca;
+}
+.mt-tool-btn-outline:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Dropdown */
+.mt-tool-dropdown-wrapper {
+  position: relative;
+}
+.mt-tool-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  padding: 6px;
+}
+.mt-tool-dropdown-menu.mt-tool-show {
+  display: block;
+}
+.mt-tool-dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+.mt-tool-dropdown-item:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Textarea */
+.mt-tool-input-container {
+  margin-bottom: 20px;
+}
+.mt-tool-textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.mt-tool-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Toast */
+.mt-tool-toast {
+  display: none;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  animation: mtFadeIn 0.2s ease;
+}
+.mt-tool-toast.mt-tool-show {
+  display: block;
+}
+@keyframes mtFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Insights Grid */
+.mt-tool-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.mt-tool-insight-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.mt-tool-insight-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+.mt-tool-insight-desc {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* Section Cards Inside App */
+.mt-tool-section-card {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.mt-tool-card-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+.mt-tool-section-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 16px;
+}
+
+/* Social Media Limit Trackers */
+.mt-tool-limits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.mt-tool-limit-item {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+}
+.mt-tool-limit-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.mt-tool-limit-name {
+  font-weight: 600;
+  color: #334155;
+}
+.mt-tool-limit-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+.mt-tool-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.mt-tool-progress-fill {
+  height: 100%;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+.mt-tool-progress-warning {
+  background-color: #f59e0b;
+}
+.mt-tool-progress-danger {
+  background-color: #ef4444;
+}
+
+/* Keyword Density Controls */
+.mt-tool-density-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.mt-tool-density-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.mt-tool-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #475569;
+  cursor: pointer;
+}
+.mt-tool-pill-tabs {
+  display: inline-flex;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.mt-tool-pill-tab {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.mt-tool-pill-active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Tables */
+.mt-tool-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
+.mt-tool-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+.mt-tool-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+.mt-tool-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+.mt-tool-table tr:last-child td {
+  border-bottom: none;
+}
+.mt-tool-table tr:hover td {
+  background-color: #f8fafc;
+}
+.mt-tool-empty-table {
+  text-align: center;
+  color: #94a3b8;
+  padding: 24px 14px !important;
+}
+.mt-tool-ratio-track {
+  width: 100%;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.mt-tool-ratio-fill {
+  height: 100%;
+  background-color: #0ea5e9;
+  border-radius: 9999px;
+}
+
+/* SEO Article Content Section */
+.mt-tool-content-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.mt-tool-article h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 28px 0 12px;
+  line-height: 1.3;
+}
+.mt-tool-article h2:first-of-type {
+  margin-top: 0;
+}
+.mt-tool-article h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 6px;
+}
+.mt-tool-article p {
+  font-size: 15px;
+  color: #334155;
+  margin: 0 0 16px;
+  line-height: 1.7;
+}
+
+/* Features Grid */
+.mt-tool-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+.mt-tool-feature-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+.mt-tool-feature-box p {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+}
+
+/* Formula Box */
+.mt-tool-formula-box {
+  background-color: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0 20px;
+}
+.mt-tool-formula-box code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  display: block;
+  margin-bottom: 6px;
+}
+.mt-tool-formula-legend {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* FAQ Accordion */
+.mt-tool-faq-accordion {
+  margin: 20px 0 28px;
+}
+.mt-tool-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.mt-tool-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.mt-tool-faq-question:hover {
+  background-color: #f8fafc;
+}
+.mt-tool-faq-icon {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 700;
+  margin-left: 12px;
+  transition: transform 0.2s ease;
+}
+.mt-tool-faq-item.mt-faq-open .mt-tool-faq-icon {
+  transform: rotate(45deg);
+}
+.mt-tool-faq-answer {
+  display: none;
+  padding: 0 18px 16px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+.mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer {
+  display: block;
+}
+
+/* Related Tools */
+.mt-tool-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 20px 0 28px;
+}
+.mt-tool-related-card {
+  display: block;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.mt-tool-related-card:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.08);
+}
+.mt-tool-related-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+.mt-tool-related-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Final Thoughts */
+.mt-tool-final-thoughts {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+}
+.mt-tool-final-thoughts h3 {
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+.mt-tool-final-thoughts p {
+  color: #1e3a8a;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 640px) {
+  .mt-tool-title {
+    font-size: 24px;
+  }
+  .mt-tool-card {
+    padding: 16px;
+  }
+  .mt-tool-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mt-tool-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .mt-tool-toolbar-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mt-tool-btn {
+    flex: 1 1 auto;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .mt-tool-content-section {
+    padding: 20px 16px;
+  }
+}
+</style>
+
+<script>
+/**
+ * MyToolkit Word Counter - Pure Vanilla JavaScript Engine
+ * Self-contained, isolated IIFE execution with no global pollution.
+ */
+(function() {
+  'use strict';
+
+  // State
+  var currentNgram = 1;
+  var ignoreStopWords = true;
+  var sampleArticle = "Effective communication is the cornerstone of great writing. When drafting articles, essays, or digital copy, keeping track of word count and sentence structure ensures your message remains crisp, engaging, and clear.\n\nIn search engine optimization (SEO) and digital marketing, understanding keyword density prevents over-optimization while maintaining topical relevance. Similarly, calculating reading time helps creators adapt speeches and presentations for diverse audiences. Use this free Word Counter from MyToolkit to analyze your drafts instantly and refine your storytelling.";
+
+  // Standard Stop Words Set
+  var STOP_WORDS = {
+    'a': 1, 'about': 1, 'above': 1, 'after': 1, 'again': 1, 'against': 1, 'all': 1, 'am': 1, 'an': 1, 'and': 1,
+    'any': 1, 'are': 1, 'as': 1, 'at': 1, 'be': 1, 'because': 1, 'been': 1, 'before': 1, 'being': 1, 'below': 1,
+    'between': 1, 'both': 1, 'but': 1, 'by': 1, 'can': 1, 'cannot': 1, 'could': 1, 'did': 1, 'do': 1, 'does': 1,
+    'doing': 1, 'down': 1, 'during': 1, 'each': 1, 'few': 1, 'for': 1, 'from': 1, 'further': 1, 'had': 1, 'has': 1,
+    'have': 1, 'having': 1, 'he': 1, 'her': 1, 'here': 1, 'hers': 1, 'herself': 1, 'him': 1, 'himself': 1, 'his': 1,
+    'how': 1, 'i': 1, 'if': 1, 'in': 1, 'into': 1, 'is': 1, 'it': 1, 'its': 1, 'itself': 1, 'let': 1, 'me': 1,
+    'more': 1, 'most': 1, 'my': 1, 'myself': 1, 'no': 1, 'nor': 1, 'not': 1, 'of': 1, 'off': 1, 'on': 1, 'once': 1,
+    'only': 1, 'or': 1, 'other': 1, 'ought': 1, 'our': 1, 'ours': 1, 'ourselves': 1, 'out': 1, 'over': 1, 'own': 1,
+    'same': 1, 'she': 1, 'should': 1, 'so': 1, 'some': 1, 'such': 1, 'than': 1, 'that': 1, 'the': 1, 'their': 1,
+    'theirs': 1, 'them': 1, 'themselves': 1, 'then': 1, 'there': 1, 'these': 1, 'they': 1, 'this': 1, 'those': 1,
+    'through': 1, 'to': 1, 'too': 1, 'under': 1, 'until': 1, 'up': 1, 'very': 1, 'was': 1, 'we': 1, 'were': 1,
+    'what': 1, 'when': 1, 'where': 1, 'which': 1, 'while': 1, 'who': 1, 'whom': 1, 'why': 1, 'with': 1, 'won': 1,
+    'would': 1, 'you': 1, 'your': 1, 'yours': 1, 'yourself': 1, 'yourselves': 1
+  };
+
+  // DOM Elements cache
+  var el = {
+    textarea: document.getElementById('mt-tool-textarea'),
+    statWords: document.getElementById('mt-stat-words'),
+    statCharsAll: document.getElementById('mt-stat-chars-all'),
+    statCharsNoSpace: document.getElementById('mt-stat-chars-no-space'),
+    statSentences: document.getElementById('mt-stat-sentences'),
+    statParagraphs: document.getElementById('mt-stat-paragraphs'),
+    statReadingTime: document.getElementById('mt-stat-reading-time'),
+    statSpeakingTime: document.getElementById('mt-stat-speaking-time'),
+    statPages: document.getElementById('mt-stat-pages'),
+    fleschScore: document.getElementById('mt-flesch-score'),
+    fleschLabel: document.getElementById('mt-flesch-label'),
+    statAverages: document.getElementById('mt-stat-averages'),
+    // Limits
+    limX: document.getElementById('mt-lim-x'),
+    progX: document.getElementById('mt-prog-x'),
+    limIg: document.getElementById('mt-lim-ig'),
+    progIg: document.getElementById('mt-prog-ig'),
+    limLi: document.getElementById('mt-lim-li'),
+    progLi: document.getElementById('mt-prog-li'),
+    limSeo: document.getElementById('mt-lim-seo'),
+    progSeo: document.getElementById('mt-prog-seo'),
+    // Density
+    densityTbody: document.getElementById('mt-density-tbody'),
+    cbStopwords: document.getElementById('mt-cb-stopwords'),
+    // Buttons
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnPaste: document.getElementById('mt-btn-paste'),
+    btnClear: document.getElementById('mt-btn-clear'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnCaseToggle: document.getElementById('mt-btn-case-toggle'),
+    caseMenu: document.getElementById('mt-case-menu'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    downloadMenu: document.getElementById('mt-download-menu'),
+    dlTxt: document.getElementById('mt-dl-txt'),
+    dlReport: document.getElementById('mt-dl-report'),
+    dlJson: document.getElementById('mt-dl-json'),
+    toast: document.getElementById('mt-tool-toast')
+  };
+
+  if (!el.textarea) return; // Guard
+
+  // Syllable Counter Helper
+  function countSyllables(word) {
+    var clean = word.toLowerCase().replace(/[^a-z]/g, '');
+    if (!clean) return 0;
+    if (clean.length <= 3) return 1;
+    clean = clean.replace(/(?:[^laeiouy]|ed|es|e)$/, '').replace(/^y/, '');
+    var matches = clean.match(/[aeiouy]{1,2}/g);
+    return matches ? Math.max(1, matches.length) : 1;
+  }
+
+  // Toast Notification
+  var toastTimeout = null;
+  function showToast(msg) {
+    if (!el.toast) return;
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-tool-show');
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(function() {
+      el.toast.classList.remove('mt-tool-show');
+    }, 2800);
+  }
+
+  // Calculate & Update All Metrics
+  function updateMetrics() {
+    var text = el.textarea.value;
+    var trimmed = text.trim();
+
+    // Characters
+    var charsAll = text.length;
+    var charsNoSpace = text.replace(/\s/g, '').length;
+
+    // Word tokens
+    var wordsArr = trimmed ? (trimmed.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu) || []) : [];
+    var wordCount = wordsArr.length;
+
+    // Sentences
+    var sentenceMatches = trimmed ? trimmed.match(/[^.!?…\n]+(?:[.!?…]+|$)/g) : null;
+    var sentenceCount = sentenceMatches ? sentenceMatches.filter(function(s) { return s.trim().length > 0; }).length : (wordCount > 0 ? 1 : 0);
+
+    // Paragraphs
+    var paragraphCount = trimmed ? trimmed.split(/\r?\n+/).filter(function(p) { return p.trim().length > 0; }).length : 0;
+
+    // Reading & Speaking Time
+    var readMinutes = wordCount > 0 ? (wordCount / 225) : 0;
+    var readText = readMinutes < 1 && wordCount > 0 ? '< 1 min' : (Math.ceil(readMinutes) + ' min');
+    if (wordCount === 0) readText = '0 min';
+
+    var speakMinutes = wordCount > 0 ? (wordCount / 130) : 0;
+    var speakText = speakMinutes < 1 && wordCount > 0 ? '< 1 min' : (Math.ceil(speakMinutes) + ' min');
+    if (wordCount === 0) speakText = '0 min';
+
+    // Pages
+    var pagesCount = wordCount > 0 ? (wordCount / 250).toFixed(1) : '0.0';
+
+    // Syllables & Averages
+    var totalSyllables = 0;
+    var totalWordChars = 0;
+    for (var i = 0; i < wordsArr.length; i++) {
+      totalSyllables += countSyllables(wordsArr[i]);
+      totalWordChars += wordsArr[i].length;
+    }
+
+    var avgWordLen = wordCount > 0 ? (totalWordChars / wordCount).toFixed(1) : '0';
+    var safeSentences = Math.max(1, sentenceCount);
+    var avgSentLen = wordCount > 0 ? (wordCount / safeSentences).toFixed(1) : '0';
+
+    // Flesch Reading Ease
+    var flesch = 0;
+    var fleschGrade = 'N/A';
+    var fleschDesc = 'No text entered';
+
+    if (wordCount >= 4 && sentenceCount >= 1) {
+      var rawFlesch = 206.835 - (1.015 * (wordCount / safeSentences)) - (84.6 * (totalSyllables / wordCount));
+      flesch = Math.max(0, Math.min(100, Math.round(rawFlesch)));
+
+      if (flesch >= 90) fleschDesc = 'Very Easy (5th Grade)';
+      else if (flesch >= 80) fleschDesc = 'Easy (6th Grade)';
+      else if (flesch >= 70) fleschDesc = 'Fairly Easy (7th Grade)';
+      else if (flesch >= 60) fleschDesc = 'Standard Plain English (8th-9th Grade)';
+      else if (flesch >= 50) fleschDesc = 'Fairly Difficult (10th-12th Grade)';
+      else if (flesch >= 30) fleschDesc = 'Difficult (College Level)';
+      else fleschDesc = 'Very Difficult (Academic/Graduate)';
+    }
+
+    // Render Stats
+    el.statWords.textContent = wordCount.toLocaleString();
+    el.statCharsAll.textContent = charsAll.toLocaleString();
+    el.statCharsNoSpace.textContent = charsNoSpace.toLocaleString();
+    el.statSentences.textContent = sentenceCount.toLocaleString();
+    el.statParagraphs.textContent = paragraphCount.toLocaleString();
+    el.statReadingTime.textContent = readText;
+    el.statSpeakingTime.textContent = speakText + ' (at ~130 WPM)';
+    el.statPages.textContent = pagesCount + ' pages (standard ~250 words/page)';
+    
+    el.fleschScore.textContent = wordCount >= 4 ? (flesch + ' / 100') : '0 / 100';
+    el.fleschLabel.textContent = fleschDesc;
+    el.statAverages.textContent = 'Avg word: ' + avgWordLen + ' chars | Avg sentence: ' + avgSentLen + ' words';
+
+    // Update Progress Bars
+    updateProgressBar(el.progX, el.limX, charsAll, 280);
+    updateProgressBar(el.progIg, el.limIg, charsAll, 2200);
+    updateProgressBar(el.progLi, el.limLi, charsAll, 3000);
+    updateProgressBar(el.progSeo, el.limSeo, charsAll, 160);
+
+    // Update Keyword Density
+    updateKeywordTable(wordsArr);
+  }
+
+  function updateProgressBar(barEl, labelEl, current, limit) {
+    if (!barEl || !labelEl) return;
+    labelEl.textContent = current.toLocaleString() + ' / ' + limit.toLocaleString();
+    var pct = Math.min(100, Math.round((current / limit) * 100));
+    barEl.style.width = pct + '%';
+
+    barEl.className = 'mt-tool-progress-fill';
+    if (current > limit) {
+      barEl.classList.add('mt-tool-progress-danger');
+      labelEl.style.color = '#dc2626';
+    } else if (pct >= 85) {
+      barEl.classList.add('mt-tool-progress-warning');
+      labelEl.style.color = '#d97706';
+    } else {
+      labelEl.style.color = '#0f172a';
+    }
+  }
+
+  // Keyword Density Analysis
+  function updateKeywordTable(rawWords) {
+    if (!el.densityTbody) return;
+
+    if (!rawWords || rawWords.length === 0) {
+      el.densityTbody.innerHTML = '<tr><td colspan="5" class="mt-tool-empty-table">Enter text above to see keyword frequency data.</td></tr>';
+      return;
+    }
+
+    var cleanTokens = [];
+    for (var i = 0; i < rawWords.length; i++) {
+      var w = rawWords[i].toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
+      if (w) cleanTokens.push(w);
+    }
+
+    var counts = {};
+    var totalPhrases = 0;
+
+    if (currentNgram === 1) {
+      for (var j = 0; j < cleanTokens.length; j++) {
+        var token = cleanTokens[j];
+        if (ignoreStopWords && STOP_WORDS[token]) continue;
+        if (token.length <= 1 && !/^\d+$/.test(token)) continue;
+        counts[token] = (counts[token] || 0) + 1;
+        totalPhrases++;
+      }
+    } else {
+      var step = currentNgram;
+      for (var k = 0; k <= cleanTokens.length - step; k++) {
+        var slice = cleanTokens.slice(k, k + step);
+        if (ignoreStopWords) {
+          var allStop = true;
+          for (var s = 0; s < slice.length; s++) {
+            if (!STOP_WORDS[slice[s]]) { allStop = false; break; }
+          }
+          if (allStop) continue;
+        }
+        var phrase = slice.join(' ');
+        counts[phrase] = (counts[phrase] || 0) + 1;
+        totalPhrases++;
+      }
+    }
+
+    var list = [];
+    for (var key in counts) {
+      if (counts.hasOwnProperty(key)) {
+        list.push({ word: key, count: counts[key] });
+      }
+    }
+
+    if (list.length === 0 || totalPhrases === 0) {
+      el.densityTbody.innerHTML = '<tr><td colspan="5" class="mt-tool-empty-table">No keywords matched the selected filter. Try disabling Stop Words.</td></tr>';
+      return;
+    }
+
+    list.sort(function(a, b) {
+      return b.count - a.count || a.word.localeCompare(b.word);
+    });
+
+    var topList = list.slice(0, 10);
+    var maxCount = topList[0].count;
+    var html = '';
+
+    for (var m = 0; m < topList.length; m++) {
+      var item = topList[m];
+      var density = ((item.count / totalPhrases) * 100).toFixed(1);
+      var barPct = Math.round((item.count / maxCount) * 100);
+
+      html += '<tr>' +
+        '<td style="color:#64748b; font-weight:600;">' + (m + 1) + '</td>' +
+        '<td style="font-weight:600; color:#0f172a;">' + escapeHtml(item.word) + '</td>' +
+        '<td style="text-align:right; font-weight:700;">' + item.count + '</td>' +
+        '<td style="text-align:right; color:#2563eb; font-weight:600;">' + density + '%</td>' +
+        '<td>' +
+          '<div class="mt-tool-ratio-track">' +
+            '<div class="mt-tool-ratio-fill" style="width:' + barPct + '%;"></div>' +
+          '</div>' +
+        '</td>' +
+      '</tr>';
+    }
+
+    el.densityTbody.innerHTML = html;
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Case Transformation Helpers
+  function transformCase(mode) {
+    var text = el.textarea.value;
+    if (!text) {
+      showToast('Please enter text first');
+      return;
+    }
+
+    var result = text;
+    if (mode === 'upper') {
+      result = text.toUpperCase();
+    } else if (mode === 'lower') {
+      result = text.toLowerCase();
+    } else if (mode === 'title') {
+      result = text.replace(/\b[a-z]/gi, function(match) {
+        return match.toUpperCase();
+      });
+    } else if (mode === 'sentence') {
+      result = text.toLowerCase().replace(/(^|[.!?]\s+)([a-z])/g, function(match, prefix, letter) {
+        return prefix + letter.toUpperCase();
+      });
+    } else if (mode === 'clean-spaces') {
+      result = text.replace(/[ \t]+/g, ' ').replace(/^ +| +$/gm, '');
+    } else if (mode === 'trim-lines') {
+      result = text.split(/\r?\n/).filter(function(line) { return line.trim().length > 0; }).join('\n');
+    }
+
+    el.textarea.value = result;
+    updateMetrics();
+    showToast('Text transformed successfully');
+  }
+
+  // Event Listeners
+  el.textarea.addEventListener('input', updateMetrics);
+  el.textarea.addEventListener('propertychange', updateMetrics);
+
+  // Load Sample
+  el.btnSample.addEventListener('click', function() {
+    el.textarea.value = sampleArticle;
+    updateMetrics();
+    showToast('Sample text loaded');
+  });
+
+  // Paste Text
+  el.btnPaste.addEventListener('click', function() {
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      navigator.clipboard.readText().then(function(clipText) {
+        if (clipText) {
+          el.textarea.value = clipText;
+          updateMetrics();
+          showToast('Pasted from clipboard');
+        } else {
+          showToast('Clipboard is empty');
+        }
+      }).catch(function() {
+        showToast('Clipboard access was blocked. Use Ctrl+V / Cmd+V.');
+      });
+    } else {
+      showToast('Clipboard API unavailable in this browser. Use Ctrl+V.');
+    }
+  });
+
+  // Clear Text
+  el.btnClear.addEventListener('click', function() {
+    if (!el.textarea.value) return;
+    el.textarea.value = '';
+    updateMetrics();
+    showToast('Text cleared');
+  });
+
+  // Copy Text
+  el.btnCopy.addEventListener('click', function() {
+    var text = el.textarea.value;
+    if (!text) {
+      showToast('No text to copy');
+      return;
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Text copied to clipboard!');
+      }).catch(function() {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  });
+
+  function fallbackCopy(text) {
+    try {
+      el.textarea.select();
+      document.execCommand('copy');
+      showToast('Text copied to clipboard!');
+    } catch(e) {
+      showToast('Could not copy automatically. Please select text manually.');
+    }
+  }
+
+  // Case Transform Menu Toggle
+  el.btnCaseToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = el.caseMenu.classList.contains('mt-tool-show');
+    closeAllMenus();
+    if (!isOpen) {
+      el.caseMenu.classList.add('mt-tool-show');
+      el.btnCaseToggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Case Menu Items
+  var caseItems = el.caseMenu.querySelectorAll('.mt-tool-dropdown-item');
+  for (var c = 0; c < caseItems.length; c++) {
+    caseItems[c].addEventListener('click', function() {
+      var mode = this.getAttribute('data-case');
+      transformCase(mode);
+      closeAllMenus();
+    });
+  }
+
+  // Download Menu Toggle
+  el.btnDownload.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = el.downloadMenu.classList.contains('mt-tool-show');
+    closeAllMenus();
+    if (!isOpen) {
+      el.downloadMenu.classList.add('mt-tool-show');
+    }
+  });
+
+  function closeAllMenus() {
+    el.caseMenu.classList.remove('mt-tool-show');
+    el.btnCaseToggle.setAttribute('aria-expanded', 'false');
+    el.downloadMenu.classList.remove('mt-tool-show');
+  }
+
+  document.addEventListener('click', function() {
+    closeAllMenus();
+  });
+
+  // Download Trigger Helper
+  function triggerDownload(content, filename, mime) {
+    var blob = new Blob([content], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 150);
+  }
+
+  // Download TXT
+  el.dlTxt.addEventListener('click', function() {
+    var text = el.textarea.value;
+    if (!text) { showToast('Please enter text first'); return; }
+    triggerDownload(text, 'mytoolkit-text.txt', 'text/plain;charset=utf-8');
+    showToast('Downloaded text file');
+    closeAllMenus();
+  });
+
+  // Download Report
+  el.dlReport.addEventListener('click', function() {
+    var text = el.textarea.value;
+    if (!text) { showToast('Please enter text first'); return; }
+    
+    var report = '========================================\n' +
+                 'MyToolkit Word Counter & Text Analysis Report\n' +
+                 'Website: https://sheroz255.github.io/mytoolkit-app/\n' +
+                 'Date: ' + new Date().toLocaleString() + '\n' +
+                 '========================================\n\n' +
+                 'CORE STATISTICS:\n' +
+                 '- Total Words: ' + el.statWords.textContent + '\n' +
+                 '- Total Characters (with spaces): ' + el.statCharsAll.textContent + '\n' +
+                 '- Total Characters (without spaces): ' + el.statCharsNoSpace.textContent + '\n' +
+                 '- Sentences: ' + el.statSentences.textContent + '\n' +
+                 '- Paragraphs: ' + el.statParagraphs.textContent + '\n' +
+                 '- Estimated Reading Time: ' + el.statReadingTime.textContent + '\n' +
+                 '- Estimated Speaking Time: ' + el.statSpeakingTime.textContent + '\n' +
+                 '- Estimated Pages (250w/page): ' + el.statPages.textContent + '\n' +
+                 '- Flesch Reading Score: ' + el.fleschScore.textContent + ' (' + el.fleschLabel.textContent + ')\n' +
+                 '- ' + el.statAverages.textContent + '\n\n' +
+                 '----------------------------------------\n' +
+                 'ORIGINAL TEXT CONTENT:\n' +
+                 '----------------------------------------\n' +
+                 text;
+
+    triggerDownload(report, 'mytoolkit-word-count-report.txt', 'text/plain;charset=utf-8');
+    showToast('Downloaded statistical report');
+    closeAllMenus();
+  });
+
+  // Download JSON
+  el.dlJson.addEventListener('click', function() {
+    var text = el.textarea.value;
+    if (!text) { showToast('Please enter text first'); return; }
+
+    var data = {
+      tool: 'MyToolkit Word Counter',
+      url: 'https://sheroz255.github.io/mytoolkit-app/word-counter.html',
+      timestamp: new Date().toISOString(),
+      metrics: {
+        words: parseInt(el.statWords.textContent.replace(/,/g, ''), 10) || 0,
+        charactersWithSpaces: parseInt(el.statCharsAll.textContent.replace(/,/g, ''), 10) || 0,
+        charactersWithoutSpaces: parseInt(el.statCharsNoSpace.textContent.replace(/,/g, ''), 10) || 0,
+        sentences: parseInt(el.statSentences.textContent.replace(/,/g, ''), 10) || 0,
+        paragraphs: parseInt(el.statParagraphs.textContent.replace(/,/g, ''), 10) || 0,
+        readingTime: el.statReadingTime.textContent,
+        speakingTime: el.statSpeakingTime.textContent,
+        fleschScore: el.fleschScore.textContent,
+        fleschLabel: el.fleschLabel.textContent
+      },
+      text: text
+    };
+
+    triggerDownload(JSON.stringify(data, null, 2), 'mytoolkit-metrics.json', 'application/json');
+    showToast('Downloaded JSON dataset');
+    closeAllMenus();
+  });
+
+  // N-Gram Tab Switching
+  var pillTabs = document.querySelectorAll('.mt-tool-pill-tab');
+  for (var p = 0; p < pillTabs.length; p++) {
+    pillTabs[p].addEventListener('click', function() {
+      for (var t = 0; t < pillTabs.length; t++) {
+        pillTabs[t].classList.remove('mt-tool-pill-active');
+      }
+      this.classList.add('mt-tool-pill-active');
+      currentNgram = parseInt(this.getAttribute('data-ngram'), 10) || 1;
+      updateMetrics();
+    });
+  }
+
+  // Stop Words Checkbox Toggle
+  el.cbStopwords.addEventListener('change', function() {
+    ignoreStopWords = this.checked;
+    updateMetrics();
+  });
+
+  // FAQ Accordion Toggle
+  var faqQuestions = document.querySelectorAll('.mt-tool-faq-question');
+  for (var f = 0; f < faqQuestions.length; f++) {
+    faqQuestions[f].addEventListener('click', function() {
+      var item = this.parentElement;
+      var isOpen = item.classList.contains('mt-faq-open');
+      
+      // Close other items
+      for (var j = 0; j < faqQuestions.length; j++) {
+        faqQuestions[j].parentElement.classList.remove('mt-faq-open');
+        faqQuestions[j].setAttribute('aria-expanded', 'false');
+      }
+
+      if (!isOpen) {
+        item.classList.add('mt-faq-open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  // Initialize with empty metrics
+  updateMetrics();
+})();
+</script>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>
