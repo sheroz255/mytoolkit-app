@@ -1,0 +1,888 @@
+<!-- SEO TITLE:
+Free QR Code Generator & Scanner – URL, WiFi, vCard, Email & More | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, locations and social profiles. Also scan QR codes from images instantly, free, right in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free QR Code Generator &amp; Scanner – URL, WiFi, vCard, Email &amp; More | MyToolkit</title>
+<meta name="description" content="Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, locations and social profiles. Also scan QR codes from images instantly, free, right in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/qr-code-generator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free QR Code Generator & Scanner | MyToolkit">
+<meta property="og:description" content="Create custom QR codes for URLs, WiFi, contacts, email and more. Scan QR codes from images instantly, free, in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/qr-code-generator.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator & Scanner",
+  "url": "https://sheroz255.github.io/mytoolkit-app/qr-code-generator.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, locations and social profiles. Scan QR codes from images instantly."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-qr-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .mt-qr-tab{border:1px solid #e2e8f0;background:#f8fafc;color:#334155;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+  .mt-qr-tab.mt-active{background:#2563eb;border-color:#2563eb;color:#fff}
+  .mt-qr-tab:hover:not(.mt-active){border-color:#93c5fd}
+
+  .mt-qr-layout{display:grid;grid-template-columns:1fr;gap:24px}
+  @media(min-width:860px){.mt-qr-layout{grid-template-columns:1.1fr .9fr}}
+
+  .mt-field{margin-bottom:14px}
+  .mt-field label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:5px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-field input[type="text"],
+  .mt-field input[type="url"],
+  .mt-field input[type="email"],
+  .mt-field input[type="tel"],
+  .mt-field input[type="number"],
+  .mt-field input[type="datetime-local"],
+  .mt-field select,
+  .mt-field textarea{
+    width:100%;max-width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 12px;font-size:14.5px;
+    font-family:inherit;color:#0f172a;background:#fff;transition:.15s
+  }
+  .mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+  .mt-field textarea{resize:vertical;min-height:90px}
+  .mt-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:480px){.mt-field-row{grid-template-columns:1fr}}
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:5px}
+  .mt-field-hint{color:#94a3b8;font-size:12px;margin-top:5px}
+
+  .mt-qr-type-panel{display:none}
+  .mt-qr-type-panel.mt-active{display:block}
+
+  .mt-qr-preview-box{position:sticky;top:16px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .mt-qr-canvas-wrap{width:100%;max-width:320px;aspect-ratio:1/1;background:#fff;border:1px solid #e2e8f0;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:16px}
+  .mt-qr-canvas-wrap canvas{max-width:100%;max-height:100%}
+  .mt-qr-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+  .mt-btn:disabled{opacity:.5;cursor:not-allowed}
+
+  .mt-style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  @media(max-width:480px){.mt-style-grid{grid-template-columns:1fr}}
+  .mt-color-field{display:flex;align-items:center;gap:8px;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px 10px}
+  .mt-color-field input[type="color"]{width:32px;height:32px;border:none;padding:0;background:none;cursor:pointer}
+  .mt-color-field span{font-size:12.5px;color:#475569;font-weight:600}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-scan-drop{border:2px dashed #cbd5e1;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s}
+  .mt-scan-drop:hover,.mt-scan-drop.mt-drag{border-color:#2563eb;background:#eff6ff}
+  .mt-scan-drop input{display:none}
+  .mt-scan-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-scan-drop p{margin:0;color:#64748b;font-size:13.5px}
+  .mt-scan-result{margin-top:16px;padding:16px;border-radius:14px;background:#f0fdf4;border:1px solid #bbf7d0}
+  .mt-scan-result.mt-error{background:#fef2f2;border-color:#fecaca}
+  .mt-scan-result-label{font-size:11.5px;font-weight:700;color:#166534;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .mt-scan-result.mt-error .mt-scan-result-label{color:#991b1b}
+  .mt-scan-result-text{word-break:break-word;font-size:14.5px;color:#0f172a;font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:10px}
+  .mt-scan-preview{max-width:160px;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:12px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:34px 0 10px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-qr-generator">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">QR &amp; Barcode</a> &#8250;
+    <span>QR Code Generator</span>
+  </nav>
+
+  <h1>Free QR Code Generator &amp; Scanner</h1>
+  <p class="mt-tool-intro">
+    Create custom QR codes for links, WiFi, contacts, email, SMS, WhatsApp, events, locations
+    and social profiles &mdash; and scan any QR code from an image. Everything runs directly in
+    your browser; nothing is uploaded to a server.
+  </p>
+
+  <!-- ================= GENERATOR ================= -->
+  <div class="mt-tool-card">
+
+    <div class="mt-qr-tabs" id="mtQrTabs" role="tablist" aria-label="QR code content type"></div>
+
+    <div class="mt-qr-layout">
+
+      <div>
+        <div id="mtQrPanels"></div>
+
+        <div class="mt-tool-card" style="margin-top:16px; background:#f8fafc;">
+          <label style="display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:10px;text-transform:uppercase;letter-spacing:.03em;">Style Options</label>
+          <div class="mt-style-grid">
+            <div class="mt-color-field">
+              <input type="color" id="mtQrFgColor" value="#0f172a" aria-label="QR code color">
+              <span>QR Color</span>
+            </div>
+            <div class="mt-color-field">
+              <input type="color" id="mtQrBgColor" value="#ffffff" aria-label="Background color">
+              <span>Background</span>
+            </div>
+            <div class="mt-field" style="margin-bottom:0;">
+              <label for="mtQrDotStyle">Dot Style</label>
+              <select id="mtQrDotStyle">
+                <option value="squares">Squares</option>
+                <option value="dots">Dots</option>
+                <option value="rounded">Rounded</option>
+              </select>
+            </div>
+            <div class="mt-field" style="margin-bottom:0;">
+              <label for="mtQrEcLevel">Error Correction</label>
+              <select id="mtQrEcLevel">
+                <option value="L">Low (7%)</option>
+                <option value="M" selected>Medium (15%)</option>
+                <option value="Q">Quartile (25%)</option>
+                <option value="H">High (30%)</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-field" style="margin-top:12px;">
+            <label for="mtQrLogo">Center Logo (optional)</label>
+            <input type="file" id="mtQrLogo" accept="image/*">
+            <p class="mt-field-hint">Use High error correction when adding a logo, so the code still scans reliably.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-qr-preview-box">
+        <div class="mt-qr-canvas-wrap">
+          <canvas id="mtQrCanvas" width="320" height="320" aria-label="Generated QR code preview"></canvas>
+        </div>
+        <p id="mtQrError" class="mt-field-error" style="display:none; text-align:center;"></p>
+        <div class="mt-qr-actions">
+          <button class="mt-btn mt-btn-primary" id="mtQrDownloadPng" type="button">&#8595; Download PNG</button>
+          <button class="mt-btn mt-btn-secondary" id="mtQrCopyText" type="button">Copy Content</button>
+          <button class="mt-btn mt-btn-ghost" id="mtQrClear" type="button">Clear</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= SCANNER ================= -->
+  <h2 class="mt-tool-section-title">Scan a QR Code</h2>
+  <p>Upload an image containing a QR code and it will be decoded instantly, right in your browser.</p>
+
+  <div class="mt-tool-card">
+    <label class="mt-scan-drop" id="mtScanDrop" for="mtScanInput">
+      <div class="mt-scan-drop-icon" aria-hidden="true">&#128247;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a QR code image</p>
+      <input type="file" id="mtScanInput" accept="image/*">
+    </label>
+
+    <div id="mtScanResultWrap"></div>
+  </div>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <h2 class="mt-tool-section-title">How This QR Code Generator Works</h2>
+  <p>
+    Pick a content type &mdash; a website link, WiFi network, contact card, email, text message,
+    phone number, WhatsApp chat, calendar event, map location, or social profile &mdash; and fill in
+    the relevant fields. As you type, the QR code updates instantly using your chosen colors, dot
+    style and error-correction level. When you're happy with it, download it as a PNG image or
+    copy the raw content it encodes. Every QR code is generated locally in your browser using the
+    standard QR encoding algorithm, so nothing you enter is ever sent anywhere.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>11 Content Types</h3><p>URLs, WiFi, contacts, email, SMS, calls, WhatsApp, events, locations and social profiles.</p></div>
+    <div class="mt-feature-box"><h3>Custom Styling</h3><p>Change colors, dot shape and error-correction strength to match your brand.</p></div>
+    <div class="mt-feature-box"><h3>Logo Overlay</h3><p>Add your own logo to the center of the QR code.</p></div>
+    <div class="mt-feature-box"><h3>Built-in Scanner</h3><p>Upload any QR code image to instantly decode its content.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Everything happens in your browser &mdash; nothing is uploaded to a server.</p></div>
+    <div class="mt-feature-box"><h3>Free PNG Download</h3><p>Download a high-resolution PNG ready to print or share.</p></div>
+  </div>
+
+  <!-- ================= FAQ ================= -->
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtQrFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is this QR code generator really free?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. There are no limits, watermarks, sign-ups or hidden fees. QR codes you generate never expire.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Do my QR codes expire or stop working?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The QR code image directly encodes your content (a URL, WiFi details, contact card, etc.). It works forever and isn't tied to any account or server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Which error correction level should I use?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Medium works well for most cases. If you're adding a logo or printing the code somewhere it might get scratched or dirty, use High for extra reliability.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my data uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. Both the generator and the scanner run entirely in your browser using JavaScript. Nothing you type or upload is sent to any server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I add my logo to the QR code?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, upload an image under "Center Logo" and it will be placed in the middle of the code. Use High error correction so the code still scans reliably with the logo covering part of it.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why won't a QR code scan from a photo I uploaded?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Make sure the QR code is in focus, well lit, and not too small or heavily angled in the photo. Cropping the image closer to just the QR code often helps.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're sharing a link, your WiFi password, a contact card, or promoting a social
+    profile, a well-made QR code makes it effortless for people to connect with just a scan. This
+    tool is built to be fast, private and flexible enough for everyday use &mdash; from personal
+    projects to printed materials.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var TYPES = [
+    { id: 'url', label: 'URL / Link' },
+    { id: 'text', label: 'Plain Text' },
+    { id: 'wifi', label: 'Wi-Fi' },
+    { id: 'vcard', label: 'Contact' },
+    { id: 'email', label: 'Email' },
+    { id: 'sms', label: 'SMS' },
+    { id: 'phone', label: 'Phone Call' },
+    { id: 'whatsapp', label: 'WhatsApp' },
+    { id: 'event', label: 'Event' },
+    { id: 'location', label: 'Location' },
+    { id: 'social', label: 'Social Profile' }
+  ];
+
+  var currentType = 'url';
+  var logoImage = null;
+
+  var tabsEl = document.getElementById('mtQrTabs');
+  var panelsEl = document.getElementById('mtQrPanels');
+  var canvas = document.getElementById('mtQrCanvas');
+  var errorEl = document.getElementById('mtQrError');
+  var toast = document.getElementById('mt-tool-toast');
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('mt-show');
+    setTimeout(function () { toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s);
+  }
+
+  /* ---------------- Build Tabs ---------------- */
+  TYPES.forEach(function (t) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'mt-qr-tab' + (t.id === currentType ? ' mt-active' : '');
+    btn.textContent = t.label;
+    btn.setAttribute('data-type', t.id);
+    btn.addEventListener('click', function () {
+      currentType = t.id;
+      tabsEl.querySelectorAll('.mt-qr-tab').forEach(function (b) { b.classList.remove('mt-active'); });
+      btn.classList.add('mt-active');
+      panelsEl.querySelectorAll('.mt-qr-type-panel').forEach(function (p) { p.classList.remove('mt-active'); });
+      document.getElementById('mt-panel-' + t.id).classList.add('mt-active');
+      generate();
+    });
+    tabsEl.appendChild(btn);
+  });
+
+  /* ---------------- Build Panels ---------------- */
+  function field(labelText, inputHtml) {
+    return '<div class="mt-field"><label>' + labelText + '</label>' + inputHtml + '</div>';
+  }
+
+  var panelsHtml = '';
+
+  panelsHtml += '<div class="mt-qr-type-panel mt-active" id="mt-panel-url">' +
+    field('Website URL', '<input type="url" id="mt-url-value" placeholder="example.com">') + '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-text">' +
+    field('Plain Text', '<textarea id="mt-text-value" placeholder="Type any text..."></textarea>') + '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-wifi">' +
+    field('Network Name (SSID)', '<input type="text" id="mt-wifi-ssid" placeholder="MyHomeWiFi">') +
+    field('Password', '<input type="text" id="mt-wifi-password" placeholder="password">') +
+    field('Encryption', '<select id="mt-wifi-enc"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">No Password</option></select>') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-vcard">' +
+    '<div class="mt-field-row">' + field('First Name', '<input type="text" id="mt-vc-first">') + field('Last Name', '<input type="text" id="mt-vc-last">') + '</div>' +
+    field('Organization', '<input type="text" id="mt-vc-org">') +
+    '<div class="mt-field-row">' + field('Phone', '<input type="tel" id="mt-vc-phone">') + field('Email', '<input type="email" id="mt-vc-email">') + '</div>' +
+    field('Website', '<input type="text" id="mt-vc-url" placeholder="example.com">') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-email">' +
+    field('Recipient Email', '<input type="email" id="mt-em-to" placeholder="name@example.com">') +
+    field('Subject', '<input type="text" id="mt-em-subject">') +
+    field('Message', '<textarea id="mt-em-body"></textarea>') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-sms">' +
+    field('Phone Number', '<input type="tel" id="mt-sms-phone" placeholder="+1234567890">') +
+    field('Message', '<textarea id="mt-sms-message"></textarea>') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-phone">' +
+    field('Phone Number', '<input type="tel" id="mt-phone-value" placeholder="+1234567890">') + '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-whatsapp">' +
+    field('WhatsApp Number (with country code)', '<input type="tel" id="mt-wa-phone" placeholder="+1234567890">') +
+    field('Pre-filled Message', '<textarea id="mt-wa-message"></textarea>') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-event">' +
+    field('Event Title', '<input type="text" id="mt-ev-title">') +
+    '<div class="mt-field-row">' + field('Start', '<input type="datetime-local" id="mt-ev-start">') + field('End', '<input type="datetime-local" id="mt-ev-end">') + '</div>' +
+    field('Location', '<input type="text" id="mt-ev-location">') +
+    field('Description', '<textarea id="mt-ev-description"></textarea>') +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-location">' +
+    field('Search a Place (or use coordinates below)', '<input type="text" id="mt-loc-query" placeholder="Eiffel Tower, Paris">') +
+    '<div class="mt-field-row">' + field('Latitude', '<input type="text" id="mt-loc-lat" placeholder="48.8584">') + field('Longitude', '<input type="text" id="mt-loc-lng" placeholder="2.2945">') + '</div>' +
+    '</div>';
+
+  panelsHtml += '<div class="mt-qr-type-panel" id="mt-panel-social">' +
+    field('Platform', '<select id="mt-soc-platform"><option value="instagram">Instagram</option><option value="x">X (Twitter)</option><option value="linkedin">LinkedIn</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="facebook">Facebook</option><option value="github">GitHub</option><option value="telegram">Telegram</option></select>') +
+    field('Username', '<input type="text" id="mt-soc-username" placeholder="username">') +
+    '</div>';
+
+  panelsEl.innerHTML = panelsHtml;
+
+  /* ---------------- Payload Builders ---------------- */
+  function esc_wifi(str) { return String(str).replace(/([\\;,:"])/g, '\\$1'); }
+
+  function buildPayload() {
+    switch (currentType) {
+      case 'url': {
+        var raw = document.getElementById('mt-url-value').value.trim();
+        if (!raw) return { text: '', error: 'Please enter a URL.' };
+        if (!/^https?:\/\//i.test(raw) && !/^ftp:\/\//i.test(raw)) raw = 'https://' + raw;
+        return { text: raw };
+      }
+      case 'text': {
+        var t = document.getElementById('mt-text-value').value;
+        if (!t.trim()) return { text: '', error: 'Please enter some text.' };
+        return { text: t };
+      }
+      case 'wifi': {
+        var ssid = document.getElementById('mt-wifi-ssid').value.trim();
+        var pass = document.getElementById('mt-wifi-password').value;
+        var enc = document.getElementById('mt-wifi-enc').value;
+        if (!ssid) return { text: '', error: 'Please enter the network name (SSID).' };
+        var p = enc === 'nopass' ? '' : esc_wifi(pass);
+        return { text: 'WIFI:S:' + esc_wifi(ssid) + ';T:' + enc + ';P:' + p + ';;' };
+      }
+      case 'vcard': {
+        var first = document.getElementById('mt-vc-first').value.trim();
+        var last = document.getElementById('mt-vc-last').value.trim();
+        var org = document.getElementById('mt-vc-org').value.trim();
+        var phone = document.getElementById('mt-vc-phone').value.trim();
+        var email = document.getElementById('mt-vc-email').value.trim();
+        var url = document.getElementById('mt-vc-url').value.trim();
+        if (!first && !last && !org && !phone && !email) return { text: '', error: 'Enter at least a name, company, phone or email.' };
+        var fullName = (first + ' ' + last).trim() || org || 'Contact';
+        var lines = ['BEGIN:VCARD', 'VERSION:3.0', 'N:' + last + ';' + first + ';;;', 'FN:' + fullName];
+        if (org) lines.push('ORG:' + org);
+        if (phone) lines.push('TEL;TYPE=WORK,VOICE:' + phone);
+        if (email) lines.push('EMAIL;TYPE=PREF,INTERNET:' + email);
+        if (url) lines.push('URL:' + (url.indexOf('http') === 0 ? url : 'https://' + url));
+        lines.push('END:VCARD');
+        return { text: lines.join('\n') };
+      }
+      case 'email': {
+        var to = document.getElementById('mt-em-to').value.trim();
+        var subject = document.getElementById('mt-em-subject').value;
+        var body = document.getElementById('mt-em-body').value;
+        if (!to) return { text: '', error: 'Please enter a recipient email.' };
+        var params = [];
+        if (subject) params.push('subject=' + encodeURIComponent(subject));
+        if (body) params.push('body=' + encodeURIComponent(body));
+        return { text: 'mailto:' + to + (params.length ? '?' + params.join('&') : '') };
+      }
+      case 'sms': {
+        var sp = document.getElementById('mt-sms-phone').value.trim();
+        var sm = document.getElementById('mt-sms-message').value;
+        if (!sp) return { text: '', error: 'Please enter a phone number.' };
+        return { text: sm ? 'SMSTO:' + sp + ':' + sm : 'SMSTO:' + sp };
+      }
+      case 'phone': {
+        var ph = document.getElementById('mt-phone-value').value.trim();
+        if (!ph) return { text: '', error: 'Please enter a phone number.' };
+        return { text: 'tel:' + ph };
+      }
+      case 'whatsapp': {
+        var wp = document.getElementById('mt-wa-phone').value.replace(/[^0-9+]/g, '');
+        var wm = document.getElementById('mt-wa-message').value;
+        if (!wp) return { text: '', error: 'Please enter a WhatsApp number with country code.' };
+        return { text: 'https://wa.me/' + wp.replace('+', '') + (wm ? '?text=' + encodeURIComponent(wm) : '') };
+      }
+      case 'event': {
+        var title = document.getElementById('mt-ev-title').value.trim();
+        var start = document.getElementById('mt-ev-start').value;
+        var end = document.getElementById('mt-ev-end').value;
+        var loc = document.getElementById('mt-ev-location').value.trim();
+        var desc = document.getElementById('mt-ev-description').value.trim();
+        if (!title) return { text: '', error: 'Please enter an event title.' };
+        if (!start) return { text: '', error: 'Please select a start date/time.' };
+        function fmt(dtStr) {
+          var d = new Date(dtStr);
+          if (isNaN(d.getTime())) return '';
+          return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        }
+        var dtStart = fmt(start);
+        var dtEnd = end ? fmt(end) : dtStart;
+        var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT', 'SUMMARY:' + title, 'DTSTART:' + dtStart, 'DTEND:' + dtEnd];
+        if (loc) lines.push('LOCATION:' + loc);
+        if (desc) lines.push('DESCRIPTION:' + desc);
+        lines.push('END:VEVENT', 'END:VCALENDAR');
+        return { text: lines.join('\n') };
+      }
+      case 'location': {
+        var q = document.getElementById('mt-loc-query').value.trim();
+        if (q) return { text: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q) };
+        var lat = document.getElementById('mt-loc-lat').value.trim();
+        var lng = document.getElementById('mt-loc-lng').value.trim();
+        if (!lat || !lng) return { text: '', error: 'Enter coordinates or a search query.' };
+        var latN = parseFloat(lat), lngN = parseFloat(lng);
+        if (isNaN(latN) || isNaN(lngN) || latN < -90 || latN > 90 || lngN < -180 || lngN > 180) {
+          return { text: '', error: 'Enter valid latitude (-90 to 90) and longitude (-180 to 180).' };
+        }
+        return { text: 'https://maps.google.com/?q=' + latN + ',' + lngN };
+      }
+      case 'social': {
+        var platform = document.getElementById('mt-soc-platform').value;
+        var user = document.getElementById('mt-soc-username').value.trim().replace(/^@/, '');
+        if (!user) return { text: '', error: 'Please enter a username.' };
+        var map = {
+          instagram: 'https://instagram.com/' + user,
+          x: 'https://x.com/' + user,
+          linkedin: 'https://linkedin.com/in/' + user,
+          youtube: 'https://youtube.com/@' + user,
+          tiktok: 'https://tiktok.com/@' + user,
+          facebook: 'https://facebook.com/' + user,
+          github: 'https://github.com/' + user,
+          telegram: 'https://t.me/' + user
+        };
+        return { text: map[platform] || ('https://' + platform + '.com/' + user) };
+      }
+      default:
+        return { text: '' };
+    }
+  }
+
+  /* ---------------- Render QR to Canvas ---------------- */
+  var lastPayloadText = '';
+
+  function drawRoundedRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function generate() {
+    var result = buildPayload();
+    var ctx = canvas.getContext('2d');
+    var size = 320;
+    canvas.width = size;
+    canvas.height = size;
+
+    var bg = document.getElementById('mtQrBgColor').value;
+    var fg = document.getElementById('mtQrFgColor').value;
+
+    if (result.error || !result.text) {
+      errorEl.textContent = result.error || '';
+      errorEl.style.display = result.error ? 'block' : 'none';
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, size, size);
+      lastPayloadText = '';
+      return;
+    }
+    errorEl.style.display = 'none';
+    lastPayloadText = result.text;
+
+    if (typeof qrcode === 'undefined') {
+      errorEl.textContent = 'QR engine failed to load. Check your internet connection and reload the page.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var ecLevel = document.getElementById('mtQrEcLevel').value;
+    var dotStyle = document.getElementById('mtQrDotStyle').value;
+
+    var qr = qrcode(0, ecLevel);
+    qr.addData(result.text);
+    qr.make();
+
+    var count = qr.getModuleCount();
+    var margin = 2;
+    var total = count + margin * 2;
+    var moduleSize = size / total;
+
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, size, size);
+
+    ctx.fillStyle = fg;
+    for (var row = 0; row < count; row++) {
+      for (var col = 0; col < count; col++) {
+        if (!qr.isDark(row, col)) continue;
+        var x = (col + margin) * moduleSize;
+        var y = (row + margin) * moduleSize;
+
+        if (dotStyle === 'dots') {
+          ctx.beginPath();
+          ctx.arc(x + moduleSize / 2, y + moduleSize / 2, moduleSize * 0.42, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (dotStyle === 'rounded') {
+          drawRoundedRect(ctx, x + moduleSize * 0.06, y + moduleSize * 0.06, moduleSize * 0.88, moduleSize * 0.88, moduleSize * 0.3);
+          ctx.fill();
+        } else {
+          ctx.fillRect(x, y, moduleSize + 0.5, moduleSize + 0.5);
+        }
+      }
+    }
+
+    if (logoImage) {
+      var logoSize = size * 0.2;
+      var lx = (size - logoSize) / 2;
+      var ly = (size - logoSize) / 2;
+      var pad = logoSize * 0.18;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(lx - pad / 2, ly - pad / 2, logoSize + pad, logoSize + pad);
+      ctx.drawImage(logoImage, lx, ly, logoSize, logoSize);
+    }
+  }
+
+  /* ---------------- Events ---------------- */
+  panelsEl.addEventListener('input', generate);
+  panelsEl.addEventListener('change', generate);
+  document.getElementById('mtQrFgColor').addEventListener('input', generate);
+  document.getElementById('mtQrBgColor').addEventListener('input', generate);
+  document.getElementById('mtQrDotStyle').addEventListener('change', generate);
+  document.getElementById('mtQrEcLevel').addEventListener('change', generate);
+
+  document.getElementById('mtQrLogo').addEventListener('change', function (e) {
+    var file = e.target.files[0];
+    if (!file) { logoImage = null; generate(); return; }
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      var img = new Image();
+      img.onload = function () { logoImage = img; generate(); };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById('mtQrDownloadPng').addEventListener('click', function () {
+    if (!lastPayloadText) { showToast('Nothing to download yet.'); return; }
+    var link = document.createElement('a');
+    link.download = 'qr-code.png';
+    link.href = canvas.toDataURL('image/png');
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(function () { document.body.removeChild(link); }, 100);
+    showToast('QR code downloaded!');
+  });
+
+  document.getElementById('mtQrCopyText').addEventListener('click', function () {
+    if (!lastPayloadText) { showToast('Nothing to copy yet.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(lastPayloadText).then(function () {
+        showToast('Content copied!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  document.getElementById('mtQrClear').addEventListener('click', function () {
+    panelsEl.querySelectorAll('input, textarea').forEach(function (el) { el.value = ''; });
+    panelsEl.querySelectorAll('select').forEach(function (el) { el.selectedIndex = 0; });
+    document.getElementById('mtQrLogo').value = '';
+    logoImage = null;
+    generate();
+    showToast('Cleared.');
+  });
+
+  generate();
+
+  /* ---------------- Scanner ---------------- */
+  var scanInput = document.getElementById('mtScanInput');
+  var scanDrop = document.getElementById('mtScanDrop');
+  var scanResultWrap = document.getElementById('mtScanResultWrap');
+
+  function detectLabel(text) {
+    if (/^https?:\/\//i.test(text)) return 'Website URL';
+    if (/^WIFI:/i.test(text)) return 'Wi-Fi Network';
+    if (/^BEGIN:VCARD/i.test(text)) return 'Contact Card';
+    if (/^mailto:/i.test(text)) return 'Email';
+    if (/^SMSTO:/i.test(text)) return 'SMS Message';
+    if (/^tel:/i.test(text)) return 'Phone Number';
+    if (/^BEGIN:VCALENDAR/i.test(text)) return 'Calendar Event';
+    return 'Plain Text';
+  }
+
+  function handleScanFile(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      renderScanResult(null, 'Please select a valid image file.');
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement('canvas');
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        var cctx = c.getContext('2d');
+        cctx.drawImage(img, 0, 0);
+        var imageData = cctx.getImageData(0, 0, c.width, c.height);
+
+        if (typeof jsQR === 'undefined') {
+          renderScanResult(null, 'Scanner engine failed to load. Check your internet connection and reload the page.', ev.target.result);
+          return;
+        }
+
+        var code = jsQR(imageData.data, imageData.width, imageData.height);
+        if (code && code.data) {
+          renderScanResult(code.data, null, ev.target.result);
+        } else {
+          renderScanResult(null, 'No QR code detected in this image. Try a clearer or closer photo.', ev.target.result);
+        }
+      };
+      img.onerror = function () {
+        renderScanResult(null, 'Could not read this image file.');
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function renderScanResult(text, error, previewSrc) {
+    var html = '';
+    if (previewSrc) {
+      html += '<img class="mt-scan-preview" src="' + previewSrc + '" alt="Uploaded QR code">';
+    }
+    if (error) {
+      html += '<div class="mt-scan-result mt-error"><div class="mt-scan-result-label">Scan Failed</div><p style="margin:0;color:#991b1b;font-size:13.5px;">' + error + '</p></div>';
+    } else {
+      var label = detectLabel(text);
+      var isLink = /^https?:\/\//i.test(text);
+      html += '<div class="mt-scan-result"><div class="mt-scan-result-label">' + label + '</div>' +
+        '<div class="mt-scan-result-text"></div>' +
+        '<div class="mt-tool-controls">' +
+        '<button class="mt-btn mt-btn-primary" type="button" id="mtScanCopyBtn">Copy Result</button>' +
+        (isLink ? '<button class="mt-btn mt-btn-secondary" type="button" id="mtScanOpenBtn">Open Link</button>' : '') +
+        '</div></div>';
+    }
+    scanResultWrap.innerHTML = html;
+
+    if (!error) {
+      scanResultWrap.querySelector('.mt-scan-result-text').textContent = text;
+      document.getElementById('mtScanCopyBtn').addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { showToast('Result copied!'); });
+        }
+      });
+      var openBtn = document.getElementById('mtScanOpenBtn');
+      if (openBtn) {
+        openBtn.addEventListener('click', function () {
+          window.open(text, '_blank', 'noopener,noreferrer');
+        });
+      }
+    }
+  }
+
+  scanInput.addEventListener('change', function (e) {
+    handleScanFile(e.target.files[0]);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    scanDrop.addEventListener(evt, function (e) {
+      e.preventDefault();
+      scanDrop.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    scanDrop.addEventListener(evt, function (e) {
+      e.preventDefault();
+      scanDrop.classList.remove('mt-drag');
+    });
+  });
+  scanDrop.addEventListener('drop', function (e) {
+    var file = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) handleScanFile(file);
+  });
+
+  /* ---------------- FAQ Accordion ---------------- */
+  document.querySelectorAll('#mtQrFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtQrFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
