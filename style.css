@@ -638,6 +638,32 @@
     line-height:1.65;
   }
 
+  .mt-tool-soon{
+    opacity:.55;
+    cursor:not-allowed;
+    position:relative;
+  }
+
+  .mt-tool-soon:hover{
+    transform:none;
+    border-color:var(--mt-border);
+    box-shadow:0 5px 22px rgba(15,23,42,.035);
+  }
+
+  .mt-tool-soon-badge{
+    display:inline-block;
+    margin-top:auto;
+    padding:4px 10px;
+    background:#f1f5f9;
+    color:#64748b;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    width:fit-content;
+  }
+
   .mt-tool-link{
     display:inline-flex;
     width:max-content;
