@@ -1,0 +1,437 @@
+<!-- SEO TITLE:
+Free Character Counter – Count Characters, Bytes & Platform Limits | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Count characters, bytes and words instantly with live limits for X/Twitter, SMS, meta descriptions, title tags, Instagram bios and more. Free, fast and private.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Character Counter – Count Characters, Bytes &amp; Platform Limits | MyToolkit</title>
+<meta name="description" content="Count characters, bytes and words instantly with live limits for X/Twitter, SMS, meta descriptions, title tags, Instagram bios and more. Free, fast and private.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/character-counter.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Character Counter | MyToolkit">
+<meta property="og:description" content="Count characters and bytes instantly with live limits for X/Twitter, SMS, meta descriptions and more.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/character-counter.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Character Counter",
+  "url": "https://sheroz255.github.io/mytoolkit-app/character-counter.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Count characters, bytes and words instantly with live limits for X/Twitter, SMS, meta descriptions, title tags and Instagram bios."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:220px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15.5px;font-family:inherit;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+  @media(min-width:640px){.mt-stats-grid{grid-template-columns:repeat(4,1fr)}}
+  .mt-stat-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;text-align:center}
+  .mt-stat-value{font-size:21px;font-weight:800;color:#2563eb}
+  .mt-stat-label{font-size:11.5px;color:#64748b;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-limit-list{display:flex;flex-direction:column;gap:12px}
+  .mt-limit-row{display:flex;flex-direction:column;gap:5px}
+  .mt-limit-head{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#334155}
+  .mt-limit-count{font-weight:800}
+  .mt-limit-count.mt-over{color:#dc2626}
+  .mt-limit-bar{height:8px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+  .mt-limit-bar-fill{height:100%;background:#2563eb;border-radius:999px;transition:width .15s ease,background-color .15s ease}
+  .mt-limit-bar-fill.mt-over{background:#dc2626}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-character-counter">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Character Counter</span>
+  </nav>
+
+  <h1>Free Character Counter</h1>
+  <p class="mt-tool-intro">
+    Count characters, bytes and words in real time, with live limit tracking for X/Twitter, SMS,
+    meta descriptions, title tags, Instagram bios and more. Everything runs in your browser &mdash;
+    nothing you type is ever sent anywhere.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-char-textarea" style="display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:8px;text-transform:uppercase;letter-spacing:.03em;">Your Text</label>
+    <textarea id="mt-char-textarea" class="mt-tool-textarea" placeholder="Start typing or paste your text here..." aria-label="Text to count characters"></textarea>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-primary" id="mt-btn-copy" type="button">Copy Text</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-download" type="button">&#8595; Download .txt</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+
+    <div class="mt-stats-grid">
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-chars">0</div><div class="mt-stat-label">Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-chars-nospace">0</div><div class="mt-stat-label">No Spaces</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-words">0</div><div class="mt-stat-label">Words</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-bytes">0</div><div class="mt-stat-label">Bytes (UTF-8)</div></div>
+    </div>
+  </div>
+
+  <div class="mt-tool-card">
+    <h2 class="mt-tool-section-title">Platform Character Limits</h2>
+    <div class="mt-limit-list" id="mt-limit-list"></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How Character Counting Works</h2>
+  <p>
+    This tool counts every character you type, including letters, numbers, punctuation, symbols
+    and spaces, updating instantly as you type. "No Spaces" shows the count with all whitespace
+    removed, which is useful when a platform's limit only counts visible characters. "Bytes (UTF-8)"
+    shows the actual storage size of your text &mdash; this matters because characters like emojis,
+    accented letters, or non-Latin scripts (Arabic, Chinese, etc.) can take up more than one byte
+    each, even though they count as a single character. Some systems (like SMS) measure limits in
+    bytes rather than characters, which is why this number is shown separately.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Real-Time Counting</h3><p>Every stat updates instantly as you type, no button needed.</p></div>
+    <div class="mt-feature-box"><h3>Platform Limits</h3><p>See exactly how much room you have left for X, SMS, meta descriptions and more.</p></div>
+    <div class="mt-feature-box"><h3>Byte-Accurate</h3><p>Correctly measures UTF-8 byte size, not just character count, for emojis and non-Latin text.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtCharFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does this count spaces as characters?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>The main "Characters" count includes spaces, matching how most platforms (like X/Twitter) count them. The "No Spaces" stat shows the count with all whitespace removed.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why is the byte count different from the character count?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Most basic English letters take 1 byte each in UTF-8, but emojis, accented letters and non-Latin scripts can take 2, 3 or 4 bytes per character. The byte count reflects actual storage/transmission size.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Are the platform limits always accurate?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>The limits shown reflect each platform's commonly published character limits at the time of writing. Platforms occasionally change their limits, so always double-check against the platform's current guidelines for critical content.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text saved or uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. All counting happens locally in your browser using JavaScript. Nothing you type is sent to a server or stored anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why does SMS show multiple message segments?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Standard SMS messages are limited to 160 characters per segment. Longer messages are split into multiple segments by carriers, so this tool shows how many segments your text will use.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're writing a tweet, an SMS, a meta description, or an Instagram bio, staying within
+    the right character limit matters. This tool gives you an instant, accurate view of exactly
+    where your text stands &mdash; so you can trim, adjust or finalize it with confidence.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    textarea: document.getElementById('mt-char-textarea'),
+    chars: document.getElementById('mt-stat-chars'),
+    charsNoSpace: document.getElementById('mt-stat-chars-nospace'),
+    words: document.getElementById('mt-stat-words'),
+    bytes: document.getElementById('mt-stat-bytes'),
+    limitList: document.getElementById('mt-limit-list'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "MyToolkit gives you fast, free, privacy-friendly tools for everyday digital tasks \u2014 no signup required.";
+
+  var LIMITS = [
+    { label: 'X / Twitter Post', max: 280 },
+    { label: 'SMS (per segment)', max: 160 },
+    { label: 'Meta Description', max: 160 },
+    { label: 'Title Tag (SEO)', max: 60 },
+    { label: 'Instagram Bio', max: 150 },
+    { label: 'YouTube Title', max: 100 },
+    { label: 'Instagram Caption', max: 2200 }
+  ];
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function utf8ByteLength(str) {
+    var bytes = 0;
+    for (var i = 0; i < str.length; i++) {
+      var code = str.codePointAt(i);
+      if (code > 0xFFFF) i++; // surrogate pair, already counted as one codePoint
+      if (code <= 0x7F) bytes += 1;
+      else if (code <= 0x7FF) bytes += 2;
+      else if (code <= 0xFFFF) bytes += 3;
+      else bytes += 4;
+    }
+    return bytes;
+  }
+
+  function countWords(text) {
+    var trimmed = text.trim();
+    if (!trimmed) return 0;
+    return trimmed.split(/\s+/).length;
+  }
+
+  function buildLimitRows() {
+    var html = '';
+    LIMITS.forEach(function (limit, i) {
+      html +=
+        '<div class="mt-limit-row" data-limit-index="' + i + '">' +
+          '<div class="mt-limit-head"><span>' + limit.label + '</span><span><span class="mt-limit-count" data-count>0</span> / ' + limit.max + '</span></div>' +
+          '<div class="mt-limit-bar"><div class="mt-limit-bar-fill" data-fill style="width:0%"></div></div>' +
+        '</div>';
+    });
+    el.limitList.innerHTML = html;
+  }
+  buildLimitRows();
+
+  function update() {
+    var text = el.textarea.value;
+    var charCount = text.length;
+    var noSpaceCount = text.replace(/\s/g, '').length;
+    var wordCount = countWords(text);
+    var byteCount = utf8ByteLength(text);
+
+    el.chars.textContent = charCount;
+    el.charsNoSpace.textContent = noSpaceCount;
+    el.words.textContent = wordCount;
+    el.bytes.textContent = byteCount;
+
+    var rows = el.limitList.querySelectorAll('.mt-limit-row');
+    LIMITS.forEach(function (limit, i) {
+      var row = rows[i];
+      var countEl = row.querySelector('[data-count]');
+      var fillEl = row.querySelector('[data-fill]');
+      var current = charCount;
+      var pct = Math.min(100, (current / limit.max) * 100);
+      var over = current > limit.max;
+
+      countEl.textContent = current;
+      countEl.classList.toggle('mt-over', over);
+      fillEl.style.width = pct + '%';
+      fillEl.classList.toggle('mt-over', over);
+    });
+  }
+
+  el.textarea.addEventListener('input', update);
+
+  el.btnSample.addEventListener('click', function () {
+    el.textarea.value = SAMPLE_TEXT;
+    update();
+  });
+
+  el.btnCopy.addEventListener('click', function () {
+    if (!el.textarea.value) { showToast('Nothing to copy.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textarea.value).then(function () {
+        showToast('Text copied to clipboard!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!el.textarea.value) { showToast('Nothing to download.'); return; }
+    var blob = new Blob([el.textarea.value], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'mytoolkit-text.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    showToast('Text downloaded!');
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.textarea.value = '';
+    update();
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtCharFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtCharFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
+
