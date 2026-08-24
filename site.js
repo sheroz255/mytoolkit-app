@@ -175,10 +175,56 @@
   var emptyState = document.getElementById('mtToolsEmpty');
   function updateEmptyState() {
     if (!emptyState) return;
-    var cards = document.querySelectorAll('.mt-tool-listing-card');
+    var cards = document.querySelectorAll('.mt-tool-listing-card:not([data-filtered-out])');
     emptyState.style.display = cards.length > 0 ? 'none' : 'block';
   }
   updateEmptyState();
+
+  /* =========================================================
+     CATEGORY FILTER (homepage only)
+     ========================================================= */
+
+  var categoryCards = document.querySelectorAll('.mt-category-card[data-category]');
+  var toolCards = document.querySelectorAll('.mt-tool-listing-card');
+  var clearFilterBtn = document.getElementById('mtClearFilter');
+  var sectionDesc = document.getElementById('mtToolsSectionDesc');
+
+  function applyFilter(category) {
+    toolCards.forEach(function (card) {
+      var matches = !category || card.getAttribute('data-tool-category') === category;
+      card.style.display = matches ? '' : 'none';
+      if (matches) {
+        card.removeAttribute('data-filtered-out');
+      } else {
+        card.setAttribute('data-filtered-out', 'true');
+      }
+    });
+
+    categoryCards.forEach(function (c) {
+      c.classList.toggle('mt-category-active', category && c.getAttribute('data-category') === category);
+    });
+
+    if (clearFilterBtn) clearFilterBtn.style.display = category ? 'inline-flex' : 'none';
+    if (sectionDesc) {
+      sectionDesc.textContent = category
+        ? 'Showing ' + category + ' tools.'
+        : 'Your free online toolkit, built one useful tool at a time.';
+    }
+
+    updateEmptyState();
+  }
+
+  categoryCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      applyFilter(card.getAttribute('data-category'));
+    });
+  });
+
+  if (clearFilterBtn) {
+    clearFilterBtn.addEventListener('click', function () {
+      applyFilter(null);
+    });
+  }
 
   /* =========================================================
      SMOOTH INTERNAL ANCHOR LINKS (same-page only)
