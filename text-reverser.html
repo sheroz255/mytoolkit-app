@@ -1,0 +1,399 @@
+<!-- SEO TITLE:
+Free Text Reverser – Reverse Text, Words & Lines Instantly | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Reverse text by character, word order, each word's letters, or line order instantly. Handles emojis and Unicode correctly. Free and private.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Text Reverser – Reverse Text, Words &amp; Lines Instantly | MyToolkit</title>
+<meta name="description" content="Reverse text by character, word order, each word's letters, or line order instantly. Handles emojis and Unicode correctly. Free and private.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/text-reverser.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Text Reverser | MyToolkit">
+<meta property="og:description" content="Reverse text by character, word order, each word, or line order, instantly in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/text-reverser.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text Reverser",
+  "url": "https://sheroz255.github.io/mytoolkit-app/text-reverser.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Reverse text by character, word order, each word's letters, or line order, with correct Unicode and emoji handling."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:150px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15.5px;font-family:inherit;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+
+  .mt-mode-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:16px}
+  @media(min-width:640px){.mt-mode-grid{grid-template-columns:repeat(4,1fr)}}
+  .mt-mode-btn{border:1.5px solid #e2e8f0;background:#f8fafc;color:#334155;font-size:12.5px;font-weight:700;padding:10px 8px;border-radius:10px;cursor:pointer;transition:.15s;text-align:center}
+  .mt-mode-btn:hover{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .mt-mode-btn.mt-active{background:#2563eb;border-color:#2563eb;color:#fff}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-text-reverser">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Text Reverser</span>
+  </nav>
+
+  <h1>Free Text Reverser</h1>
+  <p class="mt-tool-intro">
+    Reverse your text instantly &mdash; flip the whole string backwards, reverse word order,
+    reverse the letters inside each word, or reverse the order of lines. Works correctly with
+    emojis and non-English text, right in your browser.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-rev-input" class="mt-field-label">Your Text</label>
+    <textarea id="mt-rev-input" class="mt-tool-textarea" placeholder="Type or paste your text here..." aria-label="Text to reverse"></textarea>
+
+    <div class="mt-mode-grid" role="group" aria-label="Reverse mode">
+      <button class="mt-mode-btn mt-active" data-mode="chars" type="button">Reverse Characters</button>
+      <button class="mt-mode-btn" data-mode="words" type="button">Reverse Word Order</button>
+      <button class="mt-mode-btn" data-mode="eachword" type="button">Reverse Each Word</button>
+      <button class="mt-mode-btn" data-mode="lines" type="button">Reverse Lines</button>
+    </div>
+
+    <label for="mt-rev-output" class="mt-field-label" style="margin-top:16px;">Result</label>
+    <textarea id="mt-rev-output" class="mt-tool-textarea" placeholder="Your reversed text will appear here..." aria-label="Reversed result" readonly></textarea>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-primary" id="mt-btn-copy" type="button">Copy Result</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-download" type="button">&#8595; Download .txt</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How Each Mode Works</h2>
+  <p>
+    <strong>Reverse Characters</strong> flips your entire text backwards, letter by letter
+    (so "Hello" becomes "olleH"). <strong>Reverse Word Order</strong> keeps each word spelled
+    normally but reverses the order they appear in (so "Hello there friend" becomes
+    "friend there Hello"). <strong>Reverse Each Word</strong> keeps word order the same but
+    flips the letters within every individual word. <strong>Reverse Lines</strong> keeps each
+    line's text intact but reverses the order the lines appear in, useful for multi-line lists
+    or paragraphs. This tool correctly handles emojis and multi-byte Unicode characters, so
+    reversing text with emojis won't corrupt them into broken symbols.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>4 Reverse Modes</h3><p>Characters, word order, each word, or line order &mdash; whichever you need.</p></div>
+    <div class="mt-feature-box"><h3>Emoji-Safe</h3><p>Correctly reverses text containing emojis without breaking them.</p></div>
+    <div class="mt-feature-box"><h3>Instant Results</h3><p>Updates automatically as you type or switch modes.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtRevFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does this work with emojis?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. Many simple reverse tools break emojis into garbled symbols because they reverse raw code units. This tool reverses by full character (code point), so emojis stay intact.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What's the difference between "Reverse Word Order" and "Reverse Each Word"?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>"Reverse Word Order" rearranges which word comes first/last but keeps each word spelled correctly. "Reverse Each Word" keeps the word order the same but spells each individual word backwards.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I reverse multiple lines at once?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, use "Reverse Lines" mode. Paste multi-line text and it will flip the order of the lines while keeping each line's content unchanged.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. All processing happens locally in your browser using JavaScript. Nothing you type is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why would I reverse text?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Common uses include creating mirror-text effects for social media, puzzles, palindromes checks, coding exercises, and stylized captions.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're making a fun reversed caption, testing a palindrome, or need lines flipped for
+    a list, this tool handles it instantly and correctly &mdash; even with emojis and special
+    characters that trip up simpler reverse tools.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    input: document.getElementById('mt-rev-input'),
+    output: document.getElementById('mt-rev-output'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "Hello there, friend! \u{1F600}\nThis is line two.\nThis is line three.";
+  var currentMode = 'chars';
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  // Reverse by full Unicode code point (handles emojis/surrogate pairs safely)
+  function reverseChars(str) {
+    return Array.from(str).reverse().join('');
+  }
+
+  function reverseWords(str) {
+    return str.split(/(\s+)/).reverse().join('');
+  }
+
+  function reverseEachWord(str) {
+    return str.replace(/\S+/g, function (word) {
+      return reverseChars(word);
+    });
+  }
+
+  function reverseLines(str) {
+    return str.split('\n').reverse().join('\n');
+  }
+
+  var MODES = {
+    chars: reverseChars,
+    words: reverseWords,
+    eachword: reverseEachWord,
+    lines: reverseLines
+  };
+
+  function update() {
+    var text = el.input.value;
+    if (!text) {
+      el.output.value = '';
+      return;
+    }
+    var fn = MODES[currentMode];
+    el.output.value = fn(text);
+  }
+
+  document.querySelectorAll('.mt-mode-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentMode = btn.getAttribute('data-mode');
+      document.querySelectorAll('.mt-mode-btn').forEach(function (b) { b.classList.remove('mt-active'); });
+      btn.classList.add('mt-active');
+      update();
+    });
+  });
+
+  el.input.addEventListener('input', update);
+
+  el.btnSample.addEventListener('click', function () {
+    el.input.value = SAMPLE_TEXT;
+    update();
+  });
+
+  el.btnCopy.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to copy yet.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.output.value).then(function () {
+        showToast('Result copied to clipboard!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to download yet.'); return; }
+    var blob = new Blob([el.output.value], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'mytoolkit-reversed-text.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    showToast('Result downloaded!');
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.input.value = '';
+    el.output.value = '';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtRevFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtRevFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
