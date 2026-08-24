@@ -1,0 +1,514 @@
+<!-- SEO TITLE:
+Free Grammar Checker – Find Common Writing Mistakes Instantly | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Check your text for double spaces, repeated words, commonly confused words (their/there, its/it's), common misspellings and punctuation issues. Free and private.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Grammar Checker – Find Common Writing Mistakes Instantly | MyToolkit</title>
+<meta name="description" content="Check your text for double spaces, repeated words, commonly confused words (their/there, its/it's), common misspellings and punctuation issues. Free and private.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/grammar-checker.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Grammar Checker | MyToolkit">
+<meta property="og:description" content="Find double spaces, repeated words, confused words and common typos in your text instantly.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/grammar-checker.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Grammar Checker",
+  "url": "https://sheroz255.github.io/mytoolkit-app/grammar-checker.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Check text for double spaces, repeated words, commonly confused words, common misspellings and punctuation issues."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 12px;max-width:680px}
+  .mt-tool-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;font-size:13px;border-radius:12px;padding:12px 14px;margin:0 0 22px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:200px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15.5px;font-family:inherit;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-issue-summary{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:14px;font-weight:700;color:#334155}
+  .mt-issue-count{background:#fef2f2;color:#dc2626;padding:3px 10px;border-radius:999px;font-size:13px}
+  .mt-issue-count.mt-clean{background:#f0fdf4;color:#16a34a}
+
+  .mt-issue-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  .mt-issue-item{border:1px solid #fecaca;background:#fef2f2;border-radius:12px;padding:12px 14px}
+  .mt-issue-type{display:inline-block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:#dc2626;background:#fee2e2;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+  .mt-issue-context{font-size:13.5px;color:#334155;margin-bottom:4px;font-family:ui-monospace,monospace}
+  .mt-issue-context mark{background:#fecaca;color:#7f1d1d;padding:0 2px;border-radius:3px}
+  .mt-issue-suggestion{font-size:13px;color:#475569}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-grammar-checker">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Grammar Checker</span>
+  </nav>
+
+  <h1>Free Grammar Checker</h1>
+  <p class="mt-tool-intro">
+    Scan your text for common, mechanically detectable writing issues &mdash; double spaces,
+    repeated words, commonly confused words, common misspellings, punctuation spacing and
+    capitalization &mdash; instantly, right in your browser.
+  </p>
+  <p class="mt-tool-note">
+    <strong>How this differs from AI grammar tools:</strong> Full AI-powered grammar checking
+    (like Grammarly) requires a paid server-side language model. This tool runs entirely in your
+    browser with rule-based checks, so it catches clear, mechanical issues reliably, but it won't
+    catch every subtle grammar or style mistake a human editor or AI service might.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-gc-textarea" style="display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:8px;text-transform:uppercase;letter-spacing:.03em;">Your Text</label>
+    <textarea id="mt-gc-textarea" class="mt-tool-textarea" placeholder="Paste or type your text here, then click Check Text..." aria-label="Text to check"></textarea>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-check" type="button">Check Text</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-copy" type="button">Copy Text</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+
+    <div id="mt-gc-results" aria-live="polite"></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">What This Tool Checks</h2>
+  <p>
+    This checker looks for issues that can be reliably identified through pattern matching:
+    <strong>double spaces</strong> between words, <strong>repeated words</strong> ("the the"),
+    <strong>commonly confused words</strong> (their/there/they're, its/it's, your/you're,
+    then/than, affect/effect, loose/lose), a list of <strong>common misspellings</strong>
+    (definately, recieve, occured, seperate, and similar), <strong>missing spaces after
+    punctuation</strong>, <strong>multiple punctuation marks</strong> in a row, and
+    <strong>sentences not starting with a capital letter</strong>. It flags these clearly so
+    you can review and fix them yourself &mdash; it does not automatically rewrite your text.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Instant Scanning</h3><p>Click Check Text and see every flagged issue with context immediately.</p></div>
+    <div class="mt-feature-box"><h3>Clear Explanations</h3><p>Each issue shows exactly what was found and a suggested fix.</p></div>
+    <div class="mt-feature-box"><h3>Honest About Limits</h3><p>Rule-based and transparent &mdash; no fake "AI-powered" claims.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtGcFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does this catch every grammar mistake?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. It catches mechanical, pattern-based issues like double spaces, repeated words, commonly confused words and common misspellings. Deeper grammar issues (subject-verb agreement, complex sentence structure) require full AI language models, which this free browser-only tool doesn't use.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why does it flag "their/there/they're"?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>These words are frequently mixed up because they sound alike. The tool flags every occurrence as a reminder to double-check you used the correct one for the context &mdash; it can't know your intended meaning automatically.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Will it fix my text automatically?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No, it only highlights issues with suggestions. You review and edit your own text directly in the textarea.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. All checking happens locally in your browser using JavaScript. Nothing you type is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why didn't it catch a mistake I know is there?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>This tool only detects a fixed set of pattern-based issues. Mistakes outside that list (like incorrect verb tense or awkward phrasing) won't be flagged, since reliably detecting those requires full language understanding beyond what a browser-only tool can do.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    This tool is best used as a quick first pass to catch obvious slip-ups before you publish or
+    send your writing &mdash; typos, doubled words, mixed-up homophones and stray punctuation.
+    For deeper grammar and style review, pair it with a careful read-through of your own.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    textarea: document.getElementById('mt-gc-textarea'),
+    results: document.getElementById('mt-gc-results'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnCheck: document.getElementById('mt-btn-check'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "Their going to the store tommorow to buy some  apples. Its a nice day, and they recieved a discount coupon.. This is is a great oppurtunity!!";
+
+  var CONFUSED_WORDS = {
+    'their': 'Commonly confused with "there" (a place) and "they\'re" (they are). Make sure you meant possession.',
+    'there': 'Commonly confused with "their" (possession) and "they\'re" (they are).',
+    "they're": 'Commonly confused with "their" (possession) and "there" (a place).',
+    'its': 'Commonly confused with "it\'s" (it is / it has). "Its" shows possession.',
+    "it's": 'Commonly confused with "its" (possessive). "It\'s" means "it is" or "it has".',
+    'your': 'Commonly confused with "you\'re" (you are). "Your" shows possession.',
+    "you're": 'Commonly confused with "your" (possessive). "You\'re" means "you are".',
+    'then': 'Commonly confused with "than" (used for comparisons).',
+    'than': 'Commonly confused with "then" (used for time/sequence).',
+    'affect': 'Commonly confused with "effect". "Affect" is usually a verb.',
+    'effect': 'Commonly confused with "affect". "Effect" is usually a noun.',
+    'loose': 'Commonly confused with "lose". "Loose" means not tight.',
+    'lose': 'Commonly confused with "loose". "Lose" means to misplace or fail to win.'
+  };
+
+  var MISSPELLINGS = {
+    'definately': 'definitely',
+    'recieve': 'receive',
+    'recieved': 'received',
+    'occured': 'occurred',
+    'seperate': 'separate',
+    'untill': 'until',
+    'wich': 'which',
+    'alot': 'a lot',
+    'thier': 'their',
+    'goverment': 'government',
+    'begining': 'beginning',
+    'greatful': 'grateful',
+    'tommorow': 'tomorrow',
+    'noticable': 'noticeable',
+    'occassion': 'occasion',
+    'oppurtunity': 'opportunity',
+    'existance': 'existence',
+    'accomodate': 'accommodate',
+    'wierd': 'weird',
+    'concious': 'conscious'
+  };
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function contextSnippet(text, index, matchLength) {
+    var start = Math.max(0, index - 25);
+    var end = Math.min(text.length, index + matchLength + 25);
+    var before = (start > 0 ? '\u2026' : '') + esc(text.slice(start, index));
+    var matched = '<mark>' + esc(text.slice(index, index + matchLength)) + '</mark>';
+    var after = esc(text.slice(index + matchLength, end)) + (end < text.length ? '\u2026' : '');
+    return before + matched + after;
+  }
+
+  function checkText(text) {
+    var issues = [];
+
+    // Double spaces
+    var re;
+    re = /[^\S\n]{2,}/g;
+    var m;
+    while ((m = re.exec(text)) !== null) {
+      issues.push({
+        type: 'Double Space',
+        context: contextSnippet(text, m.index, m[0].length),
+        suggestion: 'Multiple spaces found. Use a single space between words.'
+      });
+    }
+
+    // Repeated words (case-insensitive, word boundary)
+    re = /\b(\w+)\s+\1\b/gi;
+    while ((m = re.exec(text)) !== null) {
+      issues.push({
+        type: 'Repeated Word',
+        context: contextSnippet(text, m.index, m[0].length),
+        suggestion: 'The word "' + m[1] + '" appears to be repeated.'
+      });
+    }
+
+    // Missing space after punctuation (.,;:!?) followed directly by a letter
+    re = /[.,;:!?][A-Za-z]/g;
+    while ((m = re.exec(text)) !== null) {
+      issues.push({
+        type: 'Punctuation Spacing',
+        context: contextSnippet(text, m.index, m[0].length),
+        suggestion: 'Add a space after "' + m[0][0] + '".'
+      });
+    }
+
+    // Multiple punctuation marks in a row (excluding ellipsis "...")
+    re = /([!?]){2,}|(\.){4,}|(,){2,}/g;
+    while ((m = re.exec(text)) !== null) {
+      issues.push({
+        type: 'Extra Punctuation',
+        context: contextSnippet(text, m.index, m[0].length),
+        suggestion: 'Consider using a single punctuation mark.'
+      });
+    }
+
+    // Commonly confused words
+    re = /\b(their|there|they're|its|it's|your|you're|then|than|affect|effect|loose|lose)\b/gi;
+    while ((m = re.exec(text)) !== null) {
+      var key = m[0].toLowerCase();
+      if (CONFUSED_WORDS[key]) {
+        issues.push({
+          type: 'Commonly Confused',
+          context: contextSnippet(text, m.index, m[0].length),
+          suggestion: CONFUSED_WORDS[key]
+        });
+      }
+    }
+
+    // Common misspellings
+    re = /\b([A-Za-z]+)\b/g;
+    while ((m = re.exec(text)) !== null) {
+      var word = m[1].toLowerCase();
+      if (MISSPELLINGS[word]) {
+        issues.push({
+          type: 'Possible Misspelling',
+          context: contextSnippet(text, m.index, m[1].length),
+          suggestion: 'Did you mean "' + MISSPELLINGS[word] + '"?'
+        });
+      }
+    }
+
+    // Sentences not starting with a capital letter
+    var sentenceRe = /(^|[.!?]\s+)([a-z])/g;
+    while ((m = sentenceRe.exec(text)) !== null) {
+      var letterIndex = m.index + m[1].length;
+      issues.push({
+        type: 'Capitalization',
+        context: contextSnippet(text, letterIndex, 1),
+        suggestion: 'Sentences should typically start with a capital letter.'
+      });
+    }
+
+    return issues;
+  }
+
+  function renderResults(issues) {
+    if (!el.textarea.value.trim()) {
+      el.results.innerHTML = '';
+      return;
+    }
+
+    var summaryHtml = '<div class="mt-issue-summary">' +
+      (issues.length > 0
+        ? 'Issues found: <span class="mt-issue-count">' + issues.length + '</span>'
+        : 'Issues found: <span class="mt-issue-count mt-clean">0 \u2014 looks clean!</span>') +
+      '</div>';
+
+    var listHtml = '';
+    if (issues.length > 0) {
+      listHtml = '<div class="mt-issue-list">' + issues.map(function (issue) {
+        return '<div class="mt-issue-item">' +
+          '<span class="mt-issue-type">' + esc(issue.type) + '</span>' +
+          '<div class="mt-issue-context">' + issue.context + '</div>' +
+          '<div class="mt-issue-suggestion">' + esc(issue.suggestion) + '</div>' +
+          '</div>';
+      }).join('') + '</div>';
+    }
+
+    el.results.innerHTML = summaryHtml + listHtml;
+  }
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  el.btnCheck.addEventListener('click', function () {
+    var text = el.textarea.value;
+    if (!text.trim()) {
+      showToast('Please enter some text first.');
+      el.results.innerHTML = '';
+      return;
+    }
+    var issues = checkText(text);
+    renderResults(issues);
+  });
+
+  el.btnSample.addEventListener('click', function () {
+    el.textarea.value = SAMPLE_TEXT;
+    renderResults(checkText(SAMPLE_TEXT));
+  });
+
+  el.btnCopy.addEventListener('click', function () {
+    if (!el.textarea.value) { showToast('Nothing to copy.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textarea.value).then(function () {
+        showToast('Text copied to clipboard!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.textarea.value = '';
+    el.results.innerHTML = '';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtGcFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtGcFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
