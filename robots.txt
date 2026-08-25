@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sheroz255.github.io/mytoolkit-app/sitemap.xml
