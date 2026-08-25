@@ -2,6 +2,15 @@
   'use strict';
 
   /* =========================================================
+     AUTOMATIC FAVICON INJECTION
+     ========================================================= */
+  var favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = 'favicon.svg';
+  document.head.appendChild(favicon);
+
+  /* =========================================================
      MOBILE MENU
      ========================================================= */
 
