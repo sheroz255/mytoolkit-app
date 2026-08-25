@@ -1,0 +1,465 @@
+<!-- SEO TITLE:
+Free Text Diff Checker – Compare Two Texts & Highlight Changes | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Compare two blocks of text and instantly see what was added, removed or changed, line-by-line or word-by-word. Free, fast and private.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Text Diff Checker – Compare Two Texts &amp; Highlight Changes | MyToolkit</title>
+<meta name="description" content="Compare two blocks of text and instantly see what was added, removed or changed, line-by-line or word-by-word. Free, fast and private.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/text-diff-checker.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Text Diff Checker | MyToolkit">
+<meta property="og:description" content="Compare two texts and see exactly what changed, line-by-line or word-by-word.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/text-diff-checker.html">
+
+<!-- TODO: paste your existing verification meta tags here (Google, Bing/msvalidate.01, Yandex) -->
+<!-- TODO: paste your existing Google Analytics (G-VYY3738PP0) script here -->
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text Diff Checker",
+  "url": "https://sheroz255.github.io/mytoolkit-app/text-diff-checker.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Compare two blocks of text and see what was added, removed or changed, line-by-line or word-by-word."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-diff-inputs{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:800px){.mt-diff-inputs{grid-template-columns:1fr 1fr}}
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:180px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:14.5px;font-family:ui-monospace,monospace;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .mt-mode-btn{border:1.5px solid #e2e8f0;background:#f8fafc;color:#334155;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+  .mt-mode-btn:hover{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .mt-mode-btn.mt-active{background:#2563eb;border-color:#2563eb;color:#fff}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-diff-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:13px;font-weight:700}
+  .mt-diff-stat{padding:5px 12px;border-radius:999px}
+  .mt-stat-added{background:#dcfce7;color:#166534}
+  .mt-stat-removed{background:#fee2e2;color:#991b1b}
+  .mt-stat-same{background:#f1f5f9;color:#475569}
+
+  .mt-diff-output{margin-top:14px;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-family:ui-monospace,monospace;font-size:13.5px;line-height:1.9;white-space:pre-wrap;word-break:break-word;max-height:480px;overflow-y:auto;background:#fbfcfe}
+  .mt-diff-line{display:block;padding:2px 6px;border-radius:5px}
+  .mt-diff-added{background:#dcfce7;color:#14532d}
+  .mt-diff-removed{background:#fee2e2;color:#7f1d1d;text-decoration:line-through}
+  .mt-diff-same{color:#334155}
+  .mt-diff-word-added{background:#bbf7d0;color:#14532d;border-radius:3px;padding:0 2px}
+  .mt-diff-word-removed{background:#fecaca;color:#7f1d1d;text-decoration:line-through;border-radius:3px;padding:0 2px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-diff-checker">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Text Diff Checker</span>
+  </nav>
+
+  <h1>Free Text Diff Checker</h1>
+  <p class="mt-tool-intro">
+    Compare two blocks of text and instantly see exactly what was added, removed or changed,
+    either line-by-line or word-by-word. Everything runs in your browser &mdash; nothing you
+    paste is ever uploaded.
+  </p>
+
+  <div class="mt-tool-card">
+    <div class="mt-diff-inputs">
+      <div>
+        <label for="mt-diff-original" class="mt-field-label">Original Text</label>
+        <textarea id="mt-diff-original" class="mt-tool-textarea" placeholder="Paste the original text here..." aria-label="Original text"></textarea>
+      </div>
+      <div>
+        <label for="mt-diff-changed" class="mt-field-label">Changed Text</label>
+        <textarea id="mt-diff-changed" class="mt-tool-textarea" placeholder="Paste the changed text here..." aria-label="Changed text"></textarea>
+      </div>
+    </div>
+
+    <div class="mt-mode-grid" role="group" aria-label="Diff mode">
+      <button class="mt-mode-btn mt-active" data-mode="line" type="button">Line-by-Line</button>
+      <button class="mt-mode-btn" data-mode="word" type="button">Word-by-Word</button>
+    </div>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-compare" type="button">Compare</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+
+    <div id="mt-diff-stats-wrap"></div>
+    <div id="mt-diff-output" class="mt-diff-output" style="display:none;" aria-live="polite"></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How This Diff Checker Works</h2>
+  <p>
+    This tool compares your two texts using a longest-common-subsequence algorithm, the same
+    approach used by standard diff tools. <strong>Line-by-Line</strong> mode compares whole lines,
+    useful for comparing documents, code, or paragraphs. <strong>Word-by-Word</strong> mode
+    compares individual words, useful for spotting small wording changes within the same
+    sentence. Removed content is shown with a red strikethrough, added content with a green
+    highlight, and unchanged parts stay plain.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Line &amp; Word Modes</h3><p>Compare whole lines for documents/code, or individual words for wording changes.</p></div>
+    <div class="mt-feature-box"><h3>Clear Highlighting</h3><p>Additions in green, removals in red strikethrough &mdash; easy to scan at a glance.</p></div>
+    <div class="mt-feature-box"><h3>Change Summary</h3><p>See counts of added, removed and unchanged lines or words instantly.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Both texts stay in your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtDiffFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What's the difference between Line and Word mode?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Line mode compares entire lines as a unit, so any change within a line marks the whole line as different. Word mode breaks text into individual words, so it can pinpoint the exact word that changed within a line.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does line order matter?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. This tool detects insertions, deletions and reordering, similar to how source-control diff tools work, so moved lines will typically show as a removal in one place and an addition in another.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I compare code with this?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, Line-by-Line mode works well for comparing code snippets or configuration files, similar to a basic version-control diff.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The comparison runs entirely in your browser using JavaScript. Neither text is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is comparison case-sensitive?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, the comparison is exact and case-sensitive, so "Hello" and "hello" are treated as different.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're reviewing an edited document, checking what changed between two drafts, or
+    comparing a code snippet before and after a fix, this tool makes the differences immediately
+    visible so you don't have to read line-by-line yourself.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    original: document.getElementById('mt-diff-original'),
+    changed: document.getElementById('mt-diff-changed'),
+    output: document.getElementById('mt-diff-output'),
+    statsWrap: document.getElementById('mt-diff-stats-wrap'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnCompare: document.getElementById('mt-btn-compare'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var currentMode = 'line';
+
+  var SAMPLE_ORIGINAL = "MyToolkit gives you free online tools.\nIt works in your browser.\nNo signup is required.";
+  var SAMPLE_CHANGED = "MyToolkit gives you free, fast online tools.\nIt works entirely in your browser.\nNo signup is ever required.";
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  // Standard LCS-based diff. Returns array of {type: 'same'|'added'|'removed', value: string}
+  function diffArrays(a, b) {
+    var n = a.length, m = b.length;
+    var lcs = [];
+    for (var i = 0; i <= n; i++) {
+      lcs.push(new Array(m + 1).fill(0));
+    }
+    for (i = n - 1; i >= 0; i--) {
+      for (var j = m - 1; j >= 0; j--) {
+        if (a[i] === b[j]) {
+          lcs[i][j] = lcs[i + 1][j + 1] + 1;
+        } else {
+          lcs[i][j] = Math.max(lcs[i + 1][j], lcs[i][j + 1]);
+        }
+      }
+    }
+
+    var result = [];
+    i = 0; j = 0;
+    while (i < n && j < m) {
+      if (a[i] === b[j]) {
+        result.push({ type: 'same', value: a[i] });
+        i++; j++;
+      } else if (lcs[i + 1][j] >= lcs[i][j + 1]) {
+        result.push({ type: 'removed', value: a[i] });
+        i++;
+      } else {
+        result.push({ type: 'added', value: b[j] });
+        j++;
+      }
+    }
+    while (i < n) { result.push({ type: 'removed', value: a[i] }); i++; }
+    while (j < m) { result.push({ type: 'added', value: b[j] }); j++; }
+
+    return result;
+  }
+
+  var MAX_ITEMS = 2000;
+
+  function compare() {
+    var originalText = el.original.value;
+    var changedText = el.changed.value;
+
+    if (!originalText && !changedText) {
+      showToast('Please enter text in both boxes.');
+      el.output.style.display = 'none';
+      el.statsWrap.innerHTML = '';
+      return;
+    }
+
+    var aItems, bItems;
+    if (currentMode === 'line') {
+      aItems = originalText.split('\n');
+      bItems = changedText.split('\n');
+    } else {
+      aItems = originalText.split(/(\s+)/).filter(function (x) { return x.length > 0; });
+      bItems = changedText.split(/(\s+)/).filter(function (x) { return x.length > 0; });
+    }
+
+    if (aItems.length > MAX_ITEMS || bItems.length > MAX_ITEMS) {
+      showToast('Text is too large to compare (max ' + MAX_ITEMS + ' ' + (currentMode === 'line' ? 'lines' : 'words') + ' per side).');
+      return;
+    }
+
+    var diff = diffArrays(aItems, bItems);
+
+    var added = 0, removed = 0, same = 0;
+    diff.forEach(function (d) {
+      if (d.type === 'added') added++;
+      else if (d.type === 'removed') removed++;
+      else same++;
+    });
+
+    var unit = currentMode === 'line' ? 'line' : 'word';
+    el.statsWrap.innerHTML =
+      '<div class="mt-diff-stats">' +
+        '<span class="mt-diff-stat mt-stat-added">+' + added + ' ' + unit + (added === 1 ? '' : 's') + ' added</span>' +
+        '<span class="mt-diff-stat mt-stat-removed">-' + removed + ' ' + unit + (removed === 1 ? '' : 's') + ' removed</span>' +
+        '<span class="mt-diff-stat mt-stat-same">' + same + ' unchanged</span>' +
+      '</div>';
+
+    var html;
+    if (currentMode === 'line') {
+      html = diff.map(function (d) {
+        var cls = d.type === 'added' ? 'mt-diff-added' : d.type === 'removed' ? 'mt-diff-removed' : 'mt-diff-same';
+        var prefix = d.type === 'added' ? '+ ' : d.type === 'removed' ? '- ' : '  ';
+        return '<span class="mt-diff-line ' + cls + '">' + esc(prefix + d.value) + '</span>';
+      }).join('\n');
+    } else {
+      html = diff.map(function (d) {
+        if (d.type === 'added') return '<span class="mt-diff-word-added">' + esc(d.value) + '</span>';
+        if (d.type === 'removed') return '<span class="mt-diff-word-removed">' + esc(d.value) + '</span>';
+        return esc(d.value);
+      }).join('');
+    }
+
+    el.output.innerHTML = html;
+    el.output.style.display = 'block';
+  }
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  document.querySelectorAll('.mt-mode-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentMode = btn.getAttribute('data-mode');
+      document.querySelectorAll('.mt-mode-btn').forEach(function (b) { b.classList.remove('mt-active'); });
+      btn.classList.add('mt-active');
+      if (el.output.style.display !== 'none') compare();
+    });
+  });
+
+  el.btnCompare.addEventListener('click', compare);
+
+  el.btnSample.addEventListener('click', function () {
+    el.original.value = SAMPLE_ORIGINAL;
+    el.changed.value = SAMPLE_CHANGED;
+    compare();
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.original.value = '';
+    el.changed.value = '';
+    el.output.style.display = 'none';
+    el.output.innerHTML = '';
+    el.statsWrap.innerHTML = '';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtDiffFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtDiffFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
