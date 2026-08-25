@@ -1,78 +1,81 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
 <defs>
-<!-- Outer Ring Gradient -->
+<!-- Outer Border Ring Gradient -->
 <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
 <stop offset="0%" stop-color="#00d2ff"/>
-<stop offset="50%" stop-color="#0072ff"/>
+<stop offset="50%" stop-color="#0066ff"/>
 <stop offset="100%" stop-color="#ff9900"/>
 </linearGradient>
 ​<!-- Dark Inner Circle Gradient -->
 <linearGradient id="darkBg" x1="0%" y1="0%" x2="0%" y2="100%">
-<stop offset="0%" stop-color="#051329"/>
-<stop offset="100%" stop-color="#020914"/>
+<stop offset="0%" stop-color="#040c1a"/>
+<stop offset="100%" stop-color="#01050d"/>
 </linearGradient>
 ​<!-- "M" Left Wing Blue Gradient -->
 <linearGradient id="mBlue" x1="0%" y1="0%" x2="100%" y2="100%">
 <stop offset="0%" stop-color="#00d2ff"/>
-<stop offset="100%" stop-color="#00416a"/>
+<stop offset="100%" stop-color="#0055ff"/>
 </linearGradient>
 ​<!-- "M" Right Wing Orange Gradient -->
 <linearGradient id="mOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#ffb75e"/>
-<stop offset="100%" stop-color="#ed8f03"/>
+<stop offset="0%" stop-color="#ffaa00"/>
+<stop offset="100%" stop-color="#ff3300"/>
 </linearGradient>
 ​<!-- Text Gold Gradient -->
 <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#ffb75e"/>
-<stop offset="100%" stop-color="#f8d053"/>
+<stop offset="0%" stop-color="#ffc800"/>
+<stop offset="100%" stop-color="#ff9900"/>
 </linearGradient>
 </defs>
-​<!-- Outer Glowing Circle Border -->
-<circle cx="256" cy="256" r="246" fill="none" stroke="url(#ringGrad)" stroke-width="16"/>
-​<!-- Inner Dark Circle Background -->
-<circle cx="256" cy="256" r="236" fill="url(#darkBg)"/>
-​<!-- Top Gear Symbol -->
-<g fill="#94a3b8" opacity="0.85">
-<path d="M256 90 L266 106 L284 102 L290 120 L308 122 L308 140 L324 148 L318 165 L332 178 L256 120 Z"/>
-<path d="M256 80 C180 80 160 130 160 180 L352 180 C352 130 332 80 256 80 Z" fill="none" stroke="#cbd5e1" stroke-width="18" stroke-linecap="round"/>
+​<!-- Outer Ring -->
+<circle cx="256" cy="256" r="248" fill="none" stroke="url(#ringGrad)" stroke-width="16"/>
+​<!-- Inner Dark Background -->
+<circle cx="256" cy="256" r="238" fill="url(#darkBg)"/>
+​<!-- 1. Silver Gear (Background) -->
+<g fill="#d1d5db" opacity="0.9">
+<!-- Gear teeth circle -->
+<path d="M 256,60 L 268,80 L 290,75 L 298,95 L 320,95 L 322,116 L 342,122 L 338,142 L 355,152 L 345,170 C 370,210 370,250 355,290 L 157,290 C 142,250 142,210 167,170 L 157,152 L 174,142 L 170,122 L 190,116 L 192,95 L 214,95 L 222,75 L 244,80 Z"/>
+<!-- Gear Inner Hole -->
+<circle cx="256" cy="180" r="55" fill="url(#darkBg)"/>
 </g>
-​<!-- Wrench and Screwdriver Cross -->
-<g stroke-linecap="round" stroke-linejoin="round">
-<!-- Wrench (White) -->
-<path d="M210 220 L270 160 C280 150 295 150 305 160 L295 170 C290 175 290 185 295 190 L310 205 C315 210 325 210 330 205 L340 195 C350 205 350 220 340 230 L280 290 Z" fill="#ffffff"/>
-<!-- Screwdriver (Yellow/Orange) -->
-<path d="M302 160 L242 220 M230 232 L215 247" stroke="#ffb75e" stroke-width="16"/>
+​<!-- 2. Crossed Tools (Wrench & Screwdriver) -->
+<g opacity="0.95">
+<!-- Wrench (White/Silver) -->
+<path d="M 220,220 L 280,160 Q 295,145 310,160 L 300,170 Q 290,180 300,190 L 315,205 Q 325,215 315,225 L 305,215 Q 290,225 280,210 L 220,270 Z" fill="#ffffff"/>
+<circle cx="315" cy="165" r="8" fill="#ffffff"/>
+​<!-- Screwdriver (Yellow/Orange) -->
+<path d="M 290,160 L 230,220 M 220,230 L 205,245" stroke="#ffaa00" stroke-width="16" stroke-linecap="round"/>
+<path d="M 295,155 L 315,135" stroke="#ffcc00" stroke-width="12" stroke-linecap="round"/>
 </g>
-​<!-- Big Stylized "M" Logo -->
-<!-- Left Blue Wing -->
-<path d="M110 300 C110 200 200 280 256 280 L256 295 C200 295 150 230 135 300 Z" fill="url(#mBlue)"/>
-<path d="M110 300 C120 200 220 230 256 290 L210 300 C160 300 130 300 110 300 Z" fill="url(#mBlue)"/>
-​<!-- Right Orange Wing -->
-<path d="M402 300 C402 200 312 280 256 280 L256 295 C312 295 362 230 377 300 Z" fill="url(#mOrange)"/>
-<path d="M402 300 C392 200 292 230 256 290 L302 300 C352 300 382 300 402 300 Z" fill="url(#mOrange)"/>
-​<!-- Central "M" Base Bold Paths -->
-<path d="M115 300 L256 160 L256 290 Z" fill="url(#mBlue)"/>
-<path d="M397 300 L256 160 L256 290 Z" fill="url(#mOrange)"/>
-​<!-- Speed Lines Left & Right -->
-<g stroke="url(#mBlue)" stroke-width="8" stroke-linecap="round" opacity="0.8">
-<line x1="60" y1="240" x2="110" y2="240"/>
-<line x1="45" y1="260" x2="105" y2="260"/>
-<line x1="65" y1="280" x2="115" y2="280"/>
+​<!-- 3. Speed Lines (Left Blue, Right Orange) -->
+<g stroke="url(#mBlue)" stroke-width="10" stroke-linecap="round" opacity="0.85">
+<line x1="50" y1="210" x2="120" y2="210"/>
+<line x1="35" y1="235" x2="110" y2="235"/>
+<line x1="55" y1="260" x2="125" y2="260"/>
 </g>
-<g stroke="url(#mOrange)" stroke-width="8" stroke-linecap="round" opacity="0.8">
-<line x1="402" y1="240" x2="452" y2="240"/>
-<line x1="407" y1="260" x2="467" y2="260"/>
-<line x1="397" y1="280" x2="447" y2="280"/>
+<g stroke="url(#mOrange)" stroke-width="10" stroke-linecap="round" opacity="0.85">
+<line x1="392" y1="210" x2="462" y2="210"/>
+<line x1="402" y1="235" x2="477" y2="235"/>
+<line x1="387" y1="260" x2="457" y2="260"/>
 </g>
-​<!-- Text: MYTOOLKIT APP -->
-<text x="256" y="365" font-family="Arial, sans-serif" font-weight="900" font-size="42" text-anchor="middle">
+​<!-- 4. Big Ribbon Style "M" Logo -->
+<!-- Left Side (Blue Wing) -->
+<path d="M 110,305 C 110,210 180,260 256,305 L 210,180 L 110,305 Z" fill="url(#mBlue)"/>
+<path d="M 110,305 Q 180,310 256,180 L 256,305 Z" fill="#00d2ff" opacity="0.4"/>
+​<!-- Right Side (Orange Wing) -->
+<path d="M 402,305 C 402,210 332,260 256,305 L 302,180 L 402,305 Z" fill="url(#mOrange)"/>
+<path d="M 402,305 Q 332,310 256,180 L 256,305 Z" fill="#ffcc00" opacity="0.4"/>
+​<!-- 5. Text: MYTOOLKIT APP -->
+<!-- MYTOOLKIT -->
+<text x="256" y="375" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="44" text-anchor="middle">
 <tspan fill="#ffffff">MY</tspan><tspan fill="url(#goldGrad)">TOOLKIT</tspan>
 </text>
-​<text x="256" y="405" fill="#ffffff" font-family="Arial, sans-serif" font-weight="800" font-size="28" letter-spacing="6" text-anchor="middle">
+​<!-- APP -->
+<text x="256" y="415" fill="#ffffff" font-family="'Arial Black', sans-serif" font-weight="900" font-size="30" letter-spacing="8" text-anchor="middle">
 APP
 </text>
-​<!-- Subtitle: FREE ONLINE TOOLS -->
-<text x="256" y="435" fill="#94a3b8" font-family="Arial, sans-serif" font-weight="600" font-size="16" letter-spacing="3" text-anchor="middle">
+​<!-- FREE ONLINE TOOLS -->
+<text x="256" y="445" fill="#a1a1aa" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="4" text-anchor="middle">
 FREE ONLINE TOOLS
 </text>
 </svg>
