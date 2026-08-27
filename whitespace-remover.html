@@ -1,0 +1,440 @@
+<!-- SEO TITLE:
+Free Whitespace Remover – Clean Extra Spaces, Tabs & Blank Lines | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Remove extra spaces, tabs, line breaks and blank lines from any text instantly. Trim, collapse or fully strip whitespace. Free and works entirely in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Whitespace Remover – Clean Extra Spaces, Tabs &amp; Blank Lines | MyToolkit</title>
+<meta name="description" content="Remove extra spaces, tabs, line breaks and blank lines from any text instantly. Trim, collapse or fully strip whitespace. Free and works entirely in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/whitespace-remover.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Whitespace Remover | MyToolkit">
+<meta property="og:description" content="Remove extra spaces, tabs, line breaks and blank lines from any text, instantly.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/whitespace-remover.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Whitespace Remover",
+  "url": "https://sheroz255.github.io/mytoolkit-app/whitespace-remover.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Remove extra spaces, tabs, line breaks and blank lines from text, with options to trim, collapse or fully strip whitespace."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:200px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:14.5px;font-family:ui-monospace,monospace;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-options-row{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+  .mt-checkbox-item{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:#334155}
+  .mt-checkbox-item input{width:16px;height:16px;margin-top:2px;flex-shrink:0}
+  .mt-checkbox-item span small{display:block;color:#94a3b8;font-size:12px;margin-top:2px}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+  @media(min-width:640px){.mt-stats-grid{grid-template-columns:repeat(3,1fr)}}
+  .mt-stat-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;text-align:center}
+  .mt-stat-value{font-size:20px;font-weight:800;color:#2563eb}
+  .mt-stat-label{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-whitespace-remover">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Whitespace Remover</span>
+  </nav>
+
+  <h1>Free Whitespace Remover</h1>
+  <p class="mt-tool-intro">
+    Clean up messy text by removing extra spaces, tabs, line breaks and blank lines. Choose
+    exactly which type of whitespace to clean, right in your browser.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-ws-input" class="mt-field-label">Your Text</label>
+    <textarea id="mt-ws-input" class="mt-tool-textarea" placeholder="Paste your text here..." aria-label="Text to clean"></textarea>
+
+    <div class="mt-options-row">
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-ws-trim-lines" checked>
+        <span>Trim spaces at the start/end of each line<small>Removes leading and trailing spaces on every line.</small></span>
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-ws-collapse-spaces" checked>
+        <span>Collapse multiple spaces into one<small>Turns "hello&nbsp;&nbsp;&nbsp;world" into "hello world".</small></span>
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-ws-tabs-to-spaces">
+        <span>Convert tabs to single spaces<small>Replaces tab characters with a single space before other cleanup.</small></span>
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-ws-remove-blank-lines">
+        <span>Remove blank lines<small>Deletes lines that are empty or contain only whitespace.</small></span>
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-ws-remove-all">
+        <span>Remove ALL whitespace (advanced)<small>Strips every space, tab and line break, joining everything into one continuous string. Overrides the options above.</small></span>
+      </label>
+    </div>
+
+    <label for="mt-ws-output" class="mt-field-label" style="margin-top:16px;">Cleaned Result</label>
+    <textarea id="mt-ws-output" class="mt-tool-textarea" placeholder="Your cleaned text will appear here..." aria-label="Cleaned result" readonly></textarea>
+
+    <div class="mt-stats-grid">
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-original">0</div><div class="mt-stat-label">Original Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-final">0</div><div class="mt-stat-label">Final Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-saved">0</div><div class="mt-stat-label">Characters Removed</div></div>
+    </div>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-clean" type="button">Clean Text</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-copy" type="button">Copy Result</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-download" type="button">&#8595; Download .txt</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How This Tool Works</h2>
+  <p>
+    Text copied from PDFs, emails or other documents often carries extra spaces, tabs, or
+    inconsistent line breaks that don't show up visually but can cause problems elsewhere. This
+    tool lets you selectively clean that up: trim stray spaces at the edges of each line, collapse
+    repeated spaces into one, convert tabs to spaces, remove entirely blank lines, or, for a full
+    reset, strip every bit of whitespace so your text becomes one continuous string.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Granular Control</h3><p>Pick exactly which whitespace issues to fix instead of one-size-fits-all cleanup.</p></div>
+    <div class="mt-feature-box"><h3>Before/After Stats</h3><p>See exactly how many characters were removed.</p></div>
+    <div class="mt-feature-box"><h3>Full-Strip Option</h3><p>Need everything gone? Remove all whitespace in one click.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtWsFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What's the difference between trimming and collapsing spaces?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Trimming removes spaces only at the very start and end of each line. Collapsing turns multiple spaces anywhere within a line into a single space.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What does "Remove ALL whitespace" actually do?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>It strips every space, tab and line break entirely, joining all your text into one continuous string with no whitespace at all. This overrides the other individual options since it's the most aggressive cleanup.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Will this remove blank lines between paragraphs?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Only if you check "Remove blank lines". By default, blank lines between paragraphs are kept so your paragraph structure stays intact.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. All cleanup happens locally in your browser using JavaScript. Nothing you paste is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why does copied text sometimes have extra spaces?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Copying from PDFs, formatted documents, or web pages often carries over invisible formatting characters, tabs, or trailing spaces that aren't obvious until you paste the text somewhere else.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're cleaning up text copied from a PDF, tidying code indentation, or preparing data
+    for import, this tool removes the invisible whitespace clutter that often causes formatting
+    issues elsewhere.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    input: document.getElementById('mt-ws-input'),
+    output: document.getElementById('mt-ws-output'),
+    trimLines: document.getElementById('mt-ws-trim-lines'),
+    collapseSpaces: document.getElementById('mt-ws-collapse-spaces'),
+    tabsToSpaces: document.getElementById('mt-ws-tabs-to-spaces'),
+    removeBlankLines: document.getElementById('mt-ws-remove-blank-lines'),
+    removeAll: document.getElementById('mt-ws-remove-all'),
+    statOriginal: document.getElementById('mt-stat-original'),
+    statFinal: document.getElementById('mt-stat-final'),
+    statSaved: document.getElementById('mt-stat-saved'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnClean: document.getElementById('mt-btn-clean'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "  Hello   world.  \n\n\tThis   line has  a tab and extra spaces.\n\n\n  Final line.  ";
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function clean() {
+    var text = el.input.value;
+    if (!text) {
+      showToast('Please enter some text first.');
+      return;
+    }
+
+    var originalLength = text.length;
+    var result = text;
+
+    if (el.removeAll.checked) {
+      result = result.replace(/\s+/g, '');
+    } else {
+      if (el.tabsToSpaces.checked) {
+        result = result.replace(/\t/g, ' ');
+      }
+      if (el.collapseSpaces.checked) {
+        result = result.replace(/[ \t]{2,}/g, ' ');
+      }
+      if (el.trimLines.checked) {
+        result = result.split('\n').map(function (line) {
+          return line.replace(/^[ \t]+|[ \t]+$/g, '');
+        }).join('\n');
+      }
+      if (el.removeBlankLines.checked) {
+        result = result.split('\n').filter(function (line) {
+          return line.trim() !== '';
+        }).join('\n');
+      }
+    }
+
+    el.output.value = result;
+    el.statOriginal.textContent = originalLength;
+    el.statFinal.textContent = result.length;
+    el.statSaved.textContent = Math.max(0, originalLength - result.length);
+  }
+
+  el.btnClean.addEventListener('click', clean);
+
+  el.removeAll.addEventListener('change', function () {
+    var disabled = el.removeAll.checked;
+    [el.trimLines, el.collapseSpaces, el.tabsToSpaces, el.removeBlankLines].forEach(function (cb) {
+      cb.disabled = disabled;
+    });
+  });
+
+  el.btnSample.addEventListener('click', function () {
+    el.input.value = SAMPLE_TEXT;
+    clean();
+  });
+
+  el.btnCopy.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to copy yet.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.output.value).then(function () {
+        showToast('Result copied to clipboard!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to download yet.'); return; }
+    var blob = new Blob([el.output.value], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'mytoolkit-cleaned-text.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    showToast('Result downloaded!');
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.input.value = '';
+    el.output.value = '';
+    el.statOriginal.textContent = '0';
+    el.statFinal.textContent = '0';
+    el.statSaved.textContent = '0';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtWsFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtWsFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
