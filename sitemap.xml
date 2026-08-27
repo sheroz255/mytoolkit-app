@@ -1,100 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Main Homepage -->
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.00</priority>
-  </url>
-
-  <!-- Tools Pages -->
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/case-converter.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/character-counter.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/grammar-checker.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/lorem-ipsum-generator.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/qr-code-generator.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/text-diff-checker.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/text-reverser.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/word-counter.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- Legal & Information Pages -->
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/about.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/contact.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/disclaimer.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/dmca.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/privacy-policy.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://sheroz255.github.io/mytoolkit-app/terms.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-
-</urlset>
+​<!-- Main Homepage -->
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.00</priority>
+</url>
+​<!-- Tools Pages -->
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/case-converter.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/character-counter.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/duplicate-line-remover.html</loc>
+<lastmod>2026-08-27</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/grammar-checker.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/lorem-ipsum-generator.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/qr-code-generator.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/slug-generator.html</loc>
+<lastmod>2026-08-27</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/text-diff-checker.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/text-reverser.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/text-sorter.html</loc>
+<lastmod>2026-08-27</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/whitespace-remover.html</loc>
+<lastmod>2026-08-27</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/word-counter.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
+</url>
+​<!-- Legal & Information Pages -->
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/about.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/contact.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/disclaimer.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/dmca.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/privacy-policy.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+<url>
+<loc>https://sheroz255.github.io/mytoolkit-app/terms.html</loc>
+<lastmod>2026-08-25</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.50</priority>
+</url>
+​</urlset>
