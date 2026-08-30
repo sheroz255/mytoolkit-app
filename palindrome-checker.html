@@ -1,0 +1,366 @@
+<!-- SEO TITLE:
+Free Palindrome Checker – Check Words, Phrases & Numbers | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Check instantly if any word, phrase or number is a palindrome. Ignores spaces, punctuation and capitalization by default. Free and works in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Palindrome Checker – Check Words, Phrases &amp; Numbers | MyToolkit</title>
+<meta name="description" content="Check instantly if any word, phrase or number is a palindrome. Ignores spaces, punctuation and capitalization by default. Free and works in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/palindrome-checker.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Palindrome Checker | MyToolkit">
+<meta property="og:description" content="Check instantly if any word, phrase or number is a palindrome.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/palindrome-checker.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Palindrome Checker",
+  "url": "https://sheroz255.github.io/mytoolkit-app/palindrome-checker.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Check whether any word, phrase or number is a palindrome, with options to ignore spaces, punctuation and capitalization."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-tool-input{width:100%;max-width:100%;border:1.5px solid #e2e8f0;border-radius:12px;padding:13px 16px;font-size:16px;font-family:inherit;color:#0f172a;transition:.15s}
+  .mt-tool-input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-checkbox-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#334155;margin-top:14px}
+  .mt-checkbox-item input{width:16px;height:16px}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-result-box{margin-top:18px;padding:18px;border-radius:14px;text-align:center;font-size:16px;font-weight:700;display:none}
+  .mt-result-box.mt-is-palindrome{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534;display:block}
+  .mt-result-box.mt-not-palindrome{background:#fef2f2;border:1.5px solid #fecaca;color:#991b1b;display:block}
+  .mt-result-cleaned{display:block;font-size:12.5px;font-weight:600;color:#64748b;margin-top:6px;font-family:ui-monospace,monospace}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-palindrome-checker">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Palindrome Checker</span>
+  </nav>
+
+  <h1>Free Palindrome Checker</h1>
+  <p class="mt-tool-intro">
+    Check instantly whether any word, phrase, or number reads the same forwards and backwards.
+    By default, spaces, punctuation and capitalization are ignored, so phrases like "A man, a
+    plan, a canal: Panama" are correctly recognized as palindromes.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-pal-input" class="mt-field-label">Text to Check</label>
+    <input id="mt-pal-input" class="mt-tool-input" type="text" placeholder="e.g. racecar, or A man a plan a canal Panama" aria-label="Text to check for palindrome">
+
+    <label class="mt-checkbox-item">
+      <input type="checkbox" id="mt-pal-strict">
+      Strict mode (consider spaces, punctuation and case exactly as typed)
+    </label>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-check" type="button">Check</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+
+    <div id="mt-pal-result" class="mt-result-box" role="status" aria-live="polite"></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How Palindrome Checking Works</h2>
+  <p>
+    A palindrome is a word, phrase or sequence that reads the same forwards and backwards. This
+    checker normally ignores spaces, punctuation, and letter case, since phrases like "A man, a
+    plan, a canal: Panama" or "Was it a car or a cat I saw?" are traditionally considered
+    palindromes even though their raw text includes spaces and punctuation. If you need an exact,
+    character-by-character check instead, enable <strong>Strict mode</strong>, which compares the
+    text exactly as typed, including spaces, punctuation and capitalization.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Words &amp; Phrases</h3><p>Check single words or full sentences, including punctuation.</p></div>
+    <div class="mt-feature-box"><h3>Numbers Too</h3><p>Works equally well for numeric palindromes like 12321.</p></div>
+    <div class="mt-feature-box"><h3>Strict Mode Option</h3><p>Switch to an exact, character-for-character comparison when needed.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtPalFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does capitalization matter?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Not by default. "Racecar" and "RaceCar" are both recognized as palindromes since capitalization is ignored, matching common usage. Enable Strict mode if you want case to matter.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I check numbers, not just words?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, numbers work the same way. For example, "12321" and "1001" are both correctly identified as palindromes.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What does Strict mode change?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Strict mode compares your text exactly as typed, including spaces, punctuation and capital letters. Under strict mode, "Racecar" is not a palindrome because of the capital R at the start but not the end.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The check happens entirely in your browser using JavaScript. Nothing you type is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What's a famous example of a palindrome phrase?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>"A man, a plan, a canal: Panama" is one of the most well-known palindrome phrases. Try it in the checker above (with Strict mode off) to see it confirmed.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're solving a word puzzle, checking a clever phrase you thought of, or verifying a
+    numeric sequence, this tool gives you an instant, accurate answer without counting letters by
+    hand.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    input: document.getElementById('mt-pal-input'),
+    strict: document.getElementById('mt-pal-strict'),
+    result: document.getElementById('mt-pal-result'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnCheck: document.getElementById('mt-btn-check'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = 'A man, a plan, a canal: Panama';
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function check() {
+    var raw = el.input.value;
+    if (!raw.trim()) {
+      showToast('Please enter some text to check.');
+      el.result.className = 'mt-result-box';
+      el.result.innerHTML = '';
+      return;
+    }
+
+    var strict = el.strict.checked;
+    var cleaned = strict ? raw : raw.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    var reversed = cleaned.split('').reverse().join('');
+    var isPalindrome = cleaned.length > 0 && cleaned === reversed;
+
+    el.result.className = 'mt-result-box ' + (isPalindrome ? 'mt-is-palindrome' : 'mt-not-palindrome');
+
+    var label = isPalindrome
+      ? '\u2713 Yes, this is a palindrome!'
+      : '\u2717 No, this is not a palindrome.';
+
+    el.result.innerHTML = esc(label) +
+      '<span class="mt-result-cleaned">Compared as: "' + esc(cleaned) + '"</span>';
+  }
+
+  el.btnCheck.addEventListener('click', check);
+
+  el.input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') check();
+  });
+
+  el.strict.addEventListener('change', function () {
+    if (el.input.value.trim()) check();
+  });
+
+  el.btnSample.addEventListener('click', function () {
+    el.input.value = SAMPLE_TEXT;
+    check();
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.input.value = '';
+    el.result.className = 'mt-result-box';
+    el.result.innerHTML = '';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtPalFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtPalFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
