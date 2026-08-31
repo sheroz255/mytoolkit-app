@@ -1,0 +1,431 @@
+<!-- SEO TITLE:
+Free Reading Time Calculator – Estimate How Long Text Takes to Read | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Estimate how long any text takes to read based on word count and adjustable reading speed. Free, instant, and works entirely in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Reading Time Calculator – Estimate How Long Text Takes to Read | MyToolkit</title>
+<meta name="description" content="Estimate how long any text takes to read based on word count and adjustable reading speed. Free, instant, and works entirely in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/reading-time-calculator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Reading Time Calculator | MyToolkit">
+<meta property="og:description" content="Estimate how long any text takes to read, based on word count and reading speed.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/reading-time-calculator.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Reading Time Calculator",
+  "url": "https://sheroz255.github.io/mytoolkit-app/reading-time-calculator.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Estimate how long a piece of text takes to read, based on word count and an adjustable words-per-minute reading speed."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:200px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15.5px;font-family:inherit;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-speed-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-top:16px}
+  .mt-speed-field{display:flex;flex-direction:column;gap:6px;min-width:160px}
+  .mt-speed-field select,
+  .mt-speed-field input{border:1.5px solid #e2e8f0;border-radius:10px;padding:9px 12px;font-size:13.5px;font-family:inherit;color:#0f172a;background:#fff}
+  .mt-speed-field select:focus,
+  .mt-speed-field input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-result-box{margin-top:20px;padding:22px;border-radius:16px;background:#eff6ff;border:1.5px solid #bfdbfe;text-align:center}
+  .mt-result-time{font-size:30px;font-weight:800;color:#2563eb;line-height:1.2}
+  .mt-result-sub{font-size:13px;color:#475569;margin-top:6px}
+
+  .mt-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+  @media(min-width:640px){.mt-stats-grid{grid-template-columns:repeat(4,1fr)}}
+  .mt-stat-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;text-align:center}
+  .mt-stat-value{font-size:19px;font-weight:800;color:#0f172a}
+  .mt-stat-label{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-reading-time">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Reading Time Calculator</span>
+  </nav>
+
+  <h1>Free Reading Time Calculator</h1>
+  <p class="mt-tool-intro">
+    Paste your article, blog post or essay and instantly estimate how long it will take an
+    average reader to get through it, based on your chosen reading speed.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-rt-input" class="mt-field-label">Your Text</label>
+    <textarea id="mt-rt-input" class="mt-tool-textarea" placeholder="Paste your article or text here..." aria-label="Text to estimate reading time"></textarea>
+
+    <div class="mt-speed-row">
+      <div class="mt-speed-field">
+        <label for="mt-rt-speed-preset" style="font-size:12px;font-weight:700;color:#475569;">Reading Speed</label>
+        <select id="mt-rt-speed-preset">
+          <option value="150">Slow reader (150 wpm)</option>
+          <option value="200" selected>Average adult (200 wpm)</option>
+          <option value="250">Fast reader (250 wpm)</option>
+          <option value="custom">Custom...</option>
+        </select>
+      </div>
+      <div class="mt-speed-field" id="mt-rt-custom-wrap" style="display:none;">
+        <label for="mt-rt-custom-speed" style="font-size:12px;font-weight:700;color:#475569;">Words per Minute</label>
+        <input id="mt-rt-custom-speed" type="number" min="1" value="200">
+      </div>
+    </div>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-calculate" type="button">Calculate</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+
+    <div class="mt-result-box" id="mt-rt-result" style="display:none;">
+      <div class="mt-result-time" id="mt-rt-time">0 min read</div>
+      <div class="mt-result-sub" id="mt-rt-sub"></div>
+    </div>
+
+    <div class="mt-stats-grid">
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-words">0</div><div class="mt-stat-label">Words</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-chars">0</div><div class="mt-stat-label">Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-sentences">0</div><div class="mt-stat-label">Sentences</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-paragraphs">0</div><div class="mt-stat-label">Paragraphs</div></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How Reading Time Is Calculated</h2>
+  <p>
+    Reading time is estimated by dividing the total word count by a chosen reading speed,
+    measured in words per minute (wpm). The average adult reads around 200-250 words per minute
+    for normal prose, though this varies by content difficulty, familiarity, and individual
+    reading ability. This calculator lets you choose a preset speed or enter your own, so the
+    estimate can match your specific audience &mdash; useful for setting realistic expectations
+    on blog posts, articles or documentation.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Adjustable Speed</h3><p>Choose slow, average, fast, or enter a fully custom words-per-minute rate.</p></div>
+    <div class="mt-feature-box"><h3>Full Text Stats</h3><p>See word, character, sentence and paragraph counts alongside the estimate.</p></div>
+    <div class="mt-feature-box"><h3>Instant Results</h3><p>Get your reading time estimate in one click.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtRtFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What reading speed should I use?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>200 words per minute is a commonly used average for adult silent reading of general content, and is a reasonable default for most blog posts and articles.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why do reading time estimates vary between websites?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Different sites use different assumed reading speeds (commonly 200-265 wpm) and some also factor in image viewing time, which changes the final estimate.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does this account for images or complex content?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No, this calculates based on word count only. Technical or complex content is often read more slowly than general prose, so consider using a slower reading speed for such content.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The calculation happens entirely in your browser using JavaScript. Nothing you paste is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I use this for blog post "X min read" labels?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, this is a common use case. Paste your final draft and use the resulting estimate as your published reading time label.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're adding a "X min read" label to a blog post or just curious how long a document
+    will take to get through, this tool gives you a quick, adjustable estimate based on real word
+    count.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    input: document.getElementById('mt-rt-input'),
+    speedPreset: document.getElementById('mt-rt-speed-preset'),
+    customWrap: document.getElementById('mt-rt-custom-wrap'),
+    customSpeed: document.getElementById('mt-rt-custom-speed'),
+    result: document.getElementById('mt-rt-result'),
+    resultTime: document.getElementById('mt-rt-time'),
+    resultSub: document.getElementById('mt-rt-sub'),
+    statWords: document.getElementById('mt-stat-words'),
+    statChars: document.getElementById('mt-stat-chars'),
+    statSentences: document.getElementById('mt-stat-sentences'),
+    statParagraphs: document.getElementById('mt-stat-paragraphs'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnCalculate: document.getElementById('mt-btn-calculate'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "MyToolkit is a free collection of online tools built for everyday digital tasks. " +
+    "Whether you need to count words, generate a QR code, or check for duplicate lines, everything " +
+    "runs directly in your browser. No sign-up is required, and your data is never uploaded to a " +
+    "server unless a specific tool clearly states otherwise.\n\n" +
+    "This approach keeps things fast and private. Most tools process your input instantly using " +
+    "JavaScript running locally on your device, which means results appear immediately without " +
+    "any waiting or server round-trips.";
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  el.speedPreset.addEventListener('change', function () {
+    el.customWrap.style.display = el.speedPreset.value === 'custom' ? 'flex' : 'none';
+  });
+
+  function getSpeed() {
+    if (el.speedPreset.value === 'custom') {
+      var v = parseInt(el.customSpeed.value, 10);
+      return (!isNaN(v) && v > 0) ? v : null;
+    }
+    return parseInt(el.speedPreset.value, 10);
+  }
+
+  function calculate() {
+    var text = el.input.value;
+    if (!text.trim()) {
+      showToast('Please enter some text first.');
+      el.result.style.display = 'none';
+      return;
+    }
+
+    var speed = getSpeed();
+    if (speed === null) {
+      showToast('Please enter a valid words-per-minute value.');
+      return;
+    }
+
+    var words = (text.match(/\S+/g) || []).length;
+    var chars = text.length;
+    var sentences = (text.match(/[.!?]+(?=\s|$)/g) || []).length;
+    var paragraphs = text.split(/\n\s*\n/).filter(function (p) { return p.trim() !== ''; }).length;
+
+    el.statWords.textContent = words;
+    el.statChars.textContent = chars;
+    el.statSentences.textContent = Math.max(sentences, words > 0 ? 1 : 0);
+    el.statParagraphs.textContent = Math.max(paragraphs, words > 0 ? 1 : 0);
+
+    var totalMinutes = words / speed;
+    var minutes = Math.floor(totalMinutes);
+    var seconds = Math.round((totalMinutes - minutes) * 60);
+
+    if (seconds === 60) { minutes += 1; seconds = 0; }
+
+    var label;
+    if (totalMinutes < 1) {
+      label = 'Less than 1 min read';
+    } else if (seconds === 0) {
+      label = minutes + ' min read';
+    } else {
+      label = minutes + ' min ' + seconds + ' sec read';
+    }
+
+    el.resultTime.textContent = label;
+    el.resultSub.textContent = words + ' words at ' + speed + ' words per minute';
+    el.result.style.display = 'block';
+  }
+
+  el.btnCalculate.addEventListener('click', calculate);
+
+  el.btnSample.addEventListener('click', function () {
+    el.input.value = SAMPLE_TEXT;
+    calculate();
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.input.value = '';
+    el.result.style.display = 'none';
+    el.statWords.textContent = '0';
+    el.statChars.textContent = '0';
+    el.statSentences.textContent = '0';
+    el.statParagraphs.textContent = '0';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtRtFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtRtFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
