@@ -1,0 +1,490 @@
+<!-- SEO TITLE:
+Free Merge PDF – Combine Multiple PDF Files Into One | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Merge multiple PDF files into a single PDF instantly, right in your browser. Reorder pages before merging. Free, private and no file size limits from a server.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Merge PDF – Combine Multiple PDF Files Into One | MyToolkit</title>
+<meta name="description" content="Merge multiple PDF files into a single PDF instantly, right in your browser. Reorder pages before merging. Free, private and no file size limits from a server.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/merge-pdf.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Merge PDF | MyToolkit">
+<meta property="og:description" content="Combine multiple PDF files into one, instantly, right in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/merge-pdf.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Merge PDF",
+  "url": "https://sheroz255.github.io/mytoolkit-app/merge-pdf.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Merge multiple PDF files into a single PDF, with the ability to reorder files before merging."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  /* Fixed Upload Drop Zone Layout & Alignment */
+  .mt-drop-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:16px;padding:28px 16px;text-align:center;cursor:pointer;transition:all .2s ease;margin-bottom:16px}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{border-color:#2563eb;background:#eff6ff}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:36px;margin-bottom:8px;line-height:1}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:14px;line-height:1.4}
+  .mt-drop-zone p strong{color:#0f172a}
+
+  .mt-file-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+  .mt-file-item{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc}
+  .mt-file-icon{font-size:20px;flex-shrink:0}
+  .mt-file-info{flex:1;min-width:0}
+  .mt-file-name{font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-file-size{font-size:11.5px;color:#94a3b8}
+  .mt-file-actions{display:flex;gap:4px;flex-shrink:0}
+  .mt-file-btn{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .mt-file-btn:hover{background:#eff6ff;color:#2563eb}
+  .mt-file-btn:disabled{opacity:.35;cursor:not-allowed}
+  .mt-file-btn.mt-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:10px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:10px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-merge-pdf">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>Merge PDF</span>
+  </nav>
+
+  <h1>Free Merge PDF</h1>
+  <p class="mt-tool-intro">
+    Combine multiple PDF files into a single document. Add your files, reorder them if needed,
+    and download the merged result &mdash; all processed locally in your browser.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128196;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop PDF files (select 2 or more)</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf" multiple>
+    </label>
+
+    <div class="mt-file-list" id="mt-file-list"></div>
+
+    <p class="mt-field-error" id="mt-merge-error" style="display:none;"></p>
+    <p class="mt-field-success" id="mt-merge-success" style="display:none;"></p>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-merge" type="button" disabled>Merge PDFs</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear All</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How Merging Works</h2>
+  <p>
+    This tool reads each PDF file you upload directly in your browser, copies every page from
+    each document in the order shown in the list, and combines them into a single new PDF file.
+    Use the up and down arrows next to each file to change the merge order before combining. The
+    original page content, including text and images, is preserved exactly &mdash; nothing is
+    re-rendered or compressed. Since everything happens locally, your files are never uploaded to
+    a server, which also means there's no arbitrary file-size limit imposed by an upload service.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Reorder Before Merging</h3><p>Arrange files in exactly the order you want them combined.</p></div>
+    <div class="mt-feature-box"><h3>Preserves Quality</h3><p>Pages are copied exactly, with no re-compression or quality loss.</p></div>
+    <div class="mt-feature-box"><h3>Any Number of Files</h3><p>Merge two files or a whole batch at once.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your PDFs are processed locally and never uploaded to a server.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtMergeFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">How many PDF files can I merge at once?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>There's no fixed file-count limit from this tool. Very large numbers of large files may be limited by your device's available memory, since everything is processed locally.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I change the order of the files?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, use the up and down arrow buttons next to each file in the list to reorder them before merging. The final PDF follows the order shown top to bottom.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Will merging reduce PDF quality?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No, pages are copied exactly as they are in the original files, so text, images and formatting remain unchanged.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Are my PDF files uploaded to a server?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. Merging happens entirely in your browser using JavaScript. Your files are never sent anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What happens if a file isn't a valid PDF?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>You'll see a clear error message naming the problematic file, and merging won't proceed until it's removed or replaced with a valid PDF.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're combining scanned pages, joining chapters of a document, or assembling a
+    report from multiple sources, this tool merges your PDFs quickly while keeping full control
+    over the final page order.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var files = [];
+
+  var el = {
+    dropZone: document.getElementById('mt-drop-zone'),
+    input: document.getElementById('mt-pdf-input'),
+    fileList: document.getElementById('mt-file-list'),
+    error: document.getElementById('mt-merge-error'),
+    success: document.getElementById('mt-merge-success'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnMerge: document.getElementById('mt-btn-merge'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderList() {
+    el.fileList.innerHTML = files.map(function (f, i) {
+      return '<div class="mt-file-item" data-index="' + i + '">' +
+        '<span class="mt-file-icon" aria-hidden="true">&#128196;</span>' +
+        '<div class="mt-file-info">' +
+          '<div class="mt-file-name">' + esc(f.name) + '</div>' +
+          '<div class="mt-file-size">' + formatSize(f.size) + '</div>' +
+        '</div>' +
+        '<div class="mt-file-actions">' +
+          '<button class="mt-file-btn mt-up" type="button" aria-label="Move up" ' + (i === 0 ? 'disabled' : '') + '>&#8593;</button>' +
+          '<button class="mt-file-btn mt-down" type="button" aria-label="Move down" ' + (i === files.length - 1 ? 'disabled' : '') + '>&#8595;</button>' +
+          '<button class="mt-file-btn mt-remove" type="button" aria-label="Remove">&#10005;</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    el.btnMerge.disabled = files.length < 2;
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+  }
+
+  function addFiles(fileListObj) {
+    for (var i = 0; i < fileListObj.length; i++) {
+      var f = fileListObj[i];
+      if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) {
+        files.push(f);
+      } else {
+        showToast('"' + f.name + '" is not a PDF file and was skipped.');
+      }
+    }
+    renderList();
+  }
+
+  el.input.addEventListener('change', function (e) {
+    addFiles(e.target.files);
+    el.input.value = '';
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.remove('mt-drag');
+    });
+  });
+  el.dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      addFiles(e.dataTransfer.files);
+    }
+  });
+
+  el.fileList.addEventListener('click', function (e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    var item = btn.closest('.mt-file-item');
+    var index = parseInt(item.getAttribute('data-index'), 10);
+
+    if (btn.classList.contains('mt-up') && index > 0) {
+      var tmp = files[index - 1];
+      files[index - 1] = files[index];
+      files[index] = tmp;
+      renderList();
+    } else if (btn.classList.contains('mt-down') && index < files.length - 1) {
+      var tmp2 = files[index + 1];
+      files[index + 1] = files[index];
+      files[index] = tmp2;
+      renderList();
+    } else if (btn.classList.contains('mt-remove')) {
+      files.splice(index, 1);
+      renderList();
+    }
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    files = [];
+    renderList();
+    showToast('Cleared.');
+  });
+
+  el.btnMerge.addEventListener('click', function () {
+    if (files.length < 2) {
+      showToast('Please add at least 2 PDF files.');
+      return;
+    }
+    if (typeof PDFLib === 'undefined') {
+      el.error.textContent = 'PDF engine failed to load. Check your internet connection and reload the page.';
+      el.error.style.display = 'block';
+      return;
+    }
+
+    el.btnMerge.disabled = true;
+    el.btnMerge.textContent = 'Merging...';
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+
+    mergeFiles().then(function (mergedBytes) {
+      var blob = new Blob([mergedBytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'mytoolkit-merged.pdf';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+
+      el.success.textContent = 'Success! Your merged PDF has been downloaded.';
+      el.success.style.display = 'block';
+      showToast('PDF merged and downloaded!');
+    }).catch(function (err) {
+      el.error.textContent = err.message || 'Could not merge one or more files. Make sure all files are valid PDFs.';
+      el.error.style.display = 'block';
+    }).finally(function () {
+      el.btnMerge.disabled = files.length < 2;
+      el.btnMerge.textContent = 'Merge PDFs';
+    });
+  });
+
+  function mergeFiles() {
+    var mergedPdf;
+    return PDFLib.PDFDocument.create().then(function (doc) {
+      mergedPdf = doc;
+      var chain = Promise.resolve();
+      files.forEach(function (file) {
+        chain = chain.then(function () {
+          return file.arrayBuffer().then(function (buffer) {
+            return PDFLib.PDFDocument.load(buffer).catch(function () {
+              throw new Error('"' + file.name + '" could not be read as a valid PDF.');
+            });
+          }).then(function (srcDoc) {
+            return mergedPdf.copyPages(srcDoc, srcDoc.getPageIndices());
+          }).then(function (copiedPages) {
+            copiedPages.forEach(function (page) {
+              mergedPdf.addPage(page);
+            });
+          });
+        });
+      });
+      return chain;
+    }).then(function () {
+      return mergedPdf.save();
+    });
+  }
+
+  document.querySelectorAll('#mtMergeFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtMergeFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+
+  renderList();
+})();
+</script>
+</body>
+</html>
