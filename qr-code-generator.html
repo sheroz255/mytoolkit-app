@@ -1,4 +1,3 @@
-```html
 <!-- SEO TITLE:
 Free QR Code Generator & Scanner – URL, WiFi, vCard, Email & More | MyToolkit
 -->
@@ -49,7 +48,7 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
 </script>
 
 <style>
-  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box;overflow:hidden}
   .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
   .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
   .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
@@ -58,16 +57,17 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
 
   .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px;width:100%;box-sizing:border-box}
+  @media(max-width:480px){.mt-tool-card{padding:14px;border-radius:14px}}
 
-  .mt-qr-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .mt-qr-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;width:100%}
   .mt-qr-tab{border:1px solid #e2e8f0;background:#f8fafc;color:#334155;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer;transition:.15s}
   .mt-qr-tab.mt-active{background:#2563eb;border-color:#2563eb;color:#fff}
   .mt-qr-tab:hover:not(.mt-active){border-color:#93c5fd}
 
-  .mt-qr-layout{display:grid;grid-template-columns:1fr;gap:24px;width:100%}
-  @media(min-width:860px){.mt-qr-layout{grid-template-columns:1.1fr .9fr}}
+  .mt-qr-layout{display:grid;grid-template-columns:1fr;gap:20px;width:100%}
+  @media(min-width:860px){.mt-qr-layout{grid-template-columns:1.1fr .9fr;gap:24px}}
 
-  .mt-field{margin-bottom:14px}
+  .mt-field{margin-bottom:14px;width:100%}
   .mt-field label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:5px;text-transform:uppercase;letter-spacing:.03em}
   .mt-field input[type="text"],
   .mt-field input[type="url"],
@@ -76,19 +76,24 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-field input[type="number"],
   .mt-field input[type="datetime-local"],
   .mt-field select,
-  .mt-field textarea{
+  .mt-field textarea,
+  .mt-field input[type="file"]{
     width:100%;max-width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 12px;font-size:14.5px;
     font-family:inherit;color:#0f172a;background:#fff;transition:.15s;box-sizing:border-box
   }
   .mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
   .mt-field textarea{resize:vertical;min-height:90px}
-  .mt-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mt-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
   @media(max-width:480px){.mt-field-row{grid-template-columns:1fr}}
   .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:5px}
   .mt-field-hint{color:#94a3b8;font-size:12px;margin-top:5px}
 
-  .mt-qr-type-panel{display:none}
+  .mt-qr-type-panel{display:none;width:100%}
   .mt-qr-type-panel.mt-active{display:block}
+
+  /* Inner Style Card Fix for Mobile Overflow */
+  .mt-style-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-top:16px;width:100%;box-sizing:border-box}
+  @media(max-width:480px){.mt-style-card{padding:12px}}
 
   /* Fixed Mobile Preview Box Overflow */
   .mt-qr-preview-box{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;box-sizing:border-box}
@@ -109,10 +114,10 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-btn-ghost:hover{background:#e2e8f0}
   .mt-btn:disabled{opacity:.5;cursor:not-allowed}
 
-  .mt-style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  .mt-style-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
   @media(max-width:480px){.mt-style-grid{grid-template-columns:1fr}}
-  .mt-color-field{display:flex;align-items:center;gap:8px;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px 10px}
-  .mt-color-field input[type="color"]{width:32px;height:32px;border:none;padding:0;background:none;cursor:pointer}
+  .mt-color-field{display:flex;align-items:center;gap:8px;border:1.5px solid #e2e8f0;border-radius:10px;padding:6px 10px;background:#fff;width:100%;box-sizing:border-box}
+  .mt-color-field input[type="color"]{width:32px;height:32px;border:none;padding:0;background:none;cursor:pointer;flex-shrink:0}
   .mt-color-field span{font-size:12.5px;color:#475569;font-weight:600}
 
   .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
@@ -206,7 +211,7 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
       <div>
         <div id="mtQrPanels"></div>
 
-        <div class="mt-tool-card" style="margin-top:16px; background:#f8fafc;">
+        <div class="mt-style-card">
           <label style="display:block;font-size:12.5px;font-weight:700;color:#475569;margin-bottom:10px;text-transform:uppercase;letter-spacing:.03em;">Style Options</label>
           <div class="mt-style-grid">
             <div class="mt-color-field">
@@ -235,7 +240,7 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
               </select>
             </div>
           </div>
-          <div class="mt-field" style="margin-top:12px;">
+          <div class="mt-field" style="margin-top:12px;margin-bottom:0;">
             <label for="mtQrLogo">Center Logo (optional)</label>
             <input type="file" id="mtQrLogo" accept="image/*">
             <p class="mt-field-hint">Use High error correction when adding a logo, so the code still scans reliably.</p>
@@ -902,4 +907,3 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
 </script>
 </body>
 </html>
-```
