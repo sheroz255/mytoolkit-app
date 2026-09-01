@@ -1,3 +1,4 @@
+```html
 <!-- SEO TITLE:
 Free QR Code Generator & Scanner – URL, WiFi, vCard, Email & More | MyToolkit
 -->
@@ -56,14 +57,14 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
   .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
 
-  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px;width:100%;box-sizing:border-box}
 
   .mt-qr-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
   .mt-qr-tab{border:1px solid #e2e8f0;background:#f8fafc;color:#334155;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer;transition:.15s}
   .mt-qr-tab.mt-active{background:#2563eb;border-color:#2563eb;color:#fff}
   .mt-qr-tab:hover:not(.mt-active){border-color:#93c5fd}
 
-  .mt-qr-layout{display:grid;grid-template-columns:1fr;gap:24px}
+  .mt-qr-layout{display:grid;grid-template-columns:1fr;gap:24px;width:100%}
   @media(min-width:860px){.mt-qr-layout{grid-template-columns:1.1fr .9fr}}
 
   .mt-field{margin-bottom:14px}
@@ -77,7 +78,7 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-field select,
   .mt-field textarea{
     width:100%;max-width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 12px;font-size:14.5px;
-    font-family:inherit;color:#0f172a;background:#fff;transition:.15s
+    font-family:inherit;color:#0f172a;background:#fff;transition:.15s;box-sizing:border-box
   }
   .mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
   .mt-field textarea{resize:vertical;min-height:90px}
@@ -89,10 +90,14 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-qr-type-panel{display:none}
   .mt-qr-type-panel.mt-active{display:block}
 
-  .mt-qr-preview-box{position:sticky;top:16px;display:flex;flex-direction:column;align-items:center;gap:14px}
-  .mt-qr-canvas-wrap{width:100%;max-width:320px;aspect-ratio:1/1;background:#fff;border:1px solid #e2e8f0;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:16px}
-  .mt-qr-canvas-wrap canvas{max-width:100%;max-height:100%}
-  .mt-qr-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
+  /* Fixed Mobile Preview Box Overflow */
+  .mt-qr-preview-box{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;box-sizing:border-box}
+  @media(min-width:860px){.mt-qr-preview-box{position:sticky;top:16px}}
+
+  .mt-qr-canvas-wrap{width:100%;max-width:320px;aspect-ratio:1/1;background:#fff;border:1px solid #e2e8f0;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:16px;margin:0 auto;box-sizing:border-box}
+  .mt-qr-canvas-wrap canvas{max-width:100%;height:auto;display:block}
+  .mt-qr-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%;max-width:320px;margin:0 auto}
+  .mt-qr-actions .mt-btn{flex:1 1 auto;justify-content:center;text-align:center}
 
   .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
   .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px}
@@ -113,11 +118,14 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
   .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
   .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  .mt-scan-drop{border:2px dashed #cbd5e1;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s}
+  /* Fixed Scan Drop Zone Layout & Alignment */
+  .mt-scan-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;background:#f8fafc;border:2px dashed #cbd5e1;border-radius:16px;padding:28px 16px;text-align:center;cursor:pointer;transition:.2s ease;box-sizing:border-box}
   .mt-scan-drop:hover,.mt-scan-drop.mt-drag{border-color:#2563eb;background:#eff6ff}
   .mt-scan-drop input{display:none}
-  .mt-scan-drop-icon{font-size:34px;margin-bottom:8px}
-  .mt-scan-drop p{margin:0;color:#64748b;font-size:13.5px}
+  .mt-scan-drop-icon{font-size:34px;margin-bottom:8px;line-height:1}
+  .mt-scan-drop p{margin:0;color:#64748b;font-size:13.5px;line-height:1.4}
+  .mt-scan-drop p strong{color:#0f172a}
+
   .mt-scan-result{margin-top:16px;padding:16px;border-radius:14px;background:#f0fdf4;border:1px solid #bbf7d0}
   .mt-scan-result.mt-error{background:#fef2f2;border-color:#fecaca}
   .mt-scan-result-label{font-size:11.5px;font-weight:700;color:#166534;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
@@ -894,3 +902,4 @@ Create custom QR codes for URLs, WiFi, contacts, email, SMS, WhatsApp, events, l
 </script>
 </body>
 </html>
+```
