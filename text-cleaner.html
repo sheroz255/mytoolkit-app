@@ -1,0 +1,462 @@
+<!-- SEO TITLE:
+Free Text Cleaner & Formatter – Strip HTML, URLs, Quotes & More | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Clean up messy text instantly: strip HTML tags, remove URLs and emails, normalize smart quotes, remove emojis and more. Free and works entirely in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Text Cleaner &amp; Formatter – Strip HTML, URLs, Quotes &amp; More | MyToolkit</title>
+<meta name="description" content="Clean up messy text instantly: strip HTML tags, remove URLs and emails, normalize smart quotes, remove emojis and more. Free and works entirely in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/text-cleaner.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Text Cleaner & Formatter | MyToolkit">
+<meta property="og:description" content="Clean up messy text instantly: strip HTML, URLs, emails, smart quotes and emojis.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/text-cleaner.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text Cleaner & Formatter",
+  "url": "https://sheroz255.github.io/mytoolkit-app/text-cleaner.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Clean up text by stripping HTML tags, removing URLs and emails, normalizing smart quotes and dashes, and removing emojis."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+  .mt-tool-textarea{width:100%;max-width:100%;min-height:200px;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:14.5px;font-family:ui-monospace,monospace;color:#0f172a;resize:vertical;transition:.15s}
+  .mt-tool-textarea:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+
+  .mt-options-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+  @media(min-width:640px){.mt-options-grid{grid-template-columns:1fr 1fr}}
+  .mt-checkbox-item{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#334155}
+  .mt-checkbox-item input{width:16px;height:16px;flex-shrink:0}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+  @media(min-width:640px){.mt-stats-grid{grid-template-columns:repeat(3,1fr)}}
+  .mt-stat-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;text-align:center}
+  .mt-stat-value{font-size:20px;font-weight:800;color:#2563eb}
+  .mt-stat-label{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-text-cleaner">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Text &amp; Writing</a> &#8250;
+    <span>Text Cleaner &amp; Formatter</span>
+  </nav>
+
+  <h1>Free Text Cleaner &amp; Formatter</h1>
+  <p class="mt-tool-intro">
+    Clean up messy text in one click &mdash; strip HTML tags, remove URLs and email addresses,
+    normalize curly quotes and dashes, and remove emojis. Pick exactly which cleanups you need.
+  </p>
+
+  <div class="mt-tool-card">
+    <label for="mt-clean-input" class="mt-field-label">Your Text</label>
+    <textarea id="mt-clean-input" class="mt-tool-textarea" placeholder="Paste your messy text here..." aria-label="Text to clean"></textarea>
+
+    <div class="mt-options-grid">
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-html" checked>
+        Strip HTML tags
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-urls">
+        Remove URLs
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-emails">
+        Remove email addresses
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-quotes" checked>
+        Convert curly quotes/dashes to straight
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-emojis">
+        Remove emojis
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-numbers">
+        Remove numbers
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-punctuation">
+        Remove punctuation
+      </label>
+      <label class="mt-checkbox-item">
+        <input type="checkbox" id="mt-clean-whitespace" checked>
+        Collapse extra whitespace
+      </label>
+    </div>
+
+    <label for="mt-clean-output" class="mt-field-label" style="margin-top:16px;">Cleaned Result</label>
+    <textarea id="mt-clean-output" class="mt-tool-textarea" placeholder="Your cleaned text will appear here..." aria-label="Cleaned result" readonly></textarea>
+
+    <div class="mt-stats-grid">
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-original">0</div><div class="mt-stat-label">Original Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-final">0</div><div class="mt-stat-label">Final Characters</div></div>
+      <div class="mt-stat-box"><div class="mt-stat-value" id="mt-stat-removed">0</div><div class="mt-stat-label">Characters Removed</div></div>
+    </div>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-clean" type="button">Clean Text</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-copy" type="button">Copy Result</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-download" type="button">&#8595; Download .txt</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">What Each Option Does</h2>
+  <p>
+    <strong>Strip HTML tags</strong> removes markup like &lt;p&gt; or &lt;div&gt; while keeping the
+    visible text. <strong>Remove URLs</strong> and <strong>Remove email addresses</strong> delete
+    web links and email addresses respectively. <strong>Convert curly quotes/dashes</strong>
+    replaces "smart" typographic quotes and em/en dashes (often introduced by word processors)
+    with plain straight equivalents. <strong>Remove emojis</strong> strips emoji characters while
+    keeping regular text intact. <strong>Remove numbers</strong> and <strong>Remove punctuation</strong>
+    strip digits or punctuation marks respectively. <strong>Collapse extra whitespace</strong>
+    reduces repeated spaces and blank lines down to a single space or line break.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Pick Your Cleanups</h3><p>Enable only the specific cleanup operations you need.</p></div>
+    <div class="mt-feature-box"><h3>HTML-Safe</h3><p>Strips tags without breaking the readable text inside them.</p></div>
+    <div class="mt-feature-box"><h3>Before/After Stats</h3><p>See exactly how many characters were removed.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your text never leaves your browser &mdash; nothing is uploaded or stored.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtCleanFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why would I need to strip HTML tags?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Text copied from web pages or rich text editors often carries hidden HTML markup. Stripping it leaves you with clean, plain text for pasting elsewhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What are "curly quotes" and why convert them?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Word processors often auto-replace straight quotes (") with curly "smart quotes" (&#8220;&#8221;). These can cause issues in code or plain-text systems that expect standard straight quotes, so this option converts them back.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I use multiple cleanup options at once?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes, check as many options as you need and they'll all be applied together in a single pass.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my text uploaded anywhere?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. All cleaning happens locally in your browser using JavaScript. Nothing you paste is sent to a server.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Will removing HTML tags remove the text inside them too?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No, only the tags themselves (like &lt;strong&gt; or &lt;a href="..."&gt;) are removed. The visible text content inside those tags is kept.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're pasting content copied from a website, cleaning up a document full of smart
+    quotes, or scrubbing personal contact details from shared text, this tool handles it in one
+    pass with the exact combination of cleanups you choose.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var el = {
+    input: document.getElementById('mt-clean-input'),
+    output: document.getElementById('mt-clean-output'),
+    html: document.getElementById('mt-clean-html'),
+    urls: document.getElementById('mt-clean-urls'),
+    emails: document.getElementById('mt-clean-emails'),
+    quotes: document.getElementById('mt-clean-quotes'),
+    emojis: document.getElementById('mt-clean-emojis'),
+    numbers: document.getElementById('mt-clean-numbers'),
+    punctuation: document.getElementById('mt-clean-punctuation'),
+    whitespace: document.getElementById('mt-clean-whitespace'),
+    statOriginal: document.getElementById('mt-stat-original'),
+    statFinal: document.getElementById('mt-stat-final'),
+    statRemoved: document.getElementById('mt-stat-removed'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnClean: document.getElementById('mt-btn-clean'),
+    btnSample: document.getElementById('mt-btn-sample'),
+    btnCopy: document.getElementById('mt-btn-copy'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  var SAMPLE_TEXT = "<p>Check out <a href=\"https://example.com\">this link</a> or email me at test@example.com!</p>\n\n" +
+    "It\u2019s a \u201cgreat\u201d deal \u2014 don\u2019t miss it! \ud83d\ude00  Call 123-456-7890 today.";
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function clean() {
+    var text = el.input.value;
+    if (!text) {
+      showToast('Please enter some text first.');
+      return;
+    }
+
+    var originalLength = text.length;
+    var result = text;
+
+    if (el.html.checked) {
+      result = result.replace(/<[^>]*>/g, '');
+    }
+    if (el.urls.checked) {
+      result = result.replace(/\bhttps?:\/\/\S+/gi, '').replace(/\bwww\.\S+/gi, '');
+    }
+    if (el.emails.checked) {
+      result = result.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '');
+    }
+    if (el.quotes.checked) {
+      result = result
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[\u2013\u2014]/g, '-');
+    }
+    if (el.emojis.checked) {
+      result = result.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/gu, '');
+    }
+    if (el.numbers.checked) {
+      result = result.replace(/[0-9]/g, '');
+    }
+    if (el.punctuation.checked) {
+      result = result.replace(/[!"#$%&'()*+,\-./:;<=>?@[\]^_`{|}~]/g, '');
+    }
+    if (el.whitespace.checked) {
+      result = result
+        .split('\n').map(function (l) { return l.replace(/[ \t]{2,}/g, ' ').trim(); }).join('\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    }
+
+    el.output.value = result;
+    el.statOriginal.textContent = originalLength;
+    el.statFinal.textContent = result.length;
+    el.statRemoved.textContent = Math.max(0, originalLength - result.length);
+  }
+
+  el.btnClean.addEventListener('click', clean);
+
+  el.btnSample.addEventListener('click', function () {
+    el.input.value = SAMPLE_TEXT;
+    clean();
+  });
+
+  el.btnCopy.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to copy yet.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.output.value).then(function () {
+        showToast('Result copied to clipboard!');
+      }, function () {
+        showToast('Copy failed. Please copy manually.');
+      });
+    } else {
+      showToast('Copy not supported in this browser.');
+    }
+  });
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!el.output.value) { showToast('Nothing to download yet.'); return; }
+    var blob = new Blob([el.output.value], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'mytoolkit-cleaned-text.txt';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    showToast('Result downloaded!');
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    el.input.value = '';
+    el.output.value = '';
+    el.statOriginal.textContent = '0';
+    el.statFinal.textContent = '0';
+    el.statRemoved.textContent = '0';
+    showToast('Cleared.');
+  });
+
+  document.querySelectorAll('#mtCleanFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtCleanFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
