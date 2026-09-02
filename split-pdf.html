@@ -1,0 +1,1036 @@
+<!-- SEO TITLE:
+Free Split PDF Online – Split PDF Pages Client-Side & Securely | MyToolkit
+-->
+<!-- META DESCRIPTION:
+Split PDF files into individual pages, select page ranges, or extract custom pages instantly in your browser. 100% free, private, and secure with MyToolkit.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Split PDF Online – Split PDF Pages Securely | MyToolkit</title>
+  <meta name="description" content="Split PDF files into individual pages, select page ranges, or extract custom pages instantly in your browser. 100% free, private, and secure with MyToolkit.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/split-pdf.html">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Split PDF Online | MyToolkit">
+  <meta property="og:description" content="Split PDF files into separate pages or ranges directly inside your browser. 100% free and private.">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/split-pdf.html">
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- pdf-lib, pdf.js, and jszip via CDNs for client-side processing -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Split PDF - MyToolkit",
+    "url": "https://sheroz255.github.io/mytoolkit-app/split-pdf.html",
+    "description": "Split PDF files into separate pages or ranges directly inside your browser completely free and secure.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Scoped styling for Tool-specific UI elements */
+    .mt-tool-wrapper {
+      padding: 40px 0 60px;
+    }
+
+    .mt-tool-card {
+      background: #ffffff;
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius, 20px);
+      padding: 30px;
+      box-shadow: var(--mt-shadow, 0 8px 30px rgba(15,23,42,.055));
+      margin-bottom: 30px;
+    }
+
+    .mt-tool-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f8fafc;
+      transition: border-color 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mt-tool-dropzone:hover, .mt-tool-dropzone.mt-drag-over {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .mt-tool-file-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f5f9;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 16px 20px;
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .mt-tool-mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .mt-tool-tab-btn {
+      padding: 12px 14px;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-weight: 700;
+      font-size: 14px;
+      color: #334155;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-tab-btn:hover {
+      background-color: #e2e8f0;
+    }
+
+    .mt-tool-tab-btn.active {
+      background-color: var(--mt-primary, #2563eb);
+      color: #ffffff;
+      border-color: var(--mt-primary, #2563eb);
+    }
+
+    .mt-tool-grid-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+      background-color: #f8fafc;
+    }
+
+    .mt-tool-page-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      background: #ffffff;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, transform 0.1s;
+    }
+
+    .mt-tool-page-card:hover {
+      border-color: var(--mt-primary, #2563eb);
+      transform: translateY(-2px);
+    }
+
+    .mt-tool-page-card.selected {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-page-card canvas {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .mt-tool-page-badge {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .mt-tool-badge-check {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--mt-primary, #2563eb);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .mt-tool-page-card.selected .mt-tool-badge-check {
+      opacity: 1;
+    }
+
+    .mt-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-btn-primary {
+      background: var(--mt-primary, #2563eb);
+      color: #ffffff;
+    }
+
+    .mt-tool-btn-primary:hover {
+      background: var(--mt-primary-dark, #1d4ed8);
+    }
+
+    .mt-tool-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mt-tool-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .mt-tool-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mt-tool-status.info {
+      display: block;
+      background-color: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mt-tool-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .mt-tool-status.success {
+      display: block;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .mt-tool-loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: mt-spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes mt-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mt-faq-item {
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .mt-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mt-heading, #0b1324);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mt-faq-trigger:hover {
+      background-color: #f8fafc;
+    }
+
+    .mt-faq-content {
+      padding: 0 20px 16px 20px;
+      color: var(--mt-text, #172033);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .mt-faq-item.open .mt-faq-content {
+      display: block;
+    }
+
+    .mt-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .mt-faq-item.open .mt-faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main class="mt-site">
+    <div class="mt-container mt-tool-wrapper">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; font-size: 13px; color: #64748b;">
+          <li><a href="index.html" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">Home</a></li>
+          <li>/</li>
+          <li><a href="index.html#mt-tools" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">PDF &amp; Documents</a></li>
+          <li>/</li>
+          <li aria-current="page" style="color: #0f172a; font-weight: 700;">Split PDF</li>
+        </ol>
+      </nav>
+
+      <!-- TITLE & DESCRIPTION -->
+      <header style="margin-bottom: 28px;">
+        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 950; color: var(--mt-heading, #0b1324); margin: 0 0 10px; line-height: 1.15; letter-spacing: -1px;">
+          Split PDF Pages Online
+        </h1>
+        <p style="font-size: 16px; color: var(--mt-muted, #64748b); max-width: 760px; margin: 0; line-height: 1.65;">
+          Split PDF documents into separate pages, extract custom ranges, or select pages visually. 100% free, fast, and processed completely inside your browser for maximum security.
+        </p>
+      </header>
+
+      <!-- MAIN TOOL APPLICATION CARD -->
+      <section class="mt-tool-card">
+        
+        <!-- DROPZONE / FILE INPUT -->
+        <div id="mtDropzone" class="mt-tool-dropzone">
+          <input type="file" id="mtPdfInput" accept="application/pdf" aria-label="Upload PDF file to split">
+          <svg style="width: 48px; height: 48px; fill: var(--mt-primary, #2563eb); margin-bottom: 12px;" viewBox="0 0 24 24">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">
+            Choose a PDF File or Drag &amp; Drop Here
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin: 0;">
+            Supports PDF files up to 100MB. Processed entirely on your device.
+          </p>
+        </div>
+
+        <!-- FILE LOADED WORKSPACE (Hidden by default) -->
+        <div id="mtToolWorkspace" style="display: none;">
+          
+          <div class="mt-tool-file-info">
+            <div>
+              <strong id="mtFileName" style="color: #0f172a; display: block; font-size: 16px; font-weight: 800;">filename.pdf</strong>
+              <span id="mtPageCount" style="font-size: 13px; color: #64748b;">0 Pages</span>
+            </div>
+            <button id="mtChangeFileBtn" class="mt-tool-btn mt-tool-btn-secondary" style="padding: 6px 14px; font-size: 13px;">
+              Change File
+            </button>
+          </div>
+
+          <!-- SPLIT OPTIONS / MODES -->
+          <div style="margin-top: 24px;">
+            <label style="display: block; font-weight: 800; color: #0f172a; margin-bottom: 10px; font-size: 15px;">
+              Select Splitting Mode:
+            </label>
+            <div class="mt-tool-mode-tabs">
+              <button class="mt-tool-tab-btn active" data-mode="range" type="button">Extract Range</button>
+              <button class="mt-tool-tab-btn" data-mode="all" type="button">Split All Pages</button>
+              <button class="mt-tool-tab-btn" data-mode="select" type="button">Visual Select</button>
+              <button class="mt-tool-tab-btn" data-mode="chunks" type="button">Fixed Chunks</button>
+            </div>
+
+            <!-- CONTROLS FOR RANGE MODE -->
+            <div id="mtModeRange" class="mt-mode-panel">
+              <p style="font-size: 14px; color: #475569; margin: 0 0 8px;">
+                Specify page numbers or ranges separated by commas (e.g., <code>1-3, 5, 8-10</code>).
+              </p>
+              <input type="text" id="mtRangeInput" placeholder="e.g. 1-3, 5, 8-10" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 15px; outline: none;" />
+            </div>
+
+            <!-- CONTROLS FOR SPLIT ALL MODE -->
+            <div id="mtModeAll" class="mt-mode-panel" style="display: none;">
+              <p style="font-size: 14px; color: #475569; margin: 0;">
+                Every page of this document will be extracted as an individual PDF file and downloaded together inside a ZIP archive.
+              </p>
+            </div>
+
+            <!-- CONTROLS FOR VISUAL SELECT MODE -->
+            <div id="mtModeSelect" class="mt-mode-panel" style="display: none;">
+              <p style="font-size: 14px; color: #475569; margin: 0 0 10px;">
+                Click on the page thumbnails below to select which pages you wish to extract into a single PDF:
+              </p>
+              <div id="mtPageGrid" class="mt-tool-grid-preview">
+                <!-- Visual Thumbnails Canvas generated dynamically -->
+              </div>
+            </div>
+
+            <!-- CONTROLS FOR CHUNKS MODE -->
+            <div id="mtModeChunks" class="mt-mode-panel" style="display: none;">
+              <p style="font-size: 14px; color: #475569; margin: 0 0 8px;">
+                Split document automatically every N pages:
+              </p>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="font-size: 14px; color: #334155;">Split every</span>
+                <input type="number" id="mtChunkInput" value="1" min="1" style="width: 80px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; text-align: center; font-size: 15px;" />
+                <span style="font-size: 14px; color: #334155;">pages into separate files.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="mtProcessBtn" class="mt-tool-btn mt-tool-btn-primary" type="button">
+              Split PDF Now
+            </button>
+            <button id="mtResetBtn" class="mt-tool-btn mt-tool-btn-secondary" type="button">
+              Reset
+            </button>
+          </div>
+
+          <!-- STATUS / MESSAGES -->
+          <div id="mtStatusBox" class="mt-tool-status"></div>
+
+        </div>
+
+      </section>
+
+      <!-- SUPPORTING SEO CONTENT SECTION -->
+      <article class="mt-post" style="box-shadow: none; padding: 0; border: none; background: transparent;">
+        <div class="mt-post-body">
+          
+          <section style="margin-bottom: 36px;">
+            <h2>How to Split PDF Files Online for Free</h2>
+            <p>
+              Splitting a PDF document into smaller parts or isolating individual pages is one of the most essential daily digital tasks. Whether you need to extract a single receipt from a monthly statement, share a specific chapter from a textbook, or separate mixed document scans, the <strong>MyToolkit Split PDF</strong> tool delivers a simple, lightning-fast, and completely secure solution.
+            </p>
+            <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Upload your file:</strong> Drag and drop your PDF into the upload area above or click to select a file from your computer or mobile device.</li>
+              <li><strong>Choose your splitting method:</strong> Select custom page ranges (e.g. 1-4, 7), extract every page individually, visually click thumbnail previews, or divide into equal chunks.</li>
+              <li><strong>Download your extracted PDF:</strong> Click <strong>Split PDF Now</strong> to generate and download your new PDF file or ZIP package instantly.</li>
+            </ol>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>100% Client-Side Privacy &amp; Security</h2>
+            <p>
+              Unlike traditional online converters that upload your personal documents to remote cloud servers, MyToolkit runs on a <strong>pure browser-side architecture</strong>. Using WebAssembly and HTML5 Web APIs, all processing happens locally inside your device's web browser memory.
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Complete Confidentiality:</strong> Your files are never uploaded, stored, or transmitted over any network server.</li>
+              <li><strong>Zero Wait Times:</strong> Instant execution without uploading heavy files over slow internet connections.</li>
+              <li><strong>No Usage Limits:</strong> Free forever with no file limits, no registration, no software installation, and no added watermarks.</li>
+              <li><strong>Cross-Platform Compatibility:</strong> Works seamlessly across Windows, macOS, Linux, iOS (iPhone/iPad), and Android devices.</li>
+            </ul>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Flexible Splitting Modes Explained</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Extract Range</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Specify custom ranges like <code>1-3, 5, 8-10</code> to combine distinct pages into a clean new document.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Split All Pages</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Convert every single page into an individual PDF file and download them together in a neat ZIP file.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Visual Selection</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">View live rendered thumbnails of every page and tap directly on the ones you wish to save.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Fixed Chunks</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Divide large documents into equal batches of 2, 5, or 10 pages per document automatically.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ ACCORDION SECTION -->
+          <section style="margin-bottom: 36px;">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-faq-container" style="margin-top: 16px;">
+              
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is it safe to split sensitive or personal PDF documents here?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes, 100% safe. MyToolkit performs all operations directly inside your web browser. Your document is never uploaded to any external server or stored anywhere online.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Do I need to sign up or pay to use this tool?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  No. The tool is entirely free to use with no hidden fees, subscriptions, or account creation required.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Can I extract specific non-consecutive pages from my PDF?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes. You can use the <strong>Extract Range</strong> option and enter comma-separated values (e.g., <code>1, 4, 7-9</code>) or use <strong>Visual Select</strong> to pick page thumbnails visually.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Does splitting a PDF reduce the original quality?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  No quality is lost. The underlying vector graphics, embedded fonts, text layers, and high-resolution images are preserved exactly as in the original file.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FINAL THOUGHTS -->
+          <section style="background: #ffffff; padding: 24px; border-radius: var(--mt-radius-sm, 14px); border: 1px solid var(--mt-border, #e5eaf1); border-left: 4px solid var(--mt-primary, #2563eb); margin-bottom: 20px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #0f172a;">Final Thoughts</h3>
+            <p style="font-size: 14px; margin: 0; color: #475569;">
+              The MyToolkit Split PDF utility offers a fast, reliable, and privacy-first solution for managing and segmenting documents directly in your browser. Perfect for legal, business, educational, and personal workflows.
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="site.js"></script>
+
+  <!-- Isolated PDF Split Logic -->
+  <script>
+    'use strict';
+    (function () {
+      if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+
+      var dropzone = document.getElementById('mtDropzone');
+      var pdfInput = document.getElementById('mtPdfInput');
+      var workspace = document.getElementById('mtToolWorkspace');
+      var fileNameEl = document.getElementById('mtFileName');
+      var pageCountEl = document.getElementById('mtPageCount');
+      var changeFileBtn = document.getElementById('mtChangeFileBtn');
+      var processBtn = document.getElementById('mtProcessBtn');
+      var resetBtn = document.getElementById('mtResetBtn');
+      var statusBox = document.getElementById('mtStatusBox');
+      var rangeInput = document.getElementById('mtRangeInput');
+      var chunkInput = document.getElementById('mtChunkInput');
+      var pageGrid = document.getElementById('mtPageGrid');
+      var tabBtns = document.querySelectorAll('.mt-tool-tab-btn');
+
+      var loadedFile = null;
+      var loadedArrayBuffer = null;
+      var pdfDocLib = null;
+      var totalPages = 0;
+      var currentMode = 'range';
+      var selectedPagesSet = new Set();
+
+      ['dragenter', 'dragover'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('mt-drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('mt-drag-over');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      pdfInput.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      changeFileBtn.addEventListener('click', function () {
+        resetTool();
+        pdfInput.click();
+      });
+
+      resetBtn.addEventListener('click', resetTool);
+
+      tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          tabBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentMode = btn.getAttribute('data-mode');
+
+          document.querySelectorAll('.mt-mode-panel').forEach(function (p) { p.style.display = 'none'; });
+          if (currentMode === 'range') document.getElementById('mtModeRange').style.display = 'block';
+          if (currentMode === 'all') document.getElementById('mtModeAll').style.display = 'block';
+          if (currentMode === 'select') document.getElementById('mtModeSelect').style.display = 'block';
+          if (currentMode === 'chunks') document.getElementById('mtModeChunks').style.display = 'block';
+
+          hideStatus();
+        });
+      });
+
+      async function handleFileSelect(file) {
+        if (!file || file.type !== 'application/pdf') {
+          showStatus('Please select a valid PDF document file (.pdf).', 'error');
+          return;
+        }
+
+        showStatus('<span class="mt-tool-loader"></span> Loading and analyzing PDF file...', 'info');
+        loadedFile = file;
+
+        try {
+          loadedArrayBuffer = await file.arrayBuffer();
+          var PDFDocument = PDFLib.PDFDocument;
+          pdfDocLib = await PDFDocument.load(loadedArrayBuffer, { ignoreEncryption: true });
+          totalPages = pdfDocLib.getPageCount();
+
+          if (totalPages === 0) {
+            showStatus('The selected PDF file contains no pages.', 'error');
+            return;
+          }
+
+          fileNameEl.textContent = file.name;
+          pageCountEl.textContent = totalPages + ' Page' + (totalPages > 1 ? 's' : '');
+          
+          dropzone.style.display = 'none';
+          workspace.style.display = 'block';
+          hideStatus();
+
+          rangeInput.value = totalPages === 1 ? '1' : '1-' + Math.min(totalPages, 5);
+          renderThumbnails();
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Failed to read PDF file. It might be password protected or corrupted.', 'error');
+        }
+      }
+
+      async function renderThumbnails() {
+        pageGrid.innerHTML = '';
+        selectedPagesSet.clear();
+
+        if (!window.pdfjsLib) return;
+
+        try {
+          var loadingTask = pdfjsLib.getDocument({ data: loadedArrayBuffer.slice(0) });
+          var pdfJsDoc = await loadingTask.promise;
+
+          for (var i = 1; i <= totalPages; i++) {
+            (function (pageNum) {
+              var card = document.createElement('div');
+              card.className = 'mt-tool-page-card';
+
+              var check = document.createElement('div');
+              check.className = 'mt-tool-badge-check';
+              check.textContent = '✓';
+
+              var canvas = document.createElement('canvas');
+              var label = document.createElement('span');
+              label.className = 'mt-tool-page-badge';
+              label.textContent = 'Page ' + pageNum;
+
+              card.appendChild(check);
+              card.appendChild(canvas);
+              card.appendChild(label);
+              pageGrid.appendChild(card);
+
+              card.addEventListener('click', function () {
+                if (selectedPagesSet.has(pageNum)) {
+                  selectedPagesSet.delete(pageNum);
+                  card.classList.remove('selected');
+                } else {
+                  selectedPagesSet.add(pageNum);
+                  card.classList.add('selected');
+                }
+              });
+
+              pdfJsDoc.getPage(pageNum).then(function (page) {
+                var viewport = page.getViewport({ scale: 0.2 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                var ctx = canvas.getContext('2d');
+                page.render({ canvasContext: ctx, viewport: viewport });
+              });
+            })(i);
+          }
+        } catch (e) {
+          console.warn('Could not render thumbnails:', e);
+        }
+      }
+
+      function parsePageRanges(inputStr, maxPage) {
+        var pages = new Set();
+        var parts = inputStr.split(',');
+
+        for (var i = 0; i < parts.length; i++) {
+          var part = parts[i].trim();
+          if (!part) continue;
+
+          if (part.indexOf('-') !== -1) {
+            var rangeParts = part.split('-');
+            var start = parseInt(rangeParts[0], 10);
+            var end = parseInt(rangeParts[1], 10);
+
+            if (isNaN(start) || isNaN(end) || start < 1 || end > maxPage || start > end) {
+              return null;
+            }
+            for (var p = start; p <= end; p++) pages.add(p);
+          } else {
+            var single = parseInt(part, 10);
+            if (isNaN(single) || single < 1 || single > maxPage) {
+              return null;
+            }
+            pages.add(single);
+          }
+        }
+        return Array.from(pages).sort(function (a, b) { return a - b; });
+      }
+
+      processBtn.addEventListener('click', async function () {
+        if (!pdfDocLib || totalPages === 0) return;
+
+        hideStatus();
+
+        try {
+          var PDFDocument = PDFLib.PDFDocument;
+
+          if (currentMode === 'range') {
+            var targetPages = parsePageRanges(rangeInput.value, totalPages);
+            if (!targetPages || targetPages.length === 0) {
+              showStatus('Please enter a valid page range between 1 and ' + totalPages + '. (Example: 1-3, 5)', 'error');
+              return;
+            }
+
+            showStatus('<span class="mt-tool-loader"></span> Extracting requested pages...', 'info');
+            
+            var newPdf = await PDFDocument.create();
+            var indices = targetPages.map(function (p) { return p - 1; });
+            var copiedPages = await newPdf.copyPages(pdfDocLib, indices);
+            copiedPages.forEach(function (p) { newPdf.addPage(p); });
+
+            var pdfBytes = await newPdf.save();
+            downloadBlob(pdfBytes, 'split_' + loadedFile.name, 'application/pdf');
+            showStatus('PDF successfully split and downloaded!', 'success');
+          } 
+          
+          else if (currentMode === 'select') {
+            var targetPagesSelect = Array.from(selectedPagesSet).sort(function (a, b) { return a - b; });
+            if (targetPagesSelect.length === 0) {
+              showStatus('Please click to select at least one page thumbnail above.', 'error');
+              return;
+            }
+
+            showStatus('<span class="mt-tool-loader"></span> Compiling selected pages...', 'info');
+
+            var newPdfSelect = await PDFDocument.create();
+            var indicesSelect = targetPagesSelect.map(function (p) { return p - 1; });
+            var copiedPagesSelect = await newPdfSelect.copyPages(pdfDocLib, indicesSelect);
+            copiedPagesSelect.forEach(function (p) { newPdfSelect.addPage(p); });
+
+            var pdfBytesSelect = await newPdfSelect.save();
+            downloadBlob(pdfBytesSelect, 'selected_pages_' + loadedFile.name, 'application/pdf');
+            showStatus('Selected pages extracted and downloaded successfully!', 'success');
+          }
+
+          else if (currentMode === 'all') {
+            if (!window.JSZip) {
+              showStatus('ZIP library not loaded. Cannot package individual files.', 'error');
+              return;
+            }
+
+            showStatus('<span class="mt-tool-loader"></span> Extracting all pages into ZIP archive...', 'info');
+
+            var zip = new JSZip();
+            var baseName = loadedFile.name.replace(/\.pdf$/i, '');
+
+            for (var j = 0; j < totalPages; j++) {
+              var singlePdf = await PDFDocument.create();
+              var copiedPage = (await singlePdf.copyPages(pdfDocLib, [j]))[0];
+              singlePdf.addPage(copiedPage);
+              var singleBytes = await singlePdf.save();
+              zip.file(baseName + '_page_' + (j + 1) + '.pdf', singleBytes);
+            }
+
+            var zipBlob = await zip.generateAsync({ type: 'blob' });
+            downloadBlob(zipBlob, baseName + '_all_pages.zip', 'application/zip');
+            showStatus('All pages successfully split and downloaded as a ZIP file!', 'success');
+          }
+
+          else if (currentMode === 'chunks') {
+            var chunkSize = parseInt(chunkInput.value, 10);
+            if (isNaN(chunkSize) || chunkSize < 1) {
+              showStatus('Please enter a valid chunk size of at least 1.', 'error');
+              return;
+            }
+
+            if (!window.JSZip) {
+              showStatus('ZIP library required for multiple chunk download.', 'error');
+              return;
+            }
+
+            showStatus('<span class="mt-tool-loader"></span> Creating PDF chunks...', 'info');
+
+            var zipChunks = new JSZip();
+            var baseNameChunks = loadedFile.name.replace(/\.pdf$/i, '');
+            var chunkIndex = 1;
+
+            for (var c = 0; c < totalPages; c += chunkSize) {
+              var end = Math.min(c + chunkSize, totalPages);
+              var chunkIndices = [];
+              for (var k = c; k < end; k++) chunkIndices.push(k);
+
+              var chunkPdf = await PDFDocument.create();
+              var copiedChunkPages = await chunkPdf.copyPages(pdfDocLib, chunkIndices);
+              copiedChunkPages.forEach(function (p) { chunkPdf.addPage(p); });
+
+              var chunkBytes = await chunkPdf.save();
+              zipChunks.file(baseNameChunks + '_part_' + chunkIndex + '_pages_' + (c + 1) + '-' + end + '.pdf', chunkBytes);
+              chunkIndex++;
+            }
+
+            var zipBlobChunks = await zipChunks.generateAsync({ type: 'blob' });
+            downloadBlob(zipBlobChunks, baseNameChunks + '_chunks.zip', 'application/zip');
+            showStatus('PDF successfully split into chunks and downloaded!', 'success');
+          }
+
+        } catch (err) {
+          console.error(err);
+          showStatus('An error occurred while splitting the PDF. Please try again.', 'error');
+        }
+      });
+
+      function downloadBlob(data, fileName, mimeType) {
+        var blob = data instanceof Blob ? data : new Blob([data], { type: mimeType });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      }
+
+      function showStatus(msg, type) {
+        statusBox.className = 'mt-tool-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+
+      function hideStatus() {
+        statusBox.className = 'mt-tool-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      function resetTool() {
+        loadedFile = null;
+        loadedArrayBuffer = null;
+        pdfDocLib = null;
+        totalPages = 0;
+        selectedPagesSet.clear();
+        pdfInput.value = '';
+        rangeInput.value = '';
+        pageGrid.innerHTML = '';
+        hideStatus();
+
+        dropzone.style.display = 'block';
+        workspace.style.display = 'none';
+      }
+
+      document.querySelectorAll('.mt-faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var item = trigger.parentElement;
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.mt-faq-item').forEach(function (i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
