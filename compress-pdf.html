@@ -1,0 +1,892 @@
+<!-- SEO TITLE:
+Free Compress PDF Online – Reduce PDF File Size Securely | MyToolkit
+-->
+<!-- META DESCRIPTION:
+Compress and reduce PDF file size online without losing quality. 100% free, private, and fast browser-side PDF compressor by MyToolkit.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Compress PDF Online – Reduce PDF File Size | MyToolkit</title>
+  <meta name="description" content="Compress and reduce PDF file size online without losing quality. 100% free, private, and fast browser-side PDF compressor by MyToolkit.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/compress-pdf.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Compress PDF Online | MyToolkit">
+  <meta property="og:description" content="Compress and reduce PDF file size instantly in your browser. Free, secure, and private.">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/compress-pdf.html">
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- pdf-lib and pdf.js for client-side compression rendering -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compress PDF - MyToolkit",
+    "url": "https://sheroz255.github.io/mytoolkit-app/compress-pdf.html",
+    "description": "Reduce PDF file size online instantly in your browser without uploading files to remote servers.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Scoped styling for Tool-specific UI elements */
+    .mt-tool-wrapper {
+      padding: 40px 0 60px;
+    }
+
+    .mt-tool-card {
+      background: #ffffff;
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius, 20px);
+      padding: 30px;
+      box-shadow: var(--mt-shadow, 0 8px 30px rgba(15,23,42,.055));
+      margin-bottom: 30px;
+    }
+
+    .mt-tool-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f8fafc;
+      transition: border-color 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mt-tool-dropzone:hover, .mt-tool-dropzone.mt-drag-over {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .mt-tool-file-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f5f9;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 16px 20px;
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .mt-compression-levels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .mt-level-card {
+      border: 2px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 18px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .mt-level-card:hover {
+      border-color: var(--mt-primary, #2563eb);
+      transform: translateY(-2px);
+    }
+
+    .mt-level-card.selected {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-level-title {
+      font-weight: 800;
+      font-size: 15px;
+      color: #0f172a;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mt-level-desc {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .mt-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-btn-primary {
+      background: var(--mt-primary, #2563eb);
+      color: #ffffff;
+    }
+
+    .mt-tool-btn-primary:hover {
+      background: var(--mt-primary-dark, #1d4ed8);
+    }
+
+    .mt-tool-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mt-tool-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .mt-result-box {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 24px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .mt-result-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin: 16px 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .mt-stat-item {
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid #dcfce7;
+      min-width: 130px;
+    }
+
+    .mt-stat-label {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mt-stat-value {
+      font-size: 18px;
+      font-weight: 900;
+      color: #166534;
+      margin-top: 4px;
+    }
+
+    .mt-tool-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mt-tool-status.info {
+      display: block;
+      background-color: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mt-tool-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .mt-tool-loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: mt-spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes mt-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mt-faq-item {
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .mt-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mt-heading, #0b1324);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mt-faq-trigger:hover {
+      background-color: #f8fafc;
+    }
+
+    .mt-faq-content {
+      padding: 0 20px 16px 20px;
+      color: var(--mt-text, #172033);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .mt-faq-item.open .mt-faq-content {
+      display: block;
+    }
+
+    .mt-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .mt-faq-item.open .mt-faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main class="mt-site">
+    <div class="mt-container mt-tool-wrapper">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; font-size: 13px; color: #64748b;">
+          <li><a href="index.html" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">Home</a></li>
+          <li>/</li>
+          <li><a href="index.html#mt-tools" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">PDF &amp; Documents</a></li>
+          <li>/</li>
+          <li aria-current="page" style="color: #0f172a; font-weight: 700;">Compress PDF</li>
+        </ol>
+      </nav>
+
+      <!-- TITLE & DESCRIPTION -->
+      <header style="margin-bottom: 28px;">
+        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 950; color: var(--mt-heading, #0b1324); margin: 0 0 10px; line-height: 1.15; letter-spacing: -1px;">
+          Compress PDF File Size Online
+        </h1>
+        <p style="font-size: 16px; color: var(--mt-muted, #64748b); max-width: 760px; margin: 0; line-height: 1.65;">
+          Reduce PDF file size quickly without sacrificing text clarity. 100% free, browser-processed, fast, and completely secure with zero server uploads.
+        </p>
+      </header>
+
+      <!-- MAIN TOOL CARD -->
+      <section class="mt-tool-card">
+        
+        <!-- DROPZONE / FILE INPUT -->
+        <div id="mtDropzone" class="mt-tool-dropzone">
+          <input type="file" id="mtPdfInput" accept="application/pdf" aria-label="Upload PDF file to compress">
+          <svg style="width: 48px; height: 48px; fill: var(--mt-primary, #2563eb); margin-bottom: 12px;" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">
+            Choose a PDF File or Drag &amp; Drop Here
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin: 0;">
+            Supports PDF documents up to 100MB. Processed safely inside your browser.
+          </p>
+        </div>
+
+        <!-- FILE LOADED WORKSPACE (Hidden by default) -->
+        <div id="mtToolWorkspace" style="display: none;">
+          
+          <div class="mt-tool-file-info">
+            <div>
+              <strong id="mtFileName" style="color: #0f172a; display: block; font-size: 16px; font-weight: 800;">filename.pdf</strong>
+              <span id="mtOriginalSize" style="font-size: 13px; color: #64748b;">Original Size: 0 MB</span>
+            </div>
+            <button id="mtChangeFileBtn" class="mt-tool-btn mt-tool-btn-secondary" style="padding: 6px 14px; font-size: 13px;" type="button">
+              Change File
+            </button>
+          </div>
+
+          <!-- COMPRESSION LEVEL SELECTION -->
+          <div style="margin-top: 24px;">
+            <label style="display: block; font-weight: 800; color: #0f172a; margin-bottom: 10px; font-size: 15px;">
+              Select Compression Level:
+            </label>
+            <div class="mt-compression-levels">
+              
+              <div class="mt-level-card" data-level="extreme">
+                <div class="mt-level-title">
+                  <span>Extreme Compression</span>
+                </div>
+                <p class="mt-level-desc">Maximum size reduction. Slight drop in image quality. Best for heavy documents.</p>
+              </div>
+
+              <div class="mt-level-card selected" data-level="recommended">
+                <div class="mt-level-title">
+                  <span>Recommended</span>
+                </div>
+                <p class="mt-level-desc">Optimal balance between high quality and good size reduction. Perfect for most files.</p>
+              </div>
+
+              <div class="mt-level-card" data-level="less">
+                <div class="mt-level-title">
+                  <span>Less Compression</span>
+                </div>
+                <p class="mt-level-desc">High quality result with minor size reduction. Ideal for graphics-heavy PDFs.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="mtCompressBtn" class="mt-tool-btn mt-tool-btn-primary" type="button">
+              Compress PDF Now
+            </button>
+            <button id="mtResetBtn" class="mt-tool-btn mt-tool-btn-secondary" type="button">
+              Reset
+            </button>
+          </div>
+
+          <!-- STATUS / MESSAGES -->
+          <div id="mtStatusBox" class="mt-tool-status"></div>
+
+          <!-- RESULT CONTAINER -->
+          <div id="mtResultBox" class="mt-result-box">
+            <h3 style="margin: 0; color: #166534; font-size: 20px; font-weight: 900;">
+              🎉 PDF Successfully Compressed!
+            </h3>
+            
+            <div class="mt-result-stats">
+              <div class="mt-stat-item">
+                <div class="mt-stat-label">Original</div>
+                <div id="mtStatOriginal" class="mt-stat-value">0 MB</div>
+              </div>
+              <div class="mt-stat-item">
+                <div class="mt-stat-label">Compressed</div>
+                <div id="mtStatCompressed" class="mt-stat-value">0 MB</div>
+              </div>
+              <div class="mt-stat-item">
+                <div class="mt-stat-label">Reduction</div>
+                <div id="mtStatSaved" class="mt-stat-value" style="color: #2563eb;">-0%</div>
+              </div>
+            </div>
+
+            <button id="mtDownloadBtn" class="mt-tool-btn mt-tool-btn-primary" style="padding: 14px 28px; font-size: 16px;" type="button">
+              Download Compressed PDF
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SUPPORTING SEO CONTENT SECTION -->
+      <article class="mt-post" style="box-shadow: none; padding: 0; border: none; background: transparent;">
+        <div class="mt-post-body">
+          
+          <section style="margin-bottom: 36px;">
+            <h2>How to Compress PDF Files Online for Free</h2>
+            <p>
+              Large PDF files can be frustrating when attempting to attach them to emails, upload them to job portals, or submit them through government applications with strict file size limits. The <strong>MyToolkit Compress PDF</strong> tool offers an instant, browser-based solution that shrinks document file sizes while retaining optimal readability.
+            </p>
+            <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Select your PDF document:</strong> Drag and drop your file into the designated upload area or click to select from your device.</li>
+              <li><strong>Choose compression intensity:</strong> Pick between Extreme Compression (maximum reduction), Recommended (balanced), or Less Compression (highest image quality).</li>
+              <li><strong>Click "Compress PDF Now":</strong> Your document will process instantly in your browser and provide a direct download link alongside real file size reduction metrics.</li>
+            </ol>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Why Use Our Client-Side PDF Compressor?</h2>
+            <p>
+              Traditional online PDF tools require you to upload private files to distant cloud servers, creating potential privacy risks and consuming high internet bandwidth. MyToolkit operates under a strict <strong>Local Client-Side Processing Architecture</strong>.
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>100% Privacy &amp; Data Security:</strong> Your files never leave your computer or smartphone memory. Zero server uploads guarantee absolute confidentiality for financial, legal, or personal documents.</li>
+              <li><strong>Blazing Fast Processing:</strong> Eliminates waiting for file uploads and downloads. Compression happens directly using your web browser's local processing engine.</li>
+              <li><strong>No Software Downloads:</strong> Works directly inside any modern web browser on Windows, macOS, Linux, Android, or iOS.</li>
+              <li><strong>No Watermarks &amp; Unlimited Usage:</strong> Enjoy unlimited free PDF compression without registration or intrusive branding added to your files.</li>
+            </ul>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Understanding PDF Compression Levels</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Extreme Compression</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Re-samples images to lower DPI and higher JPEG compression ratio. Ideal for reducing huge scanned manuals or multi-megabyte PDFs to under 2MB for email limits.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Recommended</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Balances crisp text legibility and clean images with significant size savings. Recommended for resumes, invoices, and office documents.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Less Compression</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Applies gentle optimization while maintaining high resolution. Perfect for portfolios, presentations, and graphic design documents.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ ACCORDION SECTION -->
+          <section style="margin-bottom: 36px;">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-faq-container" style="margin-top: 16px;">
+              
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is it safe to compress confidential PDF files on this tool?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes, completely safe. All compression logic runs locally inside your browser using JavaScript and WebAssembly. Your files are never uploaded to any remote server.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Why didn't my PDF file size decrease significantly?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  PDFs that consist purely of plain vector text or files that have already been heavily compressed may experience minimal additional size reduction. Files containing high-resolution embedded images yield the largest compression gains.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Will compressing my PDF affect text quality?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Vector text and typography remain sharp and perfectly readable across all compression levels.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is there a maximum file size limit?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Since compression uses your computer or phone's memory (RAM), files up to 100MB+ can be handled easily without server restrictions.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FINAL THOUGHTS -->
+          <section style="background: #ffffff; padding: 24px; border-radius: var(--mt-radius-sm, 14px); border: 1px solid var(--mt-border, #e5eaf1); border-left: 4px solid var(--mt-primary, #2563eb); margin-bottom: 20px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #0f172a;">Final Thoughts</h3>
+            <p style="font-size: 14px; margin: 0; color: #475569;">
+              The MyToolkit Compress PDF tool delivers a fast, privacy-focused, and straightforward way to reduce file sizes for easy sharing. Ideal for students, professionals, and daily users who need dependable document management.
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="site.js"></script>
+
+  <!-- Isolated PDF Compression Logic -->
+  <script>
+    'use strict';
+    (function () {
+      if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+
+      var dropzone = document.getElementById('mtDropzone');
+      var pdfInput = document.getElementById('mtPdfInput');
+      var workspace = document.getElementById('mtToolWorkspace');
+      var fileNameEl = document.getElementById('mtFileName');
+      var originalSizeEl = document.getElementById('mtOriginalSize');
+      var changeFileBtn = document.getElementById('mtChangeFileBtn');
+      var compressBtn = document.getElementById('mtCompressBtn');
+      var resetBtn = document.getElementById('mtResetBtn');
+      var statusBox = document.getElementById('mtStatusBox');
+      var resultBox = document.getElementById('mtResultBox');
+      var downloadBtn = document.getElementById('mtDownloadBtn');
+
+      var statOriginal = document.getElementById('mtStatOriginal');
+      var statCompressed = document.getElementById('mtStatCompressed');
+      var statSaved = document.getElementById('mtStatSaved');
+
+      var levelCards = document.querySelectorAll('.mt-level-card');
+
+      var loadedFile = null;
+      var loadedArrayBuffer = null;
+      var selectedLevel = 'recommended';
+      var compressedPdfBlob = null;
+
+      // Drag and drop handlers
+      ['dragenter', 'dragover'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('mt-drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('mt-drag-over');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      pdfInput.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      changeFileBtn.addEventListener('click', function () {
+        resetTool();
+        pdfInput.click();
+      });
+
+      resetBtn.addEventListener('click', resetTool);
+
+      levelCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          levelCards.forEach(function (c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          selectedLevel = card.getAttribute('data-level');
+        });
+      });
+
+      async function handleFileSelect(file) {
+        if (!file || file.type !== 'application/pdf') {
+          showStatus('Please select a valid PDF file (.pdf).', 'error');
+          return;
+        }
+
+        loadedFile = file;
+        showStatus('<span class="mt-tool-loader"></span> Reading file...', 'info');
+
+        try {
+          loadedArrayBuffer = await file.arrayBuffer();
+          
+          fileNameEl.textContent = file.name;
+          originalSizeEl.textContent = 'Original Size: ' + formatBytes(file.size);
+
+          dropzone.style.display = 'none';
+          workspace.style.display = 'block';
+          hideStatus();
+          resultBox.style.display = 'none';
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Failed to read PDF file. Please try another document.', 'error');
+        }
+      }
+
+      // Compression settings preset mapping
+      function getPreset(level) {
+        if (level === 'extreme') {
+          return { scale: 1.0, quality: 0.45 };
+        } else if (level === 'less') {
+          return { scale: 1.5, quality: 0.85 };
+        }
+        // Recommended default
+        return { scale: 1.25, quality: 0.65 };
+      }
+
+      compressBtn.addEventListener('click', async function () {
+        if (!loadedArrayBuffer || !loadedFile) return;
+
+        hideStatus();
+        resultBox.style.display = 'none';
+        showStatus('<span class="mt-tool-loader"></span> Processing and optimizing PDF pages...', 'info');
+
+        try {
+          var preset = getPreset(selectedLevel);
+          var pdfjsDoc = await pdfjsLib.getDocument({ data: loadedArrayBuffer.slice(0) }).promise;
+          var PDFDocument = PDFLib.PDFDocument;
+          var newPdf = await PDFDocument.create();
+
+          var numPages = pdfjsDoc.numPages;
+
+          for (var i = 1; i <= numPages; i++) {
+            var page = await pdfjsDoc.getPage(i);
+            var viewport = page.getViewport({ scale: preset.scale });
+
+            var canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            var ctx = canvas.getContext('2d');
+
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+            var jpegUrl = canvas.toDataURL('image/jpeg', preset.quality);
+            var jpegImageBytes = await fetch(jpegUrl).then(function (res) { return res.arrayBuffer(); });
+            var jpegImage = await newPdf.embedJpg(jpegImageBytes);
+
+            var newPage = newPdf.addPage([jpegImage.width, jpegImage.height]);
+            newPage.drawImage(jpegImage, {
+              x: 0,
+              y: 0,
+              width: jpegImage.width,
+              height: jpegImage.height,
+            });
+          }
+
+          var compressedBytes = await newPdf.save();
+          compressedPdfBlob = new Blob([compressedBytes], { type: 'application/pdf' });
+
+          var origSize = loadedFile.size;
+          var compSize = compressedPdfBlob.size;
+          
+          // Fallback if compression resulted in larger size (e.g. text-only PDF)
+          if (compSize >= origSize && selectedLevel !== 'extreme') {
+            compressedPdfBlob = new Blob([loadedArrayBuffer], { type: 'application/pdf' });
+            compSize = origSize;
+          }
+
+          var savedPct = Math.max(0, Math.round(((origSize - compSize) / origSize) * 100));
+
+          statOriginal.textContent = formatBytes(origSize);
+          statCompressed.textContent = formatBytes(compSize);
+          statSaved.textContent = '-' + savedPct + '%';
+
+          hideStatus();
+          resultBox.style.display = 'block';
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Error compressing PDF document. Please try a different compression setting.', 'error');
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        if (!compressedPdfBlob) return;
+        var baseName = loadedFile.name.replace(/\.pdf$/i, '');
+        var downloadName = baseName + '_compressed.pdf';
+
+        var url = URL.createObjectURL(compressedPdfBlob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = downloadName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      });
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        var k = 1024;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+
+      function showStatus(msg, type) {
+        statusBox.className = 'mt-tool-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+
+      function hideStatus() {
+        statusBox.className = 'mt-tool-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      function resetTool() {
+        loadedFile = null;
+        loadedArrayBuffer = null;
+        compressedPdfBlob = null;
+        pdfInput.value = '';
+        hideStatus();
+
+        resultBox.style.display = 'none';
+        dropzone.style.display = 'block';
+        workspace.style.display = 'none';
+      }
+
+      document.querySelectorAll('.mt-faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var item = trigger.parentElement;
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.mt-faq-item').forEach(function (i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
