@@ -1,0 +1,968 @@
+<!-- SEO TITLE:
+Free PDF to JPG Converter Online – Convert PDF Pages to Images | MyToolkit
+-->
+<!-- META DESCRIPTION:
+Convert PDF pages to high-quality JPG or PNG images online instantly. 100% free, private, and fast browser-side PDF to Image converter by MyToolkit.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free PDF to JPG Converter Online – Convert PDF Pages to Images | MyToolkit</title>
+  <meta name="description" content="Convert PDF pages to high-quality JPG or PNG images online instantly. 100% free, private, and fast browser-side PDF to Image converter by MyToolkit.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/pdf-to-jpg.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free PDF to JPG Converter Online | MyToolkit">
+  <meta property="og:description" content="Convert PDF document pages to high-resolution JPG or PNG images directly in your browser. Free, secure, and private.">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/pdf-to-jpg.html">
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- pdf.js and jszip for client-side rendering and ZIP generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF to JPG Converter - MyToolkit",
+    "url": "https://sheroz255.github.io/mytoolkit-app/pdf-to-jpg.html",
+    "description": "Convert PDF pages to high-quality JPG or PNG images directly inside your browser without uploading files to remote servers.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Scoped styling for Tool-specific UI elements */
+    .mt-tool-wrapper {
+      padding: 40px 0 60px;
+    }
+
+    .mt-tool-card {
+      background: #ffffff;
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius, 20px);
+      padding: 30px;
+      box-shadow: var(--mt-shadow, 0 8px 30px rgba(15,23,42,.055));
+      margin-bottom: 30px;
+    }
+
+    .mt-tool-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f8fafc;
+      transition: border-color 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mt-tool-dropzone:hover, .mt-tool-dropzone.mt-drag-over {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .mt-tool-file-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f5f9;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 16px 20px;
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Options Panel */
+    .mt-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+    }
+
+    .mt-option-group label {
+      display: block;
+      font-weight: 800;
+      font-size: 13px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .mt-option-group select,
+    .mt-option-group input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #ffffff;
+      color: #0f172a;
+      outline: none;
+    }
+
+    .mt-option-group select:focus,
+    .mt-option-group input:focus {
+      border-color: var(--mt-primary, #2563eb);
+    }
+
+    /* Output Results Preview Grid */
+    .mt-result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      max-height: 480px;
+      overflow-y: auto;
+      padding: 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+      background-color: #f8fafc;
+    }
+
+    .mt-page-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .mt-page-item:hover {
+      border-color: var(--mt-primary, #2563eb);
+      transform: translateY(-2px);
+    }
+
+    .mt-page-item canvas {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background: #ffffff;
+    }
+
+    .mt-page-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+    .mt-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-btn-primary {
+      background: var(--mt-primary, #2563eb);
+      color: #ffffff;
+    }
+
+    .mt-tool-btn-primary:hover {
+      background: var(--mt-primary-dark, #1d4ed8);
+    }
+
+    .mt-tool-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mt-tool-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .mt-tool-btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 8px;
+    }
+
+    .mt-tool-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mt-tool-status.info {
+      display: block;
+      background-color: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mt-tool-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .mt-tool-status.success {
+      display: block;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .mt-tool-loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: mt-spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes mt-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mt-faq-item {
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .mt-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mt-heading, #0b1324);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mt-faq-trigger:hover {
+      background-color: #f8fafc;
+    }
+
+    .mt-faq-content {
+      padding: 0 20px 16px 20px;
+      color: var(--mt-text, #172033);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .mt-faq-item.open .mt-faq-content {
+      display: block;
+    }
+
+    .mt-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .mt-faq-item.open .mt-faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main class="mt-site">
+    <div class="mt-container mt-tool-wrapper">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; font-size: 13px; color: #64748b;">
+          <li><a href="index.html" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">Home</a></li>
+          <li>/</li>
+          <li><a href="index.html#mt-tools" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">PDF &amp; Documents</a></li>
+          <li>/</li>
+          <li aria-current="page" style="color: #0f172a; font-weight: 700;">PDF to JPG</li>
+        </ol>
+      </nav>
+
+      <!-- TITLE & DESCRIPTION -->
+      <header style="margin-bottom: 28px;">
+        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 950; color: var(--mt-heading, #0b1324); margin: 0 0 10px; line-height: 1.15; letter-spacing: -1px;">
+          Convert PDF to JPG Online
+        </h1>
+        <p style="font-size: 16px; color: var(--mt-muted, #64748b); max-width: 760px; margin: 0; line-height: 1.65;">
+          Extract high-resolution JPG or PNG images from any PDF document. Convert all pages or specific page ranges instantly in your browser with 100% data privacy.
+        </p>
+      </header>
+
+      <!-- MAIN TOOL CARD -->
+      <section class="mt-tool-card">
+        
+        <!-- DROPZONE / FILE INPUT -->
+        <div id="mtDropzone" class="mt-tool-dropzone">
+          <input type="file" id="mtPdfInput" accept="application/pdf" aria-label="Upload PDF file to convert to images">
+          <svg style="width: 48px; height: 48px; fill: var(--mt-primary, #2563eb); margin-bottom: 12px;" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+          </svg>
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">
+            Choose a PDF File or Drag &amp; Drop Here
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin: 0;">
+            Supports documents up to 100MB. Processed entirely inside your browser.
+          </p>
+        </div>
+
+        <!-- FILE LOADED WORKSPACE (Hidden by default) -->
+        <div id="mtToolWorkspace" style="display: none;">
+          
+          <div class="mt-tool-file-info">
+            <div>
+              <strong id="mtFileName" style="color: #0f172a; display: block; font-size: 16px; font-weight: 800;">filename.pdf</strong>
+              <span id="mtPageCount" style="font-size: 13px; color: #64748b;">0 Pages</span>
+            </div>
+            <button id="mtChangeFileBtn" class="mt-tool-btn mt-tool-btn-secondary" style="padding: 6px 14px; font-size: 13px;" type="button">
+              Change File
+            </button>
+          </div>
+
+          <!-- CONVERSION OPTIONS -->
+          <div class="mt-options-grid">
+            
+            <div class="mt-option-group">
+              <label for="mtOptFormat">Image Format</label>
+              <select id="mtOptFormat">
+                <option value="jpeg" selected>JPG (JPEG Image)</option>
+                <option value="png">PNG (Lossless Image)</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptDpi">Quality &amp; Resolution</label>
+              <select id="mtOptDpi">
+                <option value="1.5">Standard Quality (150 DPI)</option>
+                <option value="2.5" selected>High Quality (250 DPI - Recommended)</option>
+                <option value="3.5">Ultra High Quality (350 DPI)</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptRange">Pages to Convert</label>
+              <input type="text" id="mtOptRange" placeholder="e.g. All or 1-3, 5" value="All" />
+            </div>
+
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="mtConvertBtn" class="mt-tool-btn mt-tool-btn-primary" type="button">
+              Convert PDF to Images
+            </button>
+            <button id="mtResetBtn" class="mt-tool-btn mt-tool-btn-secondary" type="button">
+              Reset
+            </button>
+          </div>
+
+          <!-- STATUS / MESSAGES -->
+          <div id="mtStatusBox" class="mt-tool-status"></div>
+
+          <!-- RENDERED IMAGE PAGES RESULTS -->
+          <div id="mtResultsContainer" style="display: none; margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 800;">
+                Extracted Images (<span id="mtRenderedCount">0</span>)
+              </h3>
+              <button id="mtDownloadAllZipBtn" class="mt-tool-btn mt-tool-btn-primary" style="padding: 8px 18px; font-size: 14px;" type="button">
+                Download All Images (ZIP)
+              </button>
+            </div>
+
+            <div id="mtResultGrid" class="mt-result-grid">
+              <!-- Rendered Canvases & Download buttons dynamically injected here -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SUPPORTING SEO CONTENT SECTION -->
+      <article class="mt-post" style="box-shadow: none; padding: 0; border: none; background: transparent;">
+        <div class="mt-post-body">
+          
+          <section style="margin-bottom: 36px;">
+            <h2>How to Convert PDF to JPG Online for Free</h2>
+            <p>
+              Extracting images from a PDF or converting document pages into image files is necessary when sharing pages on social media, embedding documents into presentations, or filling out online forms that only accept image uploads. The <strong>MyToolkit PDF to JPG</strong> converter delivers an easy, high-resolution solution completely inside your web browser.
+            </p>
+            <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Upload your PDF file:</strong> Drag and drop your document into the box above or click to select a file from your device.</li>
+              <li><strong>Configure output settings:</strong> Choose between JPG or PNG formats, set image quality resolution (DPI), and select specific page ranges if desired.</li>
+              <li><strong>Convert and download:</strong> Click <strong>Convert PDF to Images</strong> to render your pages. Download individual image files or save all pages together in a compressed ZIP archive.</li>
+            </ol>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>100% Client-Side Privacy &amp; Data Security</h2>
+            <p>
+              Many online document tools upload your sensitive PDF files to external cloud servers for processing, creating serious security risks for bank statements, legal contracts, or confidential reports. MyToolkit operates using a <strong>Local Client-Side Processing Engine</strong>.
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Complete Privacy:</strong> Your PDF files never leave your web browser memory or get uploaded to any remote server.</li>
+              <li><strong>Fast Performance:</strong> Eliminates long upload wait times for large, multi-page PDF documents.</li>
+              <li><strong>No Software Downloads:</strong> Runs instantly inside Google Chrome, Apple Safari, Mozilla Firefox, Microsoft Edge, and mobile browsers.</li>
+              <li><strong>Unlimited Free Conversion:</strong> Convert unlimited documents without registration fees, email signups, or added watermarks.</li>
+            </ul>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Output Image Quality &amp; Format Options</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">JPG Format</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Small file size with clean visual clarity. Ideal for general document sharing, emails, and web uploads.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">PNG Format</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Lossless quality rendering. Best for documents containing high-contrast text, technical diagrams, or fine line art.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">High Resolution (DPI)</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Adjust DPI settings up to 350 DPI to ensure small text and detailed graphics render crisply without blurriness.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ ACCORDION SECTION -->
+          <section style="margin-bottom: 36px;">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-faq-container" style="margin-top: 16px;">
+              
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is it safe to convert private PDF files on this site?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes, 100% safe. All conversions run locally inside your device browser via WebAssembly and HTML5 Canvas. Your PDF data is never uploaded to any remote server.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Can I convert specific pages instead of the whole PDF?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes. Type custom page ranges in the "Pages to Convert" field (for instance: <code>1-3, 5</code>) to convert only the exact pages you need.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>How do I save all converted images at once?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Once conversion finishes, click the "Download All Images (ZIP)" button to download a single compressed file containing all extracted page images.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Will text in my PDF remain readable in the output JPG?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes. Selecting "High Quality (250 DPI)" or "Ultra High Quality (350 DPI)" ensures small fonts and details render sharp and legible.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FINAL THOUGHTS -->
+          <section style="background: #ffffff; padding: 24px; border-radius: var(--mt-radius-sm, 14px); border: 1px solid var(--mt-border, #e5eaf1); border-left: 4px solid var(--mt-primary, #2563eb); margin-bottom: 20px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #0f172a;">Final Thoughts</h3>
+            <p style="font-size: 14px; margin: 0; color: #475569;">
+              The MyToolkit PDF to JPG converter provides a seamless, privacy-conscious, and fast solution for turning PDF pages into crisp images directly in your browser.
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="site.js"></script>
+
+  <!-- Isolated PDF to JPG Logic -->
+  <script>
+    'use strict';
+    (function () {
+      if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+
+      var dropzone = document.getElementById('mtDropzone');
+      var pdfInput = document.getElementById('mtPdfInput');
+      var workspace = document.getElementById('mtToolWorkspace');
+      var fileNameEl = document.getElementById('mtFileName');
+      var pageCountEl = document.getElementById('mtPageCount');
+      var changeFileBtn = document.getElementById('mtChangeFileBtn');
+      var convertBtn = document.getElementById('mtConvertBtn');
+      var resetBtn = document.getElementById('mtResetBtn');
+      var statusBox = document.getElementById('mtStatusBox');
+      
+      var optFormat = document.getElementById('mtOptFormat');
+      var optDpi = document.getElementById('mtOptDpi');
+      var optRange = document.getElementById('mtOptRange');
+
+      var resultsContainer = document.getElementById('mtResultsContainer');
+      var resultGrid = document.getElementById('mtResultGrid');
+      var renderedCountEl = document.getElementById('mtRenderedCount');
+      var downloadAllZipBtn = document.getElementById('mtDownloadAllZipBtn');
+
+      var loadedFile = null;
+      var loadedArrayBuffer = null;
+      var pdfJsDoc = null;
+      var totalPages = 0;
+      var renderedDataUrls = [];
+
+      // Drag and drop handlers
+      ['dragenter', 'dragover'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('mt-drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('mt-drag-over');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      pdfInput.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      changeFileBtn.addEventListener('click', function () {
+        resetTool();
+        pdfInput.click();
+      });
+
+      resetBtn.addEventListener('click', resetTool);
+
+      async function handleFileSelect(file) {
+        if (!file || file.type !== 'application/pdf') {
+          showStatus('Please select a valid PDF file (.pdf).', 'error');
+          return;
+        }
+
+        loadedFile = file;
+        showStatus('<span class="mt-tool-loader"></span> Loading and analyzing PDF document...', 'info');
+
+        try {
+          loadedArrayBuffer = await file.arrayBuffer();
+          var loadingTask = pdfjsLib.getDocument({ data: loadedArrayBuffer.slice(0) });
+          pdfJsDoc = await loadingTask.promise;
+          totalPages = pdfJsDoc.numPages;
+
+          if (totalPages === 0) {
+            showStatus('The selected PDF file contains no pages.', 'error');
+            return;
+          }
+
+          fileNameEl.textContent = file.name;
+          pageCountEl.textContent = totalPages + ' Page' + (totalPages > 1 ? 's' : '');
+
+          dropzone.style.display = 'none';
+          workspace.style.display = 'block';
+          resultsContainer.style.display = 'none';
+          hideStatus();
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Failed to read PDF file. It may be encrypted or corrupted.', 'error');
+        }
+      }
+
+      function parsePageRanges(inputStr, maxPage) {
+        var clean = inputStr.trim().toLowerCase();
+        if (clean === 'all' || clean === '') {
+          var all = [];
+          for (var p = 1; p <= maxPage; p++) all.push(p);
+          return all;
+        }
+
+        var pages = new Set();
+        var parts = clean.split(',');
+
+        for (var i = 0; i < parts.length; i++) {
+          var part = parts[i].trim();
+          if (!part) continue;
+
+          if (part.indexOf('-') !== -1) {
+            var rangeParts = part.split('-');
+            var start = parseInt(rangeParts[0], 10);
+            var end = parseInt(rangeParts[1], 10);
+
+            if (isNaN(start) || isNaN(end) || start < 1 || end > maxPage || start > end) {
+              return null;
+            }
+            for (var k = start; k <= end; k++) pages.add(k);
+          } else {
+            var single = parseInt(part, 10);
+            if (isNaN(single) || single < 1 || single > maxPage) {
+              return null;
+            }
+            pages.add(single);
+          }
+        }
+        return Array.from(pages).sort(function (a, b) { return a - b; });
+      }
+
+      convertBtn.addEventListener('click', async function () {
+        if (!pdfJsDoc || totalPages === 0) return;
+
+        hideStatus();
+        resultGrid.innerHTML = '';
+        renderedDataUrls = [];
+        resultsContainer.style.display = 'none';
+
+        var targetPages = parsePageRanges(optRange.value, totalPages);
+        if (!targetPages || targetPages.length === 0) {
+          showStatus('Please enter a valid page range between 1 and ' + totalPages + ' (e.g. All or 1-3, 5).', 'error');
+          return;
+        }
+
+        var scale = parseFloat(optDpi.value) || 2.0;
+        var format = optFormat.value; // 'jpeg' or 'png'
+        var mimeType = format === 'png' ? 'image/png' : 'image/jpeg';
+        var fileExt = format === 'png' ? '.png' : '.jpg';
+
+        showStatus('<span class="mt-tool-loader"></span> Converting PDF pages to images...', 'info');
+
+        try {
+          for (var i = 0; i < targetPages.length; i++) {
+            var pageNum = targetPages[i];
+            var page = await pdfJsDoc.getPage(pageNum);
+            var viewport = page.getViewport({ scale: scale });
+
+            var canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            var ctx = canvas.getContext('2d');
+
+            if (format === 'jpeg') {
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+            var dataUrl = canvas.toDataURL(mimeType, 0.92);
+            renderedDataUrls.push({
+              pageNum: pageNum,
+              dataUrl: dataUrl,
+              ext: fileExt
+            });
+
+            // Build UI Card
+            var card = document.createElement('div');
+            card.className = 'mt-page-item';
+
+            var cardCanvas = document.createElement('canvas');
+            var previewViewport = page.getViewport({ scale: 0.25 });
+            cardCanvas.width = previewViewport.width;
+            cardCanvas.height = previewViewport.height;
+            var cardCtx = cardCanvas.getContext('2d');
+            if (format === 'jpeg') {
+              cardCtx.fillStyle = '#FFFFFF';
+              cardCtx.fillRect(0, 0, cardCanvas.width, cardCanvas.height);
+            }
+            await page.render({ canvasContext: cardCtx, viewport: previewViewport }).promise;
+
+            var label = document.createElement('div');
+            label.className = 'mt-page-label';
+            label.textContent = 'Page ' + pageNum;
+
+            var dBtn = document.createElement('button');
+            dBtn.className = 'mt-tool-btn mt-tool-btn-secondary mt-tool-btn-sm';
+            dBtn.textContent = 'Download ' + format.toUpperCase();
+            (function (pNum, dUrl, ext) {
+              dBtn.addEventListener('click', function () {
+                var baseName = loadedFile.name.replace(/\.pdf$/i, '');
+                downloadDataUrl(dUrl, baseName + '_page_' + pNum + ext);
+              });
+            })(pageNum, dataUrl, fileExt);
+
+            card.appendChild(cardCanvas);
+            card.appendChild(label);
+            card.appendChild(dBtn);
+
+            resultGrid.appendChild(card);
+          }
+
+          renderedCountEl.textContent = renderedDataUrls.length;
+          resultsContainer.style.display = 'block';
+          hideStatus();
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Error converting PDF pages. Please check file and settings.', 'error');
+        }
+      });
+
+      downloadAllZipBtn.addEventListener('click', async function () {
+        if (renderedDataUrls.length === 0 || !window.JSZip) return;
+
+        showStatus('<span class="mt-tool-loader"></span> Creating ZIP archive...', 'info');
+
+        try {
+          var zip = new JSZip();
+          var baseName = loadedFile.name.replace(/\.pdf$/i, '');
+
+          for (var i = 0; i < renderedDataUrls.length; i++) {
+            var item = renderedDataUrls[i];
+            var base64Data = item.dataUrl.split(',')[1];
+            zip.file(baseName + '_page_' + item.pageNum + item.ext, base64Data, { base64: true });
+          }
+
+          var zipBlob = await zip.generateAsync({ type: 'blob' });
+          downloadBlob(zipBlob, baseName + '_images.zip');
+          hideStatus();
+
+        } catch (e) {
+          console.error(e);
+          showStatus('Failed to generate ZIP archive.', 'error');
+        }
+      });
+
+      function downloadDataUrl(dataUrl, fileName) {
+        var a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      function downloadBlob(blob, fileName) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      }
+
+      function showStatus(msg, type) {
+        statusBox.className = 'mt-tool-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+
+      function hideStatus() {
+        statusBox.className = 'mt-tool-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      function resetTool() {
+        loadedFile = null;
+        loadedArrayBuffer = null;
+        pdfJsDoc = null;
+        totalPages = 0;
+        renderedDataUrls = [];
+        pdfInput.value = '';
+        optRange.value = 'All';
+        resultGrid.innerHTML = '';
+        resultsContainer.style.display = 'none';
+        hideStatus();
+
+        dropzone.style.display = 'block';
+        workspace.style.display = 'none';
+      }
+
+      document.querySelectorAll('.mt-faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var item = trigger.parentElement;
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.mt-faq-item').forEach(function (i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
