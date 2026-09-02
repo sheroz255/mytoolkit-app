@@ -235,6 +235,24 @@
     });
   }
 
+    // URL se category read karke apply karne ke liye
+  function checkUrlCategory() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var cat = urlParams.get('cat');
+    if (cat) {
+      applyFilter(cat);
+      var toolsSection = document.getElementById('mt-tools');
+      if (toolsSection) {
+        setTimeout(function() {
+          var headerOffset = 78;
+          var position = toolsSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: position, behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }
+  checkUrlCategory();
+
   /* =========================================================
      SMOOTH INTERNAL ANCHOR LINKS (same-page only)
      ========================================================= */
