@@ -1,0 +1,978 @@
+<!-- SEO TITLE:
+Free JPG to PDF Converter Online – Convert Images to PDF | MyToolkit
+-->
+<!-- META DESCRIPTION:
+Convert JPG, PNG, and WEBP images to PDF online instantly. Customize page orientation, size, and margins. 100% free, private, and secure browser-side converter by MyToolkit.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free JPG to PDF Converter Online – Convert Images to PDF | MyToolkit</title>
+  <meta name="description" content="Convert JPG, PNG, and WEBP images to PDF online instantly. Customize page orientation, size, and margins. 100% free, private, and secure browser-side converter by MyToolkit.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/jpg-to-pdf.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free JPG to PDF Converter Online | MyToolkit">
+  <meta property="og:description" content="Convert JPG and PNG images into a PDF document directly inside your browser. 100% free, private, and secure.">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/jpg-to-pdf.html">
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- pdf-lib for client-side image-to-PDF compilation -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JPG to PDF Converter - MyToolkit",
+    "url": "https://sheroz255.github.io/mytoolkit-app/jpg-to-pdf.html",
+    "description": "Convert JPG, PNG, WEBP, and BMP images into a professional PDF document instantly inside your browser.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Scoped styling for Tool-specific UI elements */
+    .mt-tool-wrapper {
+      padding: 40px 0 60px;
+    }
+
+    .mt-tool-card {
+      background: #ffffff;
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius, 20px);
+      padding: 30px;
+      box-shadow: var(--mt-shadow, 0 8px 30px rgba(15,23,42,.055));
+      margin-bottom: 30px;
+    }
+
+    .mt-tool-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f8fafc;
+      transition: border-color 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mt-tool-dropzone:hover, .mt-tool-dropzone.mt-drag-over {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Image List Preview Grid */
+    .mt-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+      background-color: #f8fafc;
+    }
+
+    .mt-image-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .mt-image-card:hover {
+      border-color: var(--mt-primary, #2563eb);
+      transform: translateY(-2px);
+    }
+
+    .mt-image-card img {
+      max-width: 100%;
+      max-height: 100px;
+      object-fit: contain;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      background: #f1f5f9;
+    }
+
+    .mt-image-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #334155;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 6px;
+    }
+
+    .mt-card-controls {
+      display: flex;
+      gap: 4px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .mt-icon-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 3px 6px;
+      font-size: 12px;
+      cursor: pointer;
+      color: #334155;
+      line-height: 1;
+    }
+
+    .mt-icon-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .mt-icon-btn.remove:hover {
+      background: #fef2f2;
+      color: #991b1b;
+      border-color: #fecaca;
+    }
+
+    /* Options Panel */
+    .mt-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+    }
+
+    .mt-option-group label {
+      display: block;
+      font-weight: 800;
+      font-size: 13px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .mt-option-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #ffffff;
+      color: #0f172a;
+      outline: none;
+    }
+
+    .mt-option-group select:focus {
+      border-color: var(--mt-primary, #2563eb);
+    }
+
+    .mt-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-btn-primary {
+      background: var(--mt-primary, #2563eb);
+      color: #ffffff;
+    }
+
+    .mt-tool-btn-primary:hover {
+      background: var(--mt-primary-dark, #1d4ed8);
+    }
+
+    .mt-tool-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mt-tool-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .mt-tool-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mt-tool-status.info {
+      display: block;
+      background-color: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mt-tool-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .mt-tool-status.success {
+      display: block;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .mt-tool-loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: mt-spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes mt-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mt-faq-item {
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .mt-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mt-heading, #0b1324);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mt-faq-trigger:hover {
+      background-color: #f8fafc;
+    }
+
+    .mt-faq-content {
+      padding: 0 20px 16px 20px;
+      color: var(--mt-text, #172033);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .mt-faq-item.open .mt-faq-content {
+      display: block;
+    }
+
+    .mt-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .mt-faq-item.open .mt-faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main class="mt-site">
+    <div class="mt-container mt-tool-wrapper">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; font-size: 13px; color: #64748b;">
+          <li><a href="index.html" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">Home</a></li>
+          <li>/</li>
+          <li><a href="index.html#mt-tools" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">PDF &amp; Documents</a></li>
+          <li>/</li>
+          <li aria-current="page" style="color: #0f172a; font-weight: 700;">JPG to PDF</li>
+        </ol>
+      </nav>
+
+      <!-- TITLE & DESCRIPTION -->
+      <header style="margin-bottom: 28px;">
+        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 950; color: var(--mt-heading, #0b1324); margin: 0 0 10px; line-height: 1.15; letter-spacing: -1px;">
+          Convert JPG to PDF Online
+        </h1>
+        <p style="font-size: 16px; color: var(--mt-muted, #64748b); max-width: 760px; margin: 0; line-height: 1.65;">
+          Combine JPG, PNG, WEBP, and BMP images into a clean PDF document. Reorder pages, adjust margins and page sizes easily. 100% free and client-side secure.
+        </p>
+      </header>
+
+      <!-- MAIN TOOL CARD -->
+      <section class="mt-tool-card">
+        
+        <!-- DROPZONE / FILE INPUT -->
+        <div id="mtDropzone" class="mt-tool-dropzone">
+          <input type="file" id="mtImageInput" accept="image/jpeg, image/png, image/webp, image/bmp" multiple aria-label="Upload images to convert to PDF">
+          <svg style="width: 48px; height: 48px; fill: var(--mt-primary, #2563eb); margin-bottom: 12px;" viewBox="0 0 24 24">
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+          </svg>
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">
+            Choose Image Files or Drag &amp; Drop Here
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin: 0;">
+            Supports JPG, JPEG, PNG, WEBP, and BMP images. Processed entirely inside your browser.
+          </p>
+        </div>
+
+        <!-- FILE LOADED WORKSPACE (Hidden by default) -->
+        <div id="mtToolWorkspace" style="display: none;">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <strong style="color: #0f172a; font-size: 16px; font-weight: 800;" id="mtImageCount">0 Images Loaded</strong>
+              <span style="display: block; font-size: 13px; color: #64748b;">Use arrows on image cards to reorder pages before compiling.</span>
+            </div>
+            <button id="mtAddMoreBtn" class="mt-tool-btn mt-tool-btn-secondary" style="padding: 6px 14px; font-size: 13px;" type="button">
+              + Add More Images
+            </button>
+          </div>
+
+          <!-- IMAGE PREVIEW GRID -->
+          <div id="mtImageGrid" class="mt-image-grid">
+            <!-- Dynamic Image Cards loaded via JS -->
+          </div>
+
+          <!-- DOCUMENT LAYOUT OPTIONS -->
+          <div class="mt-options-grid">
+            
+            <div class="mt-option-group">
+              <label for="mtOptOrientation">Page Orientation</label>
+              <select id="mtOptOrientation">
+                <option value="auto" selected>Auto-Detect (Portrait/Landscape)</option>
+                <option value="portrait">Portrait</option>
+                <option value="landscape">Landscape</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptPageSize">Page Size</label>
+              <select id="mtOptPageSize">
+                <option value="fit" selected>Fit Image (Natural Aspect Ratio)</option>
+                <option value="a4">A4 (210 x 297 mm)</option>
+                <option value="letter">US Letter (8.5 x 11 in)</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptMargin">Page Margins</label>
+              <select id="mtOptMargin">
+                <option value="none" selected>No Margin (Full Bleed)</option>
+                <option value="small">Small Margin (0.5 in)</option>
+                <option value="large">Large Margin (1.0 in)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="mtConvertBtn" class="mt-tool-btn mt-tool-btn-primary" type="button">
+              Convert to PDF Now
+            </button>
+            <button id="mtResetBtn" class="mt-tool-btn mt-tool-btn-secondary" type="button">
+              Reset All
+            </button>
+          </div>
+
+          <!-- STATUS / MESSAGES -->
+          <div id="mtStatusBox" class="mt-tool-status"></div>
+
+        </div>
+
+      </section>
+
+      <!-- SUPPORTING SEO CONTENT SECTION -->
+      <article class="mt-post" style="box-shadow: none; padding: 0; border: none; background: transparent;">
+        <div class="mt-post-body">
+          
+          <section style="margin-bottom: 36px;">
+            <h2>How to Convert Images to PDF Online for Free</h2>
+            <p>
+              Combining multiple images into a single PDF file is an essential task for submitting online applications, compiling scanned receipts, sharing photo portfolios, or sending legal documents. The <strong>MyToolkit JPG to PDF</strong> converter allows you to instantly transform images into clean, standardized PDF files right inside your browser.
+            </p>
+            <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Upload your images:</strong> Drag and drop your JPG, PNG, WEBP, or BMP image files into the upload dropzone above.</li>
+              <li><strong>Arrange and customize:</strong> Use the reorder controls to organize page order, and configure page size, margin spacing, or orientation as desired.</li>
+              <li><strong>Generate and download:</strong> Click <strong>Convert to PDF Now</strong> to build and automatically download your consolidated PDF file.</li>
+            </ol>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>100% Client-Side Privacy &amp; Data Security</h2>
+            <p>
+              Many online converters upload your personal images to third-party web servers, exposing sensitive photographs, personal IDs, or private documents to cloud security risks. MyToolkit processes all images using <strong>100% Browser-Side Execution</strong>.
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Complete Privacy:</strong> Your photographs and graphics never leave your personal computer or mobile phone memory.</li>
+              <li><strong>Fast Conversion Speed:</strong> Processing happens locally on your device without upload delays or bandwidth bottlenecks.</li>
+              <li><strong>No File Limits or Watermarks:</strong> Convert as many images as you need for free without added logos or watermarks.</li>
+              <li><strong>Device Agnostic:</strong> Fully functional on iOS (iPhone/iPad), Android, macOS, Windows, and Linux.</li>
+            </ul>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Supported Image Formats &amp; Page Controls</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Multi-Format Support</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Seamlessly handles JPEG, JPG, PNG, WEBP, and BMP images in a single batch conversion.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Flexible Page Sizes</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Select standard A4 or US Letter page templates or allow pages to automatically match natural image dimensions.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Page Reordering</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Easily swap image positions up or down to ensure your multi-page PDF document follows the exact order required.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ ACCORDION SECTION -->
+          <section style="margin-bottom: 36px;">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-faq-container" style="margin-top: 16px;">
+              
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is it safe to convert private photos and documents here?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes, completely safe. All conversions take place directly within your web browser using local Web APIs. Your images are never transmitted to any external server.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Can I convert multiple images into a single PDF file?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes. You can select multiple images at once, reorder them as needed, and combine them into one seamless multi-page PDF.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Are there any file size or conversion limits?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  No fixed server limits exist. Because processing utilizes your device's memory, you can convert dozens of images without restrictions.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Does converting JPG to PDF reduce image resolution?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  No. The original image pixel data and color quality are embedded cleanly into the PDF structure without lossy re-compression.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FINAL THOUGHTS -->
+          <section style="background: #ffffff; padding: 24px; border-radius: var(--mt-radius-sm, 14px); border: 1px solid var(--mt-border, #e5eaf1); border-left: 4px solid var(--mt-primary, #2563eb); margin-bottom: 20px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #0f172a;">Final Thoughts</h3>
+            <p style="font-size: 14px; margin: 0; color: #475569;">
+              The MyToolkit JPG to PDF converter offers an efficient, privacy-focused tool for transforming image collections into organized PDF documents without hassle.
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="site.js"></script>
+
+  <!-- Isolated JPG to PDF Logic -->
+  <script>
+    'use strict';
+    (function () {
+      var dropzone = document.getElementById('mtDropzone');
+      var imageInput = document.getElementById('mtImageInput');
+      var workspace = document.getElementById('mtToolWorkspace');
+      var imageGrid = document.getElementById('mtImageGrid');
+      var imageCountEl = document.getElementById('mtImageCount');
+      var addMoreBtn = document.getElementById('mtAddMoreBtn');
+      var convertBtn = document.getElementById('mtConvertBtn');
+      var resetBtn = document.getElementById('mtResetBtn');
+      var statusBox = document.getElementById('mtStatusBox');
+
+      var optOrientation = document.getElementById('mtOptOrientation');
+      var optPageSize = document.getElementById('mtOptPageSize');
+      var optMargin = document.getElementById('mtOptMargin');
+
+      var fileList = [];
+
+      // Drag and drop handlers
+      ['dragenter', 'dragover'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('mt-drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('mt-drag-over');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFiles(files);
+        }
+      });
+
+      imageInput.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFiles(e.target.files);
+        }
+      });
+
+      addMoreBtn.addEventListener('click', function () {
+        imageInput.click();
+      });
+
+      resetBtn.addEventListener('click', resetTool);
+
+      function handleFiles(incomingFiles) {
+        var validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/bmp'];
+        
+        for (var i = 0; i < incomingFiles.length; i++) {
+          var file = incomingFiles[i];
+          if (validTypes.indexOf(file.type) !== -1 || /\.jpe?g|\.png|\.webp|\.bmp$/i.test(file.name)) {
+            fileList.push(file);
+          }
+        }
+
+        if (fileList.length === 0) {
+          showStatus('Please select valid image files (JPG, PNG, WEBP, or BMP).', 'error');
+          return;
+        }
+
+        hideStatus();
+        dropzone.style.display = 'none';
+        workspace.style.display = 'block';
+
+        renderImageGrid();
+      }
+
+      function renderImageGrid() {
+        imageGrid.innerHTML = '';
+        imageCountEl.textContent = fileList.length + ' Image' + (fileList.length > 1 ? 's' : '') + ' Loaded';
+
+        fileList.forEach(function (file, index) {
+          var card = document.createElement('div');
+          card.className = 'mt-image-card';
+
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.alt = file.name;
+
+          var name = document.createElement('div');
+          name.className = 'mt-image-name';
+          name.textContent = file.name;
+
+          var controls = document.createElement('div');
+          controls.className = 'mt-card-controls';
+
+          var prevBtn = document.createElement('button');
+          prevBtn.className = 'mt-icon-btn';
+          prevBtn.innerHTML = '&#9664;';
+          prevBtn.type = 'button';
+          prevBtn.disabled = index === 0;
+          prevBtn.addEventListener('click', function () { moveItem(index, index - 1); });
+
+          var nextBtn = document.createElement('button');
+          nextBtn.className = 'mt-icon-btn';
+          nextBtn.innerHTML = '&#9654;';
+          nextBtn.type = 'button';
+          nextBtn.disabled = index === fileList.length - 1;
+          nextBtn.addEventListener('click', function () { moveItem(index, index + 1); });
+
+          var removeBtn = document.createElement('button');
+          removeBtn.className = 'mt-icon-btn remove';
+          removeBtn.innerHTML = '&#10005;';
+          removeBtn.type = 'button';
+          removeBtn.addEventListener('click', function () { removeItem(index); });
+
+          controls.appendChild(prevBtn);
+          controls.appendChild(nextBtn);
+          controls.appendChild(removeBtn);
+
+          card.appendChild(img);
+          card.appendChild(name);
+          card.appendChild(controls);
+
+          imageGrid.appendChild(card);
+        });
+      }
+
+      function moveItem(fromIndex, toIndex) {
+        if (toIndex < 0 || toIndex >= fileList.length) return;
+        var temp = fileList[fromIndex];
+        fileList[fromIndex] = fileList[toIndex];
+        fileList[toIndex] = temp;
+        renderImageGrid();
+      }
+
+      function removeItem(index) {
+        fileList.splice(index, 1);
+        if (fileList.length === 0) {
+          resetTool();
+        } else {
+          renderImageGrid();
+        }
+      }
+
+      convertBtn.addEventListener('click', async function () {
+        if (fileList.length === 0) return;
+
+        hideStatus();
+        showStatus('<span class="mt-tool-loader"></span> Converting images and building PDF document...', 'info');
+
+        try {
+          var PDFDocument = PDFLib.PDFDocument;
+          var pdfDoc = await PDFDocument.create();
+
+          var orientationOpt = optOrientation.value;
+          var pageSizeOpt = optPageSize.value;
+          var marginOpt = optMargin.value;
+
+          var marginSize = 0;
+          if (marginOpt === 'small') marginSize = 36; // 0.5 in
+          if (marginOpt === 'large') marginSize = 72; // 1.0 in
+
+          for (var i = 0; i < fileList.length; i++) {
+            var file = fileList[i];
+            var imageBytes = await file.arrayBuffer();
+
+            // Convert WebP / BMP or non-standard JPGs to canvas JPEG blob if necessary
+            var image = await embedImageInPdf(pdfDoc, file, imageBytes);
+            if (!image) continue;
+
+            var imgWidth = image.width;
+            var imgHeight = image.height;
+
+            var pageW, pageH;
+
+            if (pageSizeOpt === 'a4') {
+              pageW = 595.28;
+              pageH = 841.89;
+            } else if (pageSizeOpt === 'letter') {
+              pageW = 612.00;
+              pageH = 792.00;
+            } else {
+              // fit image
+              pageW = imgWidth + marginSize * 2;
+              pageH = imgHeight + marginSize * 2;
+            }
+
+            // Orientation check
+            if (orientationOpt === 'portrait' && pageW > pageH) {
+              var tmp = pageW; pageW = pageH; pageH = tmp;
+            } else if (orientationOpt === 'landscape' && pageH > pageW) {
+              var tmp2 = pageW; pageW = pageH; pageH = tmp2;
+            } else if (orientationOpt === 'auto') {
+              if (imgWidth > imgHeight && pageH > pageW && pageSizeOpt !== 'fit') {
+                var tmp3 = pageW; pageW = pageH; pageH = tmp3;
+              }
+            }
+
+            var page = pdfDoc.addPage([pageW, pageH]);
+
+            var availableW = pageW - marginSize * 2;
+            var availableH = pageH - marginSize * 2;
+
+            var scale = Math.min(availableW / imgWidth, availableH / imgHeight, 1.0);
+            if (pageSizeOpt === 'fit') scale = 1.0;
+
+            var drawW = imgWidth * scale;
+            var drawH = imgHeight * scale;
+
+            var posX = (pageW - drawW) / 2;
+            var posY = (pageH - drawH) / 2;
+
+            page.drawImage(image, {
+              x: posX,
+              y: posY,
+              width: drawW,
+              height: drawH
+            });
+          }
+
+          var pdfBytes = await pdfDoc.save();
+          var blob = new Blob([pdfBytes], { type: 'application/pdf' });
+          
+          downloadBlob(blob, 'converted_images.pdf');
+          showStatus('Images successfully converted to PDF and downloaded!', 'success');
+
+        } catch (err) {
+          console.error(err);
+          showStatus('An error occurred during image conversion. Please try again.', 'error');
+        }
+      });
+
+      async function embedImageInPdf(pdfDoc, file, arrayBuffer) {
+        try {
+          if (file.type === 'image/jpeg' || /\.jpe?g$/i.test(file.name)) {
+            return await pdfDoc.embedJpg(arrayBuffer);
+          } else if (file.type === 'image/png' || /\.png$/i.test(file.name)) {
+            return await pdfDoc.embedPng(arrayBuffer);
+          } else {
+            // For WEBP, BMP or others render to canvas JPEG
+            var jpegBuffer = await convertImageToJpegBuffer(file);
+            return await pdfDoc.embedJpg(jpegBuffer);
+          }
+        } catch (e) {
+          // Fallback to canvas rasterization if direct embedding fails
+          var jpegBufferFallback = await convertImageToJpegBuffer(file);
+          return await pdfDoc.embedJpg(jpegBufferFallback);
+        }
+      }
+
+      function convertImageToJpegBuffer(file) {
+        return new Promise(function (resolve, reject) {
+          var img = new Image();
+          var url = URL.createObjectURL(file);
+          img.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            URL.revokeObjectURL(url);
+
+            canvas.toBlob(function (blob) {
+              blob.arrayBuffer().then(resolve).catch(reject);
+            }, 'image/jpeg', 0.92);
+          };
+          img.onerror = reject;
+          img.src = url;
+        });
+      }
+
+      function downloadBlob(blob, fileName) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      }
+
+      function showStatus(msg, type) {
+        statusBox.className = 'mt-tool-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+
+      function hideStatus() {
+        statusBox.className = 'mt-tool-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      function resetTool() {
+        fileList = [];
+        imageInput.value = '';
+        imageGrid.innerHTML = '';
+        hideStatus();
+
+        dropzone.style.display = 'block';
+        workspace.style.display = 'none';
+      }
+
+      document.querySelectorAll('.mt-faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var item = trigger.parentElement;
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.mt-faq-item').forEach(function (i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
