@@ -32,9 +32,10 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- mammoth.js and html2pdf.js for browser-side docx parsing and PDF rendering -->
+  <!-- mammoth.js, html2canvas, and jspdf for reliable client-side docx parsing and PDF rendering -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -144,47 +145,64 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
       border-color: var(--mt-primary, #2563eb);
     }
 
-    .mt-document-preview {
+    .mt-document-preview-wrapper {
       width: 100%;
-      min-height: 250px;
-      max-height: 450px;
+      max-height: 480px;
       overflow-y: auto;
-      padding: 24px;
+      padding: 16px;
       border: 1px solid #cbd5e1;
       border-radius: var(--mt-radius-sm, 14px);
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #0f172a;
-      background: #ffffff;
+      background: #f1f5f9;
       margin-top: 16px;
+    }
+
+    .mt-document-preview {
+      width: 100%;
+      max-width: 794px; /* A4 Ratio Width */
+      margin: 0 auto;
+      padding: 40px;
+      font-family: 'Calibri', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #111827 !important;
+      background: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-sizing: border-box;
     }
 
     .mt-document-preview h1,
     .mt-document-preview h2,
     .mt-document-preview h3 {
-      color: #0f172a;
-      margin-top: 1em;
+      color: #0f172a !important;
+      margin-top: 1.2em;
       margin-bottom: 0.5em;
+      line-height: 1.25;
+    }
+
+    .mt-document-preview p {
+      margin-bottom: 1rem;
+      color: #111827 !important;
     }
 
     .mt-document-preview img {
       max-width: 100%;
       height: auto;
       border-radius: 6px;
-      margin: 10px 0;
+      margin: 12px 0;
+      display: block;
     }
 
     .mt-document-preview table {
       width: 100%;
       border-collapse: collapse;
-      margin: 12px 0;
+      margin: 16px 0;
     }
 
     .mt-document-preview th,
     .mt-document-preview td {
       border: 1px solid #cbd5e1;
-      padding: 8px 12px;
+      padding: 10px 14px;
+      color: #111827 !important;
     }
 
     .mt-tool-btn {
@@ -410,15 +428,6 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
             </div>
 
             <div class="mt-option-group">
-              <label for="mtOptMargin">Page Margins</label>
-              <select id="mtOptMargin">
-                <option value="15" selected>Standard Margin (15 mm)</option>
-                <option value="10">Narrow Margin (10 mm)</option>
-                <option value="20">Wide Margin (20 mm)</option>
-              </select>
-            </div>
-
-            <div class="mt-option-group">
               <label for="mtOptOrientation">Page Orientation</label>
               <select id="mtOptOrientation">
                 <option value="portrait" selected>Portrait</option>
@@ -452,7 +461,9 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
               </button>
             </div>
 
-            <div id="mtDocPreview" class="mt-document-preview"></div>
+            <div class="mt-document-preview-wrapper">
+              <div id="mtDocPreview" class="mt-document-preview"></div>
+            </div>
           </div>
 
         </div>
@@ -470,7 +481,7 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
             </p>
             <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
               <li><strong>Upload your Word file:</strong> Drag and drop your `.docx` file into the upload zone above or click to select a file from your computer or phone.</li>
-              <li><strong>Customize PDF options:</strong> Select your preferred PDF page size (A4 or US Letter), margins, and orientation (Portrait or Landscape).</li>
+              <li><strong>Customize PDF options:</strong> Select your preferred PDF page size (A4 or US Letter) and orientation (Portrait or Landscape).</li>
               <li><strong>Convert &amp; Download:</strong> Click <strong>Convert to PDF Now</strong> to render your document and automatically download the finalized PDF file.</li>
             </ol>
           </section>
@@ -651,7 +662,6 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
       var statusBox = document.getElementById('mtStatusBox');
 
       var optPageSize = document.getElementById('mtOptPageSize');
-      var optMargin = document.getElementById('mtOptMargin');
       var optOrientation = document.getElementById('mtOptOrientation');
 
       var resultBox = document.getElementById('mtResultBox');
@@ -706,7 +716,7 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
         }
 
         loadedFile = file;
-        showStatus('<span class="mt-tool-loader"></span> Reading and parsing Word document...', 'info');
+        showStatus('<span class="mt-tool-loader"></span> Reading Word document...', 'info');
 
         try {
           loadedArrayBuffer = await file.arrayBuffer();
@@ -730,10 +740,10 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
 
         hideStatus();
         resultBox.style.display = 'none';
-        showStatus('<span class="mt-tool-loader"></span> Parsing document formatting, images, and generating PDF...', 'info');
+        showStatus('<span class="mt-tool-loader"></span> Processing document formatting & generating PDF...', 'info');
 
         try {
-          // Convert DOCX ArrayBuffer to HTML via mammoth
+          // Convert DOCX ArrayBuffer to HTML via mammoth with image support
           var result = await window.mammoth.convertToHtml({ arrayBuffer: loadedArrayBuffer });
           parsedHtml = result.value;
 
@@ -744,11 +754,11 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
           docPreview.innerHTML = parsedHtml;
           resultBox.style.display = 'block';
 
-          // Trigger PDF render via html2pdf
-          await renderAndDownloadPdf(false);
+          // Render PDF
+          await generateAndSavePdf();
 
           hideStatus();
-          showStatus('Word document converted to PDF successfully!', 'success');
+          showStatus('Word document converted to PDF successfully! Download started.', 'success');
 
         } catch (err) {
           console.error(err);
@@ -757,42 +767,59 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
       });
 
       downloadPdfBtn.addEventListener('click', function () {
-        renderAndDownloadPdf(true);
+        generateAndSavePdf();
       });
 
-      async function renderAndDownloadPdf(isManualClick) {
-        if (!window.html2pdf || !docPreview.innerHTML) return;
+      async function generateAndSavePdf() {
+        if (!window.jspdf || !window.html2canvas || !docPreview) return;
 
-        if (isManualClick) {
-          showStatus('<span class="mt-tool-loader"></span> Exporting PDF file...', 'info');
-        }
-
-        var marginVal = parseInt(optMargin.value, 10) || 15;
-        var pageSizeVal = optPageSize.value || 'a4';
-        var orientationVal = optOrientation.value || 'portrait';
-
-        var baseName = loadedFile.name.replace(/\.(docx|doc)$/i, '');
-        var pdfFileName = baseName + '.pdf';
-
-        var opt = {
-          margin: marginVal,
-          filename: pdfFileName,
-          image: { type: 'jpeg', quality: 0.95 },
-          html2canvas: { scale: 2, useCORS: true },
-          jsPDF: { unit: 'mm', format: pageSizeVal, orientation: orientationVal }
-        };
+        showStatus('<span class="mt-tool-loader"></span> Rendering PDF pages...', 'info');
 
         try {
-          await window.html2pdf().set(opt).from(docPreview).save();
-          if (isManualClick) {
-            hideStatus();
-            showStatus('PDF downloaded successfully!', 'success');
+          var pageSizeVal = optPageSize.value || 'a4';
+          var orientationVal = optOrientation.value || 'portrait';
+
+          var jsPDF = window.jspdf.jsPDF;
+          var pdf = new jsPDF({
+            orientation: orientationVal,
+            unit: 'mm',
+            format: pageSizeVal
+          });
+
+          // Canvas render for pixel-perfect filled PDF pages
+          var canvas = await html2canvas(docPreview, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            logging: false
+          });
+
+          var imgData = canvas.toDataURL('image/jpeg', 0.95);
+          var imgWidth = pdf.internal.pageSize.getWidth();
+          var pageHeight = pdf.internal.pageSize.getHeight();
+          var imgHeight = (canvas.height * imgWidth) / canvas.width;
+          var heightLeft = imgHeight;
+          var position = 0;
+
+          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+
+          while (heightLeft > 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
           }
+
+          var baseName = loadedFile.name.replace(/\.(docx|doc)$/i, '');
+          pdf.save(baseName + '.pdf');
+
+          hideStatus();
+          showStatus('PDF file generated and downloaded successfully!', 'success');
+
         } catch (ePdf) {
           console.error('PDF export error:', ePdf);
-          if (isManualClick) {
-            showStatus('Error exporting PDF file. Please try again.', 'error');
-          }
+          showStatus('Error exporting PDF file. Please try again.', 'error');
         }
       }
 
@@ -843,3 +870,4 @@ Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% fre
   </script>
 </body>
 </html>
+
