@@ -1,0 +1,845 @@
+<!-- SEO TITLE:
+Free Word to PDF Converter Online – Convert Docx to PDF Securely | MyToolkit
+-->
+<!-- META DESCRIPTION:
+Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% free, private, accurate, and secure browser-side Word to PDF converter by MyToolkit.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Word to PDF Converter Online – Convert Docx to PDF | MyToolkit</title>
+  <meta name="description" content="Convert Microsoft Word documents (.docx, .doc) to PDF online instantly. 100% free, private, accurate, and secure browser-side Word to PDF converter by MyToolkit.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/word-to-pdf.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Word to PDF Converter Online | MyToolkit">
+  <meta property="og:description" content="Convert Word documents (.docx) to PDF files directly inside your browser. 100% free, secure, and private.">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/word-to-pdf.html">
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- mammoth.js and html2pdf.js for browser-side docx parsing and PDF rendering -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word to PDF Converter - MyToolkit",
+    "url": "https://sheroz255.github.io/mytoolkit-app/word-to-pdf.html",
+    "description": "Convert Microsoft Word (.docx) documents to PDF files directly inside your browser without uploading files to remote servers.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Scoped styling for Tool-specific UI elements */
+    .mt-tool-wrapper {
+      padding: 40px 0 60px;
+    }
+
+    .mt-tool-card {
+      background: #ffffff;
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius, 20px);
+      padding: 30px;
+      box-shadow: var(--mt-shadow, 0 8px 30px rgba(15,23,42,.055));
+      margin-bottom: 30px;
+    }
+
+    .mt-tool-dropzone {
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f8fafc;
+      transition: border-color 0.2s, background-color 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mt-tool-dropzone:hover, .mt-tool-dropzone.mt-drag-over {
+      border-color: var(--mt-primary, #2563eb);
+      background-color: #eff6ff;
+    }
+
+    .mt-tool-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .mt-tool-file-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f1f5f9;
+      border-radius: var(--mt-radius-sm, 14px);
+      padding: 16px 20px;
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Options Grid */
+    .mt-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--mt-radius-sm, 14px);
+    }
+
+    .mt-option-group label {
+      display: block;
+      font-weight: 800;
+      font-size: 13px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .mt-option-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #ffffff;
+      color: #0f172a;
+      outline: none;
+    }
+
+    .mt-option-group select:focus {
+      border-color: var(--mt-primary, #2563eb);
+    }
+
+    .mt-document-preview {
+      width: 100%;
+      min-height: 250px;
+      max-height: 450px;
+      overflow-y: auto;
+      padding: 24px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #0f172a;
+      background: #ffffff;
+      margin-top: 16px;
+    }
+
+    .mt-document-preview h1,
+    .mt-document-preview h2,
+    .mt-document-preview h3 {
+      color: #0f172a;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    .mt-document-preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+
+    .mt-document-preview table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+
+    .mt-document-preview th,
+    .mt-document-preview td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+    }
+
+    .mt-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--mt-radius-sm, 14px);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mt-tool-btn-primary {
+      background: var(--mt-primary, #2563eb);
+      color: #ffffff;
+    }
+
+    .mt-tool-btn-primary:hover {
+      background: var(--mt-primary-dark, #1d4ed8);
+    }
+
+    .mt-tool-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mt-tool-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .mt-tool-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .mt-tool-status.info {
+      display: block;
+      background-color: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mt-tool-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .mt-tool-status.success {
+      display: block;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .mt-tool-loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: mt-spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes mt-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mt-faq-item {
+      border: 1px solid var(--mt-border, #e5eaf1);
+      border-radius: var(--mt-radius-sm, 14px);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .mt-faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mt-heading, #0b1324);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mt-faq-trigger:hover {
+      background-color: #f8fafc;
+    }
+
+    .mt-faq-content {
+      padding: 0 20px 16px 20px;
+      color: var(--mt-text, #172033);
+      line-height: 1.65;
+      display: none;
+    }
+
+    .mt-faq-item.open .mt-faq-content {
+      display: block;
+    }
+
+    .mt-faq-icon {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .mt-faq-item.open .mt-faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main class="mt-site">
+    <div class="mt-container mt-tool-wrapper">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; font-size: 13px; color: #64748b;">
+          <li><a href="index.html" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">Home</a></li>
+          <li>/</li>
+          <li><a href="index.html#mt-tools" style="color: var(--mt-primary, #2563eb); text-decoration: none; font-weight: 700;">PDF &amp; Documents</a></li>
+          <li>/</li>
+          <li aria-current="page" style="color: #0f172a; font-weight: 700;">Word to PDF</li>
+        </ol>
+      </nav>
+
+      <!-- TITLE & DESCRIPTION -->
+      <header style="margin-bottom: 28px;">
+        <h1 style="font-size: clamp(28px, 4vw, 40px); font-weight: 950; color: var(--mt-heading, #0b1324); margin: 0 0 10px; line-height: 1.15; letter-spacing: -1px;">
+          Convert Word to PDF Online (.docx)
+        </h1>
+        <p style="font-size: 16px; color: var(--mt-muted, #64748b); max-width: 760px; margin: 0; line-height: 1.65;">
+          Convert Word documents (.docx) to PDF format instantly. Preserves headings, images, and text formatting. 100% free, fast, and processed securely inside your browser.
+        </p>
+      </header>
+
+      <!-- MAIN TOOL CARD -->
+      <section class="mt-tool-card">
+        
+        <!-- DROPZONE / FILE INPUT -->
+        <div id="mtDropzone" class="mt-tool-dropzone">
+          <input type="file" id="mtDocxInput" accept=".docx, .doc, application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Upload Word document to convert to PDF">
+          <svg style="width: 48px; height: 48px; fill: var(--mt-primary, #2563eb); margin-bottom: 12px;" viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">
+            Choose a Word File (.docx) or Drag &amp; Drop Here
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin: 0;">
+            Supports Microsoft Word files (.docx). Processed entirely on your device.
+          </p>
+        </div>
+
+        <!-- FILE LOADED WORKSPACE (Hidden by default) -->
+        <div id="mtToolWorkspace" style="display: none;">
+          
+          <div class="mt-tool-file-info">
+            <div>
+              <strong id="mtFileName" style="color: #0f172a; display: block; font-size: 16px; font-weight: 800;">filename.docx</strong>
+              <span id="mtFileSize" style="font-size: 13px; color: #64748b;">0 KB</span>
+            </div>
+            <button id="mtChangeFileBtn" class="mt-tool-btn mt-tool-btn-secondary" style="padding: 6px 14px; font-size: 13px;" type="button">
+              Change File
+            </button>
+          </div>
+
+          <!-- CONVERSION OPTIONS -->
+          <div class="mt-options-grid">
+            
+            <div class="mt-option-group">
+              <label for="mtOptPageSize">PDF Page Size</label>
+              <select id="mtOptPageSize">
+                <option value="a4" selected>A4 Standard (210 x 297 mm)</option>
+                <option value="letter">US Letter (8.5 x 11 in)</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptMargin">Page Margins</label>
+              <select id="mtOptMargin">
+                <option value="15" selected>Standard Margin (15 mm)</option>
+                <option value="10">Narrow Margin (10 mm)</option>
+                <option value="20">Wide Margin (20 mm)</option>
+              </select>
+            </div>
+
+            <div class="mt-option-group">
+              <label for="mtOptOrientation">Page Orientation</label>
+              <select id="mtOptOrientation">
+                <option value="portrait" selected>Portrait</option>
+                <option value="landscape">Landscape</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="mtConvertBtn" class="mt-tool-btn mt-tool-btn-primary" type="button">
+              Convert to PDF Now
+            </button>
+            <button id="mtResetBtn" class="mt-tool-btn mt-tool-btn-secondary" type="button">
+              Reset
+            </button>
+          </div>
+
+          <!-- STATUS / MESSAGES -->
+          <div id="mtStatusBox" class="mt-tool-status"></div>
+
+          <!-- PARSED PREVIEW CONTAINER -->
+          <div id="mtResultBox" style="display: none; margin-top: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <h3 style="margin: 0; color: #0f172a; font-size: 18px; font-weight: 800;">
+                Parsed Document Preview
+              </h3>
+              <button id="mtDownloadPdfBtn" class="mt-tool-btn mt-tool-btn-primary" style="padding: 8px 18px; font-size: 14px;" type="button">
+                Download PDF File
+              </button>
+            </div>
+
+            <div id="mtDocPreview" class="mt-document-preview"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SUPPORTING SEO CONTENT SECTION -->
+      <article class="mt-post" style="box-shadow: none; padding: 0; border: none; background: transparent;">
+        <div class="mt-post-body">
+          
+          <section style="margin-bottom: 36px;">
+            <h2>How to Convert Word to PDF Online for Free</h2>
+            <p>
+              Converting Microsoft Word files (.docx) to PDF format is essential when you want to lock document formatting, prevent unauthorized editing, or ensure your file looks identical on every device or mobile screen. The <strong>MyToolkit Word to PDF</strong> converter allows you to transform Word documents into standardized PDF files instantly without needing Microsoft Office installed.
+            </p>
+            <ol style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Upload your Word file:</strong> Drag and drop your `.docx` file into the upload zone above or click to select a file from your computer or phone.</li>
+              <li><strong>Customize PDF options:</strong> Select your preferred PDF page size (A4 or US Letter), margins, and orientation (Portrait or Landscape).</li>
+              <li><strong>Convert &amp; Download:</strong> Click <strong>Convert to PDF Now</strong> to render your document and automatically download the finalized PDF file.</li>
+            </ol>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>100% Client-Side Privacy &amp; Data Security</h2>
+            <p>
+              Unlike traditional online converters that upload your sensitive documents to remote third-party cloud servers, MyToolkit operates using a <strong>100% Browser-Side Processing Engine</strong>.
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+              <li><strong>Absolute Privacy:</strong> Your legal agreements, resumes, and personal documents stay in your browser memory and never leave your device.</li>
+              <li><strong>Fast Conversion:</strong> No waiting for heavy file uploads or network download queues.</li>
+              <li><strong>No Software Required:</strong> Works directly in Google Chrome, Apple Safari, Mozilla Firefox, Microsoft Edge, and mobile web browsers.</li>
+              <li><strong>No Usage Caps or Watermarks:</strong> Enjoy unlimited document conversions with zero costs, no registration, and no added branding.</li>
+            </ul>
+          </section>
+
+          <section style="margin-bottom: 36px;">
+            <h2>Supported Features &amp; Layout Formatting</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Rich Text &amp; Headings</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Preserves document headings (H1, H2, H3), bold text, italics, lists, and paragraph line spacing.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Embedded Images</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Extracts and renders pictures, graphics, and visual elements cleanly inside your output PDF.</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 14px;">
+                <h3 style="margin-top: 0; font-size: 16px; color: #0f172a;">Table Structure</h3>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Renders Word tables and data grids with clean borders and readable cell alignment.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ ACCORDION SECTION -->
+          <section style="margin-bottom: 36px;">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-faq-container" style="margin-top: 16px;">
+              
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Is it safe to convert private Word documents on this website?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Yes, 100% safe. All document parsing and PDF rendering happen locally in your web browser. Your Word files are never uploaded to any remote server.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Does this tool support older `.doc` files?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  This tool natively supports standard modern `.docx` files (Microsoft Word 2007 and newer). Older `.doc` files can be saved as `.docx` first before converting.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Do I need Microsoft Word installed on my device?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  No. You can convert `.docx` files on any computer, tablet, or smartphone without needing Word or Microsoft 365 software.
+                </div>
+              </div>
+
+              <div class="mt-faq-item">
+                <button class="mt-faq-trigger" type="button">
+                  <span>Are there any limits on document length?</span>
+                  <span class="mt-faq-icon">&#9660;</span>
+                </button>
+                <div class="mt-faq-content">
+                  Since conversion relies on your device's memory (RAM), typical documents up to 100MB+ can be converted smoothly without restrictions.
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- FINAL THOUGHTS -->
+          <section style="background: #ffffff; padding: 24px; border-radius: var(--mt-radius-sm, 14px); border: 1px solid var(--mt-border, #e5eaf1); border-left: 4px solid var(--mt-primary, #2563eb); margin-bottom: 20px;">
+            <h3 style="margin: 0 0 8px; font-size: 18px; color: #0f172a;">Final Thoughts</h3>
+            <p style="font-size: 14px; margin: 0; color: #475569;">
+              The MyToolkit Word to PDF converter offers a fast, dependable, and privacy-conscious way to transform Word files into universal PDF documents directly in your web browser.
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="site.js"></script>
+
+  <!-- Isolated Word to PDF Logic -->
+  <script>
+    'use strict';
+    (function () {
+      var dropzone = document.getElementById('mtDropzone');
+      var docxInput = document.getElementById('mtDocxInput');
+      var workspace = document.getElementById('mtToolWorkspace');
+      var fileNameEl = document.getElementById('mtFileName');
+      var fileSizeEl = document.getElementById('mtFileSize');
+      var changeFileBtn = document.getElementById('mtChangeFileBtn');
+      var convertBtn = document.getElementById('mtConvertBtn');
+      var resetBtn = document.getElementById('mtResetBtn');
+      var statusBox = document.getElementById('mtStatusBox');
+
+      var optPageSize = document.getElementById('mtOptPageSize');
+      var optMargin = document.getElementById('mtOptMargin');
+      var optOrientation = document.getElementById('mtOptOrientation');
+
+      var resultBox = document.getElementById('mtResultBox');
+      var docPreview = document.getElementById('mtDocPreview');
+      var downloadPdfBtn = document.getElementById('mtDownloadPdfBtn');
+
+      var loadedFile = null;
+      var loadedArrayBuffer = null;
+      var parsedHtml = '';
+
+      // Drag and drop handlers
+      ['dragenter', 'dragover'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.add('mt-drag-over');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(function (eventName) {
+        dropzone.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('mt-drag-over');
+        }, false);
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+        var files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      docxInput.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      changeFileBtn.addEventListener('click', function () {
+        resetTool();
+        docxInput.click();
+      });
+
+      resetBtn.addEventListener('click', resetTool);
+
+      async function handleFileSelect(file) {
+        if (!file || !(/\.(docx|doc)$/i.test(file.name))) {
+          showStatus('Please select a valid Word document (.docx).', 'error');
+          return;
+        }
+
+        loadedFile = file;
+        showStatus('<span class="mt-tool-loader"></span> Reading and parsing Word document...', 'info');
+
+        try {
+          loadedArrayBuffer = await file.arrayBuffer();
+
+          fileNameEl.textContent = file.name;
+          fileSizeEl.textContent = formatBytes(file.size);
+
+          dropzone.style.display = 'none';
+          workspace.style.display = 'block';
+          resultBox.style.display = 'none';
+          hideStatus();
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Failed to read Word file. Please select a valid .docx document.', 'error');
+        }
+      }
+
+      convertBtn.addEventListener('click', async function () {
+        if (!loadedArrayBuffer || !loadedFile || !window.mammoth) return;
+
+        hideStatus();
+        resultBox.style.display = 'none';
+        showStatus('<span class="mt-tool-loader"></span> Parsing document formatting, images, and generating PDF...', 'info');
+
+        try {
+          // Convert DOCX ArrayBuffer to HTML via mammoth
+          var result = await window.mammoth.convertToHtml({ arrayBuffer: loadedArrayBuffer });
+          parsedHtml = result.value;
+
+          if (!parsedHtml || parsedHtml.trim() === '') {
+            parsedHtml = '<p>[Empty Word Document Content]</p>';
+          }
+
+          docPreview.innerHTML = parsedHtml;
+          resultBox.style.display = 'block';
+
+          // Trigger PDF render via html2pdf
+          await renderAndDownloadPdf(false);
+
+          hideStatus();
+          showStatus('Word document converted to PDF successfully!', 'success');
+
+        } catch (err) {
+          console.error(err);
+          showStatus('Error parsing Word document. Please ensure file is a valid .docx file.', 'error');
+        }
+      });
+
+      downloadPdfBtn.addEventListener('click', function () {
+        renderAndDownloadPdf(true);
+      });
+
+      async function renderAndDownloadPdf(isManualClick) {
+        if (!window.html2pdf || !docPreview.innerHTML) return;
+
+        if (isManualClick) {
+          showStatus('<span class="mt-tool-loader"></span> Exporting PDF file...', 'info');
+        }
+
+        var marginVal = parseInt(optMargin.value, 10) || 15;
+        var pageSizeVal = optPageSize.value || 'a4';
+        var orientationVal = optOrientation.value || 'portrait';
+
+        var baseName = loadedFile.name.replace(/\.(docx|doc)$/i, '');
+        var pdfFileName = baseName + '.pdf';
+
+        var opt = {
+          margin: marginVal,
+          filename: pdfFileName,
+          image: { type: 'jpeg', quality: 0.95 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'mm', format: pageSizeVal, orientation: orientationVal }
+        };
+
+        try {
+          await window.html2pdf().set(opt).from(docPreview).save();
+          if (isManualClick) {
+            hideStatus();
+            showStatus('PDF downloaded successfully!', 'success');
+          }
+        } catch (ePdf) {
+          console.error('PDF export error:', ePdf);
+          if (isManualClick) {
+            showStatus('Error exporting PDF file. Please try again.', 'error');
+          }
+        }
+      }
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        var k = 1024;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+
+      function showStatus(msg, type) {
+        statusBox.className = 'mt-tool-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+
+      function hideStatus() {
+        statusBox.className = 'mt-tool-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      function resetTool() {
+        loadedFile = null;
+        loadedArrayBuffer = null;
+        parsedHtml = '';
+        docxInput.value = '';
+        docPreview.innerHTML = '';
+        resultBox.style.display = 'none';
+        hideStatus();
+
+        dropzone.style.display = 'block';
+        workspace.style.display = 'none';
+      }
+
+      document.querySelectorAll('.mt-faq-trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var item = trigger.parentElement;
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.mt-faq-item').forEach(function (i) { i.classList.remove('open'); });
+          if (!isOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
