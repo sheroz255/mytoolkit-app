@@ -1,499 +1,296 @@
-<!-- SEO TITLE:
-Free Website Scanner – Inspect Meta Tags, Headings & SEO Elements | MyToolkit
--->
-
-<!-- META DESCRIPTION:
-Scan any website or HTML markup for technical SEO issues, meta tags, title length, missing images ALT, and heading structure instantly. Free and private.
--->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Cookie check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
 
-<title>Free Website Scanner – Inspect Meta Tags, Headings &amp; SEO Elements | MyToolkit</title>
-<meta name="description" content="Scan any website or HTML markup for technical SEO issues, meta tags, title length, missing images ALT, and heading structure instantly. Free and private.">
-<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/website-scanner.html">
+      body {
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        background: light-dark(#F8F8F7, #191919);
+        color: light-dark(#1f1f1f, #e3e3e3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Free Website Scanner | MyToolkit">
-<meta property="og:description" content="Audit web page HTML markup and inspect technical SEO elements directly in your browser.">
-<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/website-scanner.html">
+      .container {
+        background: light-dark(#FFFFFF, #1F1F1F);
+        padding: 32px;
+        border-radius: 16px;
+        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
+        max-width: min(80%, 500px);
+        width: 100%;
+        color: light-dark(#2B2D31, #D4D4D4);
+      }
 
-<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      h1 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: light-dark(#2B2D31, #D4D4D4);
+      }
 
-  gtag('config', 'G-298D4FDLC6');
-</script>
+      p {
+        font-size: 14px;
+        color: light-dark(#2B2D31, #D4D4D4);
+        line-height: 21px;
+        margin: 0 0 1.5rem 0;
+      }
 
-<link rel="stylesheet" href="style.css">
+      .icon {
+        margin-bottom: 1rem;
+        line-height: 0;
+      }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Website Scanner",
-  "url": "https://sheroz255.github.io/mytoolkit-app/website-scanner.html",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "description": "Inspect website HTML structure, audit technical meta tags, title lengths, and image alt attributes directly in your browser."
-}
-</script>
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 2rem;
+      }
 
-<style>
-  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
-  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
-  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
-  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
-  .mt-tool-breadcrumb a:hover{text-decoration:underline}
-  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
-  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
-  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+      button {
+        background-color: light-dark(#fff, #323232);
+        color: light-dark(#2B2D31, #FCFCFC);
+        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 21px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-weight: 400;
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        width: 100%;
+      }
 
-  .mt-tool-input, .mt-tool-textarea{width:100%;max-width:100%;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;font-size:15px;font-family:inherit;color:#0f172a;outline:none;transition:.15s;background:#fff}
-  .mt-tool-textarea{min-height:140px;resize:vertical;font-family:monospace;font-size:13px}
-  .mt-tool-input:focus, .mt-tool-textarea:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+      button:hover {
+        background-color: light-dark(#EAEAEB, #424242);
+      }
 
-  .mt-field-label{display:block;font-size:12.5px;font-weight:700;color:#475569;margin:0 0 8px;text-transform:uppercase;letter-spacing:.03em}
+      .hidden {
+        display: none;
+      }
 
-  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .mt-btn{border:none;border-radius:10px;padding:10px 18px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
-  .mt-btn-primary{background:#2563eb;color:#fff}
-  .mt-btn-primary:hover{background:#1d4ed8}
-  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
-  .mt-btn-secondary:hover{background:#dbeafe}
-  .mt-btn-ghost{background:#f1f5f9;color:#334155}
-  .mt-btn-ghost:hover{background:#e2e8f0}
+      /* Loading Spinner Animation */
+      .spinner {
+        margin: 0 auto 1.5rem auto;
+        width: 40px;
+        height: 40px;
+        border: 4px solid light-dark(#f0f0f0, #262626);
+        border-top: 4px solid light-dark(#076eff, #87a9ff); /* Blue color */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
 
-  .mt-report-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
-  .mt-report-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px}
-  .mt-report-card h4{margin:0 0 6px;font-size:12.5px;color:#64748b;text-transform:uppercase;letter-spacing:.03em}
-  .mt-report-card .val{font-size:16px;font-weight:800;color:#0f172a;word-break:break-all}
+      .logo {
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto 2rem auto;
+      }
 
-  .mt-status-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:700;margin-top:6px}
-  .mt-status-badge.good{background:#dcfce7;color:#15803d}
-  .mt-status-badge.warn{background:#fef9c3;color:#a16207}
+      .logo.hidden {
+        display: none;
+      }
 
-  .mt-tool-status{display:none;padding:12px 16px;border-radius:10px;margin-top:14px;font-weight:600;font-size:13.5px}
-  .mt-tool-status.info{display:block;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
-  .mt-tool-status.error{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
-  .mt-tool-status.success{display:block;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
-
-  .mt-tool-loader{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:mt-spin .75s linear infinite;vertical-align:middle;margin-right:6px}
-  @keyframes mt-spin{to{transform:rotate(360deg)}}
-
-  .mt-tool-section-title{font-size:19px;font-weight:800;margin:28px 0 14px;color:#0f172a}
-  .mt-tool-wrapper p{color:#475569;font-size:14.5px;margin:0 0 14px}
-
-  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
-  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
-  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
-  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
-  .mt-feature-box p{font-size:13.5px;margin:0}
-
-  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
-  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
-  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
-  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
-  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
-  .mt-faq-icon{transition:.2s;flex-shrink:0}
-  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
-</style>
-</head>
-<body>
-
-<div class="mt-site">
-
-  <header class="mt-header">
-    <div class="mt-container mt-header-inner">
-      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
-        <div aria-hidden="true" class="mt-logo">M</div>
-        <div>
-          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
-          <span class="mt-brand-sub">Free Online Tools</span>
-        </div>
-      </a>
-      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
-        <a href="index.html">Home</a>
-        <a href="index.html#mt-categories">Categories</a>
-        <a href="index.html#mt-tools">All Tools</a>
-        <a href="index.html#mt-features">Why MyToolkit</a>
-        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
-      </nav>
-      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <section class="mt-content-section">
-    <div class="mt-container">
-      <div class="mt-blog-area">
-
-<div class="mt-tool-wrapper" id="mt-tool-website-scanner">
-
-  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
-    <a href="index.html">Home</a> &#8250;
-    <a href="index.html#mt-tools">SEO &amp; Web</a> &#8250;
-    <span>Website Scanner</span>
-  </nav>
-
-  <h1>Free Website Scanner</h1>
-  <p class="mt-tool-intro">
-    Audit web page HTML source code or live URLs for technical SEO elements instantly. Check title length, meta descriptions, canonical status, heading hierarchy, and image alt tags right in your browser.
-  </p>
-
-  <div class="mt-tool-card">
-    <div style="margin-bottom:14px;">
-      <label for="mt-scan-url" class="mt-field-label">Target Website URL</label>
-      <input type="text" id="mt-scan-url" class="mt-tool-input" placeholder="https://example.com" value="https://sheroz255.github.io/mytoolkit-app/">
-    </div>
-
-    <div style="margin-bottom:16px;">
-      <label for="mt-scan-html" class="mt-field-label">Or Paste HTML Source Code (Recommended for offline/local scan)</label>
-      <textarea id="mt-scan-html" class="mt-tool-textarea" placeholder="Paste &lt;html&gt; source code here to inspect tags..."></textarea>
-    </div>
-
-    <div class="mt-tool-controls">
-      <button class="mt-btn mt-btn-primary" id="mt-btn-scan" type="button">Run Website Scan</button>
-      <button class="mt-btn mt-btn-secondary" id="mt-btn-sample" type="button">Load Sample HTML</button>
-      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
-    </div>
-
-    <div id="mt-scan-status" class="mt-tool-status"></div>
-
-    <!-- SCAN RESULTS REPORT -->
-    <div id="mt-scan-results" style="display:none; margin-top:24px;">
-      <h3 style="font-size:16px; font-weight:800; margin:0 0 12px; color:#0f172a;">Technical Audit Report</h3>
-
-      <div class="mt-report-grid">
-        <div class="mt-report-card">
-          <h4>Title Tag</h4>
-          <div id="rep-title" class="val">-</div>
-          <div id="rep-title-badge"></div>
-        </div>
-
-        <div class="mt-report-card">
-          <h4>Meta Description</h4>
-          <div id="rep-desc" class="val">-</div>
-          <div id="rep-desc-badge"></div>
-        </div>
-
-        <div class="mt-report-card">
-          <h4>Canonical URL</h4>
-          <div id="rep-canonical" class="val">-</div>
-        </div>
-
-        <div class="mt-report-card">
-          <h4>Heading Hierarchy</h4>
-          <div id="rep-headings" class="val">-</div>
-        </div>
-
-        <div class="mt-report-card">
-          <h4>Images &amp; Missing ALT</h4>
-          <div id="rep-images" class="val">-</div>
-        </div>
-
-        <div class="mt-report-card">
-          <h4>Total Links</h4>
-          <div id="rep-links" class="val">-</div>
-        </div>
-      </div>
-
-      <div style="margin-top:16px;">
-        <label class="mt-field-label">Detected Open Graph &amp; Social Meta Tags</label>
-        <textarea id="rep-meta-output" class="mt-tool-textarea" readonly style="min-height:100px;"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <h2 class="mt-tool-section-title">How This Website Scanner Works</h2>
-  <p>
-    A solid technical foundation is vital for search engine rankings and optimal user accessibility. Our <strong>Website Scanner</strong> parses HTML source code locally to inspect crucial on-page elements such as title tags, meta descriptions, heading distribution (H1, H2, H3), and image alt attributes without transmitting your files or URLs to external servers.
-  </p>
-
-  <h2 class="mt-tool-section-title">Features</h2>
-  <div class="mt-features-grid">
-    <div class="mt-feature-box"><h3>Instant HTML Audit</h3><p>Instantly inspect tags, headings, and link counts from raw source code or live pages.</p></div>
-    <div class="mt-feature-box"><h3>ALT Tag Detection</h3><p>Identifies missing image alt descriptions for accessibility and image SEO compliance.</p></div>
-    <div class="mt-feature-box"><h3>Length Validation</h3><p>Checks if title tags and meta descriptions fall within ideal SEO character limits.</p></div>
-    <div class="mt-feature-box"><h3>100% Private</h3><p>All page inspection happens inside your browser memory securely.</p></div>
-  </div>
-
-  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
-  <div id="mtScanFaq">
-    <div class="mt-tool-faq-item">
-      <button class="mt-tool-faq-question" type="button">Why do some live URLs fail to fetch directly?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
-      <div class="mt-tool-faq-answer"><p>Many external websites block direct browser fetches due to strict CORS security policies. For accurate local inspection, simply paste your page HTML source code into the box above.</p></div>
-    </div>
-    <div class="mt-tool-faq-item">
-      <button class="mt-tool-faq-question" type="button">What is an ideal title tag length?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
-      <div class="mt-tool-faq-answer"><p>An optimal title tag should be between 50 and 60 characters to prevent truncation in search engine result pages.</p></div>
-    </div>
-    <div class="mt-tool-faq-item">
-      <button class="mt-tool-faq-question" type="button">Why are image ALT attributes important?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
-      <div class="mt-tool-faq-answer"><p>Image alt text helps screen readers describe visuals for visually impaired users and helps search engines understand image content for better indexing.</p></div>
-    </div>
-    <div class="mt-tool-faq-item">
-      <button class="mt-tool-faq-question" type="button">Is my scanned website data private?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
-      <div class="mt-tool-faq-answer"><p>Yes. All checks are executed locally using client-side JavaScript. Nothing is sent to external servers.</p></div>
-    </div>
-  </div>
-
-  <h2 class="mt-tool-section-title">Final Thoughts</h2>
-  <p>
-    The MyToolkit Website Scanner provides a quick, secure, and lightweight way to audit web page HTML markup, verify on-page SEO factors, and ensure compliance with modern web standards directly in your browser.
-  </p>
-
-</div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer class="mt-footer">
-    <div class="mt-footer-main">
-      <div class="mt-container">
-        <div class="mt-footer-grid">
-          <div class="mt-footer-brand">
-            <a class="mt-brand" href="index.html">
-              <div aria-hidden="true" class="mt-logo">M</div>
-              <div>
-                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
-                <span class="mt-brand-sub">Free Online Tools</span>
-              </div>
-            </a>
-            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
-          </div>
-          <div>
-            <h3 class="mt-footer-title">Explore</h3>
-            <ul class="mt-footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="index.html#mt-categories">Categories</a></li>
-              <li><a href="index.html#mt-tools">All Tools</a></li>
-              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="mt-footer-title">Categories</h3>
-            <ul class="mt-footer-links">
-              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
-              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
-              <li><a href="index.html#mt-tools">Image Tools</a></li>
-              <li><a href="index.html#mt-tools">Developer Tools</a></li>
-              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="mt-footer-title">Information</h3>
-            <ul class="mt-footer-links">
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="disclaimer.html">Disclaimer</a></li>
-              <li><a href="dmca.html">DMCA</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mt-footer-bottom">
-      <div class="mt-container mt-footer-bottom-inner">
-        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
-        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
-<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
-
-<script src="site.js"></script>
-<script>
-(function () {
-  'use strict';
-
-  var el = {
-    urlInput: document.getElementById('mt-scan-url'),
-    htmlInput: document.getElementById('mt-scan-html'),
-    btnScan: document.getElementById('mt-btn-scan'),
-    btnSample: document.getElementById('mt-btn-sample'),
-    btnClear: document.getElementById('mt-btn-clear'),
-    status: document.getElementById('mt-scan-status'),
-    results: document.getElementById('mt-scan-results'),
-    toast: document.getElementById('mt-tool-toast'),
-    repTitle: document.getElementById('rep-title'),
-    repTitleBadge: document.getElementById('rep-title-badge'),
-    repDesc: document.getElementById('rep-desc'),
-    repDescBadge: document.getElementById('rep-desc-badge'),
-    repCanonical: document.getElementById('rep-canonical'),
-    repHeadings: document.getElementById('rep-headings'),
-    repImages: document.getElementById('rep-images'),
-    repLinks: document.getElementById('rep-links'),
-    repMetaOutput: document.getElementById('rep-meta-output')
-  };
-
-  var SAMPLE_HTML = '<!DOCTYPE html>\n<html>\n<head>\n<title>Sample Web Page Title for SEO Audit Test</title>\n<meta name="description" content="This is a sample meta description used for testing the website scanner tool on MyToolkit.">\n<link rel="canonical" href="https://example.com/page">\n<meta property="og:title" content="Sample Open Graph Title">\n</head>\n<body>\n<h1>Main Page Heading</h1>\n<h2>Section Heading</h2>\n<p>Some paragraph text content here.</p>\n<img src="img1.jpg" alt="Sample image description">\n<img src="img2.jpg">\n<a href="index.html">Home Link</a>\n<a href="https://google.com" target="_blank">External Link</a>\n</body>\n</html>';
-
-  function showToast(msg) {
-    el.toast.textContent = msg;
-    el.toast.classList.add('mt-show');
-    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
-  }
-
-  function showStatus(msg, type) {
-    el.status.className = 'mt-tool-status ' + type;
-    el.status.innerHTML = msg;
-  }
-
-  function hideStatus() {
-    el.status.className = 'mt-tool-status';
-    el.status.style.display = 'none';
-    el.status.innerHTML = '';
-  }
-
-  el.btnSample.addEventListener('click', function () {
-    el.htmlInput.value = SAMPLE_HTML;
-    el.urlInput.value = '';
-    showToast('Sample HTML loaded.');
-  });
-
-  el.btnClear.addEventListener('click', function () {
-    el.urlInput.value = '';
-    el.htmlInput.value = '';
-    el.results.style.display = 'none';
-    hideStatus();
-    showToast('Cleared.');
-  });
-
-  el.btnScan.addEventListener('click', async function () {
-    var urlVal = el.urlInput.value.trim();
-    var htmlVal = el.htmlInput.value.trim();
-
-    if (!urlVal && !htmlVal) {
-      showStatus('Please enter a target URL or paste HTML source code.', 'error');
-      return;
-    }
-
-    showStatus('<span class="mt-tool-loader"></span> Fetching and auditing HTML structure...', 'info');
-    el.results.style.display = 'none';
-
-    var htmlSource = htmlVal;
-
-    if (!htmlSource && urlVal) {
-      try {
-        var resp = await fetch(urlVal, { mode: 'cors' });
-        if (resp.ok) {
-          htmlSource = await resp.text();
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-      } catch (e) {
-        try {
-          var proxy = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(urlVal));
-          if (proxy.ok) {
-            htmlSource = await proxy.text();
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="logo"
+        src="https://www.gstatic.com/images/branding/productlogos/ai_studio/v1/web-512dp/logo_ai_studio_color_1x_web_512dp.png"
+        alt="AI Studio Logo"
+        width="256"
+        height="256"
+      />
+      <div class="spinner"></div>
+      <div id="error-ui" class="hidden">
+        <div class="icon">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="48px"
+            height="48px"
+            fill="#D73A49"
+          >
+            <path
+              d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M13,17h-2v-2h2V17z M13,13h-2V7h2V13z"
+            />
+          </svg>
+        </div>
+        <div id="stepOne" class="text-container">
+          <h1>Action required to load your app</h1>
+          <p>
+            It looks like your browser is blocking a required security cookie, which is common on
+            older versions of iOS and Safari.
+          </p>
+          <div class="button-container">
+            <button id="authInSeparateWindowButton" onclick="redirectToReturnUrl(true)">Authenticate in new window</button>
+          </div>
+        </div>
+        <div id="stepTwo" class="text-container hidden">
+          <h1>Action required to load your app</h1>
+          <p>
+            It looks like your browser is blocking a required security cookie, which is common on
+            older versions of iOS and Safari.
+          </p>
+          <div class="button-container">
+            <button id="interactButton" onclick="redirectToReturnUrl(false)">Close and continue</button>
+          </div>
+        </div>
+        <div id="stepThree" class="text-container hidden">
+          <h1>Almost there!</h1>
+          <p>
+            Grant permission for the required security cookie below.
+          </p>
+          <div class="button-container">
+            <button id="grantPermissionButton" onclick="grantStorageAccess()">Grant permission</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const AUTH_FLOW_TEST_COOKIE_NAME = '__SECURE-aistudio_auth_flow_may_set_cookies';
+      const COOKIE_VALUE = 'true';
+
+      function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
           }
-        } catch (pErr) {
-          console.warn('Proxy fetch failed', pErr);
+        }
+        return null;
+      }
+
+      function setAuthFlowTestCookie() {
+        // Set the cookie's TTL to 1 minute. This is a short lived cookie because it is only used
+        // when the user does not have an auth token or their auth token needs to be reset.
+        // Making this cookie too long-lived allows the user to get into a state where they can't
+        // mint a new auth token.
+        document.cookie = `${AUTH_FLOW_TEST_COOKIE_NAME}=${COOKIE_VALUE}; Path=/; Secure; SameSite=None; Domain=${window.location.hostname}; Partitioned; Max-Age=60;`;
+      }
+
+      /**
+       * Returns true if the test cookie is set, false otherwise.
+       */
+      function authFlowTestCookieIsSet() {
+        return getCookie(AUTH_FLOW_TEST_COOKIE_NAME) === COOKIE_VALUE;
+      }
+
+      /**
+       * Redirects to the return url. If autoClose is true, then the return url will be opened in a
+       * new window, and it will be closed automatically when the page loads.
+       * Options:
+       *   storageAccessGranted: if true, appends __storage_access_granted=1 to
+       *   the return url so the Lua auth script can set the test cookie
+       *   server-side (needed for Safari/iOS where document.cookie is blocked).
+       */
+      async function redirectToReturnUrl(autoClose, storageAccessGranted = false) {
+        const initialReturnUrlStr = new URLSearchParams(window.location.search).get('return_url');
+        const returnUrl = initialReturnUrlStr ? new URL(initialReturnUrlStr) : null;
+
+        // Prevent potentially malicious URLs from being used
+        if (returnUrl.protocol.toLowerCase() === 'javascript:') {
+          console.error('Potentially malicious return URL blocked');
+          return;
+        }
+
+        if (storageAccessGranted) {
+          returnUrl.searchParams.set('__storage_access_granted', '1');
+        }
+
+        if (autoClose) {
+          returnUrl.searchParams.set('__auto_close', '1');
+          const url = new URL(window.location.href);
+          url.searchParams.set('return_url', returnUrl.toString());
+          // Land on the cookie check page first, so the user can interact with it before proceeding
+          // to the return url where cookies can be set.
+          window.open(url.toString(), '_blank');
+          const hasAccess = await document.hasStorageAccess();
+          document.querySelector('#stepOne').classList.add('hidden');
+          if (!hasAccess) {
+            document.querySelector('#stepThree').classList.remove('hidden');
+          } else {
+            window.location.reload();
+          }
+        } else {
+          window.location.href = returnUrl.toString();
         }
       }
-    }
 
-    if (!htmlSource) {
-      hideStatus();
-      showStatus('CORS restriction blocked direct URL fetch. Please paste the HTML source code in the box above to inspect offline.', 'error');
-      return;
-    }
-
-    try {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(htmlSource, 'text/html');
-
-      // Title
-      var tTag = doc.querySelector('title');
-      var tText = tTag ? tTag.textContent.trim() : 'Missing Title Tag';
-      var tLen = tText.length;
-      el.repTitle.textContent = tText + ' (' + tLen + ' chars)';
-      if (tLen >= 40 && tLen <= 65) {
-        el.repTitleBadge.innerHTML = '<span class="mt-status-badge good">Good Length</span>';
-      } else {
-        el.repTitleBadge.innerHTML = '<span class="mt-status-badge warn">Optimal: 50-60 chars</span>';
+      /**
+       * Grants the browser permission to set cookies. If successful, then it redirects to the
+       * return url.
+       */
+      async function grantStorageAccess() {
+        try {
+          await document.requestStorageAccess();
+          // Recent Safari/iOS versions block document.cookie entirely in
+          // cross-site iframes, even after requestStorageAccess(). Only
+          // server-side Set-Cookie headers work. Signal to the Lua auth script
+          // via query param so it can set the test cookie server-side.
+          redirectToReturnUrl(false, /* storageAccessGranted= */ true);
+        } catch (err) {
+          console.log('error after button click: ', err);
+        }
       }
 
-      // Meta Description
-      var dTag = doc.querySelector('meta[name="description"]');
-      var dText = dTag ? dTag.getAttribute('content').trim() : 'Missing Meta Description';
-      var dLen = dText.length;
-      el.repDesc.textContent = dText + ' (' + dLen + ' chars)';
-      if (dLen >= 120 && dLen <= 165) {
-        el.repDescBadge.innerHTML = '<span class="mt-status-badge good">Good Length</span>';
-      } else {
-        el.repDescBadge.innerHTML = '<span class="mt-status-badge warn">Optimal: 140-160 chars</span>';
+      /**
+       * Verifies that the browser can set cookies. If it can, then it redirects to the return url.
+       * If it can't, then it shows the error UI.
+       */
+      function verifyCanSetCookies() {
+        setAuthFlowTestCookie();
+        if (authFlowTestCookieIsSet()) {
+          // Check if we are on the auto-close flow, and if so show the interact button.
+          const returnUrl = new URLSearchParams(window.location.search).get('return_url');
+          const autoClose = new URL(returnUrl).searchParams.has('__auto_close');
+          if (autoClose) {
+            document.querySelector('#stepOne').classList.add('hidden');
+            document.querySelector('#stepTwo').classList.remove('hidden');
+          } else {
+            redirectToReturnUrl(false);
+            return;
+          }
+        }
+        // The cookie could not be set, so initiate the recovery flow.
+        document.querySelector('.logo').classList.add('hidden');
+        document.querySelector('.spinner').classList.add('hidden');
+        document.querySelector('#error-ui').classList.remove('hidden');
       }
 
-      // Canonical
-      var cTag = doc.querySelector('link[rel="canonical"]');
-      el.repCanonical.textContent = cTag ? cTag.getAttribute('href') : 'Missing Canonical Tag';
-
-      // Headings
-      var h1 = doc.querySelectorAll('h1').length;
-      var h2 = doc.querySelectorAll('h2').length;
-      var h3 = doc.querySelectorAll('h3').length;
-      el.repHeadings.textContent = 'H1: ' + h1 + ' | H2: ' + h2 + ' | H3: ' + h3;
-
-      // Images & ALT
-      var imgs = doc.querySelectorAll('img');
-      var missingAlt = 0;
-      imgs.forEach(function (img) {
-        if (!img.getAttribute('alt') || img.getAttribute('alt').trim() === '') missingAlt++;
-      });
-      el.repImages.textContent = 'Total: ' + imgs.length + ' (Missing ALT: ' + missingAlt + ')';
-
-      // Links
-      var links = doc.querySelectorAll('a');
-      el.repLinks.textContent = 'Total Links: ' + links.length;
-
-      // OG Meta
-      var og = doc.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
-      var ogStr = '';
-      og.forEach(function (tag) {
-        var prop = tag.getAttribute('property') || tag.getAttribute('name');
-        var val = tag.getAttribute('content');
-        ogStr += prop + ' = "' + val + '"\n';
-      });
-      el.repMetaOutput.value = ogStr || 'No Open Graph / Twitter tags found.';
-
-      el.results.style.display = 'block';
-      hideStatus();
-      showStatus('Website scan completed successfully!', 'success');
-
-    } catch (err) {
-      console.error(err);
-      hideStatus();
-      showStatus('Failed to parse HTML markup.', 'error');
-    }
-  });
-
-  document.querySelectorAll('#mtScanFaq .mt-tool-faq-question').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var item = btn.closest('.mt-tool-faq-item');
-      var wasOpen = item.classList.contains('mt-faq-open');
-      document.querySelectorAll('#mtScanFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
-      if (!wasOpen) item.classList.add('mt-faq-open');
-    });
-  });
-})();
-</script>
-</body>
+      // Start the cookie verification process.
+      verifyCanSetCookies();
+    </script>
+  </body>
 </html>
