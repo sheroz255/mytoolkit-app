@@ -1,296 +1,2212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>Cookie check</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        color-scheme: light dark;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Website Scanner – Audit SEO, Security, DNS & Page Health | MyToolkit</title>
+  <meta name="description" content="Audit any website or web page instantly with MyToolkit Website Scanner. Inspect on-page SEO, social Open Graph meta tags, DNS records, security posture, accessibility, and DOM performance for free in your browser.">
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/website-scanner.html">
 
-      body {
-        font-family: 'Inter', Helvetica, Arial, sans-serif;
-        background: light-dark(#F8F8F7, #191919);
-        color: light-dark(#1f1f1f, #e3e3e3);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        min-height: 100vh;
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-      }
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
 
-      .container {
-        background: light-dark(#FFFFFF, #1F1F1F);
-        padding: 32px;
-        border-radius: 16px;
-        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
-        max-width: min(80%, 500px);
-        width: 100%;
-        color: light-dark(#2B2D31, #D4D4D4);
-      }
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-298D4FDLC6');
+  </script>
 
-      h1 {
-        font-size: 20px;
-        font-weight: 500;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        color: light-dark(#2B2D31, #D4D4D4);
-      }
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/website-scanner.html">
+  <meta property="og:title" content="Free Website Scanner – Audit SEO, Security, DNS & Page Health | MyToolkit">
+  <meta property="og:description" content="Audit any website or web page instantly with MyToolkit Website Scanner. Inspect on-page SEO, social Open Graph meta tags, DNS records, security posture, accessibility, and DOM performance for free in your browser.">
+  <meta property="og:site_name" content="MyToolkit">
 
-      p {
-        font-size: 14px;
-        color: light-dark(#2B2D31, #D4D4D4);
-        line-height: 21px;
-        margin: 0 0 1.5rem 0;
-      }
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Website Scanner – Audit SEO, Security, DNS & Page Health | MyToolkit">
+  <meta name="twitter:description" content="Audit any website or web page instantly with MyToolkit Website Scanner. Inspect on-page SEO, social Open Graph meta tags, DNS records, security posture, accessibility, and DOM performance for free in your browser.">
 
-      .icon {
-        margin-bottom: 1rem;
-        line-height: 0;
-      }
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b82f6'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='20' fill='%23ffffff'%3EM%3C/text%3E%3C/svg%3E">
 
-      .button-container {
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-        margin-top: 2rem;
-      }
+  <style>
+:root{
+  --mt-primary:#3b82f6;
+  --mt-primary-dark:#2563eb;
+  --mt-cyan:#06b6d4;
+  --mt-orange:#f59e0b;
+  --mt-success:#10b981;
+  --mt-danger:#ef4444;
+  --mt-bg:#f4f7f9;
+  --mt-white:#ffffff;
+  --mt-dark:#0f172a;
+  --mt-dark-2:#1e293b;
+  --mt-text:#1a202c;
+  --mt-heading:#0f172a;
+  --mt-muted:#64748b;
+  --mt-light-text:#94a3b8;
+  --mt-border:#e2e8f0;
+  --mt-border-dark:rgba(255,255,255,.1);
+  --mt-radius:16px;
+  --mt-radius-sm:12px;
+  --mt-shadow:0 1px 3px 0 rgba(0,0,0,.05),0 1px 2px -1px rgba(0,0,0,.05);
+  --mt-shadow-hover:0 4px 12px 0 rgba(15,23,42,.08);
+  --mt-container:1180px;
+  --mt-header:68px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding:0;background:var(--mt-bg);color:var(--mt-text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+body.mt-lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
+button{cursor:pointer}
+img{max-width:100%;height:auto}
+::selection{background:#3b82f6;color:#ffffff}
+.mt-container{width:min(var(--mt-container),calc(100% - 40px));margin-left:auto;margin-right:auto}
+.mt-site{min-height:100vh;display:flex;flex-direction:column}
+.mt-header{position:sticky;top:0;z-index:9999;height:var(--mt-header);background:#ffffff;border-bottom:1px solid #e2e8f0}
+.mt-header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.mt-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.mt-logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;overflow:hidden;color:#ffffff;font-size:19px;font-weight:800;background:#3b82f6;box-shadow:0 1px 2px rgba(59,130,246,.2)}
+.mt-brand-name{color:#0f172a;font-size:20px;font-weight:800;letter-spacing:-.6px;line-height:1}
+.mt-brand-name span{color:#3b82f6}
+.mt-brand-sub{display:block;margin-top:3px;color:#94a3b8;font-size:9px;font-weight:700;letter-spacing:1.2px;line-height:1;text-transform:uppercase}
+.mt-nav{display:flex;align-items:center;gap:6px}
+.mt-nav a{padding:8px 12px;border-radius:8px;color:#64748b;font-size:14px;font-weight:500;transition:.15s ease}
+.mt-nav a:hover{color:#3b82f6}
+.mt-nav .mt-nav-button{margin-left:8px;padding:8px 16px;border-radius:10px;color:#ffffff;font-weight:600;background:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.mt-nav .mt-nav-button:hover{color:#ffffff;background:#2563eb}
+.mt-menu-button{display:none;width:44px;height:44px;padding:0;border:1px solid var(--mt-border);border-radius:12px;background:#ffffff;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.mt-menu-button span{width:19px;height:2px;border-radius:5px;background:#172033;transition:.2s ease}
+.mt-hero{position:relative;overflow:hidden;padding:88px 0 82px;background:radial-gradient(circle at 10% 15%,rgba(37,99,235,.12),transparent 30%),radial-gradient(circle at 90% 15%,rgba(6,182,212,.12),transparent 27%),linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border-bottom:1px solid #edf1f6}
+.mt-hero:before{content:"";position:absolute;width:570px;height:570px;right:-290px;top:-340px;border:1px solid rgba(37,99,235,.08);border-radius:50%}
+.mt-hero:after{content:"";position:absolute;width:420px;height:420px;left:-260px;bottom:-300px;border:1px solid rgba(245,158,11,.08);border-radius:50%}
+.mt-hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto;text-align:center}
+.mt-hero-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:21px;padding:7px 13px;border:1px solid #dbeafe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:12px;font-weight:800}
+.mt-live-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.1)}
+.mt-hero h1{margin:0;color:#0b1324;font-size:clamp(40px,6vw,70px);line-height:1.02;letter-spacing:-3.2px;font-weight:950}
+.mt-gradient-text{background:linear-gradient(100deg,#2563eb 0%,#06b6d4 55%,#f59e0b 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mt-hero-description{max-width:700px;margin:24px auto 31px;color:#64748b;font-size:17px;line-height:1.75}
+.mt-search-wrap{width:min(700px,100%);margin:0 auto;position:relative}
+.mt-search-box{width:100%;height:62px;padding:0 118px 0 54px;border:1px solid #dbe3ed;border-radius:17px;outline:none;background:#ffffff;color:#0f172a;font-size:15px;box-shadow:0 16px 45px rgba(15,23,42,.08);transition:.2s ease}
+.mt-search-box::placeholder{color:#9aa8b8}
+.mt-search-box:focus{border-color:#93c5fd;box-shadow:0 16px 45px rgba(37,99,235,.11),0 0 0 4px rgba(37,99,235,.06)}
+.mt-search-icon{position:absolute;left:19px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:20px;pointer-events:none}
+.mt-search-key{position:absolute;right:12px;top:50%;transform:translateY(-50%);display:flex;gap:4px}
+.mt-search-key kbd{padding:5px 8px;border:1px solid #e2e8f0;border-radius:7px;background:#f8fafc;color:#94a3b8;font-size:10px;font-weight:800}
+.mt-search-results{position:absolute;left:0;right:0;top:70px;z-index:1000;display:none;max-height:390px;overflow-y:auto;padding:8px;border:1px solid #e2e8f0;border-radius:16px;background:#ffffff;box-shadow:0 25px 60px rgba(15,23,42,.17);text-align:left}
+.mt-search-results.active{display:block}
+.mt-search-result{display:flex;align-items:center;gap:12px;padding:11px;border-radius:11px;transition:.15s ease}
+.mt-search-result:hover{background:#f8fafc}
+.mt-search-result-icon{width:40px;height:40px;min-width:40px;display:grid;place-items:center;border-radius:11px;background:#eff6ff;color:#2563eb;font-size:13px;font-weight:900}
+.mt-search-result strong{display:block;color:#172033;font-size:13px}
+.mt-search-result small{display:block;margin-top:1px;color:#94a3b8;font-size:11px}
+.mt-no-results{padding:25px;color:#64748b;font-size:13px;text-align:center}
+.mt-section{padding:72px 0}
+.mt-section-white{background:#ffffff}
+.mt-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.mt-section-title{margin:0;color:#0f172a;font-size:29px;line-height:1.2;letter-spacing:-1.1px;font-weight:900}
+.mt-section-description{margin:7px 0 0;color:#718096;font-size:14px}
+.mt-view-all{color:#2563eb;font-size:13px;font-weight:800;white-space:nowrap}
+.mt-view-all:hover{text-decoration:underline;text-underline-offset:3px}
+.mt-category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.mt-category-card{min-height:108px;display:flex;align-items:center;gap:14px;padding:18px;border:1px solid var(--mt-border);border-radius:17px;background:#ffffff;box-shadow:0 5px 20px rgba(15,23,42,.025);transition:.22s ease}
+.mt-category-card:hover{transform:translateY(-4px);border-color:#bfdbfe;box-shadow:var(--mt-shadow-hover)}
+.mt-category-active{border-color:#2563eb;background:#eff6ff;box-shadow:0 0 0 2px rgba(37,99,235,.25)}
+.mt-category-icon{width:51px;height:51px;min-width:51px;display:grid;place-items:center;border-radius:15px;background:#eff6ff;color:#2563eb;font-size:18px;font-weight:900}
+.mt-category-card:nth-child(2) .mt-category-icon{background:#ecfeff;color:#0891b2}
+.mt-category-card:nth-child(3) .mt-category-icon{background:#fff7ed;color:#ea580c}
+.mt-category-card:nth-child(4) .mt-category-icon{background:#f0fdf4;color:#16a34a}
+.mt-category-card:nth-child(5) .mt-category-icon{background:#f5f3ff;color:#7c3aed}
+.mt-category-card:nth-child(6) .mt-category-icon{background:#fdf2f8;color:#db2777}
+.mt-category-card:nth-child(7) .mt-category-icon{background:#f0fdfa;color:#0f766e}
+.mt-category-card:nth-child(8) .mt-category-icon{background:#fff7ed;color:#c2410c}
+.mt-category-card strong{display:block;color:#172033;font-size:14px;font-weight:850}
+.mt-category-card small{display:block;margin-top:2px;color:#94a3b8;font-size:11px}
+.mt-directory{background:#f8fafc}
+.mt-tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.mt-tool-listing-card{display:flex;flex-direction:column;min-height:190px;padding:21px;border:1px solid var(--mt-border);border-radius:18px;background:#ffffff;box-shadow:0 5px 22px rgba(15,23,42,.035);transition:.22s ease}
+.mt-tool-listing-card:hover{transform:translateY(-5px);border-color:#bfdbfe;box-shadow:var(--mt-shadow-hover)}
+.mt-tool-icon{width:45px;height:45px;display:grid;place-items:center;margin-bottom:15px;border-radius:13px;background:#eff6ff;color:#2563eb;font-size:16px;font-weight:900}
+.mt-tool-listing-card h3{margin:0 0 5px;color:#172033;font-size:16px;line-height:1.3}
+.mt-tool-listing-card p{margin:0;color:#718096;font-size:12px;line-height:1.65}
+.mt-tool-soon{opacity:.55;cursor:not-allowed;position:relative}
+.mt-tool-soon:hover{transform:none;border-color:var(--mt-border);box-shadow:0 5px 22px rgba(15,23,42,.035)}
+.mt-tool-soon-badge{display:inline-block;margin-top:auto;padding:4px 10px;background:#f1f5f9;color:#64748b;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;width:fit-content}
+.mt-tool-link{display:inline-flex;width:max-content;margin-top:auto;padding-top:14px;color:#2563eb;font-size:11px;font-weight:850}
+.mt-tools-empty{padding:50px 25px;border:1px dashed #cbd5e1;border-radius:20px;background:#ffffff;text-align:center}
+.mt-tools-empty-icon{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 14px;border-radius:17px;background:#eff6ff;color:#2563eb;font-size:24px}
+.mt-tools-empty strong{display:block;color:#334155;font-size:16px}
+.mt-tools-empty span{display:block;margin-top:3px;color:#94a3b8;font-size:12px}
+.mt-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mt-feature{padding:27px;border:1px solid var(--mt-border);border-radius:20px;background:#ffffff}
+.mt-feature-icon{width:48px;height:48px;display:grid;place-items:center;margin-bottom:18px;border-radius:14px;background:#eff6ff;color:#2563eb;font-size:20px;font-weight:900}
+.mt-feature:nth-child(2) .mt-feature-icon{background:#ecfeff;color:#0891b2}
+.mt-feature:nth-child(3) .mt-feature-icon{background:#fff7ed;color:#ea580c}
+.mt-feature h3{margin:0 0 7px;color:#172033;font-size:17px}
+.mt-feature p{margin:0;color:#64748b;font-size:13px;line-height:1.75}
+.mt-content-section{padding:58px 0}
+.mt-blog-area{max-width:900px;margin:0 auto}
+.mt-post{margin-bottom:25px;padding:34px;border:1px solid var(--mt-border);border-radius:20px;background:#ffffff;box-shadow:var(--mt-shadow)}
+.mt-post h1,.mt-post h2{color:#0f172a}
+.mt-post-body{color:#475569;font-size:16px;line-height:1.8}
+.mt-post-body h2,.mt-post-body h3,.mt-post-body h4{margin-top:30px;color:#0f172a;line-height:1.35}
+.mt-post-body a{color:#2563eb;text-decoration:underline;text-underline-offset:3px}
+.mt-post-body img{border-radius:15px}
+.mt-post-body .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:12px;border:1px solid #e2e8f0}
+.mt-post-body table{width:100%;border-collapse:collapse;font-size:15px;min-width:480px}
+.mt-post-body th,.mt-post-body td{padding:12px 16px;border:1px solid #e2e8f0;text-align:left;vertical-align:top}
+.mt-post-body th{background:#f8fafc;font-weight:700;color:#0f172a;font-size:13px;text-transform:uppercase;letter-spacing:0.03em}
+.mt-post-body td{font-size:14px;color:#334155}
+.mt-post-body tr:nth-child(even){background:#fafbfc}
+@media(max-width:640px){
+  .mt-post-body table{font-size:13px;min-width:360px}
+  .mt-post-body th,.mt-post-body td{padding:8px 10px;font-size:12px}
+  .mt-post-body th{font-size:10px}
+}
+.mt-footer{margin-top:auto;background:#08111f;color:#94a3b8}
+.mt-footer-main{padding:56px 0 42px}
+.mt-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:45px}
+.mt-footer-brand{max-width:340px}
+.mt-footer-brand .mt-brand-name{color:#ffffff}
+.mt-footer-brand p{margin:17px 0 0;color:#94a3b8;font-size:13px;line-height:1.8}
+.mt-footer-title{margin:0 0 14px;color:#ffffff;font-size:13px;font-weight:850}
+.mt-footer-links{margin:0;padding:0;list-style:none}
+.mt-footer-links li{margin:8px 0}
+.mt-footer-links a{color:#94a3b8;font-size:12px;transition:.2s ease}
+.mt-footer-links a:hover{color:#ffffff}
+.mt-footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0}
+.mt-footer-bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mt-footer-bottom small{color:#64748b;font-size:11px}
+.mt-top-button{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.04);color:#cbd5e1;font-size:16px}
+.mt-top-button:hover{background:rgba(255,255,255,.1)}
+@media(max-width:980px){
+  .mt-category-grid{grid-template-columns:repeat(2,1fr)}
+  .mt-footer-grid{grid-template-columns:1.4fr 1fr 1fr}
+  .mt-footer-brand{grid-column:1/-1}
+}
+@media(max-width:760px){
+  :root{--mt-header:68px}
+  .mt-container{width:calc(100% - 28px)}
+  .mt-nav{position:fixed;top:68px;left:14px;right:14px;z-index:10000;display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:10px;border:1px solid #e2e8f0;border-radius:17px;background:rgba(255,255,255,.98);box-shadow:0 25px 60px rgba(15,23,42,.18);transform:translateY(-15px);opacity:0;visibility:hidden;pointer-events:none;transition:.22s ease}
+  .mt-nav.mt-open{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
+  .mt-nav a{padding:12px 13px}
+  .mt-nav .mt-nav-button{margin-left:0;text-align:center}
+  .mt-menu-button{display:flex}
+  .mt-hero{padding:62px 0 58px}
+  .mt-hero h1{letter-spacing:-2.2px}
+  .mt-hero-description{font-size:15px}
+  .mt-search-box{height:56px;padding-left:49px;padding-right:90px}
+  .mt-search-key kbd{display:none}
+  .mt-section{padding:52px 0}
+  .mt-section-head{align-items:flex-start;flex-direction:column;gap:8px;margin-bottom:22px}
+  .mt-section-title{font-size:25px}
+  .mt-category-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .mt-category-card{min-height:94px;gap:10px;padding:13px}
+  .mt-category-icon{width:43px;height:43px;min-width:43px;border-radius:12px}
+  .mt-category-card strong{font-size:12px}
+  .mt-category-card small{font-size:10px}
+  .mt-tool-grid{grid-template-columns:1fr}
+  .mt-feature-grid{grid-template-columns:1fr}
+  .mt-post{padding:24px 18px;border-radius:16px}
+  .mt-footer-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
+  .mt-footer-brand{grid-column:1/-1}
+}
+@media(max-width:430px){
+  .mt-brand-name{font-size:18px}
+  .mt-brand-sub{display:none}
+  .mt-logo{width:40px;height:40px;font-size:19px}
+  .mt-category-card{min-height:88px}
+  .mt-category-icon{width:39px;height:39px;min-width:39px}
+  .mt-footer-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{transition:none !important;animation:none !important}
+}
+  </style>
 
-      button {
-        background-color: light-dark(#fff, #323232);
-        color: light-dark(#2B2D31, #FCFCFC);
-        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-size: 14px;
-        line-height: 21px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-        font-weight: 400;
-        font-family: 'Inter', Helvetica, Arial, sans-serif;
-        width: 100%;
-      }
-
-      button:hover {
-        background-color: light-dark(#EAEAEB, #424242);
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      /* Loading Spinner Animation */
-      .spinner {
-        margin: 0 auto 1.5rem auto;
-        width: 40px;
-        height: 40px;
-        border: 4px solid light-dark(#f0f0f0, #262626);
-        border-top: 4px solid light-dark(#076eff, #87a9ff); /* Blue color */
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      .logo {
-        border-radius: 10px;
-        display: block;
-        margin: 0 auto 2rem auto;
-      }
-
-      .logo.hidden {
-        display: none;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://sheroz255.github.io/mytoolkit-app/website-scanner.html#app",
+        "name": "Website Scanner",
+        "url": "https://sheroz255.github.io/mytoolkit-app/website-scanner.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Comprehensive client-side website scanner and audit tool for SEO, DNS, security, accessibility, and performance.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
-        100% {
-          transform: rotate(360deg);
-        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://sheroz255.github.io/mytoolkit-app/website-scanner.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the MyToolkit Website Scanner audit web pages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Website Scanner evaluates websites client-side using two main mechanisms: live DNS-over-HTTPS (DoH) queries to inspect domain records, nameservers, SPF, and DMARC; and an in-browser DOM parser to perform 40+ on-page technical checks across SEO, meta tags, heading hierarchies, accessibility, and performance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can't browsers directly fetch the HTML of every external website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Browsers enforce the Same-Origin Policy (CORS) for security. When a script runs in your browser, it cannot read raw HTML from arbitrary third-party servers unless that server explicitly includes the Access-Control-Allow-Origin header. To overcome this, our tool allows you to paste the page source code or upload an HTML file for a 100% complete, private client-side audit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my website data or code sent to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All on-page DOM analysis, markup checks, and text parsing occur strictly inside your local web browser session. No HTML code, proprietary URLs, or page contents are saved or sent to external databases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What factors influence the Website Health Score?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The score is calculated based on passed vs. failed technical criteria across five core categories: On-Page SEO (30%), Security & DNS Health (25%), Web Accessibility (25%), Performance & DOM Structure (10%), and Social Sharing Meta (10%)."
+            }
+          }
+        ]
       }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <img
-        class="logo"
-        src="https://www.gstatic.com/images/branding/productlogos/ai_studio/v1/web-512dp/logo_ai_studio_color_1x_web_512dp.png"
-        alt="AI Studio Logo"
-        width="256"
-        height="256"
-      />
-      <div class="spinner"></div>
-      <div id="error-ui" class="hidden">
-        <div class="icon">
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="48px"
-            height="48px"
-            fill="#D73A49"
-          >
-            <path
-              d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M13,17h-2v-2h2V17z M13,13h-2V7h2V13z"
-            />
-          </svg>
+    ]
+  }
+  </script>
+
+  <style>
+    .mt-tool-page-header { padding: 32px 0 20px; }
+    .mt-tool-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 12px; }
+    .mt-tool-breadcrumbs a { color: #64748b; text-decoration: none; transition: color 0.15s ease; }
+    .mt-tool-breadcrumbs a:hover { color: #3b82f6; }
+    .mt-tool-breadcrumbs span { color: #cbd5e1; }
+    .mt-tool-breadcrumbs span[aria-current="page"] { color: #3b82f6; }
+    .mt-tool-title { margin: 0 0 8px; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; color: #0f172a; letter-spacing: -0.025em; line-height: 1.2; }
+    .mt-tool-lead { margin: 0; font-size: 15px; color: #64748b; max-width: 720px; line-height: 1.6; }
+    .mt-tool-main-card { margin-top: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05); padding: 24px; }
+    @media (max-width: 640px) { .mt-tool-main-card { padding: 16px; border-radius: 14px; } }
+    .mt-tool-tabs { display: flex; gap: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .mt-tool-tab-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; color: #64748b; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.15s ease; }
+    .mt-tool-tab-btn:hover { background: #f1f5f9; color: #0f172a; border-color: #cbd5e1; }
+    .mt-tool-tab-btn.mt-tool-tab-active { background: #ffffff; border-color: #3b82f6; color: #3b82f6; box-shadow: 0 1px 2px rgba(59, 130, 246, 0.08); }
+    .mt-tool-tab-panel { display: none; }
+    .mt-tool-tab-panel.mt-tool-panel-active { display: block; }
+    .mt-tool-field-group { margin-bottom: 20px; }
+    .mt-tool-label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: #0f172a; }
+    .mt-tool-hint { display: block; margin-top: 6px; font-size: 12px; color: #94a3b8; }
+    .mt-tool-input-wrap { position: relative; display: flex; align-items: center; }
+    .mt-tool-text-input { width: 100%; height: 48px; padding: 0 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; color: #1a202c; font-size: 14px; outline: none; transition: all 0.15s ease; }
+    .mt-tool-text-input:focus { background: #ffffff; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+    .mt-tool-textarea { width: 100%; min-height: 180px; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; color: #1a202c; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; line-height: 1.55; outline: none; resize: vertical; transition: all 0.15s ease; }
+    .mt-tool-textarea:focus { background: #ffffff; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+    .mt-tool-drop-zone { border: 2px dashed #cbd5e1; border-radius: 14px; background: #f8fafc; padding: 36px 20px; text-align: center; cursor: pointer; transition: all 0.15s ease; }
+    .mt-tool-drop-zone:hover, .mt-tool-drop-zone.mt-tool-dragover { border-color: #3b82f6; background: rgba(59, 130, 246, 0.04); }
+    .mt-tool-drop-icon { font-size: 32px; margin-bottom: 8px; }
+    .mt-tool-drop-text strong { display: block; color: #0f172a; font-size: 14px; font-weight: 600; }
+    .mt-tool-drop-text span { font-size: 12px; color: #94a3b8; }
+    .mt-tool-file-name { margin-top: 10px; font-size: 13px; font-weight: 600; color: #3b82f6; }
+    .mt-tool-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+    .mt-tool-btn-primary { height: 46px; padding: 0 24px; border: none; border-radius: 12px; background: #3b82f6; color: #ffffff; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); transition: all 0.15s ease; cursor: pointer; }
+    .mt-tool-btn-primary:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25); }
+    .mt-tool-btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+    .mt-tool-btn-secondary { height: 42px; padding: 0 18px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; color: #334155; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); transition: all 0.15s ease; cursor: pointer; }
+    .mt-tool-btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
+    .mt-tool-btn-text { height: 42px; padding: 0 14px; border: none; background: transparent; color: #64748b; font-size: 13px; font-weight: 500; cursor: pointer; transition: color 0.15s ease; }
+    .mt-tool-btn-text:hover { color: #ef4444; }
+    .mt-tool-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255, 255, 255, 0.3); border-top-color: #ffffff; border-radius: 50%; animation: mt-spin 0.8s linear infinite; }
+    @keyframes mt-spin { to { transform: rotate(360deg); } }
+    .mt-tool-status-msg { display: none; margin-top: 18px; padding: 12px 16px; border-radius: 10px; font-size: 13px; line-height: 1.5; }
+    .mt-tool-status-info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .mt-tool-status-error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .mt-tool-status-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .mt-tool-results-inner { margin-top: 32px; padding-top: 28px; border-top: 1px solid #e2e8f0; }
+    .mt-tool-score-banner { display: flex; align-items: center; gap: 24px; padding: 20px 24px; border: 1px solid #e2e8f0; border-radius: 14px; background: #ffffff; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03); }
+    @media (max-width: 640px) { .mt-tool-score-banner { flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px; } }
+    .mt-tool-score-circle { width: 84px; height: 84px; min-width: 84px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; text-align: center; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+    .mt-tool-grade-a { background: #10b981; }
+    .mt-tool-grade-b { background: #3b82f6; }
+    .mt-tool-grade-c { background: #f59e0b; }
+    .mt-tool-grade-d { background: #ea580c; }
+    .mt-tool-grade-f { background: #ef4444; }
+    .mt-tool-score-num { font-size: 28px; font-weight: 700; line-height: 1; }
+    .mt-tool-score-max { font-size: 10px; opacity: 0.85; font-weight: 600; }
+    .mt-tool-score-grade { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+    .mt-tool-score-meta h3 { margin: 0 0 4px; font-size: 18px; font-weight: 700; color: #0f172a; }
+    .mt-tool-target-url { margin: 0 0 10px; font-size: 13px; color: #64748b; }
+    .mt-tool-metric-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mt-tool-pill { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+    .mt-tool-pill-pass { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .mt-tool-pill-warning { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+    .mt-tool-pill-fail { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .mt-tool-pill-info { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
+    .mt-tool-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+    @media (max-width: 860px) { .mt-tool-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+    @media (max-width: 480px) { .mt-tool-stats-grid { grid-template-columns: 1fr; } }
+    .mt-tool-stat-card { background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+    .mt-tool-stat-eyebrow { font-size: 10px; text-transform: uppercase; font-weight: 700; color: #94a3b8; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .mt-tool-stat-value { display: flex; align-items: baseline; gap: 6px; }
+    .mt-tool-stat-num { font-size: 24px; font-weight: 700; line-height: 1.1; }
+    .mt-tool-stat-green { color: #10b981; }
+    .mt-tool-stat-amber { color: #f59e0b; }
+    .mt-tool-stat-red { color: #ef4444; }
+    .mt-tool-stat-unit { font-size: 12px; color: #64748b; font-weight: 500; }
+    .mt-tool-stat-track { width: 100%; background: #e2e8f0; height: 6px; border-radius: 9999px; margin-top: 8px; overflow: hidden; }
+    .mt-tool-stat-fill { height: 100%; border-radius: 9999px; transition: width 0.3s ease; }
+    .mt-tool-fill-green { background: #10b981; }
+    .mt-tool-fill-amber { background: #f59e0b; }
+    .mt-tool-fill-red { background: #ef4444; }
+    .mt-tool-stat-sub { font-size: 11px; color: #64748b; margin-top: 6px; }
+    .mt-tool-category-bars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+    .mt-tool-cat-row { padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; }
+    .mt-tool-cat-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+    .mt-tool-cat-track { height: 6px; border-radius: 9999px; background: #e2e8f0; overflow: hidden; }
+    .mt-tool-cat-fill { height: 100%; border-radius: 9999px; background: #3b82f6; }
+    .mt-tool-actions-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 20px; }
+    .mt-tool-action-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .mt-tool-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .mt-tool-filters select { height: 38px; padding: 0 12px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; color: #334155; font-size: 12px; font-weight: 600; outline: none; transition: border-color 0.15s ease; }
+    .mt-tool-filters select:focus { border-color: #3b82f6; }
+    .mt-tool-checklist { display: flex; flex-direction: column; gap: 12px; }
+    .mt-tool-check-card { border: 1px solid #e2e8f0; border-radius: 12px; background: #ffffff; padding: 16px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02); transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+    .mt-tool-check-card:hover { border-color: #cbd5e1; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.04); }
+    .mt-tool-check-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .mt-tool-check-title-wrap { display: flex; align-items: center; gap: 10px; }
+    .mt-tool-check-icon { width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .mt-tool-status-card-pass .mt-tool-check-icon { background: #ecfdf5; color: #059669; }
+    .mt-tool-status-card-warning .mt-tool-check-icon { background: #fffbeb; color: #d97706; }
+    .mt-tool-status-card-fail .mt-tool-check-icon { background: #fef2f2; color: #dc2626; }
+    .mt-tool-status-card-info .mt-tool-check-icon { background: #f0f9ff; color: #0284c7; }
+    .mt-tool-check-name { margin: 0; font-size: 14px; font-weight: 650; color: #0f172a; }
+    .mt-tool-check-cat { font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .mt-tool-check-badge { padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0; }
+    .mt-tool-badge-pass { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .mt-tool-badge-warning { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+    .mt-tool-badge-fail { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .mt-tool-badge-info { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
+    .mt-tool-check-value { margin-bottom: 6px; font-size: 12px; color: #334155; }
+    .mt-tool-check-value code { background: #f1f5f9; border: 1px solid #e2e8f0; color: #0f172a; padding: 2px 6px; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; word-break: break-all; }
+    .mt-tool-check-detail { margin: 0; font-size: 13px; color: #64748b; line-height: 1.55; }
+    .mt-tool-check-rec { margin-top: 8px; padding: 8px 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; font-size: 12px; color: #92400e; }
+    .mt-tool-external-section { margin-top: 32px; padding: 20px 24px; border: 1px solid #e2e8f0; border-radius: 14px; background: #f8fafc; }
+    .mt-tool-external-section h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; color: #0f172a; }
+    .mt-tool-external-section p { margin: 0 0 14px; font-size: 13px; color: #64748b; }
+    .mt-tool-external-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .mt-tool-ext-link { display: block; padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; text-decoration: none; transition: all 0.15s ease; }
+    .mt-tool-ext-link:hover { border-color: #3b82f6; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(59, 130, 246, 0.08); }
+    .mt-tool-ext-link strong { display: block; color: #3b82f6; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .mt-tool-ext-link small { display: block; color: #64748b; font-size: 11px; line-height: 1.4; }
+    .mt-tool-guide-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); padding: 32px; margin-top: 28px; }
+    @media (max-width: 640px) { .mt-tool-guide-card { padding: 20px 16px; } }
+    .mt-tool-faq-item { border-bottom: 1px solid #e2e8f0; }
+    .mt-tool-faq-q { width: 100%; text-align: left; padding: 16px 0; background: none; border: none; font-size: 15px; font-weight: 650; color: #0f172a; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; transition: color 0.15s ease; }
+    .mt-tool-faq-q:hover { color: #3b82f6; }
+    .mt-tool-faq-q::after { content: "+"; font-size: 18px; font-weight: 600; color: #94a3b8; }
+    .mt-tool-faq-q[aria-expanded="true"]::after { content: "−"; }
+    .mt-tool-faq-a { padding-bottom: 18px; font-size: 14px; line-height: 1.6; color: #475569; }
+  </style>
+
+</head>
+<body class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
         </div>
-        <div id="stepOne" class="text-container">
-          <h1>Action required to load your app</h1>
-          <p>
-            It looks like your browser is blocking a required security cookie, which is common on
-            older versions of iOS and Safari.
-          </p>
-          <div class="button-container">
-            <button id="authInSeparateWindowButton" onclick="redirectToReturnUrl(true)">Authenticate in new window</button>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="#mt-categories">Categories</a>
+        <a href="#mt-tools">All Tools</a>
+        <a href="#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="mt-tool-page-header">
+      <div class="mt-container">
+        <nav class="mt-tool-breadcrumbs" aria-label="Breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>&rsaquo;</span>
+          <a href="#mt-tools">SEO &amp; Web</a>
+          <span>&rsaquo;</span>
+          <span aria-current="page">Website Scanner</span>
+        </nav>
+        <h1 class="mt-tool-title">Free Website Scanner &amp; Site Audit</h1>
+        <p class="mt-tool-lead">
+          Audit any website URL, raw HTML code, or template file for on-page SEO factors, security headers, DNS records, accessibility compliance, and DOM performance signals directly inside your web browser.
+        </p>
+
+        <div class="mt-tool-main-card" id="mt-tool-app">
+          
+          <div class="mt-tool-tabs" role="tablist" aria-label="Scanner Input Modes">
+            <button type="button" class="mt-tool-tab-btn mt-tool-tab-active" role="tab" aria-selected="true" data-mode="url" id="mt-tab-url">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              URL &amp; Domain Scan
+            </button>
+            <button type="button" class="mt-tool-tab-btn" role="tab" aria-selected="false" data-mode="html" id="mt-tab-html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Paste HTML / Page Source
+            </button>
+            <button type="button" class="mt-tool-tab-btn" role="tab" aria-selected="false" data-mode="file" id="mt-tab-file">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload HTML File
+            </button>
           </div>
+
+          <form id="mt-tool-form">
+            
+            <div class="mt-tool-tab-panel mt-tool-panel-active" data-mode="url" role="tabpanel" aria-labelledby="mt-tab-url">
+              <div class="mt-tool-field-group">
+                <label for="mt-tool-url-input" class="mt-tool-label">Website Domain or Full URL</label>
+                <div class="mt-tool-input-wrap">
+                  <input type="text" id="mt-tool-url-input" class="mt-tool-text-input" placeholder="https://example.com" spellcheck="false" autocomplete="url">
+                </div>
+                <span class="mt-tool-hint">Queries live DNS-over-HTTPS records (A, AAAA, MX, SPF, DMARC, CAA), verifies HTTPS/SSL, and tests live cross-origin accessibility.</span>
+              </div>
+            </div>
+
+            <div class="mt-tool-tab-panel" data-mode="html" role="tabpanel" aria-labelledby="mt-tab-html">
+              <div class="mt-tool-field-group">
+                <label for="mt-tool-html-input" class="mt-tool-label">Paste Webpage HTML Source Code</label>
+                <textarea id="mt-tool-html-input" class="mt-tool-textarea" placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;  <title>Page Title</title>&#10;  <meta name=&quot;description&quot; content=&quot;...&quot;>&#10;</head>&#10;<body>...</body>&#10;</html>" spellcheck="false"></textarea>
+                <span class="mt-tool-hint">Allows a deep, 40+ point on-page DOM inspection of SEO, Open Graph, accessibility, headings, and security tags with zero cross-origin limits.</span>
+              </div>
+            </div>
+
+            <div class="mt-tool-tab-panel" data-mode="file" role="tabpanel" aria-labelledby="mt-tab-file">
+              <div class="mt-tool-field-group">
+                <label class="mt-tool-label">Choose or Drop HTML Document</label>
+                <div class="mt-tool-drop-zone" id="mt-tool-drop-zone" tabindex="0" role="button" aria-label="Upload HTML file">
+                  <div class="mt-tool-drop-icon">&#128196;</div>
+                  <div class="mt-tool-drop-text">
+                    <strong>Click to browse or drag and drop your file here</strong>
+                    <span>Supports .html, .htm, .txt files</span>
+                  </div>
+                  <div class="mt-tool-file-name" id="mt-tool-file-name">No file chosen</div>
+                  <input type="file" id="mt-tool-file-input" accept=".html,.htm,.txt" style="display:none;">
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-tool-controls">
+              <button type="button" class="mt-tool-btn-primary" id="mt-tool-scan-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Scan Website
+              </button>
+              <button type="button" class="mt-tool-btn-secondary" id="mt-tool-sample-btn">
+                Load Sample HTML
+              </button>
+              <button type="button" class="mt-tool-btn-text" id="mt-tool-clear-btn">
+                Clear Inputs
+              </button>
+            </div>
+
+          </form>
+
+          <div id="mt-tool-status" class="mt-tool-status-msg" role="status" aria-live="polite"></div>
+
+          <div id="mt-tool-results" style="display:none;" aria-live="polite"></div>
+
         </div>
-        <div id="stepTwo" class="text-container hidden">
-          <h1>Action required to load your app</h1>
-          <p>
-            It looks like your browser is blocking a required security cookie, which is common on
-            older versions of iOS and Safari.
-          </p>
-          <div class="button-container">
-            <button id="interactButton" onclick="redirectToReturnUrl(false)">Close and continue</button>
+
+      </div>
+    </section>
+
+    <section class="mt-section mt-content-section">
+      <div class="mt-container mt-blog-area">
+        <article class="mt-post">
+          <div class="mt-post-body">
+
+            <h2>How the MyToolkit Website Scanner Works</h2>
+            <p>
+              The MyToolkit Website Scanner is an online site inspection tool built entirely with native web technologies. Unlike traditional web scanners that send your code or domain requests to slow third-party proxies, this tool performs comprehensive client-side analysis directly in your browser.
+            </p>
+            <p>
+              When analyzing domain infrastructure, the scanner leverages <strong>DNS-over-HTTPS (DoH)</strong> to verify DNS record health across authoritative global resolvers. It validates IPv4 dual-stack routing (A and AAAA records), mail authentication standards (SPF and DMARC policies to prevent domain phishing), nameserver redundancy, and Certificate Authority Authorization (CAA) flags.
+            </p>
+            <p>
+              When analyzing page markup, the scanner feeds the HTML into the browser's native <code>DOMParser</code>. This runs an exhaustive, standards-based inspection across more than 40 essential indicators—including metadata hygiene, Open Graph protocol readiness, semantic heading nesting, web accessibility standards, resource hints, and secure coding practices.
+            </p>
+
+            <h2>The 5 Core Pillars of a Complete Website Audit</h2>
+
+            <h3>1. On-Page Search Engine Optimization (SEO)</h3>
+            <ul>
+              <li><strong>Title Tag Optimization:</strong> Verifies the presence and length of the <code>&lt;title&gt;</code> element (optimal range: 30–60 characters).</li>
+              <li><strong>Meta Descriptions:</strong> Checks for informative summaries (120–160 characters).</li>
+              <li><strong>Canonical Link Tag:</strong> Confirms the presence of an absolute canonical URL.</li>
+              <li><strong>Meta Robots Directives:</strong> Inspects indexability flags such as <code>noindex</code> or <code>nofollow</code>.</li>
+              <li><strong>H1 &amp; Semantic Headings:</strong> Validates proper heading hierarchy.</li>
+            </ul>
+
+            <h3>2. Security Posture &amp; Domain Hygiene</h3>
+            <ul>
+              <li><strong>HTTPS Protocol:</strong> Confirms encrypted TLS/SSL traffic.</li>
+              <li><strong>Email Authentication (SPF &amp; DMARC):</strong> Discovers DNS TXT records for Sender Policy Framework and DMARC.</li>
+              <li><strong>Certificate Authority Authorization (CAA):</strong> Checks SSL certificate issuance restrictions.</li>
+              <li><strong>Reverse Tabnabbing Protection:</strong> Audits external links with <code>target="_blank"</code>.</li>
+              <li><strong>Mixed Content Safeguards:</strong> Flags insecure <code>http://</code> links and assets.</li>
+            </ul>
+
+            <h3>3. Digital Accessibility (WCAG Compliance)</h3>
+            <ul>
+              <li><strong>Image Alternative Text (alt):</strong> Flags every <code>&lt;img&gt;</code> element missing an <code>alt</code> attribute.</li>
+              <li><strong>HTML Language Attribute:</strong> Ensures the root <code>&lt;html&gt;</code> element declares a valid <code>lang</code> code.</li>
+              <li><strong>Form Controls &amp; Labels:</strong> Inspects input fields for corresponding <code>&lt;label&gt;</code> or <code>aria-label</code> tags.</li>
+              <li><strong>Responsive Viewport:</strong> Checks for the modern mobile viewport tag.</li>
+            </ul>
+
+            <h3>4. Performance Signals &amp; Clean Markup</h3>
+            <ul>
+              <li><strong>Resource Hints:</strong> Inspects <code>&lt;link rel="preconnect"&gt;</code> and <code>&lt;link rel="preload"&gt;</code> tags.</li>
+              <li><strong>Native Image Lazy Loading:</strong> Encourages modern <code>loading="lazy"</code> attributes.</li>
+              <li><strong>DOM Tree Size:</strong> Calculates total element count to safeguard against DOM bloat.</li>
+              <li><strong>Obsolete Elements:</strong> Flags deprecated presentational tags.</li>
+            </ul>
+
+            <h3>5. Social Media &amp; Open Graph Protocol</h3>
+            <ul>
+              <li><strong>Open Graph Core Tags:</strong> <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>.</li>
+              <li><strong>Twitter / X Card Metadata:</strong> <code>twitter:card</code> and corresponding image tags.</li>
+            </ul>
+
+            <h2>Understanding Browser Cross-Origin (CORS) Boundaries</h2>
+            <p>
+              When you enter an external URL in a browser-based tool, you might wonder why the tool cannot always fetch the full HTML directly. This is due to the browser's <strong>Same-Origin Policy (CORS)</strong>. This security safeguard prevents arbitrary scripts on one website from reading private data from another website without explicit permission.
+            </p>
+            <p>
+              Instead of faking results or secretly routing your traffic through unvetted third-party proxy servers, MyToolkit maintains complete transparency:
+            </p>
+            <ol>
+              <li>For any live domain, the tool queries public DNS-over-HTTPS endpoints to provide instant, genuine DNS and security record audits.</li>
+              <li>For complete on-page audits, simply view the page source in your browser (press <code>Ctrl+U</code> or <code>Cmd+Option+U</code>), copy the HTML, and paste it into the <strong>Paste HTML</strong> tab.</li>
+              <li>Our tool also provides direct, pre-configured links to official external diagnostic engines like Google PageSpeed Insights, Qualys SSL Labs, and SecurityHeaders.com.</li>
+            </ol>
+
+            <h2>Website Audit Best Practices Checklist</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Check Item</th><th>Recommended Standard</th><th>Primary Impact</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Page Title</td><td>30–60 characters, brand included</td><td>SEO &amp; Search Click-Through</td></tr>
+                  <tr><td>Meta Description</td><td>120–160 characters, compelling summary</td><td>Organic CTR &amp; Snippets</td></tr>
+                  <tr><td>Primary Heading (H1)</td><td>Exactly 1 per page</td><td>Topic Focus &amp; Semantics</td></tr>
+                  <tr><td>Image Alt Attributes</td><td>Descriptive text on all informative graphics</td><td>Accessibility &amp; Image SEO</td></tr>
+                  <tr><td>HTTPS Protocol</td><td>Enforced via TLS with HSTS header</td><td>User Security &amp; Trust</td></tr>
+                  <tr><td>SPF &amp; DMARC Records</td><td>Configured in authoritative DNS TXT</td><td>Email Deliverability &amp; Spoofing Prevention</td></tr>
+                  <tr><td>Open Graph Protocol</td><td>og:title, og:desc, og:image (1200x630px)</td><td>Social Media Previews</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-tool-faq-list">
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-1">
+                  How often should I scan and audit my website?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-1" hidden>
+                  We recommend running a full site audit after major design or code updates, template revisions, or at least once every quarter. Regularly auditing helps you catch broken meta tags, missing image alt text, and unconfigured email security records before they impact organic rankings or brand security.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-2">
+                  What is the difference between an issue, a warning, and a notice?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-2" hidden>
+                  <strong>Issues (Red)</strong> represent critical defects that violate core web standards—such as missing H1 tags, unencrypted HTTP URLs, or images missing alternative text. <strong>Warnings (Amber)</strong> indicate sub-optimal configurations like overlong title tags or missing Open Graph images. <strong>Notices (Blue)</strong> highlight non-critical optimization opportunities like resource hints or IPv6 configuration.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-3">
+                  Why is my DNS DMARC or SPF check failing?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-3" hidden>
+                  SPF and DMARC are email security policies published in your domain's authoritative DNS zone. If your domain has not configured a TXT record with <code>v=spf1 ...</code> or a record at <code>_dmarc.yourdomain.com</code>, the scanner flags this. Major email providers (including Google and Yahoo) now require valid DMARC and SPF records to deliver messages to inboxes.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-4">
+                  How can I fix "Reverse Tabnabbing" on links?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-4" hidden>
+                  Whenever you use <code>target="_blank"</code> to open a link in a new browser tab, always append <code>rel="noopener noreferrer"</code> to the anchor tag. This prevents the newly opened page from accessing the opening window's <code>window.opener</code> property, closing a known security loophole.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-5">
+                  Is it safe to paste proprietary or internal HTML code here?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-5" hidden>
+                  Yes, completely safe. The MyToolkit Website Scanner runs 100% client-side inside your browser's local sandbox. No HTML source code, document structures, or proprietary content is ever transmitted to a backend server, saved in a database, or exposed to third parties.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-6">
+                  Can I export or share the audit findings?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-6" hidden>
+                  Yes. Once an audit is completed, use the "Copy Audit Report" button to copy a formatted executive text report to your clipboard, or click "Download .TXT" or "Export JSON" to save the complete structured audit data for client presentations or sprint backlogs.
+                </div>
+              </div>
+
+            </div>
+
+            <h2>Final Thoughts</h2>
+            <p>
+              Maintaining a fast, accessible, secure, and search-optimized website does not require expensive enterprise software suites. By performing regular technical audits and addressing high-impact deficiencies—from meta descriptions and alt text to SPF records and HTTPS enforcement—you can build a web presence that serves your users reliably while ranking prominently in modern search engines.
+            </p>
+
           </div>
-        </div>
-        <div id="stepThree" class="text-container hidden">
-          <h1>Almost there!</h1>
-          <p>
-            Grant permission for the required security cookie below.
-          </p>
-          <div class="button-container">
-            <button id="grantPermissionButton" onclick="grantStorageAccess()">Grant permission</button>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
           </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#mt-categories">Categories</a></li>
+              <li><a href="#mt-tools">All Tools</a></li>
+              <li><a href="#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="#mt-tools">Image Tools</a></li>
+              <li><a href="#mt-tools">Developer Tools</a></li>
+              <li><a href="#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
-    <script>
-      const AUTH_FLOW_TEST_COOKIE_NAME = '__SECURE-aistudio_auth_flow_may_set_cookies';
-      const COOKIE_VALUE = 'true';
 
-      function getCookie(name) {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          let cookie = cookies[i].trim();
-          if (cookie.startsWith(name + '=')) {
-            return cookie.substring(name.length + 1);
-          }
-        }
-        return null;
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  'use strict';
+
+  var favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"%3E%3Crect width="32" height="32" rx="8" fill="%233b82f6"/%3E%3Ctext x="16" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="20" fill="%23ffffff"%3EM%3C/text%3E%3C/svg%3E';
+  document.head.appendChild(favicon);
+
+  var menuButton = document.getElementById('mtMenuButton');
+  var nav = document.getElementById('mtNav');
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', function () {
+      var open = nav.classList.toggle('mt-open');
+      menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('mt-lock', open);
+    });
+    var navLinks = nav.querySelectorAll('a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', function () {
+        nav.classList.remove('mt-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open menu');
+        document.body.classList.remove('mt-lock');
+      });
+    }
+  }
+
+  var searchInput = document.getElementById('mtToolSearch');
+  var searchResults = document.getElementById('mtSearchResults');
+  function escapeHtml(value) {
+    return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+  function getTools() {
+    var cards = document.querySelectorAll('.mt-tool-listing-card');
+    var tools = [];
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i];
+      var titleElement = card.querySelector('h3');
+      var descriptionElement = card.querySelector('p');
+      var iconElement = card.querySelector('.mt-tool-icon');
+      tools.push({
+        name: card.getAttribute('data-tool-name') || (titleElement ? titleElement.textContent : 'Tool'),
+        category: card.getAttribute('data-tool-category') || '',
+        description: descriptionElement ? descriptionElement.textContent : '',
+        icon: iconElement ? iconElement.textContent : '\u2726',
+        url: card.getAttribute('href') || '#'
+      });
+    }
+    return tools;
+  }
+  function searchTools(query) {
+    if (!searchResults) return;
+    var cleanQuery = query.toLowerCase().trim();
+    if (!cleanQuery) {
+      searchResults.classList.remove('active');
+      searchResults.innerHTML = '';
+      return;
+    }
+    var tools = getTools();
+    var matches = [];
+    for (var i = 0; i < tools.length; i++) {
+      var searchable = (tools[i].name + ' ' + tools[i].category + ' ' + tools[i].description).toLowerCase();
+      if (searchable.indexOf(cleanQuery) !== -1) {
+        matches.push(tools[i]);
       }
-
-      function setAuthFlowTestCookie() {
-        // Set the cookie's TTL to 1 minute. This is a short lived cookie because it is only used
-        // when the user does not have an auth token or their auth token needs to be reset.
-        // Making this cookie too long-lived allows the user to get into a state where they can't
-        // mint a new auth token.
-        document.cookie = `${AUTH_FLOW_TEST_COOKIE_NAME}=${COOKIE_VALUE}; Path=/; Secure; SameSite=None; Domain=${window.location.hostname}; Partitioned; Max-Age=60;`;
+    }
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="mt-no-results">No matching tool found.</div>';
+      searchResults.classList.add('active');
+      return;
+    }
+    var output = '';
+    for (var j = 0; j < matches.length && j < 10; j++) {
+      var tool = matches[j];
+      output += '<a class="mt-search-result" href="' + escapeHtml(tool.url) + '">' +
+        '<div class="mt-search-result-icon">' + escapeHtml(tool.icon.trim()) + '</div>' +
+        '<div><strong>' + escapeHtml(tool.name.trim()) + '</strong><small>' + escapeHtml(tool.category.trim() || tool.description.trim()) + '</small></div></a>';
+    }
+    searchResults.innerHTML = output;
+    searchResults.classList.add('active');
+  }
+  if (searchInput) {
+    searchInput.addEventListener('input', function () { searchTools(this.value); });
+    searchInput.addEventListener('focus', function () { if (this.value.trim()) { searchTools(this.value); } });
+  }
+  document.addEventListener('click', function (event) {
+    if (!searchInput || !searchResults) return;
+    var inside = event.target === searchInput || searchResults.contains(event.target);
+    if (!inside) { searchResults.classList.remove('active'); }
+  });
+  document.addEventListener('keydown', function (event) {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      if (searchInput) searchInput.focus();
+    }
+    if (event.key === 'Escape') {
+      if (searchInput) searchInput.blur();
+      if (searchResults) searchResults.classList.remove('active');
+      if (nav) nav.classList.remove('mt-open');
+      if (menuButton) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open menu');
       }
+      document.body.classList.remove('mt-lock');
+    }
+  });
 
-      /**
-       * Returns true if the test cookie is set, false otherwise.
-       */
-      function authFlowTestCookieIsSet() {
-        return getCookie(AUTH_FLOW_TEST_COOKIE_NAME) === COOKIE_VALUE;
+  var topButton = document.getElementById('mtTopButton');
+  if (topButton) {
+    topButton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  var yearElement = document.getElementById('mtYear');
+  if (yearElement) { yearElement.textContent = new Date().getFullYear(); }
+
+  var emptyState = document.getElementById('mtToolsEmpty');
+  function updateEmptyState() {
+    if (!emptyState) return;
+    var cards = document.querySelectorAll('.mt-tool-listing-card:not([data-filtered-out])');
+    emptyState.style.display = cards.length > 0 ? 'none' : 'block';
+  }
+  updateEmptyState();
+
+  var categoryCards = document.querySelectorAll('.mt-category-card[data-category]');
+  var toolCards = document.querySelectorAll('.mt-tool-listing-card');
+  var clearFilterBtn = document.getElementById('mtClearFilter');
+  var sectionDesc = document.getElementById('mtToolsSectionDesc');
+  function applyFilter(category) {
+    toolCards.forEach(function (card) {
+      var matches = !category || card.getAttribute('data-tool-category') === category;
+      card.style.display = matches ? '' : 'none';
+      if (matches) { card.removeAttribute('data-filtered-out'); } else { card.setAttribute('data-filtered-out', 'true'); }
+    });
+    categoryCards.forEach(function (c) {
+      c.classList.toggle('mt-category-active', category && c.getAttribute('data-category') === category);
+    });
+    if (clearFilterBtn) clearFilterBtn.style.display = category ? 'inline-flex' : 'none';
+    if (sectionDesc) {
+      sectionDesc.textContent = category ? 'Showing ' + category + ' tools.' : 'Your free online toolkit, built one useful tool at a time.';
+    }
+    updateEmptyState();
+  }
+  categoryCards.forEach(function (card) {
+    card.addEventListener('click', function () { applyFilter(card.getAttribute('data-category')); });
+  });
+  if (clearFilterBtn) {
+    clearFilterBtn.addEventListener('click', function () { applyFilter(null); });
+  }
+
+  var anchorLinks = document.querySelectorAll('a[href^="#"]');
+  for (var a = 0; a < anchorLinks.length; a++) {
+    anchorLinks[a].addEventListener('click', function (event) {
+      var id = this.getAttribute('href');
+      if (!id || id === '#') return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      var headerOffset = 78;
+      var position = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: position, behavior: 'smooth' });
+    });
+  }
+
+})();
+
+(function () {
+  'use strict';
+
+  var form = document.getElementById('mt-tool-form');
+  var urlInput = document.getElementById('mt-tool-url-input');
+  var htmlInput = document.getElementById('mt-tool-html-input');
+  var fileInput = document.getElementById('mt-tool-file-input');
+  var fileDropZone = document.getElementById('mt-tool-drop-zone');
+  var fileNameDisplay = document.getElementById('mt-tool-file-name');
+  var scanBtn = document.getElementById('mt-tool-scan-btn');
+  var sampleBtn = document.getElementById('mt-tool-sample-btn');
+  var clearBtn = document.getElementById('mt-tool-clear-btn');
+  var statusMsg = document.getElementById('mt-tool-status');
+  var resultsContainer = document.getElementById('mt-tool-results');
+
+  var tabButtons = document.querySelectorAll('.mt-tool-tab-btn');
+  var tabPanels = document.querySelectorAll('.mt-tool-tab-panel');
+  var currentMode = 'url';
+  var currentAuditData = null;
+  var isScanning = false;
+
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var mode = this.getAttribute('data-mode');
+      if (!mode || isScanning) return;
+      currentMode = mode;
+      tabButtons.forEach(function (b) {
+        var active = b.getAttribute('data-mode') === mode;
+        b.classList.toggle('mt-tool-tab-active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      tabPanels.forEach(function (p) {
+        p.classList.toggle('mt-tool-panel-active', p.getAttribute('data-mode') === mode);
+      });
+      clearStatus();
+    });
+  });
+
+  if (fileDropZone && fileInput) {
+    fileDropZone.addEventListener('click', function () { fileInput.click(); });
+    fileDropZone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+    });
+    fileDropZone.addEventListener('dragover', function (e) { e.preventDefault(); fileDropZone.classList.add('mt-tool-dragover'); });
+    fileDropZone.addEventListener('dragleave', function () { fileDropZone.classList.remove('mt-tool-dragover'); });
+    fileDropZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      fileDropZone.classList.remove('mt-tool-dragover');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleFileSelected(e.dataTransfer.files[0]);
       }
+    });
+    fileInput.addEventListener('change', function () {
+      if (this.files && this.files.length > 0) { handleFileSelected(this.files[0]); }
+    });
+  }
 
-      /**
-       * Redirects to the return url. If autoClose is true, then the return url will be opened in a
-       * new window, and it will be closed automatically when the page loads.
-       * Options:
-       *   storageAccessGranted: if true, appends __storage_access_granted=1 to
-       *   the return url so the Lua auth script can set the test cookie
-       *   server-side (needed for Safari/iOS where document.cookie is blocked).
-       */
-      async function redirectToReturnUrl(autoClose, storageAccessGranted = false) {
-        const initialReturnUrlStr = new URLSearchParams(window.location.search).get('return_url');
-        const returnUrl = initialReturnUrlStr ? new URL(initialReturnUrlStr) : null;
+  function handleFileSelected(file) {
+    if (!file) return;
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (ext !== 'html' && ext !== 'htm' && ext !== 'txt') {
+      showStatus('Please upload an HTML or text file (.html, .htm, .txt).', 'error');
+      return;
+    }
+    if (fileNameDisplay) {
+      fileNameDisplay.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+    }
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      if (htmlInput) { htmlInput.value = e.target.result; }
+      showStatus('File loaded: ' + file.name + '. Click "Scan Website" to analyze.', 'info');
+    };
+    reader.onerror = function () { showStatus('Failed to read selected file.', 'error'); };
+    reader.readAsText(file);
+  }
 
-        // Prevent potentially malicious URLs from being used
-        if (returnUrl.protocol.toLowerCase() === 'javascript:') {
-          console.error('Potentially malicious return URL blocked');
-          return;
-        }
+  function showStatus(message, type) {
+    if (!statusMsg) return;
+    statusMsg.textContent = message;
+    statusMsg.className = 'mt-tool-status-msg mt-tool-status-' + (type || 'info');
+    statusMsg.style.display = 'block';
+  }
 
-        if (storageAccessGranted) {
-          returnUrl.searchParams.set('__storage_access_granted', '1');
-        }
+  function clearStatus() {
+    if (!statusMsg) return;
+    statusMsg.textContent = '';
+    statusMsg.style.display = 'none';
+  }
 
-        if (autoClose) {
-          returnUrl.searchParams.set('__auto_close', '1');
-          const url = new URL(window.location.href);
-          url.searchParams.set('return_url', returnUrl.toString());
-          // Land on the cookie check page first, so the user can interact with it before proceeding
-          // to the return url where cookies can be set.
-          window.open(url.toString(), '_blank');
-          const hasAccess = await document.hasStorageAccess();
-          document.querySelector('#stepOne').classList.add('hidden');
-          if (!hasAccess) {
-            document.querySelector('#stepThree').classList.remove('hidden');
-          } else {
-            window.location.reload();
-          }
+  var SAMPLE_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Acme Digital Solutions – Cloud Computing & Modern Web Apps</title>\n  <meta name="description" content="Acme Digital provides enterprise cloud computing, modern web architecture, and cybersecurity services with 99.99% reliability.">\n  <meta name="robots" content="index, follow">\n  <link rel="canonical" href="https://example.com/services">\n  <link rel="icon" href="/favicon.ico">\n  <meta property="og:title" content="Acme Digital Solutions – Cloud Computing">\n  <meta property="og:description" content="Discover modern cloud architecture and enterprise web apps with Acme.">\n  <meta property="og:image" content="https://example.com/assets/og-banner.jpg">\n  <meta property="og:url" content="https://example.com/services">\n  <meta property="og:type" content="website">\n  <meta property="og:site_name" content="Acme Digital">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="Acme Digital Solutions">\n  <meta name="twitter:description" content="Enterprise cloud computing and cybersecurity services.">\n  <meta name="twitter:image" content="https://example.com/assets/og-banner.jpg">\n  <link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>\n</head>\n<body>\n  <header>\n    <nav aria-label="Main Navigation">\n      <a href="/">Home</a>\n      <a href="/services">Services</a>\n      <a href="/contact">Contact</a>\n    </nav>\n  </header>\n  <main>\n    <h1>Enterprise Cloud & Web Architecture</h1>\n    <p>We craft secure, high-performance distributed applications for modern enterprises.</p>\n    <h2>Our Core Capabilities</h2>\n    <p>From cloud native migrations to full-stack zero-trust security implementations.</p>\n    <img src="https://example.com/images/cloud.png" alt="Cloud infrastructure diagram" width="800" height="450" loading="lazy">\n    <img src="https://example.com/images/partner-logo.png" alt="Partner accreditation">\n    <h3>Security Audits</h3>\n    <p>Comprehensive vulnerability assessments and automated compliance scanning.</p>\n    <a href="https://external-resource.org" target="_blank" rel="noopener noreferrer">Learn about industry benchmarks</a>\n    <form action="/subscribe" method="POST">\n      <label for="newsletter-email">Subscribe to tech updates:</label>\n      <input type="email" id="newsletter-email" name="email" required placeholder="you@company.com">\n      <button type="submit">Subscribe Now</button>\n    </form>\n  </main>\n  <footer>\n    <p>&copy; 2026 Acme Digital. All rights reserved.</p>\n  </footer>\n</body>\n</html>';
+
+  if (sampleBtn) {
+    sampleBtn.addEventListener('click', function () {
+      if (isScanning) return;
+      currentMode = 'html';
+      tabButtons.forEach(function (b) {
+        var active = b.getAttribute('data-mode') === 'html';
+        b.classList.toggle('mt-tool-tab-active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      tabPanels.forEach(function (p) {
+        p.classList.toggle('mt-tool-panel-active', p.getAttribute('data-mode') === 'html');
+      });
+      if (htmlInput) { htmlInput.value = SAMPLE_HTML; }
+      showStatus('Sample HTML loaded! Starting audit...', 'info');
+      runScan();
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function () {
+      if (isScanning) return;
+      if (urlInput) urlInput.value = '';
+      if (htmlInput) htmlInput.value = '';
+      if (fileInput) fileInput.value = '';
+      if (fileNameDisplay) fileNameDisplay.textContent = 'No file chosen';
+      clearStatus();
+      if (resultsContainer) resultsContainer.style.display = 'none';
+      currentAuditData = null;
+    });
+  }
+
+  if (form) { form.addEventListener('submit', function (e) { e.preventDefault(); runScan(); }); }
+  if (scanBtn) { scanBtn.addEventListener('click', function (e) { e.preventDefault(); runScan(); }); }
+
+  async function queryDnsRecord(domain, type) {
+    try {
+      var controller = new AbortController();
+      var timeoutId = setTimeout(function () { controller.abort(); }, 5000);
+      var res = await fetch('https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(domain) + '&type=' + encodeURIComponent(type), {
+        method: 'GET',
+        headers: { 'Accept': 'application/dns-json' },
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      if (!res.ok) return null;
+      var data = await res.json();
+      return data && data.Answer ? data.Answer : [];
+    } catch (err) { return null; }
+  }
+
+  function cleanDomainName(rawUrl) {
+    var val = rawUrl.trim();
+    if (!/^https?:\/\//i.test(val)) { val = 'https://' + val; }
+    try {
+      var parsed = new URL(val);
+      return { fullUrl: parsed.href, hostname: parsed.hostname, protocol: parsed.protocol, pathname: parsed.pathname };
+    } catch (e) { return null; }
+  }
+
+  async function runScan() {
+    if (isScanning) return;
+    clearStatus();
+
+    var targetUrl = '';
+    var rawHtml = '';
+    var domainInfo = null;
+
+    if (currentMode === 'url') {
+      var rawUrl = (urlInput ? urlInput.value : '').trim();
+      if (!rawUrl) {
+        showStatus('Please enter a website URL to scan (e.g., https://example.com).', 'error');
+        if (urlInput) urlInput.focus();
+        return;
+      }
+      domainInfo = cleanDomainName(rawUrl);
+      if (!domainInfo || !domainInfo.hostname || domainInfo.hostname.indexOf('.') === -1) {
+        showStatus('Please enter a valid domain or URL (e.g. example.com or https://example.com).', 'error');
+        if (urlInput) urlInput.focus();
+        return;
+      }
+      targetUrl = domainInfo.fullUrl;
+    } else {
+      rawHtml = (htmlInput ? htmlInput.value : '').trim();
+      if (!rawHtml) {
+        showStatus('Please paste HTML code or upload an HTML file to analyze.', 'error');
+        if (htmlInput) htmlInput.focus();
+        return;
+      }
+    }
+
+    isScanning = true;
+    if (scanBtn) {
+      scanBtn.disabled = true;
+      scanBtn.innerHTML = '<span class="mt-tool-spinner" aria-hidden="true"></span> Scanning...';
+    }
+    showStatus('Analyzing website data and standards compliance...', 'info');
+
+    try {
+      var auditResults = [];
+      var dnsData = { a: [], aaaa: [], mx: [], txt: [], dmarc: [], ns: [], caa: [] };
+
+      if (domainInfo) {
+        showStatus('Querying DNS-over-HTTPS records (A, AAAA, MX, SPF, DMARC, CAA)...', 'info');
+
+        var isHttps = domainInfo.protocol === 'https:';
+        auditResults.push({
+          category: 'Security & DNS',
+          name: 'HTTPS Protocol Security',
+          status: isHttps ? 'pass' : 'fail',
+          scoreImpact: isHttps ? 10 : -15,
+          value: domainInfo.protocol.toUpperCase().replace(':', ''),
+          detail: isHttps ? 'The URL uses secure encrypted HTTPS protocol.' : 'The URL uses unencrypted HTTP. Modern browsers flag HTTP as insecure and search engines penalize it.',
+          recommendation: isHttps ? null : 'Migrate to HTTPS with a TLS/SSL certificate.'
+        });
+
+        var host = domainInfo.hostname;
+        var results = await Promise.allSettled([
+          queryDnsRecord(host, 'A'),
+          queryDnsRecord(host, 'AAAA'),
+          queryDnsRecord(host, 'MX'),
+          queryDnsRecord(host, 'TXT'),
+          queryDnsRecord('_dmarc.' + host, 'TXT'),
+          queryDnsRecord(host, 'NS'),
+          queryDnsRecord(host, 'CAA')
+        ]);
+
+        dnsData.a = results[0].status === 'fulfilled' && results[0].value ? results[0].value : [];
+        dnsData.aaaa = results[1].status === 'fulfilled' && results[1].value ? results[1].value : [];
+        dnsData.mx = results[2].status === 'fulfilled' && results[2].value ? results[2].value : [];
+        dnsData.txt = results[3].status === 'fulfilled' && results[3].value ? results[3].value : [];
+        dnsData.dmarc = results[4].status === 'fulfilled' && results[4].value ? results[4].value : [];
+        dnsData.ns = results[5].status === 'fulfilled' && results[5].value ? results[5].value : [];
+        dnsData.caa = results[6].status === 'fulfilled' && results[6].value ? results[6].value : [];
+
+        if (dnsData.a.length > 0) {
+          var ips = dnsData.a.map(function (r) { return r.data; }).join(', ');
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'IPv4 DNS Resolution (A Records)',
+            status: 'pass',
+            scoreImpact: 5,
+            value: dnsData.a.length + ' address(es): ' + ips,
+            detail: 'Valid IPv4 address records found for this domain.'
+          });
         } else {
-          window.location.href = returnUrl.toString();
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'IPv4 DNS Resolution (A Records)',
+            status: 'warning',
+            scoreImpact: -5,
+            value: 'None detected',
+            detail: 'No A record returned. The domain may use CNAME flattening or is inactive.'
+          });
         }
-      }
 
-      /**
-       * Grants the browser permission to set cookies. If successful, then it redirects to the
-       * return url.
-       */
-      async function grantStorageAccess() {
+        if (dnsData.aaaa.length > 0) {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'IPv6 Dual-Stack Readiness (AAAA Records)',
+            status: 'pass',
+            scoreImpact: 5,
+            value: dnsData.aaaa.length + ' IPv6 address(es)',
+            detail: 'Domain supports modern IPv6 routing.'
+          });
+        } else {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'IPv6 Dual-Stack Readiness (AAAA Records)',
+            status: 'info',
+            scoreImpact: 0,
+            value: 'No IPv6 records',
+            detail: 'IPv6 is not configured. While not strictly required, dual-stack enhances global routing and mobile latency.',
+            recommendation: 'Enable IPv6 on your DNS host and web server.'
+          });
+        }
+
+        var spfRecord = dnsData.txt.find(function (r) { return r.data && r.data.toLowerCase().indexOf('v=spf1') !== -1; });
+        if (spfRecord) {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'Sender Policy Framework (SPF)',
+            status: 'pass',
+            scoreImpact: 5,
+            value: spfRecord.data.replace(/["']/g, ''),
+            detail: 'SPF record configured to prevent email spoofing using this domain.'
+          });
+        } else {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'Sender Policy Framework (SPF)',
+            status: 'warning',
+            scoreImpact: -3,
+            value: 'Missing SPF record',
+            detail: 'No SPF record was found. Without SPF, malicious actors can more easily forge emails from your domain.',
+            recommendation: 'Add a TXT record with "v=spf1 ... ~all" to protect domain reputation.'
+          });
+        }
+
+        var dmarcRecord = dnsData.dmarc.find(function (r) { return r.data && r.data.toLowerCase().indexOf('v=dmarc1') !== -1; });
+        if (dmarcRecord) {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'DMARC Email Authentication',
+            status: 'pass',
+            scoreImpact: 5,
+            value: dmarcRecord.data.replace(/["']/g, ''),
+            detail: 'DMARC record found at _dmarc.' + host + ' for domain email protection.'
+          });
+        } else {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'DMARC Email Authentication',
+            status: 'warning',
+            scoreImpact: -3,
+            value: 'No DMARC record found',
+            detail: 'No DMARC policy discovered. Major email providers (Gmail, Yahoo) now require DMARC for domain deliverability.',
+            recommendation: 'Publish a TXT record at _dmarc.' + host + ' (e.g. v=DMARC1; p=none;).'
+          });
+        }
+
+        if (dnsData.caa.length > 0) {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'Certificate Authority Authorization (CAA)',
+            status: 'pass',
+            scoreImpact: 5,
+            value: dnsData.caa.length + ' authorized CA record(s)',
+            detail: 'CAA records restrict which certificate authorities can issue SSL/TLS certs for this domain.'
+          });
+        } else {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'Certificate Authority Authorization (CAA)',
+            status: 'info',
+            scoreImpact: 0,
+            value: 'None specified',
+            detail: 'No CAA record found. Any public CA can issue certificates for this domain.',
+            recommendation: 'Consider adding CAA records to prevent unauthorized SSL certificate issuance.'
+          });
+        }
+
+        showStatus('Testing live page connection and inspecting markup...', 'info');
         try {
-          await document.requestStorageAccess();
-          // Recent Safari/iOS versions block document.cookie entirely in
-          // cross-site iframes, even after requestStorageAccess(). Only
-          // server-side Set-Cookie headers work. Signal to the Lua auth script
-          // via query param so it can set the test cookie server-side.
-          redirectToReturnUrl(false, /* storageAccessGranted= */ true);
-        } catch (err) {
-          console.log('error after button click: ', err);
-        }
-      }
-
-      /**
-       * Verifies that the browser can set cookies. If it can, then it redirects to the return url.
-       * If it can't, then it shows the error UI.
-       */
-      function verifyCanSetCookies() {
-        setAuthFlowTestCookie();
-        if (authFlowTestCookieIsSet()) {
-          // Check if we are on the auto-close flow, and if so show the interact button.
-          const returnUrl = new URLSearchParams(window.location.search).get('return_url');
-          const autoClose = new URL(returnUrl).searchParams.has('__auto_close');
-          if (autoClose) {
-            document.querySelector('#stepOne').classList.add('hidden');
-            document.querySelector('#stepTwo').classList.remove('hidden');
-          } else {
-            redirectToReturnUrl(false);
-            return;
+          var fetchController = new AbortController();
+          var fetchTimeout = setTimeout(function () { fetchController.abort(); }, 4000);
+          var pageRes = await fetch(domainInfo.fullUrl, {
+            method: 'GET',
+            mode: 'cors',
+            signal: fetchController.signal
+          });
+          clearTimeout(fetchTimeout);
+          if (pageRes.ok) {
+            rawHtml = await pageRes.text();
+            auditResults.push({
+              category: 'Security & DNS',
+              name: 'Live Page Fetch (CORS Enabled)',
+              status: 'pass',
+              scoreImpact: 5,
+              value: 'Status ' + pageRes.status + ' OK',
+              detail: 'Successfully fetched page source code directly in the browser.'
+            });
           }
+        } catch (corsErr) {
+          auditResults.push({
+            category: 'Security & DNS',
+            name: 'Browser Cross-Origin (CORS) Notice',
+            status: 'info',
+            scoreImpact: 0,
+            value: 'Third-Party Same-Origin Policy Active',
+            detail: 'Direct HTML fetch was restricted by standard browser cross-origin policy (CORS). Full DNS & Security scan completed! To analyze the full on-page HTML, paste the page source code in the "Paste HTML" tab.',
+            recommendation: 'Switch to the "Paste HTML / Page Source" tab for complete 40+ on-page SEO, accessibility, and DOM checks.'
+          });
         }
-        // The cookie could not be set, so initiate the recovery flow.
-        document.querySelector('.logo').classList.add('hidden');
-        document.querySelector('.spinner').classList.add('hidden');
-        document.querySelector('#error-ui').classList.remove('hidden');
       }
 
-      // Start the cookie verification process.
-      verifyCanSetCookies();
-    </script>
-  </body>
+      if (rawHtml) {
+        showStatus('Performing deep DOM inspection (SEO, Accessibility, Structure, Performance)...', 'info');
+        var domResults = auditHtmlDocument(rawHtml, targetUrl);
+        auditResults = auditResults.concat(domResults.checks);
+      }
+
+      var scoreSummary = calculateHealthScore(auditResults);
+
+      currentAuditData = {
+        url: targetUrl || 'Direct HTML Input',
+        hostname: domainInfo ? domainInfo.hostname : 'HTML Source Document',
+        date: new Date().toLocaleString(),
+        summary: scoreSummary,
+        checks: auditResults,
+        dns: dnsData,
+        rawHtml: rawHtml
+      };
+
+      renderResults(currentAuditData);
+      showStatus('Website scan completed successfully!', 'success');
+      if (resultsContainer) {
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (err) {
+      showStatus('An unexpected error occurred during the scan: ' + (err.message || 'Check inputs'), 'error');
+    } finally {
+      isScanning = false;
+      if (scanBtn) {
+        scanBtn.disabled = false;
+        scanBtn.innerHTML = 'Scan Website';
+      }
+    }
+  }
+
+  function auditHtmlDocument(htmlString, pageUrl) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(htmlString, 'text/html');
+    var checks = [];
+
+    var hasDoctype = /<!doctype\s+html/i.test(htmlString);
+    checks.push({
+      category: 'Security & Best Practices',
+      name: 'HTML5 Doctype Declaration',
+      status: hasDoctype ? 'pass' : 'warning',
+      scoreImpact: hasDoctype ? 5 : -5,
+      value: hasDoctype ? '<!DOCTYPE html>' : 'Missing or non-standard doctype',
+      detail: hasDoctype ? 'Document triggers standard mode rendering.' : 'Missing modern <!DOCTYPE html>. May cause quirky rendering in older browsers.'
+    });
+
+    var htmlElem = doc.querySelector('html');
+    var langAttr = htmlElem ? htmlElem.getAttribute('lang') : null;
+    if (langAttr && langAttr.trim().length > 0) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'HTML Language Tag',
+        status: 'pass',
+        scoreImpact: 5,
+        value: 'lang="' + langAttr.trim() + '"',
+        detail: 'Helps screen readers and search engines identify document language.'
+      });
+    } else {
+      checks.push({
+        category: 'Accessibility',
+        name: 'HTML Language Tag',
+        status: 'warning',
+        scoreImpact: -5,
+        value: 'Missing lang attribute',
+        detail: 'The <html> element has no lang attribute. Screen readers cannot infer pronunciation.',
+        recommendation: 'Add lang="en" (or appropriate language code) to the <html> opening tag.'
+      });
+    }
+
+    var titleElem = doc.querySelector('title');
+    var titleText = titleElem ? titleElem.textContent.trim() : '';
+    if (!titleText) {
+      checks.push({
+        category: 'SEO',
+        name: 'Page Title (<title>)',
+        status: 'fail',
+        scoreImpact: -15,
+        value: 'Missing or empty',
+        detail: 'Every web page requires an informative, unique <title> tag for search engines and browser tabs.',
+        recommendation: 'Add a descriptive <title> tag between 30 and 60 characters.'
+      });
+    } else if (titleText.length < 25) {
+      checks.push({
+        category: 'SEO',
+        name: 'Page Title (<title>)',
+        status: 'warning',
+        scoreImpact: -3,
+        value: '"' + titleText + '" (' + titleText.length + ' chars)',
+        detail: 'Title is relatively short. Recommended length is between 30 and 60 characters for optimal search visibility.',
+        recommendation: 'Expand title with relevant primary keywords and branding.'
+      });
+    } else if (titleText.length > 65) {
+      checks.push({
+        category: 'SEO',
+        name: 'Page Title (<title>)',
+        status: 'warning',
+        scoreImpact: -2,
+        value: '"' + titleText + '" (' + titleText.length + ' chars)',
+        detail: 'Title exceeds 65 characters and will likely be truncated in Google search results (approx 600px).',
+        recommendation: 'Shorten title to under 60 characters.'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'Page Title (<title>)',
+        status: 'pass',
+        scoreImpact: 10,
+        value: '"' + titleText + '" (' + titleText.length + ' chars)',
+        detail: 'Optimal length (between 30 and 60 characters) and clear presence.'
+      });
+    }
+
+    var descMeta = doc.querySelector('meta[name="description" i]');
+    var descContent = descMeta ? (descMeta.getAttribute('content') || '').trim() : '';
+    if (!descContent) {
+      checks.push({
+        category: 'SEO',
+        name: 'Meta Description',
+        status: 'fail',
+        scoreImpact: -10,
+        value: 'Missing or empty',
+        detail: 'No meta description found. Search engines will generate snippets from random body text.',
+        recommendation: 'Add <meta name="description" content="..."> with 120-160 characters summarizing the page.'
+      });
+    } else if (descContent.length < 70) {
+      checks.push({
+        category: 'SEO',
+        name: 'Meta Description',
+        status: 'warning',
+        scoreImpact: -3,
+        value: '"' + descContent + '" (' + descContent.length + ' chars)',
+        detail: 'Meta description is under 70 characters. It may not provide enough context for searchers.',
+        recommendation: 'Expand description to 120-160 characters to maximize click-through rate.'
+      });
+    } else if (descContent.length > 165) {
+      checks.push({
+        category: 'SEO',
+        name: 'Meta Description',
+        status: 'warning',
+        scoreImpact: -2,
+        value: '"' + descContent + '" (' + descContent.length + ' chars)',
+        detail: 'Meta description exceeds 160 characters and will likely be truncated in search snippets.',
+        recommendation: 'Keep descriptions concise and under 160 characters.'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'Meta Description',
+        status: 'pass',
+        scoreImpact: 10,
+        value: '"' + descContent + '" (' + descContent.length + ' chars)',
+        detail: 'Ideal length (120-160 characters) for search engine results pages.'
+      });
+    }
+
+    var viewportMeta = doc.querySelector('meta[name="viewport" i]');
+    var viewportContent = viewportMeta ? (viewportMeta.getAttribute('content') || '').trim() : '';
+    if (viewportContent && viewportContent.indexOf('width=device-width') !== -1) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Mobile Viewport Configuration',
+        status: 'pass',
+        scoreImpact: 10,
+        value: viewportContent,
+        detail: 'Proper viewport meta tag configured for responsive mobile rendering.'
+      });
+    } else {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Mobile Viewport Configuration',
+        status: 'fail',
+        scoreImpact: -15,
+        value: viewportContent || 'Missing viewport tag',
+        detail: 'Without width=device-width, mobile devices render pages as desktop-scaled, severely degrading mobile usability.',
+        recommendation: 'Add <meta name="viewport" content="width=device-width, initial-scale=1.0">.'
+      });
+    }
+
+    var charsetMeta = doc.querySelector('meta[charset i]') || doc.querySelector('meta[http-equiv="Content-Type" i]');
+    var charsetVal = charsetMeta ? (charsetMeta.getAttribute('charset') || charsetMeta.getAttribute('content') || '') : '';
+    if (/utf-8/i.test(charsetVal)) {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Character Encoding (UTF-8)',
+        status: 'pass',
+        scoreImpact: 5,
+        value: 'UTF-8 declared',
+        detail: 'Standard UTF-8 encoding declared, preventing encoding-based security exploits and character corruption.'
+      });
+    } else {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Character Encoding (UTF-8)',
+        status: 'warning',
+        scoreImpact: -4,
+        value: charsetVal || 'Missing charset declaration',
+        detail: 'No UTF-8 charset specified in <head>.',
+        recommendation: 'Add <meta charset="UTF-8"> as early as possible in <head>.'
+      });
+    }
+
+    var canonicalLink = doc.querySelector('link[rel="canonical" i]');
+    var canonicalHref = canonicalLink ? (canonicalLink.getAttribute('href') || '').trim() : '';
+    if (canonicalHref) {
+      var isAbsolute = /^https?:\/\//i.test(canonicalHref);
+      checks.push({
+        category: 'SEO',
+        name: 'Canonical Tag (<link rel="canonical">)',
+        status: isAbsolute ? 'pass' : 'warning',
+        scoreImpact: isAbsolute ? 5 : 2,
+        value: canonicalHref,
+        detail: isAbsolute ? 'Valid absolute canonical URL declared to prevent duplicate content indexing.' : 'Canonical URL is relative. Search engines strongly recommend absolute canonical URLs (e.g. https://example.com/page).',
+        recommendation: isAbsolute ? null : 'Use an absolute URL in the canonical tag.'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'Canonical Tag (<link rel="canonical">)',
+        status: 'warning',
+        scoreImpact: -3,
+        value: 'Not declared',
+        detail: 'No canonical URL found. Search engines may identify URL variations as duplicate content.',
+        recommendation: 'Add <link rel="canonical" href="https://yourdomain.com/exact-page">.'
+      });
+    }
+
+    var robotsMeta = doc.querySelector('meta[name="robots" i]');
+    var robotsContent = robotsMeta ? (robotsMeta.getAttribute('content') || '').toLowerCase() : '';
+    if (robotsContent.indexOf('noindex') !== -1) {
+      checks.push({
+        category: 'SEO',
+        name: 'Robots Directives',
+        status: 'warning',
+        scoreImpact: -10,
+        value: robotsContent,
+        detail: 'Contains "noindex". This instructs search engines NOT to show this page in search results.',
+        recommendation: 'Ensure "noindex" is intentional (e.g., admin or staging page).'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'Robots Directives',
+        status: 'pass',
+        scoreImpact: 5,
+        value: robotsContent || 'Default (index, follow)',
+        detail: 'No restrictive noindex tags detected. Page is eligible for indexing.'
+      });
+    }
+
+    var h1s = doc.querySelectorAll('h1');
+    var allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    if (h1s.length === 1) {
+      checks.push({
+        category: 'SEO',
+        name: 'H1 Primary Heading',
+        status: 'pass',
+        scoreImpact: 10,
+        value: '1 H1 found: "' + h1s[0].textContent.trim().substring(0, 60) + (h1s[0].textContent.trim().length > 60 ? '...' : '') + '"',
+        detail: 'Exactly one primary H1 heading found, following semantic SEO best practice.'
+      });
+    } else if (h1s.length === 0) {
+      checks.push({
+        category: 'SEO',
+        name: 'H1 Primary Heading',
+        status: 'fail',
+        scoreImpact: -10,
+        value: '0 H1 tags found',
+        detail: 'No H1 tag found. Search engines and assistive technology rely on H1 to understand the primary topic.',
+        recommendation: 'Add a clear, unique <h1> tag near the top of the main content.'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'H1 Primary Heading',
+        status: 'warning',
+        scoreImpact: -4,
+        value: h1s.length + ' H1 tags found',
+        detail: 'Multiple H1 tags detected. While HTML5 allows multiple H1s, best SEO practice recommends one primary H1.',
+        recommendation: 'Reserve <h1> for the main page title and use <h2>/<h3> for subsections.'
+      });
+    }
+
+    var headingOrderIssue = false;
+    var lastLevel = 0;
+    for (var i = 0; i < allHeadings.length; i++) {
+      var level = parseInt(allHeadings[i].tagName.substring(1), 10);
+      if (lastLevel > 0 && level > lastLevel + 1) {
+        headingOrderIssue = true;
+        break;
+      }
+      lastLevel = level;
+    }
+    if (allHeadings.length > 1) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Heading Structural Hierarchy',
+        status: headingOrderIssue ? 'warning' : 'pass',
+        scoreImpact: headingOrderIssue ? -3 : 5,
+        value: allHeadings.length + ' headings total',
+        detail: headingOrderIssue ? 'Detected skipped heading levels (e.g. H1 followed immediately by H3 or H4 without an H2).' : 'Headings follow a logical nested hierarchy without skipping levels.',
+        recommendation: headingOrderIssue ? 'Step down heading levels incrementally (H1 -> H2 -> H3).' : null
+      });
+    }
+
+    var ogTitle = doc.querySelector('meta[property="og:title" i]');
+    var ogDesc = doc.querySelector('meta[property="og:description" i]');
+    var ogImage = doc.querySelector('meta[property="og:image" i]');
+    var ogUrl = doc.querySelector('meta[property="og:url" i]');
+    var ogCount = [ogTitle, ogDesc, ogImage, ogUrl].filter(Boolean).length;
+    if (ogCount === 4) {
+      checks.push({
+        category: 'Social Meta',
+        name: 'Open Graph Protocol (Facebook/LinkedIn)',
+        status: 'pass',
+        scoreImpact: 10,
+        value: 'All 4 essential tags present (title, desc, image, url)',
+        detail: 'Complete Open Graph metadata ensures rich link previews on social platforms and messaging apps.'
+      });
+    } else if (ogCount > 0) {
+      checks.push({
+        category: 'Social Meta',
+        name: 'Open Graph Protocol (Facebook/LinkedIn)',
+        status: 'warning',
+        scoreImpact: 2,
+        value: ogCount + ' of 4 core tags present',
+        detail: 'Missing some Open Graph tags: ' + [!ogTitle ? 'og:title' : '', !ogDesc ? 'og:description' : '', !ogImage ? 'og:image' : '', !ogUrl ? 'og:url' : ''].filter(Boolean).join(', '),
+        recommendation: 'Add all four core tags: og:title, og:description, og:image, and og:url.'
+      });
+    } else {
+      checks.push({
+        category: 'Social Meta',
+        name: 'Open Graph Protocol (Facebook/LinkedIn)',
+        status: 'warning',
+        scoreImpact: -5,
+        value: 'No Open Graph tags found',
+        detail: 'Without Open Graph tags, social networks guess images and titles when links are shared.',
+        recommendation: 'Add <meta property="og:title">, <meta property="og:image">, etc.'
+      });
+    }
+
+    var twitterCard = doc.querySelector('meta[name="twitter:card" i]');
+    if (twitterCard) {
+      checks.push({
+        category: 'Social Meta',
+        name: 'Twitter / X Card Metadata',
+        status: 'pass',
+        scoreImpact: 5,
+        value: 'twitter:card="' + (twitterCard.getAttribute('content') || '') + '"',
+        detail: 'Twitter Card configured for structured card rendering on X.'
+      });
+    } else {
+      checks.push({
+        category: 'Social Meta',
+        name: 'Twitter / X Card Metadata',
+        status: 'info',
+        scoreImpact: 0,
+        value: 'Missing twitter:card',
+        detail: 'Twitter/X falls back to Open Graph if present, but an explicit twitter:card tag is recommended.',
+        recommendation: 'Add <meta name="twitter:card" content="summary_large_image">.'
+      });
+    }
+
+    var images = doc.querySelectorAll('img');
+    var missingAltCount = 0;
+    var missingAltSources = [];
+    for (var j = 0; j < images.length; j++) {
+      if (!images[j].hasAttribute('alt')) {
+        missingAltCount++;
+        if (missingAltSources.length < 3) {
+          missingAltSources.push(images[j].getAttribute('src') || 'inline image');
+        }
+      }
+    }
+    if (images.length === 0) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Image Alternative Text (alt)',
+        status: 'info',
+        scoreImpact: 0,
+        value: 'No images found in document',
+        detail: 'Document contains no <img> elements.'
+      });
+    } else if (missingAltCount === 0) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Image Alternative Text (alt)',
+        status: 'pass',
+        scoreImpact: 10,
+        value: 'All ' + images.length + ' image(s) have alt attributes',
+        detail: 'Every image includes an alt attribute for screen reader accessibility and image SEO.'
+      });
+    } else {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Image Alternative Text (alt)',
+        status: 'fail',
+        scoreImpact: -10,
+        value: missingAltCount + ' of ' + images.length + ' image(s) missing alt',
+        detail: 'Images without alt attributes fail WCAG 2.1 guideline 1.1.1 (Non-text Content). Samples: ' + missingAltSources.join(', '),
+        recommendation: 'Add descriptive alt="description" to informative images, or alt="" for purely decorative visuals.'
+      });
+    }
+
+    var missingLazy = 0;
+    for (var k = 0; k < images.length; k++) {
+      if (images[k].getAttribute('loading') !== 'lazy') { missingLazy++; }
+    }
+    if (images.length > 2) {
+      checks.push({
+        category: 'Performance & Structure',
+        name: 'Image Native Lazy Loading',
+        status: missingLazy > 2 ? 'warning' : 'pass',
+        scoreImpact: missingLazy > 2 ? -3 : 5,
+        value: (images.length - missingLazy) + ' of ' + images.length + ' images use loading="lazy"',
+        detail: missingLazy > 2 ? 'Multiple below-the-fold images do not specify loading="lazy", increasing initial payload.' : 'Images utilize native lazy loading to conserve bandwidth.',
+        recommendation: missingLazy > 2 ? 'Add loading="lazy" to non-hero images.' : null
+      });
+    }
+
+    var formInputs = doc.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="button"]), textarea, select');
+    var missingLabels = 0;
+    for (var m = 0; m < formInputs.length; m++) {
+      var inp = formInputs[m];
+      var id = inp.getAttribute('id');
+      var hasLabel = id && doc.querySelector('label[for="' + id + '"]');
+      var hasAriaLabel = inp.hasAttribute('aria-label') || inp.hasAttribute('aria-labelledby');
+      var isWrappedInLabel = inp.closest('label');
+      if (!hasLabel && !hasAriaLabel && !isWrappedInLabel) { missingLabels++; }
+    }
+    if (formInputs.length > 0) {
+      checks.push({
+        category: 'Accessibility',
+        name: 'Form Control Labels',
+        status: missingLabels === 0 ? 'pass' : 'fail',
+        scoreImpact: missingLabels === 0 ? 10 : -8,
+        value: missingLabels === 0 ? 'All ' + formInputs.length + ' input(s) labeled' : missingLabels + ' input(s) missing accessible labels',
+        detail: missingLabels === 0 ? 'Form controls have associated <label> or aria-label elements.' : 'Form controls missing accessible names prevent visually impaired users from understanding field requirements.',
+        recommendation: missingLabels > 0 ? 'Add <label for="field-id"> or aria-label to all form fields.' : null
+      });
+    }
+
+    var allLinks = doc.querySelectorAll('a[href], script[src], link[href], img[src]');
+    var httpResources = 0;
+    for (var n = 0; n < allLinks.length; n++) {
+      var urlAttr = allLinks[n].getAttribute('href') || allLinks[n].getAttribute('src') || '';
+      if (/^http:\/\//i.test(urlAttr)) { httpResources++; }
+    }
+    if (httpResources > 0) {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Mixed Content (Insecure HTTP Assets)',
+        status: 'warning',
+        scoreImpact: -6,
+        value: httpResources + ' insecure http:// reference(s)',
+        detail: 'Insecure http:// assets or links found. On HTTPS pages, modern browsers may block insecure scripts and stylesheets.',
+        recommendation: 'Update all resource URLs from http:// to https://.'
+      });
+    } else {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Mixed Content (Insecure HTTP Assets)',
+        status: 'pass',
+        scoreImpact: 5,
+        value: '0 insecure http:// URLs detected',
+        detail: 'No insecure external HTTP resources found in the document.'
+      });
+    }
+
+    var blankLinks = doc.querySelectorAll('a[target="_blank"]');
+    var unsafeBlank = 0;
+    for (var b = 0; b < blankLinks.length; b++) {
+      var rel = (blankLinks[b].getAttribute('rel') || '').toLowerCase();
+      if (rel.indexOf('noopener') === -1 && rel.indexOf('noreferrer') === -1) { unsafeBlank++; }
+    }
+    if (blankLinks.length > 0) {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Reverse Tabnabbing (target="_blank")',
+        status: unsafeBlank === 0 ? 'pass' : 'warning',
+        scoreImpact: unsafeBlank === 0 ? 5 : -4,
+        value: unsafeBlank === 0 ? 'All ' + blankLinks.length + ' links safe' : unsafeBlank + ' link(s) missing rel="noopener"',
+        detail: unsafeBlank === 0 ? 'All new-tab links include rel="noopener" or rel="noreferrer" protection.' : 'Links with target="_blank" without rel="noopener" expose the window.opener object, allowing potential reverse-tabnabbing.',
+        recommendation: unsafeBlank > 0 ? 'Add rel="noopener noreferrer" to external links opening in new tabs.' : null
+      });
+    }
+
+    var deprecatedTags = doc.querySelectorAll('font, center, marquee, blink, frameset, frame, applet, basefont, dir, strike');
+    if (deprecatedTags.length === 0) {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Modern Semantic Elements',
+        status: 'pass',
+        scoreImpact: 5,
+        value: '0 deprecated tags',
+        detail: 'No obsolete HTML tags (such as <font>, <center>, or <marquee>) detected.'
+      });
+    } else {
+      checks.push({
+        category: 'Security & Best Practices',
+        name: 'Modern Semantic Elements',
+        status: 'fail',
+        scoreImpact: -8,
+        value: deprecatedTags.length + ' deprecated tag(s) found',
+        detail: 'Document contains obsolete elements that violate HTML5 standards and modern browser support.',
+        recommendation: 'Replace deprecated presentational tags with modern CSS styling.'
+      });
+    }
+
+    var resourceHints = doc.querySelectorAll('link[rel="preload" i], link[rel="preconnect" i], link[rel="dns-prefetch" i]');
+    if (resourceHints.length > 0) {
+      checks.push({
+        category: 'Performance & Structure',
+        name: 'Resource Hints (Preconnect / Preload)',
+        status: 'pass',
+        scoreImpact: 5,
+        value: resourceHints.length + ' hint(s) found',
+        detail: 'Uses modern resource hints to accelerate DNS lookups and critical asset delivery.'
+      });
+    } else {
+      checks.push({
+        category: 'Performance & Structure',
+        name: 'Resource Hints (Preconnect / Preload)',
+        status: 'info',
+        scoreImpact: 0,
+        value: 'No resource hints found',
+        detail: 'Resource hints (<link rel="preconnect"> or <link rel="preload">) can shave milliseconds off third-party font/CDN connections.',
+        recommendation: 'Consider adding preconnect for Google Fonts or critical CDN domains.'
+      });
+    }
+
+    var allElements = doc.querySelectorAll('*');
+    if (allElements.length > 1500) {
+      checks.push({
+        category: 'Performance & Structure',
+        name: 'DOM Size & Node Count',
+        status: 'warning',
+        scoreImpact: -5,
+        value: allElements.length + ' nodes',
+        detail: 'Excessive DOM size (>1,500 nodes) increases memory consumption, causes longer style calculations, and slows layout reflows.',
+        recommendation: 'Flatten component hierarchy and implement virtualization for large lists.'
+      });
+    } else {
+      checks.push({
+        category: 'Performance & Structure',
+        name: 'DOM Size & Node Count',
+        status: 'pass',
+        scoreImpact: 5,
+        value: allElements.length + ' nodes',
+        detail: 'Healthy DOM node count within modern performance budgets.'
+      });
+    }
+
+    var bodyText = doc.body ? doc.body.innerText || doc.body.textContent || '' : '';
+    var cleanWords = bodyText.trim().replace(/\s+/g, ' ').split(' ').filter(function (w) { return w.length > 0; });
+    var wordCount = cleanWords.length;
+    var readingTimeMin = Math.max(1, Math.round(wordCount / 200));
+
+    if (wordCount < 100) {
+      checks.push({
+        category: 'SEO',
+        name: 'On-Page Content Depth',
+        status: 'warning',
+        scoreImpact: -5,
+        value: wordCount + ' words (~' + readingTimeMin + ' min read)',
+        detail: 'Page has very little text content (thin content). Search engines favor thorough, informative content.',
+        recommendation: 'Expand page content to provide clear, helpful information for users.'
+      });
+    } else {
+      checks.push({
+        category: 'SEO',
+        name: 'On-Page Content Depth',
+        status: 'pass',
+        scoreImpact: 5,
+        value: wordCount + ' words (~' + readingTimeMin + ' min read)',
+        detail: 'Healthy textual content volume for topic coverage and search relevancy.'
+      });
+    }
+
+    return { checks: checks, doc: doc };
+  }
+
+  function calculateHealthScore(checks) {
+    var categories = {
+      'SEO': { pass: 0, total: 0 },
+      'Security & DNS': { pass: 0, total: 0 },
+      'Accessibility': { pass: 0, total: 0 },
+      'Performance & Structure': { pass: 0, total: 0 },
+      'Social Meta': { pass: 0, total: 0 }
+    };
+
+    var counts = { pass: 0, warning: 0, fail: 0, info: 0, total: checks.length };
+    var baseScore = 100;
+    var deductions = 0;
+
+    checks.forEach(function (c) {
+      counts[c.status] = (counts[c.status] || 0) + 1;
+      var cat = categories[c.category];
+      if (!cat) { categories[c.category] = { pass: 0, total: 0 }; cat = categories[c.category]; }
+      cat.total++;
+      if (c.status === 'pass') cat.pass++;
+      if (c.status === 'fail') deductions += 8;
+      else if (c.status === 'warning') deductions += 3;
+    });
+
+    var finalScore = Math.max(10, Math.min(100, Math.round(baseScore - deductions)));
+    var grade = 'A';
+    if (finalScore < 60) grade = 'F';
+    else if (finalScore < 70) grade = 'D';
+    else if (finalScore < 80) grade = 'C';
+    else if (finalScore < 90) grade = 'B';
+
+    return { score: finalScore, grade: grade, counts: counts, categories: categories };
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function renderResults(data) {
+    if (!resultsContainer) return;
+
+    var sum = data.summary;
+    var gradeColorClass = 'mt-tool-grade-' + sum.grade.toLowerCase();
+
+    var html = '<div class="mt-tool-results-inner">';
+
+    html += '<div class="mt-tool-score-banner">' +
+      '<div class="mt-tool-score-circle ' + gradeColorClass + '">' +
+        '<div class="mt-tool-score-num">' + sum.score + '</div>' +
+        '<div class="mt-tool-score-max">/ 100</div>' +
+        '<div class="mt-tool-score-grade">Grade ' + sum.grade + '</div>' +
+      '</div>' +
+      '<div class="mt-tool-score-meta">' +
+        '<h3>Website Health & Audit Summary</h3>' +
+        '<p class="mt-tool-target-url">Target: <strong>' + escapeHtml(data.hostname) + '</strong> &bull; Scanned ' + escapeHtml(data.date) + '</p>' +
+        '<div class="mt-tool-metric-pills">' +
+          '<span class="mt-tool-pill mt-tool-pill-pass">' + sum.counts.pass + ' Passed</span>' +
+          '<span class="mt-tool-pill mt-tool-pill-warning">' + sum.counts.warning + ' Warnings</span>' +
+          '<span class="mt-tool-pill mt-tool-pill-fail">' + sum.counts.fail + ' Issues</span>' +
+          '<span class="mt-tool-pill mt-tool-pill-info">' + sum.counts.info + ' Notices</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    html += '<div class="mt-tool-stats-grid">' +
+      '<div class="mt-tool-stat-card">' +
+        '<div class="mt-tool-stat-eyebrow">Health Score</div>' +
+        '<div class="mt-tool-stat-value"><span class="mt-tool-stat-num ' + (sum.score >= 80 ? 'mt-tool-stat-green' : sum.score >= 60 ? 'mt-tool-stat-amber' : 'mt-tool-stat-red') + '">' + sum.score + '</span><span class="mt-tool-stat-unit">/ 100</span></div>' +
+        '<div class="mt-tool-stat-track"><div class="mt-tool-stat-fill ' + (sum.score >= 80 ? 'mt-tool-fill-green' : sum.score >= 60 ? 'mt-tool-fill-amber' : 'mt-tool-fill-red') + '" style="width:' + sum.score + '%;"></div></div>' +
+      '</div>' +
+      '<div class="mt-tool-stat-card">' +
+        '<div class="mt-tool-stat-eyebrow">Critical Issues</div>' +
+        '<div class="mt-tool-stat-value"><span class="mt-tool-stat-num ' + (sum.counts.fail > 0 ? 'mt-tool-stat-red' : 'mt-tool-stat-green') + '">' + sum.counts.fail + '</span></div>' +
+        '<div class="mt-tool-stat-sub">' + (sum.counts.fail === 0 ? 'No critical errors' : 'Action recommended') + '</div>' +
+      '</div>' +
+      '<div class="mt-tool-stat-card">' +
+        '<div class="mt-tool-stat-eyebrow">Warnings</div>' +
+        '<div class="mt-tool-stat-value"><span class="mt-tool-stat-num ' + (sum.counts.warning > 0 ? 'mt-tool-stat-amber' : 'mt-tool-stat-green') + '">' + sum.counts.warning + '</span></div>' +
+        '<div class="mt-tool-stat-sub">' + (sum.counts.warning === 0 ? 'Optimal technical health' : 'Review suggested') + '</div>' +
+      '</div>' +
+      '<div class="mt-tool-stat-card">' +
+        '<div class="mt-tool-stat-eyebrow">Passed Checks</div>' +
+        '<div class="mt-tool-stat-value"><span class="mt-tool-stat-num mt-tool-stat-green">' + sum.counts.pass + '</span><span class="mt-tool-stat-unit">/ ' + sum.counts.total + '</span></div>' +
+        '<div class="mt-tool-stat-sub">Valid standards compliant</div>' +
+      '</div>' +
+    '</div>';
+
+    html += '<div class="mt-tool-category-bars">';
+    Object.keys(sum.categories).forEach(function (catName) {
+      var cat = sum.categories[catName];
+      if (cat.total === 0) return;
+      var pct = Math.round((cat.pass / cat.total) * 100);
+      html += '<div class="mt-tool-cat-row">' +
+        '<div class="mt-tool-cat-label"><span>' + escapeHtml(catName) + '</span> <strong>' + pct + '%</strong></div>' +
+        '<div class="mt-tool-cat-track"><div class="mt-tool-cat-fill" style="width:' + pct + '%;"></div></div>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    html += '<div class="mt-tool-actions-bar">' +
+      '<div class="mt-tool-action-group">' +
+        '<button type="button" class="mt-tool-btn-secondary" id="mt-tool-copy-report-btn">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> ' +
+          'Copy Audit Report' +
+        '</button>' +
+        '<button type="button" class="mt-tool-btn-secondary" id="mt-tool-dl-txt-btn">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ' +
+          'Download .TXT' +
+        '</button>' +
+        '<button type="button" class="mt-tool-btn-secondary" id="mt-tool-dl-json-btn">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> ' +
+          'Export JSON' +
+        '</button>' +
+      '</div>' +
+      '<div class="mt-tool-filters">' +
+        '<select id="mt-tool-filter-status" aria-label="Filter by check status">' +
+          '<option value="all">All Statuses (' + sum.counts.total + ')</option>' +
+          '<option value="fail">Issues Only (' + sum.counts.fail + ')</option>' +
+          '<option value="warning">Warnings (' + sum.counts.warning + ')</option>' +
+          '<option value="pass">Passed (' + sum.counts.pass + ')</option>' +
+        '</select>' +
+        '<select id="mt-tool-filter-category" aria-label="Filter by category">' +
+          '<option value="all">All Categories</option>' +
+          '<option value="SEO">SEO</option>' +
+          '<option value="Security & DNS">Security & DNS</option>' +
+          '<option value="Accessibility">Accessibility</option>' +
+          '<option value="Performance & Structure">Performance & Structure</option>' +
+          '<option value="Social Meta">Social Meta</option>' +
+        '</select>' +
+      '</div>' +
+    '</div>';
+
+    html += '<div class="mt-tool-checklist" id="mt-tool-checklist-items">';
+    data.checks.forEach(function (chk, idx) {
+      var statusIcon = '&#10003;';
+      if (chk.status === 'fail') statusIcon = '&#10005;';
+      else if (chk.status === 'warning') statusIcon = '&#9888;';
+      else if (chk.status === 'info') statusIcon = '&#8505;';
+
+      html += '<div class="mt-tool-check-card mt-tool-status-card-' + chk.status + '" data-status="' + chk.status + '" data-category="' + escapeHtml(chk.category) + '" id="mt-chk-' + idx + '">' +
+        '<div class="mt-tool-check-header">' +
+          '<div class="mt-tool-check-title-wrap">' +
+            '<span class="mt-tool-check-icon">' + statusIcon + '</span>' +
+            '<div>' +
+              '<h4 class="mt-tool-check-name">' + escapeHtml(chk.name) + '</h4>' +
+              '<span class="mt-tool-check-cat">' + escapeHtml(chk.category) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<span class="mt-tool-check-badge mt-tool-badge-' + chk.status + '">' + chk.status.toUpperCase() + '</span>' +
+        '</div>' +
+        '<div class="mt-tool-check-body">' +
+          (chk.value ? '<div class="mt-tool-check-value"><strong>Found:</strong> <code>' + escapeHtml(chk.value) + '</code></div>' : '') +
+          '<p class="mt-tool-check-detail">' + escapeHtml(chk.detail) + '</p>' +
+          (chk.recommendation ? '<div class="mt-tool-check-rec"><strong>Fix:</strong> ' + escapeHtml(chk.recommendation) + '</div>' : '') +
+        '</div>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    if (data.hostname && data.hostname !== 'HTML Source Document') {
+      var domain = data.hostname;
+      var fullUrl = data.url.indexOf('http') === 0 ? data.url : 'https://' + domain;
+      html += '<div class="mt-tool-external-section">' +
+        '<h3>Official External Diagnostic Tools</h3>' +
+        '<p>Test your site on official third-party audit engines with one click:</p>' +
+        '<div class="mt-tool-external-grid">' +
+          '<a href="https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(fullUrl) + '" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>Google PageSpeed Insights &rarr;</strong>' +
+            '<small>Core Web Vitals, FCP, LCP, CLS, Lighthouse scores</small>' +
+          '</a>' +
+          '<a href="https://www.ssllabs.com/ssltest/analyze.html?d=' + encodeURIComponent(domain) + '" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>Qualys SSL Labs Test &rarr;</strong>' +
+            '<small>Deep TLS/SSL handshake, ciphers, certificate trust</small>' +
+          '</a>' +
+          '<a href="https://securityheaders.com/?q=' + encodeURIComponent(fullUrl) + '&followRedirects=on" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>SecurityHeaders.com &rarr;</strong>' +
+            '<small>Audit HSTS, CSP, X-Frame-Options, Permissions-Policy</small>' +
+          '</a>' +
+          '<a href="https://search.google.com/test/rich-results?url=' + encodeURIComponent(fullUrl) + '" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>Google Rich Results Test &rarr;</strong>' +
+            '<small>Validate Schema.org structured data and snippets</small>' +
+          '</a>' +
+          '<a href="https://validator.w3.org/nu/?doc=' + encodeURIComponent(fullUrl) + '" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>W3C Nu HTML Validator &rarr;</strong>' +
+            '<small>Official W3C syntax and markup standards validation</small>' +
+          '</a>' +
+          '<a href="https://observatory.mozilla.org/analyze/' + encodeURIComponent(domain) + '" target="_blank" rel="noopener noreferrer" class="mt-tool-ext-link">' +
+            '<strong>Mozilla Observatory &rarr;</strong>' +
+            '<small>Mozilla web security baseline scanner</small>' +
+          '</a>' +
+        '</div>' +
+      '</div>';
+    }
+
+    html += '</div>';
+    resultsContainer.innerHTML = html;
+    resultsContainer.style.display = 'block';
+
+    setupResultsInteractivity();
+  }
+
+  function setupResultsInteractivity() {
+    var copyBtn = document.getElementById('mt-tool-copy-report-btn');
+    var dlTxtBtn = document.getElementById('mt-tool-dl-txt-btn');
+    var dlJsonBtn = document.getElementById('mt-tool-dl-json-btn');
+    var statusSelect = document.getElementById('mt-tool-filter-status');
+    var catSelect = document.getElementById('mt-tool-filter-category');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        if (!currentAuditData) return;
+        var text = generateReportText(currentAuditData);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            copyBtn.textContent = 'Copied!';
+            setTimeout(function () { copyBtn.innerHTML = 'Copy Audit Report'; }, 2500);
+          }).catch(function () { fallbackCopy(text, copyBtn); });
+        } else { fallbackCopy(text, copyBtn); }
+      });
+    }
+
+    if (dlTxtBtn) {
+      dlTxtBtn.addEventListener('click', function () {
+        if (!currentAuditData) return;
+        var text = generateReportText(currentAuditData);
+        downloadFile(text, 'website-audit-report.txt', 'text/plain;charset=utf-8');
+      });
+    }
+
+    if (dlJsonBtn) {
+      dlJsonBtn.addEventListener('click', function () {
+        if (!currentAuditData) return;
+        var jsonStr = JSON.stringify(currentAuditData, null, 2);
+        downloadFile(jsonStr, 'website-audit-data.json', 'application/json;charset=utf-8');
+      });
+    }
+
+    function applyCheckFilters() {
+      var selectedStatus = statusSelect ? statusSelect.value : 'all';
+      var selectedCat = catSelect ? catSelect.value : 'all';
+      var cards = document.querySelectorAll('.mt-tool-check-card');
+      cards.forEach(function (card) {
+        var cardStatus = card.getAttribute('data-status');
+        var cardCat = card.getAttribute('data-category');
+        var matchStatus = selectedStatus === 'all' || cardStatus === selectedStatus;
+        var matchCat = selectedCat === 'all' || cardCat === selectedCat;
+        card.style.display = (matchStatus && matchCat) ? 'block' : 'none';
+      });
+    }
+
+    if (statusSelect) statusSelect.addEventListener('change', applyCheckFilters);
+    if (catSelect) catSelect.addEventListener('change', applyCheckFilters);
+  }
+
+  function fallbackCopy(text, btn) {
+    var textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      btn.textContent = 'Copied!';
+      setTimeout(function () { btn.innerHTML = 'Copy Audit Report'; }, 2500);
+    } catch (err) { alert('Unable to copy to clipboard.'); }
+    document.body.removeChild(textArea);
+  }
+
+  function downloadFile(content, fileName, mimeType) {
+    var blob = new Blob([content], { type: mimeType });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function generateReportText(data) {
+    var lines = [];
+    lines.push('====================================================');
+    lines.push('MYTOOLKIT WEBSITE SCANNER AUDIT REPORT');
+    lines.push('====================================================');
+    lines.push('Target:       ' + data.hostname);
+    lines.push('Scan Date:    ' + data.date);
+    lines.push('Health Score: ' + data.summary.score + ' / 100 (Grade ' + data.summary.grade + ')');
+    lines.push('Passed:       ' + data.summary.counts.pass);
+    lines.push('Warnings:     ' + data.summary.counts.warning);
+    lines.push('Issues:       ' + data.summary.counts.fail);
+    lines.push('Notices:      ' + data.summary.counts.info);
+    lines.push('====================================================\n');
+
+    lines.push('--- CATEGORY BREAKDOWN ---');
+    Object.keys(data.summary.categories).forEach(function (cat) {
+      var c = data.summary.categories[cat];
+      var pct = c.total > 0 ? Math.round((c.pass / c.total) * 100) : 0;
+      lines.push(cat + ': ' + pct + '% (' + c.pass + '/' + c.total + ' passed)');
+    });
+    lines.push('\n--- DETAILED AUDIT CHECKLIST ---');
+
+    data.checks.forEach(function (chk, i) {
+      lines.push((i + 1) + '. [' + chk.status.toUpperCase() + '] ' + chk.name + ' (' + chk.category + ')');
+      if (chk.value) lines.push('   Found: ' + chk.value);
+      lines.push('   Details: ' + chk.detail);
+      if (chk.recommendation) lines.push('   Recommendation: ' + chk.recommendation);
+      lines.push('');
+    });
+
+    lines.push('====================================================');
+    lines.push('Generated with MyToolkit (https://sheroz255.github.io/mytoolkit-app/)');
+    lines.push('====================================================');
+    return lines.join('\n');
+  }
+
+  var faqQuestions = document.querySelectorAll('.mt-tool-faq-q');
+  faqQuestions.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      var ans = document.getElementById(this.getAttribute('aria-controls'));
+      if (ans) { ans.hidden = expanded; }
+    });
+  });
+
+})();
+  </script>
+
+</body>
 </html>
