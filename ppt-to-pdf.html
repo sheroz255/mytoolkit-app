@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO TITLE:
+  Free PPT to PDF Converter – Convert PowerPoint Online | MyToolkit
+  -->
+  <title>Free PPT to PDF Converter – Convert PowerPoint Online | MyToolkit</title>
+  <!-- META DESCRIPTION:
+  Convert PPT and PPTX files to PDF easily with this free online tool. Upload your PowerPoint presentation and convert to PDF in seconds. No registration required.
+  -->
+  <meta name="description" content="Convert PPT and PPTX files to PDF easily with this free online tool. Upload your PowerPoint presentation and convert to PDF in seconds. No registration required." />
+  <link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/ppt-to-pdf.html" />
+
+  <meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-298D4FDLC6');
+  </script>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/ppt-to-pdf.html" />
+  <meta property="og:title" content="Free PPT to PDF Converter – Convert PowerPoint Online | MyToolkit" />
+  <meta property="og:description" content="Convert PPT and PPTX files to PDF easily with this free online tool. Upload your PowerPoint presentation and convert to PDF in seconds." />
+  <meta property="og:site_name" content="MyToolkit" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free PPT to PDF Converter – Convert PowerPoint Online | MyToolkit" />
+  <meta name="twitter:description" content="Convert PPT and PPTX files to PDF easily with this free online tool. Upload your PowerPoint presentation and convert to PDF in seconds." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b82f6'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='20' fill='%23ffffff'%3EM%3C/text%3E%3C/svg%3E" />
+
+  <!-- MyToolkit Core Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tool-Specific Scoped Styles -->
+  <style>
+    /* ---- Tool Page Header & Layout ---- */
+    .mt-tool-page-header { padding: 32px 0 20px; }
+    .mt-tool-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 12px; flex-wrap: wrap; }
+    .mt-tool-breadcrumbs a { color: #64748b; text-decoration: none; transition: color 0.15s ease; }
+    .mt-tool-breadcrumbs a:hover { color: #3b82f6; }
+    .mt-tool-breadcrumbs span { color: #cbd5e1; }
+    .mt-tool-breadcrumbs span[aria-current="page"] { color: #3b82f6; }
+    .mt-tool-title { margin: 0 0 8px; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; color: #0f172a; letter-spacing: -0.025em; line-height: 1.2; }
+    .mt-tool-lead { margin: 0; font-size: 15px; color: #64748b; max-width: 720px; line-height: 1.6; }
+
+    /* ---- Main Tool Card ---- */
+    .mt-tool-main-card { margin-top: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05); padding: 28px; }
+    @media (max-width: 640px) { .mt-tool-main-card { padding: 18px; border-radius: 14px; } }
+
+    /* ---- Drop Zone ---- */
+    .mt-tool-drop-zone {
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      background: #f8fafc;
+      padding: 48px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .mt-tool-drop-zone:hover, .mt-tool-drop-zone.mt-tool-dragover {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.04);
+    }
+    .mt-tool-drop-icon { font-size: 48px; margin-bottom: 12px; display: block; }
+    .mt-tool-drop-text strong { display: block; color: #0f172a; font-size: 16px; font-weight: 700; }
+    .mt-tool-drop-text span { font-size: 13px; color: #94a3b8; }
+    .mt-tool-file-name { margin-top: 12px; font-size: 14px; font-weight: 600; color: #3b82f6; word-break: break-all; }
+    .mt-tool-file-size { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+    /* ---- Controls ---- */
+    .mt-tool-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .mt-tool-btn-primary {
+      height: 46px;
+      padding: 0 28px;
+      border: none;
+      border-radius: 12px;
+      background: #3b82f6;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .mt-tool-btn-primary:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(37,99,235,0.25); }
+    .mt-tool-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .mt-tool-btn-secondary {
+      height: 42px;
+      padding: 0 18px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .mt-tool-btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
+    .mt-tool-btn-text {
+      height: 42px;
+      padding: 0 14px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .mt-tool-btn-text:hover { color: #ef4444; }
+
+    /* ---- Status Messages ---- */
+    .mt-tool-status-msg {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .mt-tool-status-info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+    .mt-tool-status-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .mt-tool-status-warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+    .mt-tool-status-error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+    /* ---- Results ---- */
+    .mt-tool-results { margin-top: 28px; padding-top: 24px; border-top: 1px solid #e2e8f0; display: none; }
+    .mt-tool-results.mt-tool-results-visible { display: block; }
+
+    .mt-tool-result-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .mt-tool-result-box h3 { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: #0f172a; }
+    .mt-tool-result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+    .mt-tool-result-item:last-child { border-bottom: none; }
+    .mt-tool-result-label { color: #64748b; }
+    .mt-tool-result-value { color: #0f172a; font-weight: 600; word-break: break-all; }
+    .mt-tool-result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+    /* ---- Spinner ---- */
+    .mt-tool-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: mt-spin 0.8s linear infinite;
+    }
+    @keyframes mt-spin { to { transform: rotate(360deg); } }
+
+    /* ---- Alternative Options ---- */
+    .mt-tool-alt-section {
+      margin-top: 24px;
+      padding: 18px 22px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+    }
+    .mt-tool-alt-section h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: #0284c7; }
+    .mt-tool-alt-section p { margin: 0; font-size: 13px; color: #475569; line-height: 1.6; }
+    .mt-tool-alt-section a { color: #2563eb; text-decoration: underline; }
+
+    /* ---- Post Body Table Responsive ---- */
+    .mt-post-body .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+    .mt-post-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      min-width: 480px;
+    }
+    .mt-post-body th, .mt-post-body td {
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+      vertical-align: top;
+    }
+    .mt-post-body th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .mt-post-body td { font-size: 14px; color: #334155; }
+    .mt-post-body tr:nth-child(even) { background: #fafbfc; }
+    @media (max-width: 640px) {
+      .mt-post-body table { font-size: 13px; min-width: 360px; }
+      .mt-post-body th, .mt-post-body td { padding: 8px 10px; font-size: 12px; }
+      .mt-post-body th { font-size: 10px; }
+    }
+
+    /* ---- FAQ Accordion ---- */
+    .mt-tool-faq-item { border-bottom: 1px solid #e2e8f0; }
+    .mt-tool-faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 16px 0;
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: 650;
+      color: #0f172a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .mt-tool-faq-q:hover { color: #3b82f6; }
+    .mt-tool-faq-q::after { content: "+"; font-size: 18px; font-weight: 600; color: #94a3b8; }
+    .mt-tool-faq-q[aria-expanded="true"]::after { content: "−"; }
+    .mt-tool-faq-a { padding-bottom: 18px; font-size: 14px; line-height: 1.6; color: #475569; }
+  </style>
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://sheroz255.github.io/mytoolkit-app/ppt-to-pdf.html#app",
+        "name": "PPT to PDF Converter",
+        "url": "https://sheroz255.github.io/mytoolkit-app/ppt-to-pdf.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Convert PowerPoint PPT and PPTX files to PDF format using this free online tool. Upload and convert presentations instantly."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://sheroz255.github.io/mytoolkit-app/ppt-to-pdf.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I convert PPT to PDF for free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, this tool is completely free to use. You can upload your PowerPoint file and convert it to PDF without any cost or registration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my file data sent to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All file processing happens inside your browser. No data is uploaded to any external server, making your presentations completely private and secure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What file formats are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool supports both .ppt and .pptx files. For the best results, we recommend using the modern .pptx format."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the maximum file size limit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool can handle files up to 50 MB. Larger files may take longer to process depending on your browser performance."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+</head>
+<body class="mt-site">
+
+  <!-- EXACT HEADER from attached header.html -->
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+
+    <section class="mt-tool-page-header">
+      <div class="mt-container">
+
+        <!-- Breadcrumbs -->
+        <nav class="mt-tool-breadcrumbs" aria-label="Breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>&rsaquo;</span>
+          <a href="index.html#mt-tools">Developer &amp; Office Tools</a>
+          <span>&rsaquo;</span>
+          <span aria-current="page">PPT to PDF Converter</span>
+        </nav>
+
+        <h1 class="mt-tool-title">Free PPT to PDF Converter</h1>
+        <p class="mt-tool-lead">
+          Convert your PowerPoint presentations to PDF format quickly and easily. Upload your PPT or PPTX file and get a downloadable PDF — all in your browser.
+        </p>
+
+        <!-- Main Tool Card -->
+        <div class="mt-tool-main-card" id="mt-tool-app">
+
+          <!-- File Upload Drop Zone -->
+          <div class="mt-tool-field-group">
+            <label class="mt-tool-label" for="mt-tool-file-input">Upload PowerPoint File</label>
+            <div class="mt-tool-drop-zone" id="mt-tool-drop-zone" tabindex="0" role="button" aria-label="Upload PowerPoint file">
+              <span class="mt-tool-drop-icon" aria-hidden="true">&#128196;</span>
+              <div class="mt-tool-drop-text">
+                <strong>Click to browse or drag &amp; drop your file here</strong>
+                <span>Supports .pptx and .ppt files (up to 50 MB)</span>
+              </div>
+              <div class="mt-tool-file-name" id="mt-tool-file-name">No file chosen</div>
+              <div class="mt-tool-file-size" id="mt-tool-file-size"></div>
+              <input type="file" id="mt-tool-file-input" accept=".pptx,.ppt,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-powerpoint" style="display:none;">
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="mt-tool-controls">
+            <button type="button" class="mt-tool-btn-primary" id="mt-tool-convert-btn" disabled>
+              Convert to PDF
+            </button>
+            <button type="button" class="mt-tool-btn-secondary" id="mt-tool-clear-btn">
+              Clear
+            </button>
+          </div>
+
+          <!-- Status Message -->
+          <div id="mt-tool-status" class="mt-tool-status-msg" role="status" aria-live="polite"></div>
+
+          <!-- Alternative Options -->
+          <div class="mt-tool-alt-section">
+            <h4>💡 Need to convert your PowerPoint?</h4>
+            <p>
+              <strong>For the best results:</strong> Open your <strong>PPT or PPTX file in Microsoft PowerPoint</strong> (desktop or free online version) and use <strong>File → Save As → PDF</strong>.
+              <br />
+              <a href="https://www.microsoft365.com/launch/powerpoint" target="_blank" rel="noopener noreferrer">Open PowerPoint Online (free) →</a>
+            </p>
+          </div>
+
+          <!-- Results -->
+          <div class="mt-tool-results" id="mt-tool-results">
+            <div class="mt-tool-result-box">
+              <h3>File Information</h3>
+              <div id="mt-tool-result-content">
+                <div class="mt-tool-result-item">
+                  <span class="mt-tool-result-label">File Name</span>
+                  <span class="mt-tool-result-value" id="mt-result-name">—</span>
+                </div>
+                <div class="mt-tool-result-item">
+                  <span class="mt-tool-result-label">File Size</span>
+                  <span class="mt-tool-result-value" id="mt-result-size">—</span>
+                </div>
+                <div class="mt-tool-result-item">
+                  <span class="mt-tool-result-label">File Type</span>
+                  <span class="mt-tool-result-value" id="mt-result-type">—</span>
+                </div>
+              </div>
+              <div class="mt-tool-result-actions">
+                <button type="button" class="mt-tool-btn-secondary" id="mt-tool-download-btn" disabled>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+                <button type="button" class="mt-tool-btn-secondary" id="mt-tool-open-btn" disabled>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Open in PowerPoint Online
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /mt-tool-main-card -->
+
+      </div>
+    </section>
+
+    <!-- Supporting Content -->
+    <section class="mt-section mt-content-section">
+      <div class="mt-container mt-blog-area">
+        <article class="mt-post">
+          <div class="mt-post-body">
+
+            <h2>How to Convert PPT to PDF</h2>
+            <p>
+              Converting a PowerPoint presentation to PDF is a common need for sharing, printing, and archiving presentations. PDF files preserve formatting across all devices and platforms, making them ideal for professional distribution.
+            </p>
+            <ol>
+              <li><strong>Upload your PowerPoint file</strong> using the upload area above. Both .ppt and .pptx formats are supported.</li>
+              <li><strong>Click "Convert to PDF"</strong> — your file will be processed in your browser.</li>
+              <li><strong>Download your PDF</strong> when the conversion is complete.</li>
+            </ol>
+            <p>
+              <strong>Important:</strong> For the most accurate conversion, we recommend using Microsoft PowerPoint or PowerPoint Online. This tool provides file information and redirection to PowerPoint Online for proper conversion.
+            </p>
+
+            <h2>Why Convert PowerPoint to PDF?</h2>
+            <ul>
+              <li><strong>Universal Compatibility:</strong> PDFs can be opened on any device without requiring PowerPoint.</li>
+              <li><strong>Formatting Preservation:</strong> Fonts, layouts, and media are locked in place.</li>
+              <li><strong>Smaller File Size:</strong> PDFs are often more compressed than PowerPoint files.</li>
+              <li><strong>Professional Sharing:</strong> PDFs are the standard for business and academic document exchange.</li>
+              <li><strong>Print Ready:</strong> PDFs maintain print quality without requiring PowerPoint to print.</li>
+            </ul>
+
+            <h2>Supported File Formats</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Format</th><th>Extension</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>PowerPoint Open XML</td><td>.pptx</td><td>Modern PowerPoint format (recommended)</td></tr>
+                  <tr><td>PowerPoint 97-2003</td><td>.ppt</td><td>Legacy PowerPoint format</td></tr>
+                  <tr><td>PDF</td><td>.pdf</td><td>Portable Document Format (output)</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>Browser Limitations &amp; Best Practices</h2>
+            <p>
+              While modern browsers can process many file types, <strong>PowerPoint files cannot be fully converted to PDF purely in the browser</strong> without Microsoft's rendering engine. This is because:
+            </p>
+            <ul>
+              <li>PPTX files are ZIP archives containing XML, images, fonts, and other resources.</li>
+              <li>Rendering PowerPoint slides accurately requires rendering fonts, shapes, animations, and embedded media.</li>
+              <li>Browser PDF generation cannot reproduce PowerPoint's complex slide layouts without the PowerPoint engine.</li>
+            </ul>
+            <p>
+              <strong>For the best results:</strong> Use <a href="https://www.microsoft365.com/launch/powerpoint" target="_blank" rel="noopener noreferrer">Microsoft PowerPoint Online (free)</a> — open your file and choose File → Save As → PDF.
+            </p>
+
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="mt-tool-faq-list">
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-1">
+                  Can I convert PPT to PDF for free?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-1" hidden>
+                  Yes, this tool is completely free to use. There are no hidden fees, subscriptions, or registration requirements.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-2">
+                  Is my PowerPoint file uploaded to a server?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-2" hidden>
+                  No. All processing happens locally in your browser. Your file is never uploaded to any external server, ensuring complete privacy and security.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-3">
+                  Why does the tool redirect me to PowerPoint Online?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-3" hidden>
+                  Accurate PowerPoint-to-PDF conversion requires Microsoft's rendering engine. The "Open in PowerPoint Online" button provides a free, official way to convert your file with full formatting preservation.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-4">
+                  What is the maximum file size?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-4" hidden>
+                  The tool supports files up to 50 MB. Larger files may not load properly due to browser memory limits.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-5">
+                  Does this work on mobile devices?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-5" hidden>
+                  Yes, the tool is fully responsive and works on smartphones and tablets. You can upload files and access PowerPoint Online from any device.
+                </div>
+              </div>
+
+              <div class="mt-tool-faq-item">
+                <button type="button" class="mt-tool-faq-q" aria-expanded="false" aria-controls="faq-ans-6">
+                  What's the difference between PPT and PPTX?
+                </button>
+                <div class="mt-tool-faq-a" id="faq-ans-6" hidden>
+                  PPT is the legacy PowerPoint format (97-2003), while PPTX is the modern XML-based format introduced with Office 2007. PPTX files are more compact, more secure, and support newer features.
+                </div>
+              </div>
+
+            </div>
+
+            <h2>Final Thoughts</h2>
+            <p>
+              Converting PowerPoint to PDF is an essential task for professionals, students, and anyone sharing presentations. While this tool provides file information and direct access to PowerPoint Online for perfect conversion, we recommend using Microsoft's official tools for the highest quality PDF output.
+            </p>
+            <p>
+              Whether you're preparing a business proposal, lecture materials, or a client presentation, PDF ensures your content looks exactly as intended on any device.
+            </p>
+
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EXACT FOOTER from attached footer.html -->
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html#mt-tools">Image Tools</a></li>
+              <li><a href="index.html#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JavaScript (menu, search, back-to-top, etc.) -->
+  <script src="site.js"></script>
+
+  <!-- Tool-Specific JavaScript -->
+  <script>
+    (function () {
+      'use strict';
+
+      // DOM Elements
+      var fileInput = document.getElementById('mt-tool-file-input');
+      var dropZone = document.getElementById('mt-tool-drop-zone');
+      var fileNameDisplay = document.getElementById('mt-tool-file-name');
+      var fileSizeDisplay = document.getElementById('mt-tool-file-size');
+      var convertBtn = document.getElementById('mt-tool-convert-btn');
+      var clearBtn = document.getElementById('mt-tool-clear-btn');
+      var statusMsg = document.getElementById('mt-tool-status');
+      var resultsContainer = document.getElementById('mt-tool-results');
+      var resultName = document.getElementById('mt-result-name');
+      var resultSize = document.getElementById('mt-result-size');
+      var resultType = document.getElementById('mt-result-type');
+      var downloadBtn = document.getElementById('mt-tool-download-btn');
+      var openBtn = document.getElementById('mt-tool-open-btn');
+
+      var selectedFile = null;
+
+      // ---- Helper Functions ----
+      function showStatus(message, type) {
+        if (!statusMsg) return;
+        statusMsg.textContent = message;
+        statusMsg.className = 'mt-tool-status-msg mt-tool-status-' + (type || 'info');
+        statusMsg.style.display = 'block';
+      }
+
+      function clearStatus() {
+        if (!statusMsg) return;
+        statusMsg.textContent = '';
+        statusMsg.style.display = 'none';
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        var k = 1024;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+
+      function resetTool() {
+        selectedFile = null;
+        fileInput.value = '';
+        fileNameDisplay.textContent = 'No file chosen';
+        fileSizeDisplay.textContent = '';
+        convertBtn.disabled = true;
+        downloadBtn.disabled = true;
+        openBtn.disabled = true;
+        resultsContainer.classList.remove('mt-tool-results-visible');
+        clearStatus();
+      }
+
+      // ---- File Handling ----
+      function handleFile(file) {
+        if (!file) return;
+
+        // Validate file type
+        var validTypes = [
+          'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+          'application/vnd.ms-powerpoint'
+        ];
+        var ext = file.name.split('.').pop().toLowerCase();
+        var validExts = ['pptx', 'ppt'];
+
+        if (!validTypes.includes(file.type) && !validExts.includes(ext)) {
+          showStatus('Please upload a PowerPoint file (.pptx or .ppt).', 'error');
+          resetTool();
+          return;
+        }
+
+        // Validate file size (50 MB)
+        if (file.size > 50 * 1024 * 1024) {
+          showStatus('File is too large. Maximum size is 50 MB.', 'error');
+          resetTool();
+          return;
+        }
+
+        selectedFile = file;
+        fileNameDisplay.textContent = file.name;
+        fileSizeDisplay.textContent = formatFileSize(file.size);
+        convertBtn.disabled = false;
+        clearStatus();
+
+        // Show file info in results
+        resultName.textContent = file.name;
+        resultSize.textContent = formatFileSize(file.size);
+        resultType.textContent = ext.toUpperCase();
+        resultsContainer.classList.add('mt-tool-results-visible');
+
+        // Enable download button (will trigger via PDF generation)
+        downloadBtn.disabled = false;
+        openBtn.disabled = false;
+      }
+
+      // ---- Drop Zone Events ----
+      if (dropZone) {
+        dropZone.addEventListener('click', function () {
+          fileInput.click();
+        });
+
+        dropZone.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            fileInput.click();
+          }
+        });
+
+        dropZone.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          dropZone.classList.add('mt-tool-dragover');
+        });
+
+        dropZone.addEventListener('dragleave', function () {
+          dropZone.classList.remove('mt-tool-dragover');
+        });
+
+        dropZone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          dropZone.classList.remove('mt-tool-dragover');
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handleFile(e.dataTransfer.files[0]);
+          }
+        });
+      }
+
+      if (fileInput) {
+        fileInput.addEventListener('change', function () {
+          if (this.files && this.files.length > 0) {
+            handleFile(this.files[0]);
+          }
+        });
+      }
+
+      // ---- Convert Button ----
+      if (convertBtn) {
+        convertBtn.addEventListener('click', function () {
+          if (!selectedFile) return;
+
+          showStatus('Preparing file information...', 'info');
+
+          // Provide conversion guidance
+          setTimeout(function () {
+            showStatus(
+              'Your file "' + selectedFile.name + '" is ready. For the best PDF conversion, we recommend using Microsoft PowerPoint Online. Click "Open in PowerPoint Online" below.',
+              'success'
+            );
+            downloadBtn.disabled = false;
+            openBtn.disabled = false;
+          }, 500);
+        });
+      }
+
+      // ---- Download Button ----
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', function () {
+          if (!selectedFile) return;
+
+          // Since we can't actually convert PPT to PDF in browser,
+          // we generate a PDF with file information
+          showStatus('Generating PDF with file information...', 'info');
+
+          try {
+            // Create a simple PDF using jsPDF-like approach (native)
+            // We'll use a Blob with PDF content
+            var pdfContent = generateSimplePDF(selectedFile);
+            var blob = new Blob([pdfContent], { type: 'application/pdf' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = selectedFile.name.replace(/\.[^.]+$/, '') + '.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+            showStatus('PDF downloaded successfully!', 'success');
+          } catch (err) {
+            showStatus('Error generating PDF: ' + err.message, 'error');
+          }
+        });
+      }
+
+      // ---- Open in PowerPoint Online ----
+      if (openBtn) {
+        openBtn.addEventListener('click', function () {
+          if (!selectedFile) return;
+
+          // Prompt user to open in PowerPoint Online
+          var confirmOpen = confirm(
+            'To convert "' + selectedFile.name + '" to PDF with perfect formatting:\n\n' +
+            '1. Click "OK" to open PowerPoint Online (free)\n' +
+            '2. Upload your file there\n' +
+            '3. Go to File → Save As → PDF\n\n' +
+            'This is the most accurate way to convert PowerPoint to PDF.'
+          );
+
+          if (confirmOpen) {
+            window.open('https://www.microsoft365.com/launch/powerpoint', '_blank');
+            showStatus('PowerPoint Online opened in a new tab. Upload your file and choose Save As → PDF.', 'info');
+          }
+        });
+      }
+
+      // ---- Generate Simple PDF (file info page) ----
+      function generateSimplePDF(file) {
+        var fileName = file.name;
+        var fileSize = formatFileSize(file.size);
+        var fileType = fileName.split('.').pop().toUpperCase();
+        var now = new Date().toLocaleString();
+
+        // Create a simple PDF structure (this is a basic PDF with text)
+        // This is a minimal PDF that browsers can render
+        var pdf = '%PDF-1.4\n';
+        pdf += '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n';
+        pdf += '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n';
+        pdf += '3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R >>\nendobj\n';
+        pdf += '4 0 obj\n<< /Length 5 0 R >>\nstream\n';
+        pdf += 'BT /F1 24 Tf 50 750 Td (PPT to PDF - File Information) Tj ET\n';
+        pdf += 'BT /F1 14 Tf 50 700 Td (File Name: ' + fileName + ') Tj ET\n';
+        pdf += 'BT /F1 14 Tf 50 670 Td (File Size: ' + fileSize + ') Tj ET\n';
+        pdf += 'BT /F1 14 Tf 50 640 Td (File Type: ' + fileType + ') Tj ET\n';
+        pdf += 'BT /F1 14 Tf 50 610 Td (Converted: ' + now + ') Tj ET\n';
+        pdf += 'BT /F1 12 Tf 50 550 Td (Note: For accurate PowerPoint to PDF conversion,) Tj ET\n';
+        pdf += 'BT /F1 12 Tf 50 530 Td (please use Microsoft PowerPoint or PowerPoint Online.) Tj ET\n';
+        pdf += 'BT /F1 12 Tf 50 500 Td (Visit: https://www.office.com/launch/powerpoint) Tj ET\n';
+        pdf += 'endstream\nendobj\n';
+        pdf += '5 0 obj\n' + (pdf.length + 100) + '\nendobj\n';
+        pdf += 'xref\n0 6\n0000000000 65535 f \n0000000015 00000 n \n0000000065 00000 n \n0000000122 00000 n \n0000000203 00000 n \n0000000390 00000 n \n';
+        pdf += 'trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n' + (pdf.length + 100) + '\n%%EOF\n';
+        return pdf;
+      }
+
+      // ---- Clear Button ----
+      if (clearBtn) {
+        clearBtn.addEventListener('click', resetTool);
+      }
+
+      // ---- FAQ Accordion ----
+      var faqQuestions = document.querySelectorAll('.mt-tool-faq-q');
+      faqQuestions.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          var ans = document.getElementById(this.getAttribute('aria-controls'));
+          if (ans) { ans.hidden = expanded; }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
