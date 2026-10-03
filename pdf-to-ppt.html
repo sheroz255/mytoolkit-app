@@ -1,0 +1,504 @@
+<!-- SEO TITLE:
+Free PDF to PPT Converter – Convert PDF Pages to PowerPoint Slides | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Convert a PDF into a PowerPoint presentation instantly. Each PDF page becomes one slide, right in your browser. Free, private, no upload to a server.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF to PPT Converter – Convert PDF Pages to PowerPoint Slides | MyToolkit</title>
+<meta name="description" content="Convert a PDF into a PowerPoint presentation instantly. Each PDF page becomes one slide, right in your browser. Free, private, no upload to a server.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/pdf-to-ppt.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PDF to PPT Converter | MyToolkit">
+<meta property="og:description" content="Convert a PDF into a PowerPoint presentation, one slide per page, instantly in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/pdf-to-ppt.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF to PPT Converter",
+  "url": "https://sheroz255.github.io/mytoolkit-app/pdf-to-ppt.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Convert a PDF file into a PowerPoint presentation, with each PDF page becoming one slide."
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 12px;max-width:680px}
+  .mt-tool-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;font-size:13px;border-radius:12px;padding:12px 14px;margin:0 0 22px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-file-chip{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-file-chip-name{flex:1;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-file-chip-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-file-chip-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-progress-wrap{margin-top:16px;display:none}
+  .mt-progress-bar{height:8px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+  .mt-progress-fill{height:100%;width:0%;background:#2563eb;border-radius:999px;transition:width .2s ease}
+  .mt-progress-label{font-size:12.5px;color:#64748b;margin-top:6px}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:10px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:10px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-pdf-to-ppt">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>PDF to PPT</span>
+  </nav>
+
+  <h1>Free PDF to PPT Converter</h1>
+  <p class="mt-tool-intro">
+    Convert your PDF into a PowerPoint presentation instantly. Each page of your PDF becomes one
+    slide, ready to open, present, or edit further in PowerPoint.
+  </p>
+  <p class="mt-tool-note">
+    <strong>How this works:</strong> Each PDF page is rendered as a high-quality image and placed
+    on its own slide. This preserves the exact visual layout of your PDF, but the text on each
+    slide is part of the image (not separately editable PowerPoint text), since reliably
+    extracting editable text and layout from any PDF requires processing this free browser-only
+    tool doesn't perform.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128196;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a PDF file</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf">
+    </label>
+
+    <div class="mt-file-chip" id="mt-file-chip" style="display:none;">
+      <span aria-hidden="true">&#128196;</span>
+      <span class="mt-file-chip-name" id="mt-file-name"></span>
+      <button class="mt-file-chip-remove" id="mt-btn-remove-file" type="button" aria-label="Remove file">&#10005;</button>
+    </div>
+
+    <div class="mt-progress-wrap" id="mt-progress-wrap">
+      <div class="mt-progress-bar"><div class="mt-progress-fill" id="mt-progress-fill"></div></div>
+      <div class="mt-progress-label" id="mt-progress-label">Converting...</div>
+    </div>
+
+    <p class="mt-field-error" id="mt-convert-error" style="display:none;"></p>
+    <p class="mt-field-success" id="mt-convert-success" style="display:none;"></p>
+
+    <div class="mt-tool-controls">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-convert" type="button" disabled>Convert to PPT</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How This Converter Works</h2>
+  <p>
+    This tool reads your PDF directly in your browser, renders each page at high resolution, and
+    places that page image onto its own slide in a new PowerPoint file, matching each page's
+    original aspect ratio. The result is a genuine, valid .pptx file you can open in PowerPoint,
+    Google Slides, or Keynote, present directly, or use as a starting point &mdash; you can still
+    add new editable text boxes, notes, or annotations on top of each slide. Because everything
+    happens locally, your PDF is never uploaded to a server.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>One Slide Per Page</h3><p>Every PDF page becomes an individual PowerPoint slide.</p></div>
+    <div class="mt-feature-box"><h3>Preserves Layout</h3><p>High-resolution rendering keeps your original page design intact.</p></div>
+    <div class="mt-feature-box"><h3>Real .pptx File</h3><p>Opens in PowerPoint, Google Slides, Keynote and other presentation software.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your PDF is processed locally and never uploaded to a server.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtPptFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Will the text on each slide be editable?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No, each slide contains an image of the original PDF page, so the text within that image isn't separately editable. You can still add new text boxes, shapes or notes on top of each slide in PowerPoint.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why not extract editable text directly?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Reliably rebuilding a PDF's exact text, fonts, positioning and formatting as editable PowerPoint objects requires complex layout analysis that isn't practical to do accurately in a free browser-only tool. Rendering each page as an image preserves the exact visual appearance instead.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">How many pages can I convert?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>There's no fixed page limit from this tool. Very long PDFs may take longer to process and use more memory, since everything runs on your own device.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my PDF uploaded to a server?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The entire conversion happens locally in your browser using JavaScript. Your file is never sent anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What if my file isn't a valid PDF?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>You'll see a clear error message explaining the file couldn't be read as a valid PDF, rather than a broken or empty result.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you need to present a PDF report as slides, drop PDF pages into an existing deck, or
+    just need a quick PowerPoint version of a document, this tool converts your file in seconds
+    while keeping the original page layout intact.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var selectedFile = null;
+
+  var el = {
+    dropZone: document.getElementById('mt-drop-zone'),
+    input: document.getElementById('mt-pdf-input'),
+    fileChip: document.getElementById('mt-file-chip'),
+    fileName: document.getElementById('mt-file-name'),
+    btnRemoveFile: document.getElementById('mt-btn-remove-file'),
+    progressWrap: document.getElementById('mt-progress-wrap'),
+    progressFill: document.getElementById('mt-progress-fill'),
+    progressLabel: document.getElementById('mt-progress-label'),
+    error: document.getElementById('mt-convert-error'),
+    success: document.getElementById('mt-convert-success'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnConvert: document.getElementById('mt-btn-convert'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function setFile(file) {
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      showToast('Please select a valid PDF file.');
+      return;
+    }
+    selectedFile = file;
+    el.fileName.textContent = file.name + ' (' + formatSize(file.size) + ')';
+    el.fileChip.style.display = 'flex';
+    el.btnConvert.disabled = false;
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+  }
+
+  el.input.addEventListener('change', function (e) {
+    setFile(e.target.files[0]);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.remove('mt-drag');
+    });
+  });
+  el.dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      setFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  el.btnRemoveFile.addEventListener('click', function () {
+    selectedFile = null;
+    el.input.value = '';
+    el.fileChip.style.display = 'none';
+    el.btnConvert.disabled = true;
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    selectedFile = null;
+    el.input.value = '';
+    el.fileChip.style.display = 'none';
+    el.btnConvert.disabled = true;
+    el.progressWrap.style.display = 'none';
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+    showToast('Cleared.');
+  });
+
+  function setProgress(pct, label) {
+    el.progressWrap.style.display = 'block';
+    el.progressFill.style.width = pct + '%';
+    el.progressLabel.textContent = label;
+  }
+
+  el.btnConvert.addEventListener('click', function () {
+    if (!selectedFile) {
+      showToast('Please select a PDF file first.');
+      return;
+    }
+    if (typeof pdfjsLib === 'undefined' || typeof PptxGenJS === 'undefined') {
+      el.error.textContent = 'Conversion engine failed to load. Check your internet connection and reload the page.';
+      el.error.style.display = 'block';
+      return;
+    }
+
+    el.btnConvert.disabled = true;
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+    setProgress(0, 'Reading PDF...');
+
+    convertPdfToPpt(selectedFile).then(function () {
+      el.success.textContent = 'Success! Your PowerPoint file has been downloaded.';
+      el.success.style.display = 'block';
+      showToast('Converted and downloaded!');
+    }).catch(function (err) {
+      el.error.textContent = err.message || 'Could not convert this PDF. Make sure it is a valid, unencrypted PDF file.';
+      el.error.style.display = 'block';
+    }).finally(function () {
+      el.btnConvert.disabled = false;
+      el.progressWrap.style.display = 'none';
+    });
+  });
+
+  function convertPdfToPpt(file) {
+    return file.arrayBuffer().then(function (buffer) {
+      return pdfjsLib.getDocument({ data: buffer }).promise.catch(function () {
+        throw new Error('This file could not be read as a valid PDF.');
+      });
+    }).then(function (pdfDoc) {
+      var pptx = new PptxGenJS();
+      var numPages = pdfDoc.numPages;
+
+      return pdfDoc.getPage(1).then(function (firstPage) {
+        var firstViewport = firstPage.getViewport({ scale: 1 });
+        var aspect = firstViewport.width / firstViewport.height;
+        var slideW = 10;
+        var slideH = slideW / aspect;
+        pptx.defineLayout({ name: 'MT_CUSTOM', width: slideW, height: slideH });
+        pptx.layout = 'MT_CUSTOM';
+
+        var pageLoop = function (pageNum) {
+          return pdfDoc.getPage(pageNum).then(function (page) {
+            var viewport = page.getViewport({ scale: 2 });
+            var canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            var ctx = canvas.getContext('2d');
+
+            return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function () {
+              var imgData = canvas.toDataURL('image/jpeg', 0.92);
+              var slide = pptx.addSlide();
+              slide.addImage({ data: imgData, x: 0, y: 0, w: slideW, h: slideH });
+
+              setProgress(Math.round((pageNum / numPages) * 90), 'Converting page ' + pageNum + ' of ' + numPages + '...');
+            });
+          });
+        };
+
+        var chain = Promise.resolve();
+        for (var i = 1; i <= numPages; i++) {
+          (function (pageNum) {
+            chain = chain.then(function () { return pageLoop(pageNum); });
+          })(i);
+        }
+
+        return chain;
+      }).then(function () {
+        setProgress(95, 'Generating PowerPoint file...');
+        return pptx.write('blob');
+      });
+    }).then(function (blob) {
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = file.name.replace(/\.pdf$/i, '') + '.pptx';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    });
+  }
+
+  document.querySelectorAll('#mtPptFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtPptFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
