@@ -1,0 +1,708 @@
+<!-- SEO TITLE:
+Free PDF Watermark Adder – Add Text Watermark to PDF Online | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Add a custom text watermark to every page of a PDF — choose the text, color, size, opacity, rotation and position, with a live preview, right in your browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF Watermark Adder – Add Text Watermark to PDF Online | MyToolkit</title>
+<meta name="description" content="Add a custom text watermark to every page of a PDF — choose the text, color, size, opacity, rotation and position, with a live preview, right in your browser.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/pdf-watermark-adder.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PDF Watermark Adder | MyToolkit">
+<meta property="og:description" content="Add a custom text watermark to every page of a PDF, with a live preview, right in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/pdf-watermark-adder.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Watermark Adder",
+  "url": "https://sheroz255.github.io/mytoolkit-app/pdf-watermark-adder.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Add a custom text watermark to every page of a PDF, with control over text, color, size, opacity, rotation and position, entirely in the browser."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does adding a watermark reduce the quality of my PDF?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The watermark is added as an extra text layer on top of each page. The original text, images and formatting are left completely untouched." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my PDF uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The watermark is generated and applied entirely in your browser using JavaScript. Your file is never uploaded anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I watermark just one page, or does it apply to the whole document?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The watermark you configure is applied to every page of the document when you click \"Add Watermark & Download\". Per-page customization isn't supported in this version." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I control how transparent the watermark is?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the Opacity slider to make the watermark as subtle or as bold as you need, from barely visible to fully solid." }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between \"Diagonal Tile\" and the other position options?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Diagonal Tile repeats the watermark text in a rotated grid across the whole page, similar to the watermark style used on confidential documents. The other options place a single watermark in the center or in one corner of the page." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the preview take a moment to update?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The preview is not a fake approximation — it rebuilds the actual first page with your exact watermark settings using the real PDF engine, then renders it, so what you see is exactly what you'll get." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-wm-file-bar{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-wm-file-name{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-wm-file-meta{font-size:11.5px;color:#94a3b8;flex-shrink:0}
+  .mt-wm-file-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-wm-file-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-wm-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:640px){.mt-wm-grid{grid-template-columns:1fr 1fr}}
+  .mt-wm-field.full{grid-column:1 / -1}
+  .mt-wm-field label{display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:6px}
+  .mt-wm-field input[type="text"],.mt-wm-field input[type="number"],.mt-wm-field select{width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:9px;font-size:13.5px;color:#0f172a;background:#fff;font-family:inherit}
+  .mt-wm-field input[type="color"]{width:100%;height:38px;padding:3px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;cursor:pointer}
+  .mt-wm-field input[type="range"]{width:100%}
+  .mt-wm-field input:focus,.mt-wm-field select:focus{outline:2px solid #2563eb;outline-offset:1px}
+
+  .mt-wm-preview-wrap{width:100%;max-height:420px;overflow:auto;display:flex;align-items:flex-start;justify-content:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+  .mt-wm-preview-wrap canvas{max-width:100%;box-shadow:0 1px 6px rgba(15,23,42,.15)}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:10px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:10px}
+  .mt-rotate-loading{font-size:13.5px;color:#64748b;margin-top:12px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-pdf-watermark-adder">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>PDF Watermark Adder</span>
+  </nav>
+
+  <h1>Free PDF Watermark Adder</h1>
+  <p class="mt-tool-intro">
+    Add a custom text watermark &mdash; like "CONFIDENTIAL", "DRAFT" or your own text &mdash; to
+    every page of a PDF. Adjust the color, size, opacity, rotation and position, preview it live,
+    and download the result. Everything happens locally in your browser.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128196;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a PDF file</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf">
+    </label>
+
+    <div class="mt-wm-file-bar" id="mt-wm-file-bar" style="display:none;">
+      <span aria-hidden="true">&#128196;</span>
+      <span class="mt-wm-file-name" id="mt-wm-file-name"></span>
+      <span class="mt-wm-file-meta" id="mt-wm-file-meta"></span>
+      <button class="mt-wm-file-remove" id="mt-btn-remove-file" type="button" aria-label="Remove file">&#10005;</button>
+    </div>
+
+    <p class="mt-field-error" id="mt-wm-error" style="display:none;" aria-live="polite"></p>
+    <p class="mt-field-success" id="mt-wm-success" style="display:none;" aria-live="polite"></p>
+  </div>
+
+  <div class="mt-tool-card" id="mt-wm-settings" style="display:none;">
+    <h2 class="mt-tool-section-title" style="margin-bottom:14px;">Watermark Settings</h2>
+    <div class="mt-wm-grid">
+      <div class="mt-wm-field full">
+        <label for="mt-wm-text">Watermark Text</label>
+        <input type="text" id="mt-wm-text" maxlength="60" value="CONFIDENTIAL" aria-describedby="mt-wm-text-hint">
+      </div>
+      <div class="mt-wm-field">
+        <label for="mt-wm-fontsize">Font Size (pt)</label>
+        <input type="number" id="mt-wm-fontsize" min="8" max="200" value="48">
+      </div>
+      <div class="mt-wm-field">
+        <label for="mt-wm-color">Color</label>
+        <input type="color" id="mt-wm-color" value="#808080">
+      </div>
+      <div class="mt-wm-field">
+        <label for="mt-wm-opacity">Opacity: <span id="mt-wm-opacity-val">30%</span></label>
+        <input type="range" id="mt-wm-opacity" min="5" max="100" value="30" aria-label="Watermark opacity">
+      </div>
+      <div class="mt-wm-field">
+        <label for="mt-wm-angle">Rotation: <span id="mt-wm-angle-val">45&deg;</span></label>
+        <input type="range" id="mt-wm-angle" min="-90" max="90" value="45" aria-label="Watermark rotation angle">
+      </div>
+      <div class="mt-wm-field full">
+        <label for="mt-wm-position">Position</label>
+        <select id="mt-wm-position">
+          <option value="tile" selected>Diagonal Tile (Repeated)</option>
+          <option value="center">Center (Single)</option>
+          <option value="top-left">Top Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="bottom-right">Bottom Right</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-tool-card" id="mt-wm-preview-card" style="display:none;">
+    <h2 class="mt-tool-section-title" style="margin-bottom:10px;">Live Preview &mdash; Page 1</h2>
+    <p class="mt-rotate-loading" id="mt-wm-preview-loading" style="display:none;">Updating preview&hellip;</p>
+    <div class="mt-wm-preview-wrap"><canvas id="mt-wm-preview-canvas"></canvas></div>
+
+    <div class="mt-tool-controls" id="mt-wm-actions">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-watermark-download" type="button">Add Watermark &amp; Download</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-watermark-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How It Works</h2>
+  <p>
+    After you upload a PDF, choose your watermark text and style settings on the left, and the
+    preview on the right updates to show exactly how the first page will look &mdash; it's a real
+    render of the actual watermarked page, not a mock-up. Pick "Diagonal Tile" to repeat the
+    watermark across the whole page in a rotated grid, similar to how confidential documents are
+    typically marked, or choose "Center" or a corner position for a single watermark instead. Once
+    you're happy with the preview, click "Add Watermark &amp; Download" to apply the same watermark
+    to every page and save the result as a new PDF file. The original page content &mdash; text,
+    images and formatting &mdash; is left completely untouched; the watermark is simply drawn on top.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Fully Customizable</h3><p>Control the text, color, size, opacity, rotation and position.</p></div>
+    <div class="mt-feature-box"><h3>Accurate Live Preview</h3><p>See a real render of the watermarked page before downloading.</p></div>
+    <div class="mt-feature-box"><h3>Applies to Every Page</h3><p>One setup watermarks the entire document consistently.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your PDF is processed locally and never uploaded to a server.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtWatermarkFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does adding a watermark reduce the quality of my PDF?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The watermark is added as an extra text layer on top of each page. The original text, images and formatting are left completely untouched.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my PDF uploaded to a server?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The watermark is generated and applied entirely in your browser using JavaScript. Your file is never uploaded anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I watermark just one page, or does it apply to the whole document?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>The watermark you configure is applied to every page of the document when you click "Add Watermark &amp; Download". Per-page customization isn't supported in this version.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I control how transparent the watermark is?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. Use the Opacity slider to make the watermark as subtle or as bold as you need, from barely visible to fully solid.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What's the difference between "Diagonal Tile" and the other position options?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Diagonal Tile repeats the watermark text in a rotated grid across the whole page, similar to the watermark style used on confidential documents. The other options place a single watermark in the center or in one corner of the page.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why does the preview take a moment to update?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>The preview is not a fake approximation &mdash; it rebuilds the actual first page with your exact watermark settings using the real PDF engine, then renders it, so what you see is exactly what you'll get.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you need to mark a document as a draft, protect shared files with a confidential
+    stamp, or simply brand a PDF with your own text, this tool lets you fine-tune exactly how the
+    watermark looks before committing to the download.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var currentFile = null;
+  var previewDebounce = null;
+  var previewRunId = 0;
+
+  var el = {
+    dropZone: document.getElementById('mt-drop-zone'),
+    input: document.getElementById('mt-pdf-input'),
+    fileBar: document.getElementById('mt-wm-file-bar'),
+    fileName: document.getElementById('mt-wm-file-name'),
+    fileMeta: document.getElementById('mt-wm-file-meta'),
+    btnRemoveFile: document.getElementById('mt-btn-remove-file'),
+    error: document.getElementById('mt-wm-error'),
+    success: document.getElementById('mt-wm-success'),
+    toast: document.getElementById('mt-tool-toast'),
+
+    settingsCard: document.getElementById('mt-wm-settings'),
+    previewCard: document.getElementById('mt-wm-preview-card'),
+    previewLoading: document.getElementById('mt-wm-preview-loading'),
+    canvas: document.getElementById('mt-wm-preview-canvas'),
+
+    text: document.getElementById('mt-wm-text'),
+    fontSize: document.getElementById('mt-wm-fontsize'),
+    color: document.getElementById('mt-wm-color'),
+    opacity: document.getElementById('mt-wm-opacity'),
+    opacityVal: document.getElementById('mt-wm-opacity-val'),
+    angle: document.getElementById('mt-wm-angle'),
+    angleVal: document.getElementById('mt-wm-angle-val'),
+    position: document.getElementById('mt-wm-position'),
+
+    btnDownload: document.getElementById('mt-btn-watermark-download'),
+    btnClear: document.getElementById('mt-btn-watermark-clear')
+  };
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function showError(msg) {
+    el.error.textContent = msg;
+    el.error.style.display = 'block';
+    el.success.style.display = 'none';
+  }
+
+  function clearMessages() {
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+  }
+
+  function hexToRgb01(hex) {
+    var h = hex.replace('#', '');
+    var r = parseInt(h.substring(0, 2), 16) / 255;
+    var g = parseInt(h.substring(2, 4), 16) / 255;
+    var b = parseInt(h.substring(4, 6), 16) / 255;
+    return { r: r, g: g, b: b };
+  }
+
+  function getSettings() {
+    var text = el.text.value.trim();
+    var fontSize = Math.min(200, Math.max(8, parseInt(el.fontSize.value, 10) || 48));
+    var opacityPct = Math.min(100, Math.max(5, parseInt(el.opacity.value, 10) || 30));
+    var angleDeg = Math.min(90, Math.max(-90, parseInt(el.angle.value, 10) || 0));
+    var position = el.position.value;
+    var rgb01 = hexToRgb01(el.color.value);
+    return { text: text, fontSize: fontSize, opacity: opacityPct / 100, angleDeg: angleDeg, position: position, rgb01: rgb01 };
+  }
+
+  function drawWatermarkOnPage(page, font, settings) {
+    var pw = page.getWidth();
+    var ph = page.getHeight();
+    var text = settings.text;
+    var fontSize = settings.fontSize;
+    var textWidth = font.widthOfTextAtSize(text, fontSize);
+    var textHeight = font.heightAtSize(fontSize);
+    var color = PDFLib.rgb(settings.rgb01.r, settings.rgb01.g, settings.rgb01.b);
+
+    function drawAt(cx, cy, rotationDeg) {
+      var rad = (rotationDeg * Math.PI) / 180;
+      var x = cx - (textWidth / 2) * Math.cos(rad) + (textHeight / 2) * Math.sin(rad);
+      var y = cy - (textWidth / 2) * Math.sin(rad) - (textHeight / 2) * Math.cos(rad);
+      page.drawText(text, {
+        x: x,
+        y: y,
+        size: fontSize,
+        font: font,
+        color: color,
+        opacity: settings.opacity,
+        rotate: PDFLib.degrees(rotationDeg)
+      });
+    }
+
+    if (settings.position === 'center') {
+      drawAt(pw / 2, ph / 2, settings.angleDeg);
+    } else if (settings.position === 'tile') {
+      var stepX = textWidth * 1.3 + 50;
+      var stepY = fontSize * 3.6;
+      for (var y = stepY / 2; y < ph + stepY; y += stepY) {
+        for (var x = stepX / 2; x < pw + stepX; x += stepX) {
+          drawAt(x, y, settings.angleDeg);
+        }
+      }
+    } else {
+      var pad = 36;
+      var cx, cy;
+      if (settings.position === 'top-left') { cx = pad + textWidth / 2; cy = ph - pad - textHeight / 2; }
+      else if (settings.position === 'top-right') { cx = pw - pad - textWidth / 2; cy = ph - pad - textHeight / 2; }
+      else if (settings.position === 'bottom-left') { cx = pad + textWidth / 2; cy = pad + textHeight / 2; }
+      else { cx = pw - pad - textWidth / 2; cy = pad + textHeight / 2; }
+      drawAt(cx, cy, 0);
+    }
+  }
+
+  function resetUI() {
+    currentFile = null;
+    el.fileBar.style.display = 'none';
+    el.settingsCard.style.display = 'none';
+    el.previewCard.style.display = 'none';
+    clearMessages();
+    el.input.value = '';
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      showError('Please select a PDF file.');
+      return;
+    }
+
+    currentFile = file;
+    el.fileName.textContent = file.name;
+    el.fileMeta.textContent = formatSize(file.size);
+    el.fileBar.style.display = 'flex';
+    el.settingsCard.style.display = 'block';
+    el.previewCard.style.display = 'block';
+    clearMessages();
+
+    updatePreview();
+  }
+
+  el.input.addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    handleFile(file);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.remove('mt-drag');
+    });
+  });
+  el.dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  el.btnRemoveFile.addEventListener('click', resetUI);
+  el.btnClear.addEventListener('click', function () {
+    resetUI();
+    showToast('Cleared.');
+  });
+
+  function scheduleTextInputPreview() {
+    if (previewDebounce) clearTimeout(previewDebounce);
+    previewDebounce = setTimeout(updatePreview, 400);
+  }
+
+  el.text.addEventListener('input', scheduleTextInputPreview);
+  el.fontSize.addEventListener('input', scheduleTextInputPreview);
+  el.color.addEventListener('input', updatePreview);
+  el.position.addEventListener('change', updatePreview);
+
+  el.opacity.addEventListener('input', function () {
+    el.opacityVal.textContent = el.opacity.value + '%';
+    scheduleTextInputPreview();
+  });
+  el.angle.addEventListener('input', function () {
+    el.angleVal.textContent = el.angle.value + '°';
+    scheduleTextInputPreview();
+  });
+
+  function updatePreview() {
+    if (!currentFile) return;
+    var settings = getSettings();
+
+    if (!settings.text) {
+      showError('Please enter watermark text.');
+      return;
+    }
+    clearMessages();
+
+    if (typeof PDFLib === 'undefined' || typeof pdfjsLib === 'undefined') {
+      showError('PDF engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    var thisRun = ++previewRunId;
+    el.previewLoading.style.display = 'block';
+
+    currentFile.arrayBuffer().then(function (buffer) {
+      return PDFLib.PDFDocument.load(buffer);
+    }).then(function (srcDoc) {
+      return PDFLib.PDFDocument.create().then(function (previewDoc) {
+        return previewDoc.copyPages(srcDoc, [0]).then(function (copied) {
+          previewDoc.addPage(copied[0]);
+          return previewDoc.embedFont(PDFLib.StandardFonts.HelveticaBold).then(function (font) {
+            drawWatermarkOnPage(previewDoc.getPage(0), font, settings);
+            return previewDoc.save();
+          });
+        });
+      });
+    }).then(function (bytes) {
+      return pdfjsLib.getDocument({ data: bytes }).promise;
+    }).then(function (pdfDoc) {
+      return pdfDoc.getPage(1);
+    }).then(function (page) {
+      if (thisRun !== previewRunId) return;
+      var viewport = page.getViewport({ scale: 1.1 });
+      el.canvas.width = viewport.width;
+      el.canvas.height = viewport.height;
+      var ctx = el.canvas.getContext('2d');
+      return page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    }).then(function () {
+      if (thisRun !== previewRunId) return;
+      el.previewLoading.style.display = 'none';
+    }).catch(function (err) {
+      if (thisRun !== previewRunId) return;
+      el.previewLoading.style.display = 'none';
+      showError('Could not generate a preview. Make sure this is a valid, unencrypted PDF file.');
+      console.error(err);
+    });
+  }
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!currentFile) {
+      showError('Please upload a PDF file first.');
+      return;
+    }
+    var settings = getSettings();
+    if (!settings.text) {
+      showError('Please enter watermark text.');
+      return;
+    }
+    if (typeof PDFLib === 'undefined') {
+      showError('PDF engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    el.btnDownload.disabled = true;
+    el.btnDownload.textContent = 'Applying Watermark...';
+    clearMessages();
+
+    currentFile.arrayBuffer().then(function (buffer) {
+      return PDFLib.PDFDocument.load(buffer);
+    }).then(function (pdfDoc) {
+      return pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold).then(function (font) {
+        pdfDoc.getPages().forEach(function (page) {
+          drawWatermarkOnPage(page, font, settings);
+        });
+        return pdfDoc.save();
+      });
+    }).then(function (watermarkedBytes) {
+      var blob = new Blob([watermarkedBytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'mytoolkit-watermarked.pdf';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+
+      el.success.textContent = 'Success! Your watermarked PDF has been downloaded.';
+      el.success.style.display = 'block';
+      showToast('Watermark applied and downloaded!');
+    }).catch(function (err) {
+      showError(err.message || 'Could not watermark this PDF. Make sure it is a valid, unencrypted PDF file.');
+      console.error(err);
+    }).finally(function () {
+      el.btnDownload.disabled = false;
+      el.btnDownload.textContent = 'Add Watermark & Download';
+    });
+  });
+
+  document.querySelectorAll('#mtWatermarkFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtWatermarkFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
