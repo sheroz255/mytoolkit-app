@@ -1,0 +1,725 @@
+<!-- SEO TITLE:
+Free PDF Page Number Adder – Add Page Numbers to PDF Online | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Add page numbers to every page of a PDF — choose the position, format, starting number and style, with a live preview, right in your browser. Free and private.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF Page Number Adder – Add Page Numbers to PDF Online | MyToolkit</title>
+<meta name="description" content="Add page numbers to every page of a PDF — choose the position, format, starting number and style, with a live preview, right in your browser. Free and private.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/pdf-page-number-adder.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PDF Page Number Adder | MyToolkit">
+<meta property="og:description" content="Add page numbers to every page of a PDF, with a live preview, right in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/pdf-page-number-adder.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Page Number Adder",
+  "url": "https://sheroz255.github.io/mytoolkit-app/pdf-page-number-adder.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Add page numbers to every page of a PDF, with control over position, format, starting number, font size, color and margin, entirely in the browser."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this renumber or remove existing page numbers already printed in my document?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. This tool only adds a new page number as an overlay on top of each page. It cannot detect or remove numbers that are already part of the original page content." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I start numbering from a number other than 1?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the Start Number field to begin the sequence at any number, which is useful when this document continues on from another one." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I skip numbering on the first page, like a cover page?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Turn on \"Skip first page\" and no number will be printed on page 1, while the rest of the document keeps its normal sequence." }
+    },
+    {
+      "@type": "Question",
+      "name": "What position options are available?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can place the page number in any of six positions: bottom center, bottom left, bottom right, top center, top left or top right." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my PDF uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Page numbers are added entirely in your browser using JavaScript. Your file is never uploaded anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the preview sometimes show page 2 instead of page 1?",
+      "acceptedAnswer": { "@type": "Answer", "text": "If \"Skip first page\" is turned on, page 1 won't show a number, so the preview automatically shows the next page instead so you can actually see your chosen style." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-pn-file-bar{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-pn-file-name{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-pn-file-meta{font-size:11.5px;color:#94a3b8;flex-shrink:0}
+  .mt-pn-file-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-pn-file-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-pn-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:640px){.mt-pn-grid{grid-template-columns:1fr 1fr}}
+  .mt-pn-field.full{grid-column:1 / -1}
+  .mt-pn-field label{display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:6px}
+  .mt-pn-field input[type="text"],.mt-pn-field input[type="number"],.mt-pn-field select{width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:9px;font-size:13.5px;color:#0f172a;background:#fff;font-family:inherit}
+  .mt-pn-field input[type="color"]{width:100%;height:38px;padding:3px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;cursor:pointer}
+  .mt-pn-field input:focus,.mt-pn-field select:focus{outline:2px solid #2563eb;outline-offset:1px}
+
+  .mt-pn-checkbox-row{display:flex;align-items:center;gap:8px;grid-column:1 / -1}
+  .mt-pn-checkbox-row input{width:17px;height:17px;cursor:pointer}
+  .mt-pn-checkbox-row label{font-size:13.5px;font-weight:600;color:#334155;cursor:pointer;margin:0}
+
+  .mt-pn-preview-wrap{width:100%;max-height:420px;overflow:auto;display:flex;align-items:flex-start;justify-content:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
+  .mt-pn-preview-wrap canvas{max-width:100%;box-shadow:0 1px 6px rgba(15,23,42,.15)}
+  .mt-pn-preview-label{font-size:12px;color:#64748b;margin:0 0 10px}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:10px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:10px}
+  .mt-pn-loading{font-size:13.5px;color:#64748b;margin-top:12px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-pdf-page-number-adder">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>PDF Page Number Adder</span>
+  </nav>
+
+  <h1>Free PDF Page Number Adder</h1>
+  <p class="mt-tool-intro">
+    Add page numbers to every page of a PDF. Choose the position, format, starting number,
+    font size, color and margin, preview it live, then download the result &mdash; all processed
+    locally in your browser.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128196;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a PDF file</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf">
+    </label>
+
+    <div class="mt-pn-file-bar" id="mt-pn-file-bar" style="display:none;">
+      <span aria-hidden="true">&#128196;</span>
+      <span class="mt-pn-file-name" id="mt-pn-file-name"></span>
+      <span class="mt-pn-file-meta" id="mt-pn-file-meta"></span>
+      <button class="mt-pn-file-remove" id="mt-btn-remove-file" type="button" aria-label="Remove file">&#10005;</button>
+    </div>
+
+    <p class="mt-field-error" id="mt-pn-error" style="display:none;" aria-live="polite"></p>
+    <p class="mt-field-success" id="mt-pn-success" style="display:none;" aria-live="polite"></p>
+  </div>
+
+  <div class="mt-tool-card" id="mt-pn-settings" style="display:none;">
+    <h2 class="mt-tool-section-title" style="margin-bottom:14px;">Page Number Settings</h2>
+    <div class="mt-pn-grid">
+      <div class="mt-pn-field">
+        <label for="mt-pn-position">Position</label>
+        <select id="mt-pn-position">
+          <option value="bottom-center" selected>Bottom Center</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="bottom-right">Bottom Right</option>
+          <option value="top-center">Top Center</option>
+          <option value="top-left">Top Left</option>
+          <option value="top-right">Top Right</option>
+        </select>
+      </div>
+      <div class="mt-pn-field">
+        <label for="mt-pn-format">Format</label>
+        <select id="mt-pn-format">
+          <option value="n" selected>1, 2, 3&hellip;</option>
+          <option value="page-n">Page 1, Page 2&hellip;</option>
+          <option value="n-of-total">1 of 10, 2 of 10&hellip;</option>
+          <option value="n-slash-total">1 / 10, 2 / 10&hellip;</option>
+          <option value="dash-n-dash">- 1 -, - 2 -&hellip;</option>
+        </select>
+      </div>
+      <div class="mt-pn-field">
+        <label for="mt-pn-start">Start Number</label>
+        <input type="number" id="mt-pn-start" min="0" max="999999" value="1">
+      </div>
+      <div class="mt-pn-field">
+        <label for="mt-pn-fontsize">Font Size (pt)</label>
+        <input type="number" id="mt-pn-fontsize" min="6" max="72" value="11">
+      </div>
+      <div class="mt-pn-field">
+        <label for="mt-pn-color">Color</label>
+        <input type="color" id="mt-pn-color" value="#0f172a">
+      </div>
+      <div class="mt-pn-field">
+        <label for="mt-pn-margin">Margin from Edge (pt)</label>
+        <input type="number" id="mt-pn-margin" min="4" max="120" value="28">
+      </div>
+      <div class="mt-pn-checkbox-row">
+        <input type="checkbox" id="mt-pn-skip-first">
+        <label for="mt-pn-skip-first">Skip first page (e.g. cover page)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-tool-card" id="mt-pn-preview-card" style="display:none;">
+    <h2 class="mt-tool-section-title" style="margin-bottom:6px;">Live Preview</h2>
+    <p class="mt-pn-preview-label" id="mt-pn-preview-label">Previewing page 1</p>
+    <p class="mt-pn-loading" id="mt-pn-preview-loading" style="display:none;">Updating preview&hellip;</p>
+    <div class="mt-pn-preview-wrap"><canvas id="mt-pn-preview-canvas"></canvas></div>
+
+    <div class="mt-tool-controls" id="mt-pn-actions">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-pagenum-download" type="button">Add Page Numbers &amp; Download</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-pagenum-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How It Works</h2>
+  <p>
+    After you upload a PDF, choose where the page number should appear, which format to use, and
+    what number to start counting from. The live preview updates automatically and shows a real
+    render of the actual page with the number applied &mdash; not an approximation &mdash; so you
+    know exactly what you'll get. If your document has a cover page that shouldn't be numbered,
+    turn on "Skip first page"; the page count still includes it, but no number is printed on it.
+    Once everything looks right, click "Add Page Numbers &amp; Download" to apply the numbering to
+    every page and save a new PDF file. The original page content is never altered &mdash; the
+    number is simply drawn on top of each page.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Flexible Formats</h3><p>Plain numbers, "Page X", "X of Y" and more.</p></div>
+    <div class="mt-feature-box"><h3>Custom Start Number</h3><p>Continue numbering from any starting value.</p></div>
+    <div class="mt-feature-box"><h3>Skip Cover Pages</h3><p>Leave the first page unnumbered while keeping the rest in sequence.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your PDF is processed locally and never uploaded to a server.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtPageNumFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does this renumber or remove existing page numbers already printed in my document?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. This tool only adds a new page number as an overlay on top of each page. It cannot detect or remove numbers that are already part of the original page content.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I start numbering from a number other than 1?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. Use the Start Number field to begin the sequence at any number, which is useful when this document continues on from another one.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I skip numbering on the first page, like a cover page?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. Turn on "Skip first page" and no number will be printed on page 1, while the rest of the document keeps its normal sequence.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What position options are available?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>You can place the page number in any of six positions: bottom center, bottom left, bottom right, top center, top left or top right.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my PDF uploaded to a server?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. Page numbers are added entirely in your browser using JavaScript. Your file is never uploaded anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why does the preview sometimes show page 2 instead of page 1?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>If "Skip first page" is turned on, page 1 won't show a number, so the preview automatically shows the next page instead so you can actually see your chosen style.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you're preparing a report, an ebook, a contract or a long document for printing, clear
+    page numbers make it easier to navigate and reference. This tool lets you preview the exact
+    result before committing to the download, so there are no surprises.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var currentFile = null;
+  var previewDebounce = null;
+  var previewRunId = 0;
+
+  var el = {
+    dropZone: document.getElementById('mt-drop-zone'),
+    input: document.getElementById('mt-pdf-input'),
+    fileBar: document.getElementById('mt-pn-file-bar'),
+    fileName: document.getElementById('mt-pn-file-name'),
+    fileMeta: document.getElementById('mt-pn-file-meta'),
+    btnRemoveFile: document.getElementById('mt-btn-remove-file'),
+    error: document.getElementById('mt-pn-error'),
+    success: document.getElementById('mt-pn-success'),
+    toast: document.getElementById('mt-tool-toast'),
+
+    settingsCard: document.getElementById('mt-pn-settings'),
+    previewCard: document.getElementById('mt-pn-preview-card'),
+    previewLabel: document.getElementById('mt-pn-preview-label'),
+    previewLoading: document.getElementById('mt-pn-preview-loading'),
+    canvas: document.getElementById('mt-pn-preview-canvas'),
+
+    position: document.getElementById('mt-pn-position'),
+    format: document.getElementById('mt-pn-format'),
+    start: document.getElementById('mt-pn-start'),
+    fontSize: document.getElementById('mt-pn-fontsize'),
+    color: document.getElementById('mt-pn-color'),
+    margin: document.getElementById('mt-pn-margin'),
+    skipFirst: document.getElementById('mt-pn-skip-first'),
+
+    btnDownload: document.getElementById('mt-btn-pagenum-download'),
+    btnClear: document.getElementById('mt-btn-pagenum-clear')
+  };
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function showError(msg) {
+    el.error.textContent = msg;
+    el.error.style.display = 'block';
+    el.success.style.display = 'none';
+  }
+
+  function clearMessages() {
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+  }
+
+  function hexToRgb01(hex) {
+    var h = hex.replace('#', '');
+    return {
+      r: parseInt(h.substring(0, 2), 16) / 255,
+      g: parseInt(h.substring(2, 4), 16) / 255,
+      b: parseInt(h.substring(4, 6), 16) / 255
+    };
+  }
+
+  function buildLabel(format, n, total) {
+    switch (format) {
+      case 'page-n': return 'Page ' + n;
+      case 'n-of-total': return n + ' of ' + total;
+      case 'n-slash-total': return n + ' / ' + total;
+      case 'dash-n-dash': return '- ' + n + ' -';
+      default: return String(n);
+    }
+  }
+
+  function getSettings() {
+    var start = parseInt(el.start.value, 10);
+    if (isNaN(start) || start < 0) start = 1;
+    var fontSize = Math.min(72, Math.max(6, parseInt(el.fontSize.value, 10) || 11));
+    var margin = Math.min(120, Math.max(4, parseInt(el.margin.value, 10) || 28));
+    return {
+      position: el.position.value,
+      format: el.format.value,
+      start: start,
+      fontSize: fontSize,
+      margin: margin,
+      rgb01: hexToRgb01(el.color.value),
+      skipFirst: el.skipFirst.checked
+    };
+  }
+
+  function getXY(pw, ph, textWidth, fontSize, margin, position) {
+    var topY = ph - margin - fontSize * 0.8;
+    switch (position) {
+      case 'bottom-left': return { x: margin, y: margin };
+      case 'bottom-right': return { x: pw - margin - textWidth, y: margin };
+      case 'top-center': return { x: pw / 2 - textWidth / 2, y: topY };
+      case 'top-left': return { x: margin, y: topY };
+      case 'top-right': return { x: pw - margin - textWidth, y: topY };
+      default: return { x: pw / 2 - textWidth / 2, y: margin }; // bottom-center
+    }
+  }
+
+  function applyPageNumbers(pdfDoc, font, settings) {
+    var pages = pdfDoc.getPages();
+    var totalPages = pages.length;
+    var color = PDFLib.rgb(settings.rgb01.r, settings.rgb01.g, settings.rgb01.b);
+
+    pages.forEach(function (page, i) {
+      if (settings.skipFirst && i === 0) return;
+      var n = settings.start + i;
+      var label = buildLabel(settings.format, n, totalPages);
+      var pw = page.getWidth();
+      var ph = page.getHeight();
+      var textWidth = font.widthOfTextAtSize(label, settings.fontSize);
+      var pos = getXY(pw, ph, textWidth, settings.fontSize, settings.margin, settings.position);
+      page.drawText(label, {
+        x: pos.x,
+        y: pos.y,
+        size: settings.fontSize,
+        font: font,
+        color: color
+      });
+    });
+  }
+
+  function resetUI() {
+    currentFile = null;
+    el.fileBar.style.display = 'none';
+    el.settingsCard.style.display = 'none';
+    el.previewCard.style.display = 'none';
+    clearMessages();
+    el.input.value = '';
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      showError('Please select a PDF file.');
+      return;
+    }
+
+    currentFile = file;
+    el.fileName.textContent = file.name;
+    el.fileMeta.textContent = formatSize(file.size);
+    el.fileBar.style.display = 'flex';
+    el.settingsCard.style.display = 'block';
+    el.previewCard.style.display = 'block';
+    clearMessages();
+
+    updatePreview();
+  }
+
+  el.input.addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    handleFile(file);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.remove('mt-drag');
+    });
+  });
+  el.dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  el.btnRemoveFile.addEventListener('click', resetUI);
+  el.btnClear.addEventListener('click', function () {
+    resetUI();
+    showToast('Cleared.');
+  });
+
+  function scheduleDebouncedPreview() {
+    if (previewDebounce) clearTimeout(previewDebounce);
+    previewDebounce = setTimeout(updatePreview, 350);
+  }
+
+  el.position.addEventListener('change', updatePreview);
+  el.format.addEventListener('change', updatePreview);
+  el.color.addEventListener('input', updatePreview);
+  el.skipFirst.addEventListener('change', updatePreview);
+  el.start.addEventListener('input', scheduleDebouncedPreview);
+  el.fontSize.addEventListener('input', scheduleDebouncedPreview);
+  el.margin.addEventListener('input', scheduleDebouncedPreview);
+
+  function updatePreview() {
+    if (!currentFile) return;
+    clearMessages();
+
+    if (typeof PDFLib === 'undefined' || typeof pdfjsLib === 'undefined') {
+      showError('PDF engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    var settings = getSettings();
+    var thisRun = ++previewRunId;
+    el.previewLoading.style.display = 'block';
+
+    currentFile.arrayBuffer().then(function (buffer) {
+      return PDFLib.PDFDocument.load(buffer);
+    }).then(function (srcDoc) {
+      var totalPages = srcDoc.getPageCount();
+      var previewIndex = (settings.skipFirst && totalPages > 1) ? 1 : 0;
+      el.previewLabel.textContent = 'Previewing page ' + (previewIndex + 1) + ' of ' + totalPages;
+
+      return PDFLib.PDFDocument.create().then(function (previewDoc) {
+        return previewDoc.copyPages(srcDoc, [previewIndex]).then(function (copied) {
+          previewDoc.addPage(copied[0]);
+          return previewDoc.embedFont(PDFLib.StandardFonts.Helvetica).then(function (font) {
+            // "n of total" must reflect the REAL document's total page count, not the 1-page preview doc
+            var page = previewDoc.getPage(0);
+            var label = buildLabel(settings.format, settings.start + previewIndex, totalPages);
+            var pw = page.getWidth();
+            var ph = page.getHeight();
+            var textWidth = font.widthOfTextAtSize(label, settings.fontSize);
+            var pos = getXY(pw, ph, textWidth, settings.fontSize, settings.margin, settings.position);
+            var color = PDFLib.rgb(settings.rgb01.r, settings.rgb01.g, settings.rgb01.b);
+            page.drawText(label, { x: pos.x, y: pos.y, size: settings.fontSize, font: font, color: color });
+            return previewDoc.save();
+          });
+        });
+      });
+    }).then(function (bytes) {
+      return pdfjsLib.getDocument({ data: bytes }).promise;
+    }).then(function (pdfDoc) {
+      return pdfDoc.getPage(1);
+    }).then(function (page) {
+      if (thisRun !== previewRunId) return;
+      var viewport = page.getViewport({ scale: 1.1 });
+      el.canvas.width = viewport.width;
+      el.canvas.height = viewport.height;
+      var ctx = el.canvas.getContext('2d');
+      return page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    }).then(function () {
+      if (thisRun !== previewRunId) return;
+      el.previewLoading.style.display = 'none';
+    }).catch(function (err) {
+      if (thisRun !== previewRunId) return;
+      el.previewLoading.style.display = 'none';
+      showError('Could not generate a preview. Make sure this is a valid, unencrypted PDF file.');
+      console.error(err);
+    });
+  }
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!currentFile) {
+      showError('Please upload a PDF file first.');
+      return;
+    }
+    if (typeof PDFLib === 'undefined') {
+      showError('PDF engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    var settings = getSettings();
+    el.btnDownload.disabled = true;
+    el.btnDownload.textContent = 'Adding Page Numbers...';
+    clearMessages();
+
+    currentFile.arrayBuffer().then(function (buffer) {
+      return PDFLib.PDFDocument.load(buffer);
+    }).then(function (pdfDoc) {
+      return pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica).then(function (font) {
+        applyPageNumbers(pdfDoc, font, settings);
+        return pdfDoc.save();
+      });
+    }).then(function (numberedBytes) {
+      var blob = new Blob([numberedBytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'mytoolkit-numbered.pdf';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+
+      el.success.textContent = 'Success! Your PDF with page numbers has been downloaded.';
+      el.success.style.display = 'block';
+      showToast('Page numbers added and downloaded!');
+    }).catch(function (err) {
+      showError(err.message || 'Could not add page numbers to this PDF. Make sure it is a valid, unencrypted PDF file.');
+      console.error(err);
+    }).finally(function () {
+      el.btnDownload.disabled = false;
+      el.btnDownload.textContent = 'Add Page Numbers & Download';
+    });
+  });
+
+  document.querySelectorAll('#mtPageNumFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtPageNumFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
