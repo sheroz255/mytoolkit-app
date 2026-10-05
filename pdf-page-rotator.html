@@ -1,0 +1,659 @@
+<!-- SEO TITLE:
+Free PDF Page Rotator – Rotate PDF Pages Online | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Rotate individual PDF pages or the whole document 90°, 180° or 270° right in your browser. Preview every page before downloading. Free and private — no upload to a server.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF Page Rotator – Rotate PDF Pages Online | MyToolkit</title>
+<meta name="description" content="Rotate individual PDF pages or the whole document 90°, 180° or 270° right in your browser. Preview every page before downloading. Free and private — no upload to a server.">
+<link rel="canonical" href="https://sheroz255.github.io/mytoolkit-app/pdf-page-rotator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PDF Page Rotator | MyToolkit">
+<meta property="og:description" content="Rotate individual PDF pages or the entire document, with a live preview, right in your browser.">
+<meta property="og:url" content="https://sheroz255.github.io/mytoolkit-app/pdf-page-rotator.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Page Rotator",
+  "url": "https://sheroz255.github.io/mytoolkit-app/pdf-page-rotator.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Rotate individual PDF pages or the entire document 90, 180 or 270 degrees, with a live page preview, entirely in the browser."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I rotate just one page instead of the whole PDF?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each page has its own rotate-left and rotate-right buttons, so you can rotate a single page without affecting the others. Use the 'Rotate All' buttons only when you want every page rotated the same way." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does rotating a PDF reduce its quality?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Rotation only changes the page's display orientation using the PDF's built-in rotation flag. The original text, images and content are not re-rendered or compressed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my PDF uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The file is read and rotated entirely in your browser using JavaScript. It is never uploaded anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "What rotation angles are supported?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can rotate any page in 90 degree steps: 90, 180 or 270 degrees, in either direction, by clicking the rotate buttons multiple times." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why don't I see a preview for a very large PDF right away?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Generating a thumbnail for every page takes a moment for large files since it happens locally in your browser. Give it a few seconds; performance depends on your device and the number of pages." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-rotate-file-bar{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-rotate-file-name{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-rotate-file-meta{font-size:11.5px;color:#94a3b8;flex-shrink:0}
+  .mt-rotate-file-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-rotate-file-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-rotate-bulk{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+  .mt-rotate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:18px}
+  .mt-rotate-card{border:1px solid #e2e8f0;border-radius:12px;padding:10px;background:#f8fafc;text-align:center}
+  .mt-rotate-thumb-wrap{width:100%;height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px}
+  .mt-rotate-thumb-wrap canvas{max-width:92%;max-height:92%;transition:transform .2s ease;box-shadow:0 1px 4px rgba(15,23,42,.15)}
+  .mt-rotate-page-label{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:6px}
+  .mt-rotate-angle{font-size:11px;color:#64748b;margin-bottom:6px}
+  .mt-rotate-card-controls{display:flex;justify-content:center;gap:6px}
+  .mt-rotate-mini-btn{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:30px;height:30px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .mt-rotate-mini-btn:hover{background:#eff6ff;color:#2563eb}
+
+  .mt-rotate-loading{font-size:13.5px;color:#64748b;margin-top:16px;display:none}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-secondary:disabled{background:#f1f5f9;color:#94a3b8;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+  .mt-btn-ghost:disabled{color:#94a3b8;cursor:not-allowed}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:10px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:10px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-pdf-page-rotator">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>PDF Page Rotator</span>
+  </nav>
+
+  <h1>Free PDF Page Rotator</h1>
+  <p class="mt-tool-intro">
+    Upload a PDF, preview every page, and rotate individual pages or the whole document
+    90&deg;, 180&deg; or 270&deg;. Everything happens locally in your browser &mdash; nothing is
+    uploaded to a server.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128196;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a PDF file</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf">
+    </label>
+
+    <div class="mt-rotate-file-bar" id="mt-rotate-file-bar" style="display:none;">
+      <span aria-hidden="true">&#128196;</span>
+      <span class="mt-rotate-file-name" id="mt-rotate-file-name"></span>
+      <span class="mt-rotate-file-meta" id="mt-rotate-file-meta"></span>
+      <button class="mt-rotate-file-remove" id="mt-btn-remove-file" type="button" aria-label="Remove file">&#10005;</button>
+    </div>
+
+    <p class="mt-field-error" id="mt-rotate-error" style="display:none;" aria-live="polite"></p>
+    <p class="mt-field-success" id="mt-rotate-success" style="display:none;" aria-live="polite"></p>
+    <p class="mt-rotate-loading" id="mt-rotate-loading">Loading pages&hellip;</p>
+
+    <div class="mt-rotate-bulk" id="mt-rotate-bulk" style="display:none;">
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-rotate-all-left" type="button">&#10226; Rotate All Left</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-rotate-all-right" type="button">&#10227; Rotate All Right</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-reset-rotations" type="button">Reset Rotations</button>
+    </div>
+
+    <div class="mt-rotate-grid" id="mt-rotate-grid" aria-label="PDF page previews"></div>
+
+    <div class="mt-tool-controls" id="mt-rotate-actions" style="display:none;">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-download" type="button">Download Rotated PDF</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How It Works</h2>
+  <p>
+    After you upload a PDF, this tool renders a thumbnail preview of every page directly in your
+    browser. Each page has its own rotate-left and rotate-right buttons, so you can fix pages that
+    were scanned sideways or upside down without affecting the rest of the document. If every page
+    needs the same treatment, use the "Rotate All Left" or "Rotate All Right" buttons to rotate the
+    whole document at once. When you're happy with the preview, click "Download Rotated PDF" to save
+    a new file with the rotation applied &mdash; the original page content, text and images are left
+    completely untouched; only the page orientation flag changes.
+  </p>
+
+  <h2 class="mt-tool-section-title">Features</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box"><h3>Per-Page Control</h3><p>Rotate a single page without affecting any of the others.</p></div>
+    <div class="mt-feature-box"><h3>Rotate All at Once</h3><p>Fix an entire scanned document with one click.</p></div>
+    <div class="mt-feature-box"><h3>Live Page Previews</h3><p>See exactly how each page will look before downloading.</p></div>
+    <div class="mt-feature-box"><h3>100% Private</h3><p>Your PDF is processed locally and never uploaded to a server.</p></div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mtRotateFaq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Can I rotate just one page instead of the whole PDF?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Yes. Each page has its own rotate-left and rotate-right buttons, so you can rotate a single page without affecting the others. Use the "Rotate All" buttons only when you want every page rotated the same way.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Does rotating a PDF reduce its quality?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. Rotation only changes the page's display orientation using the PDF's built-in rotation flag. The original text, images and content are not re-rendered or compressed.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Is my PDF uploaded to a server?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>No. The file is read and rotated entirely in your browser using JavaScript. It is never uploaded anywhere.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What rotation angles are supported?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>You can rotate any page in 90-degree steps: 90, 180 or 270 degrees, in either direction, by clicking the rotate buttons multiple times.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">Why don't I see a preview for a very large PDF right away?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>Generating a thumbnail for every page takes a moment for large files since it happens locally in your browser. Give it a few seconds; performance depends on your device and the number of pages.</p></div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button">What happens if my file isn't a valid PDF?<span class="mt-faq-icon" aria-hidden="true">+</span></button>
+      <div class="mt-tool-faq-answer"><p>You'll see a clear error message and the tool won't proceed until you upload a valid, unencrypted PDF file.</p></div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Whether you have a single scanned page sitting sideways or an entire document saved upside
+    down, this tool lets you see every page and correct its orientation before you download,
+    saving you the trouble of reopening the file elsewhere to check your work.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>Simple, fast and useful online tools for everyday digital tasks. Built with a focus on clarity, speed and a better user experience.</p>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var currentFile = null;
+  var rotations = [];
+  var numPages = 0;
+
+  var el = {
+    dropZone: document.getElementById('mt-drop-zone'),
+    input: document.getElementById('mt-pdf-input'),
+    fileBar: document.getElementById('mt-rotate-file-bar'),
+    fileName: document.getElementById('mt-rotate-file-name'),
+    fileMeta: document.getElementById('mt-rotate-file-meta'),
+    btnRemoveFile: document.getElementById('mt-btn-remove-file'),
+    error: document.getElementById('mt-rotate-error'),
+    success: document.getElementById('mt-rotate-success'),
+    loading: document.getElementById('mt-rotate-loading'),
+    bulk: document.getElementById('mt-rotate-bulk'),
+    grid: document.getElementById('mt-rotate-grid'),
+    actions: document.getElementById('mt-rotate-actions'),
+    toast: document.getElementById('mt-tool-toast'),
+    btnRotateAllLeft: document.getElementById('mt-btn-rotate-all-left'),
+    btnRotateAllRight: document.getElementById('mt-btn-rotate-all-right'),
+    btnResetRotations: document.getElementById('mt-btn-reset-rotations'),
+    btnDownload: document.getElementById('mt-btn-download'),
+    btnClear: document.getElementById('mt-btn-clear')
+  };
+
+  function showToast(msg) {
+    el.toast.textContent = msg;
+    el.toast.classList.add('mt-show');
+    setTimeout(function () { el.toast.classList.remove('mt-show'); }, 1800);
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function showError(msg) {
+    el.error.textContent = msg;
+    el.error.style.display = 'block';
+    el.success.style.display = 'none';
+  }
+
+  function clearMessages() {
+    el.error.style.display = 'none';
+    el.success.style.display = 'none';
+  }
+
+  function resetUI() {
+    currentFile = null;
+    rotations = [];
+    numPages = 0;
+    el.fileBar.style.display = 'none';
+    el.bulk.style.display = 'none';
+    el.actions.style.display = 'none';
+    el.loading.style.display = 'none';
+    el.grid.innerHTML = '';
+    clearMessages();
+    el.input.value = '';
+  }
+
+  function updateAngleLabel(index) {
+    var card = el.grid.querySelector('[data-index="' + index + '"]');
+    if (!card) return;
+    var angle = rotations[index];
+    var label = card.querySelector('.mt-rotate-angle');
+    label.textContent = angle + '°';
+    var canvas = card.querySelector('canvas');
+    canvas.style.transform = 'rotate(' + angle + 'deg)';
+  }
+
+  function rotatePage(index, delta) {
+    rotations[index] = ((rotations[index] + delta) % 360 + 360) % 360;
+    updateAngleLabel(index);
+  }
+
+  function rotateAll(delta) {
+    if (!numPages) return;
+    for (var i = 0; i < numPages; i++) {
+      rotations[i] = ((rotations[i] + delta) % 360 + 360) % 360;
+      updateAngleLabel(i);
+    }
+  }
+
+  function resetAllRotations() {
+    for (var i = 0; i < numPages; i++) {
+      rotations[i] = 0;
+      updateAngleLabel(i);
+    }
+    showToast('Rotations reset.');
+  }
+
+  el.grid.addEventListener('click', function (e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    var card = btn.closest('.mt-rotate-card');
+    var index = parseInt(card.getAttribute('data-index'), 10);
+    if (btn.classList.contains('mt-rotate-left')) {
+      rotatePage(index, -90);
+    } else if (btn.classList.contains('mt-rotate-right')) {
+      rotatePage(index, 90);
+    }
+  });
+
+  el.btnRotateAllLeft.addEventListener('click', function () { rotateAll(-90); });
+  el.btnRotateAllRight.addEventListener('click', function () { rotateAll(90); });
+  el.btnResetRotations.addEventListener('click', resetAllRotations);
+
+  el.btnRemoveFile.addEventListener('click', function () {
+    resetUI();
+  });
+
+  el.btnClear.addEventListener('click', function () {
+    resetUI();
+    showToast('Cleared.');
+  });
+
+  function renderThumbnails(file) {
+    if (typeof pdfjsLib === 'undefined') {
+      showError('PDF preview engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    el.loading.style.display = 'block';
+    el.grid.innerHTML = '';
+    el.bulk.style.display = 'none';
+    el.actions.style.display = 'none';
+    clearMessages();
+
+    file.arrayBuffer().then(function (buffer) {
+      return pdfjsLib.getDocument({ data: buffer }).promise;
+    }).then(function (pdfDoc) {
+      numPages = pdfDoc.numPages;
+      rotations = new Array(numPages).fill(0);
+
+      var pagePromises = [];
+      for (var p = 1; p <= numPages; p++) {
+        pagePromises.push(renderOnePage(pdfDoc, p));
+      }
+      return Promise.all(pagePromises);
+    }).then(function () {
+      el.loading.style.display = 'none';
+      el.bulk.style.display = 'flex';
+      el.actions.style.display = 'flex';
+    }).catch(function (err) {
+      el.loading.style.display = 'none';
+      showError('This file could not be read as a valid PDF. Please choose a different file.');
+      console.error(err);
+    });
+  }
+
+  function renderOnePage(pdfDoc, pageNum) {
+    return pdfDoc.getPage(pageNum).then(function (page) {
+      var viewport = page.getViewport({ scale: 0.4 });
+      var canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      var ctx = canvas.getContext('2d');
+
+      var card = document.createElement('div');
+      card.className = 'mt-rotate-card';
+      card.setAttribute('data-index', pageNum - 1);
+
+      var thumbWrap = document.createElement('div');
+      thumbWrap.className = 'mt-rotate-thumb-wrap';
+      thumbWrap.appendChild(canvas);
+
+      var pageLabel = document.createElement('div');
+      pageLabel.className = 'mt-rotate-page-label';
+      pageLabel.textContent = 'Page ' + pageNum;
+
+      var angleLabel = document.createElement('div');
+      angleLabel.className = 'mt-rotate-angle';
+      angleLabel.textContent = '0°';
+
+      var controls = document.createElement('div');
+      controls.className = 'mt-rotate-card-controls';
+      controls.innerHTML =
+        '<button class="mt-rotate-mini-btn mt-rotate-left" type="button" aria-label="Rotate page ' + pageNum + ' left">&#10226;</button>' +
+        '<button class="mt-rotate-mini-btn mt-rotate-right" type="button" aria-label="Rotate page ' + pageNum + ' right">&#10227;</button>';
+
+      card.appendChild(pageLabel);
+      card.appendChild(thumbWrap);
+      card.appendChild(angleLabel);
+      card.appendChild(controls);
+      el.grid.appendChild(card);
+
+      return page.render({ canvasContext: ctx, viewport: viewport }).promise;
+    });
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      showError('Please select a PDF file.');
+      return;
+    }
+
+    currentFile = file;
+    el.fileName.textContent = file.name;
+    el.fileMeta.textContent = formatSize(file.size);
+    el.fileBar.style.display = 'flex';
+
+    renderThumbnails(file);
+  }
+
+  el.input.addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    handleFile(file);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.add('mt-drag');
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (evt) {
+    el.dropZone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      el.dropZone.classList.remove('mt-drag');
+    });
+  });
+  el.dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  el.btnDownload.addEventListener('click', function () {
+    if (!currentFile) {
+      showError('Please upload a PDF file first.');
+      return;
+    }
+    if (typeof PDFLib === 'undefined') {
+      showError('PDF engine failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+
+    el.btnDownload.disabled = true;
+    el.btnDownload.textContent = 'Rotating...';
+    clearMessages();
+
+    currentFile.arrayBuffer().then(function (buffer) {
+      return PDFLib.PDFDocument.load(buffer);
+    }).then(function (pdfDoc) {
+      var pages = pdfDoc.getPages();
+      pages.forEach(function (page, i) {
+        var added = rotations[i] || 0;
+        if (added !== 0) {
+          var existing = page.getRotation().angle || 0;
+          var newAngle = ((existing + added) % 360 + 360) % 360;
+          page.setRotation(PDFLib.degrees(newAngle));
+        }
+      });
+      return pdfDoc.save();
+    }).then(function (rotatedBytes) {
+      var blob = new Blob([rotatedBytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'mytoolkit-rotated.pdf';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+
+      el.success.textContent = 'Success! Your rotated PDF has been downloaded.';
+      el.success.style.display = 'block';
+      showToast('PDF rotated and downloaded!');
+    }).catch(function (err) {
+      showError(err.message || 'Could not rotate this PDF. Make sure it is a valid, unencrypted PDF file.');
+      console.error(err);
+    }).finally(function () {
+      el.btnDownload.disabled = false;
+      el.btnDownload.textContent = 'Download Rotated PDF';
+    });
+  });
+
+  document.querySelectorAll('#mtRotateFaq .mt-tool-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.mt-tool-faq-item');
+      var wasOpen = item.classList.contains('mt-faq-open');
+      document.querySelectorAll('#mtRotateFaq .mt-tool-faq-item').forEach(function (i) { i.classList.remove('mt-faq-open'); });
+      if (!wasOpen) item.classList.add('mt-faq-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
