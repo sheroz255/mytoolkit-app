@@ -1,0 +1,743 @@
+<!-- SEO TITLE:
+Free PDF Metadata Editor – Edit PDF Title, Author & Keywords Online | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+View and edit the title, author, subject, keywords, creator and producer of any PDF in your browser. Clear personal metadata before sharing. Free, private and nothing is uploaded.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF Metadata Editor – Edit PDF Title, Author & Keywords Online | MyToolkit</title>
+<meta name="description" content="View and edit the title, author, subject, keywords, creator and producer of any PDF in your browser. Clear personal metadata before sharing. Free, private and nothing is uploaded.">
+<link rel="canonical" href="https://sheroz255.github.io/pdf-metadata-editor.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PDF Metadata Editor | MyToolkit">
+<meta property="og:description" content="Edit PDF title, author, subject and keywords in your browser. Nothing is uploaded to a server.">
+<meta property="og:url" content="https://sheroz255.github.io/pdf-metadata-editor.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4517627793693672" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Metadata Editor",
+  "url": "https://sheroz255.github.io/pdf-metadata-editor.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "View and edit the standard document information fields of a PDF (title, author, subject, keywords, creator and producer), then download the updated file, entirely in the browser."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What PDF metadata can I edit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can edit the title, author, subject, keywords, creator and producer fields stored in the PDF's document information. The page count and creation and modification dates are shown for reference." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does editing metadata change the page content?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Only the document information fields are changed. The pages, text, images and formatting are copied as they are." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my PDF uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The file is read, edited and downloaded entirely in your browser using JavaScript. It is never uploaded anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the modification date change?",
+      "acceptedAnswer": { "@type": "Answer", "text": "If you change at least one field, the modification date is set to the current time, because the file has been changed. If you change nothing and download, the original modification date is kept." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this remove all personal information from a PDF?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. This tool edits the standard document information fields only. Some PDFs also store metadata in an XMP block, and documents can contain other information such as comments, form data or hidden text, which this tool does not change." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit a password-protected PDF?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Encrypted PDFs cannot be opened by the library this tool uses. Remove the password with your PDF reader first, then upload the file here." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-meta-file-bar{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-meta-file-name{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-meta-file-meta{font-size:11.5px;color:#94a3b8;flex-shrink:0}
+  .mt-meta-file-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-meta-file-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-meta-loading{font-size:13.5px;color:#64748b;margin-top:16px;display:none}
+
+  .mt-meta-info{display:grid;grid-template-columns:1fr;gap:8px 16px;margin:18px 0 0;padding:14px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}
+  @media(min-width:640px){.mt-meta-info{grid-template-columns:repeat(3,1fr)}}
+  .mt-meta-info dt{font-size:11.5px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
+  .mt-meta-info dd{margin:2px 0 0;font-size:13.5px;color:#0f172a;font-weight:600;overflow-wrap:anywhere}
+
+  .mt-meta-form{display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+  @media(min-width:640px){.mt-meta-form{grid-template-columns:1fr 1fr}}
+  .mt-meta-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .mt-meta-field.mt-meta-wide{grid-column:1/-1}
+  .mt-meta-field label{font-size:13px;font-weight:700;color:#0f172a}
+  .mt-meta-field input{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:14px;color:#0f172a;background:#fff;font-family:inherit}
+  .mt-meta-field input:focus{outline:2px solid #2563eb;outline-offset:1px;border-color:#2563eb}
+  .mt-meta-field input:disabled{background:#f1f5f9;color:#94a3b8}
+  .mt-meta-hint{font-size:12px;color:#94a3b8;margin:0}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-secondary:disabled{background:#f1f5f9;color:#94a3b8;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+  .mt-btn-ghost:disabled{color:#94a3b8;cursor:not-allowed}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:12px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:12px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-pdf-metadata-editor">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">PDF &amp; Documents</a> &#8250;
+    <span>PDF Metadata Editor</span>
+  </nav>
+
+  <h1>Free PDF Metadata Editor</h1>
+  <p class="mt-tool-intro">
+    Upload a PDF to see its title, author, subject, keywords, creator and producer, edit any of
+    them, and download the updated file. Everything happens locally in your browser &mdash;
+    nothing is uploaded to a server.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-pdf-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128203;</div>
+      <p><strong>Tap to upload</strong> or drag &amp; drop a PDF file</p>
+      <input type="file" id="mt-pdf-input" accept="application/pdf">
+    </label>
+
+    <div class="mt-meta-file-bar" id="mt-meta-file-bar" style="display:none;">
+      <span aria-hidden="true">&#128196;</span>
+      <span class="mt-meta-file-name" id="mt-meta-file-name"></span>
+      <span class="mt-meta-file-meta" id="mt-meta-file-meta"></span>
+      <button class="mt-meta-file-remove" id="mt-btn-remove-file" type="button" aria-label="Remove file">&#10005;</button>
+    </div>
+
+    <p class="mt-field-error" id="mt-meta-error" style="display:none;" aria-live="polite"></p>
+    <p class="mt-field-success" id="mt-meta-success" style="display:none;" aria-live="polite"></p>
+    <p class="mt-meta-loading" id="mt-meta-loading">Reading PDF metadata&hellip;</p>
+
+    <dl class="mt-meta-info" id="mt-meta-info" style="display:none;">
+      <div>
+        <dt>Pages</dt>
+        <dd id="mt-info-pages">&ndash;</dd>
+      </div>
+      <div>
+        <dt>Created</dt>
+        <dd id="mt-info-created">&ndash;</dd>
+      </div>
+      <div>
+        <dt>Last modified</dt>
+        <dd id="mt-info-modified">&ndash;</dd>
+      </div>
+    </dl>
+
+    <form class="mt-meta-form" id="mt-meta-form" style="display:none;" novalidate>
+      <div class="mt-meta-field">
+        <label for="mt-meta-title">Title</label>
+        <input type="text" id="mt-meta-title" name="title" autocomplete="off" maxlength="2000" aria-describedby="mt-hint-title">
+        <p class="mt-meta-hint" id="mt-hint-title">The document's name, shown in many PDF readers.</p>
+      </div>
+      <div class="mt-meta-field">
+        <label for="mt-meta-author">Author</label>
+        <input type="text" id="mt-meta-author" name="author" autocomplete="off" maxlength="2000">
+      </div>
+      <div class="mt-meta-field">
+        <label for="mt-meta-subject">Subject</label>
+        <input type="text" id="mt-meta-subject" name="subject" autocomplete="off" maxlength="2000">
+      </div>
+      <div class="mt-meta-field">
+        <label for="mt-meta-keywords">Keywords</label>
+        <input type="text" id="mt-meta-keywords" name="keywords" autocomplete="off" maxlength="2000" aria-describedby="mt-hint-keywords">
+        <p class="mt-meta-hint" id="mt-hint-keywords">Stored exactly as you type it, for example: invoice, 2026, client</p>
+      </div>
+      <div class="mt-meta-field">
+        <label for="mt-meta-creator">Creator</label>
+        <input type="text" id="mt-meta-creator" name="creator" autocomplete="off" maxlength="2000">
+        <p class="mt-meta-hint">The application that created the original document.</p>
+      </div>
+      <div class="mt-meta-field">
+        <label for="mt-meta-producer">Producer</label>
+        <input type="text" id="mt-meta-producer" name="producer" autocomplete="off" maxlength="2000">
+        <p class="mt-meta-hint">The software that converted or wrote the PDF.</p>
+      </div>
+    </form>
+
+    <div class="mt-tool-controls" id="mt-meta-actions" style="display:none;">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-download" type="button" disabled>Download Edited PDF</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-reset" type="button">Reset Fields</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear-fields" type="button">Clear All Fields</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How It Works</h2>
+  <p>
+    After you upload a PDF, the tool reads the document information stored inside it and fills in
+    the form. Change any field you like, then click "Download Edited PDF". The tool writes your
+    values into a copy of the file and downloads that copy. The original file on your device is
+    never changed. If you click "Reset Fields", the form goes back to the values stored in the
+    file. "Clear All Fields" empties the form so the downloaded file will have blank values for
+    those fields.
+  </p>
+
+  <h2 class="mt-tool-section-title">Why Edit PDF Metadata?</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box">
+      <h3>Clean up a file before sharing</h3>
+      <p>Remove an author name, an internal project code or a software label before you send a document to a client or publish it online.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>Make documents easier to find</h3>
+      <p>A clear title and useful keywords help you search your files and help document search tools index them better.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>See what a file contains</h3>
+      <p>Check the page count and the creation and modification dates before you work with an unfamiliar PDF.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>100% private</h3>
+      <p>Your file is processed on your own device. It is never uploaded to a server, so confidential documents stay on your device.</p>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">What You Can Edit</h2>
+  <p>
+    A PDF stores basic descriptive information in a section called the document information
+    dictionary. This tool lets you edit six of those fields: <strong>Title</strong>,
+    <strong>Author</strong>, <strong>Subject</strong>, <strong>Keywords</strong>,
+    <strong>Creator</strong> and <strong>Producer</strong>. Creation and modification dates and the
+    page count are shown for reference. Changing a field does not change the pages, text, images
+    or formatting of the document. If you change at least one field, the modification date is set
+    to the current time, because the file has been changed.
+  </p>
+
+  <h2 class="mt-tool-section-title">Limitations to Know About</h2>
+  <p>
+    This tool edits the standard document information fields. Some PDFs also contain an XMP
+    metadata block, which stores similar information in a different format. This tool does not edit
+    that block, so some software may still show the old values. Documents can also contain comments,
+    form field data, annotations or hidden text that are not part of these six fields. If a file
+    must be fully scrubbed before sharing, check it in a PDF editor that can remove those items.
+    Password-protected PDFs cannot be opened here.
+  </p>
+
+  <h2 class="mt-tool-section-title">Tips for Best Results</h2>
+  <p>
+    Use clear, consistent titles across related files, such as "Q3 Sales Report 2026", so they sort
+    and search well. Separate keywords with commas, for example "invoice, 2026, client name". Once
+    you download the edited copy, open it in a PDF reader and check the title shown in the window
+    bar to confirm the change. Keep the original file as a backup until you have checked the copy.
+  </p>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mt-meta-faq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        What PDF metadata can I edit?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>You can edit the title, author, subject, keywords, creator and producer fields. The page count and the creation and modification dates are shown for reference.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Does editing metadata change the page content?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>No. Only the document information fields are changed. The pages, text, images and formatting are copied as they are.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Is my PDF uploaded to a server?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>No. The file is read, edited and downloaded entirely in your browser using JavaScript. It is never uploaded anywhere.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Why does the modification date change?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>If you change at least one field, the modification date is set to the current time, because the file has been changed. If you change nothing and download, the original modification date is kept.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Does this remove all personal information from a PDF?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>Not necessarily. This tool edits the standard document information fields only. Some PDFs also store metadata in an XMP block, and documents can contain other information such as comments, form data or hidden text, which this tool does not change.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Can I edit a password-protected PDF?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>No. Encrypted PDFs cannot be opened by the library this tool uses. Remove the password with your PDF reader first, then upload the file here.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Document metadata is easy to overlook, but it travels with every copy of a file. This tool gives
+    you a simple way to review and edit the basic fields in your browser, without uploading the
+    document anywhere. For a full privacy clean-up, combine it with a check of the document's
+    comments and form data.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status"></div>
+
+<script src="site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  var fileInput = document.getElementById('mt-pdf-input');
+  var dropZone = document.getElementById('mt-drop-zone');
+  var fileBar = document.getElementById('mt-meta-file-bar');
+  var fileNameEl = document.getElementById('mt-meta-file-name');
+  var fileMetaEl = document.getElementById('mt-meta-file-meta');
+  var btnRemoveFile = document.getElementById('mt-btn-remove-file');
+  var errorEl = document.getElementById('mt-meta-error');
+  var successEl = document.getElementById('mt-meta-success');
+  var loadingEl = document.getElementById('mt-meta-loading');
+  var infoEl = document.getElementById('mt-meta-info');
+  var infoPages = document.getElementById('mt-info-pages');
+  var infoCreated = document.getElementById('mt-info-created');
+  var infoModified = document.getElementById('mt-info-modified');
+  var form = document.getElementById('mt-meta-form');
+  var actionsRow = document.getElementById('mt-meta-actions');
+  var btnDownload = document.getElementById('mt-btn-download');
+  var btnReset = document.getElementById('mt-btn-reset');
+  var btnClearFields = document.getElementById('mt-btn-clear-fields');
+  var btnClear = document.getElementById('mt-btn-clear');
+  var toast = document.getElementById('mt-tool-toast');
+
+  var FIELDS = ['title', 'author', 'subject', 'keywords', 'creator', 'producer'];
+  var currentFile = null;
+  var currentBytes = null;   // ArrayBuffer copy of the original file, never modified
+  var originals = {};        // values read from the file
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('mt-show');
+    setTimeout(function(){ toast.classList.remove('mt-show'); }, 2200);
+  }
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+    successEl.style.display = 'none';
+  }
+  function showSuccess(msg) {
+    successEl.textContent = msg;
+    successEl.style.display = 'block';
+    errorEl.style.display = 'none';
+  }
+  function clearMessages() {
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+  }
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+  function formatDate(d) {
+    if (!d || isNaN(d.getTime())) return 'Not set';
+    return d.toLocaleString();
+  }
+  function setFormEnabled(enabled) {
+    FIELDS.forEach(function(f){
+      document.getElementById('mt-meta-' + f).disabled = !enabled;
+    });
+    btnDownload.disabled = !enabled;
+    btnReset.disabled = !enabled;
+    btnClearFields.disabled = !enabled;
+  }
+
+  function resetAll() {
+    currentFile = null;
+    currentBytes = null;
+    originals = {};
+    fileInput.value = '';
+    fileBar.style.display = 'none';
+    infoEl.style.display = 'none';
+    form.style.display = 'none';
+    actionsRow.style.display = 'none';
+    loadingEl.style.display = 'none';
+    FIELDS.forEach(function(f){
+      document.getElementById('mt-meta-' + f).value = '';
+    });
+    setFormEnabled(false);
+    clearMessages();
+  }
+
+  function loadDocument(bytes) {
+    // updateMetadata:false stops pdf-lib from overwriting Producer and ModDate on load
+    return PDFLib.PDFDocument.load(bytes.slice(0), { updateMetadata: false });
+  }
+
+  function fillForm(values) {
+    FIELDS.forEach(function(f){
+      document.getElementById('mt-meta-' + f).value = values[f];
+    });
+  }
+
+  function handleFile(file) {
+    clearMessages();
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+      showError('Please select a valid PDF file.');
+      return;
+    }
+    if (!window.PDFLib) {
+      showError('The PDF engine could not load. Please check your connection and try again.');
+      return;
+    }
+    resetAll();
+    currentFile = file;
+    fileNameEl.textContent = file.name;
+    fileMetaEl.textContent = formatBytes(file.size);
+    fileBar.style.display = 'flex';
+    loadingEl.style.display = 'block';
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var bytes = e.target.result;
+      loadDocument(bytes).then(function(doc) {
+        currentBytes = bytes;
+        originals = {
+          title: doc.getTitle() || '',
+          author: doc.getAuthor() || '',
+          subject: doc.getSubject() || '',
+          keywords: doc.getKeywords() || '',
+          creator: doc.getCreator() || '',
+          producer: doc.getProducer() || ''
+        };
+        fillForm(originals);
+        infoPages.textContent = doc.getPageCount();
+        infoCreated.textContent = formatDate(doc.getCreationDate());
+        infoModified.textContent = formatDate(doc.getModificationDate());
+        loadingEl.style.display = 'none';
+        infoEl.style.display = 'grid';
+        form.style.display = 'grid';
+        actionsRow.style.display = 'flex';
+        setFormEnabled(true);
+      }).catch(function(err) {
+        loadingEl.style.display = 'none';
+        fileBar.style.display = 'none';
+        var msg = String(err && (err.name + ' ' + err.message) || '');
+        if (/encrypt/i.test(msg)) {
+          showError('This PDF is password-protected or encrypted, so its metadata cannot be edited here. Remove the password first, then try again.');
+        } else {
+          showError('This PDF could not be opened. It may be corrupted or not a valid PDF.');
+        }
+      });
+    };
+    reader.onerror = function() {
+      loadingEl.style.display = 'none';
+      showError('Could not read the selected file. Please try again.');
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function anyFieldChanged(values) {
+    return FIELDS.some(function(f){ return values[f] !== originals[f]; });
+  }
+
+  btnDownload.addEventListener('click', function() {
+    clearMessages();
+    if (!currentBytes) {
+      showError('Please upload a PDF file first.');
+      return;
+    }
+    var values = {};
+    FIELDS.forEach(function(f){
+      values[f] = document.getElementById('mt-meta-' + f).value;
+    });
+
+    btnDownload.disabled = true;
+    loadDocument(currentBytes).then(function(doc) {
+      doc.setTitle(values.title);
+      doc.setAuthor(values.author);
+      doc.setSubject(values.subject);
+      // setKeywords joins an array with spaces, so pass the typed text as one item to keep it exact
+      doc.setKeywords([values.keywords]);
+      doc.setCreator(values.creator);
+      doc.setProducer(values.producer);
+      if (anyFieldChanged(values)) {
+        doc.setModificationDate(new Date());
+      }
+      return doc.save();
+    }).then(function(bytes) {
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var baseName = currentFile ? currentFile.name.replace(/\.pdf$/i, '') : 'document';
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = baseName + '-metadata.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+      showSuccess(anyFieldChanged(values)
+        ? 'Edited PDF downloaded with your updated metadata.'
+        : 'PDF downloaded. No fields were changed, so the metadata is the same as the original.');
+      showToast('Download started');
+      btnDownload.disabled = false;
+    }).catch(function() {
+      showError('Something went wrong while saving the PDF. Please try again.');
+      btnDownload.disabled = false;
+    });
+  });
+
+  btnReset.addEventListener('click', function() {
+    clearMessages();
+    fillForm(originals);
+    showToast('Fields restored to the file values');
+  });
+
+  btnClearFields.addEventListener('click', function() {
+    clearMessages();
+    FIELDS.forEach(function(f){
+      document.getElementById('mt-meta-' + f).value = '';
+    });
+    showSuccess('All fields are empty. Download the PDF to save a copy with blank metadata.');
+  });
+
+  btnClear.addEventListener('click', resetAll);
+  btnRemoveFile.addEventListener('click', function(e) {
+    e.preventDefault();
+    resetAll();
+  });
+
+  fileInput.addEventListener('change', function(e) {
+    if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+  });
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropZone.classList.add('mt-drag');
+  });
+  dropZone.addEventListener('dragleave', function() {
+    dropZone.classList.remove('mt-drag');
+  });
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('mt-drag');
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+
+  // FAQ accordion
+  var faqItems = document.querySelectorAll('#mt-meta-faq .mt-tool-faq-item');
+  faqItems.forEach(function(item) {
+    var btn = item.querySelector('.mt-tool-faq-question');
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('mt-faq-open');
+      faqItems.forEach(function(other) {
+        other.classList.remove('mt-faq-open');
+        other.querySelector('.mt-tool-faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('mt-faq-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
