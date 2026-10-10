@@ -1,0 +1,799 @@
+<!-- SEO TITLE:
+Free Image Compressor – Compress JPG, PNG & WebP Online | MyToolkit
+-->
+
+<!-- META DESCRIPTION:
+Compress JPG, PNG and WebP images in your browser. Lower the quality, resize large photos and see the file size before and after. Free and private, nothing is uploaded.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Image Compressor – Compress JPG, PNG & WebP Online | MyToolkit</title>
+<meta name="description" content="Compress JPG, PNG and WebP images in your browser. Lower the quality, resize large photos and see the file size before and after. Free and private, nothing is uploaded.">
+<link rel="canonical" href="https://sheroz255.github.io/image-compressor.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Image Compressor | MyToolkit">
+<meta property="og:description" content="Compress JPG, PNG and WebP images in your browser, with a before and after file size.">
+<meta property="og:url" content="https://sheroz255.github.io/image-compressor.html">
+
+<meta name="google-site-verification" content="s9D8NK-vuE5JrTx4OW_1erifH9lK0w3bM-3b-K33WF8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-298D4FDLC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-298D4FDLC6');
+</script>
+
+<link rel="stylesheet" href="style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4517627793693672" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Compressor",
+  "url": "https://sheroz255.github.io/image-compressor.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Compress JPEG, PNG and WebP images in the browser by re-encoding them at a chosen quality and optional maximum size, and compare the file size before and after."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does compressing an image reduce its quality?",
+      "acceptedAnswer": { "@type": "Answer", "text": "JPEG and WebP are lossy formats, so lower quality settings remove some fine detail. Resizing also reduces the number of pixels. PNG is lossless, so re-saving a PNG here keeps every pixel and usually saves little space." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which image formats can I compress?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can upload JPEG, PNG and WebP files. You can save the result as JPEG, WebP or PNG, depending on what your browser supports." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my image uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The image is decoded, resized and encoded entirely in your browser. It is never uploaded anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the compressed file sometimes bigger than the original?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Images that are already optimised, or PNG files with many colours, can grow when they are re-encoded. Try a lower quality, a smaller maximum size or JPEG output. If the result is still larger, keep the original file." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the compressed image keep transparency?",
+      "acceptedAnswer": { "@type": "Answer", "text": "WebP and PNG output can keep transparent areas. JPEG has no transparency, so transparent areas are filled with white when you save as JPEG." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does WebP sometimes save as a different format?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Some browsers cannot create WebP files. When that happens, the tool tells you and saves the image as JPEG instead, so you always know the real output format." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .mt-tool-wrapper{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0f172a;background:#f8fafc;line-height:1.6;font-size:16px;max-width:1080px;margin:0 auto;padding:24px 16px 48px;box-sizing:border-box}
+  .mt-tool-wrapper *,.mt-tool-wrapper *::before,.mt-tool-wrapper *::after{box-sizing:border-box}
+  .mt-tool-breadcrumb{font-size:13px;color:#64748b;margin-bottom:16px}
+  .mt-tool-breadcrumb a{color:#2563eb;text-decoration:none}
+  .mt-tool-breadcrumb a:hover{text-decoration:underline}
+  .mt-tool-wrapper h1{font-size:clamp(22px,4vw,32px);font-weight:800;margin:0 0 8px;color:#0f172a}
+  .mt-tool-intro{color:#475569;font-size:15px;margin:0 0 24px;max-width:680px}
+  .mt-tool-card{background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.05);padding:20px;margin-bottom:22px}
+
+  .mt-drop-zone{display:block;border:2px solid transparent;border-radius:16px;padding:32px 16px;text-align:center;cursor:pointer;transition:.15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E");background-repeat:no-repeat}
+  .mt-drop-zone:hover,.mt-drop-zone.mt-drag{background:#eff6ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%232563eb' stroke-width='2' stroke-dasharray='8%2C8'/%3E%3C/svg%3E")}
+  .mt-drop-zone input{display:none}
+  .mt-drop-icon{font-size:34px;margin-bottom:8px}
+  .mt-drop-zone p{margin:0;color:#64748b;font-size:13.5px}
+
+  .mt-img-file-bar{display:flex;align-items:center;gap:10px;border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;background:#f8fafc;margin-top:16px}
+  .mt-img-file-name{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mt-img-file-meta{font-size:11.5px;color:#94a3b8;flex-shrink:0}
+  .mt-img-file-remove{border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:8px;width:28px;height:28px;font-size:13px;cursor:pointer;flex-shrink:0}
+  .mt-img-file-remove:hover{background:#fef2f2;color:#dc2626}
+
+  .mt-img-settings{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+  @media(min-width:640px){.mt-img-settings{grid-template-columns:1fr 1fr 1fr}}
+  .mt-img-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .mt-img-field label,.mt-img-field .mt-img-label{font-size:13px;font-weight:700;color:#0f172a}
+  .mt-img-field select,.mt-img-field input[type="number"]{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;font-size:14px;color:#0f172a;background:#fff;font-family:inherit;min-height:44px}
+  .mt-img-field select:focus,.mt-img-field input:focus{outline:2px solid #2563eb;outline-offset:1px;border-color:#2563eb}
+  .mt-img-field input[type="range"]{width:100%;accent-color:#2563eb;min-height:32px}
+  .mt-img-field input:disabled,.mt-img-field select:disabled{background:#f1f5f9;color:#94a3b8}
+  .mt-img-hint{font-size:12px;color:#94a3b8;margin:0}
+  .mt-img-value{font-size:13px;color:#2563eb;font-weight:700}
+
+  .mt-img-loading{font-size:13.5px;color:#64748b;margin-top:16px;display:none}
+
+  .mt-img-result{display:none;margin-top:22px;border:1px solid #e2e8f0;border-radius:14px;background:#f8fafc;padding:16px}
+  .mt-img-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 14px;margin:0}
+  @media(min-width:640px){.mt-img-stats{grid-template-columns:repeat(4,1fr)}}
+  .mt-img-stats dt{font-size:11.5px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
+  .mt-img-stats dd{margin:2px 0 0;font-size:14px;color:#0f172a;font-weight:700;overflow-wrap:anywhere}
+  .mt-img-preview{margin-top:14px;display:flex;justify-content:center;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px;max-height:360px;overflow:hidden}
+  .mt-img-preview img{max-width:100%;max-height:340px;height:auto;width:auto;object-fit:contain}
+  .mt-img-verdict{font-size:13px;margin:12px 0 0;color:#334155}
+
+  .mt-tool-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .mt-btn{border:none;border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s;min-height:44px}
+  .mt-btn-primary{background:#2563eb;color:#fff}
+  .mt-btn-primary:hover{background:#1d4ed8}
+  .mt-btn-primary:disabled{background:#93c5fd;cursor:not-allowed}
+  .mt-btn-secondary{background:#eff6ff;color:#2563eb}
+  .mt-btn-secondary:hover{background:#dbeafe}
+  .mt-btn-secondary:disabled{background:#f1f5f9;color:#94a3b8;cursor:not-allowed}
+  .mt-btn-ghost{background:#f1f5f9;color:#334155}
+  .mt-btn-ghost:hover{background:#e2e8f0}
+
+  .mt-field-error{color:#dc2626;font-size:12.5px;margin-top:12px}
+  .mt-field-success{color:#166534;font-size:12.5px;margin-top:12px}
+
+  .mt-tool-section-title{font-size:19px;font-weight:800;margin:0 0 14px;color:#0f172a}
+  .mt-tool-wrapper p{color:#475569;font-size:14.5px}
+
+  .mt-features-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+  @media(min-width:640px){.mt-features-grid{grid-template-columns:1fr 1fr}}
+  .mt-feature-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px}
+  .mt-feature-box h3{font-size:14.5px;margin:0 0 5px;color:#0f172a}
+  .mt-feature-box p{font-size:13.5px;margin:0}
+
+  .mt-tool-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:999}
+  .mt-tool-toast.mt-show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  .mt-tool-faq-item{border-bottom:1px solid #e2e8f0}
+  .mt-tool-faq-question{width:100%;text-align:left;background:none;border:none;padding:14px 4px;font-size:14.5px;font-weight:700;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .mt-tool-faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .mt-tool-faq-item.mt-faq-open .mt-tool-faq-answer{max-height:300px}
+  .mt-tool-faq-answer p{padding:0 4px 14px;margin:0}
+  .mt-faq-icon{transition:.2s;flex-shrink:0}
+  .mt-tool-faq-item.mt-faq-open .mt-faq-icon{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="mt-site">
+
+  <header class="mt-header">
+    <div class="mt-container mt-header-inner">
+      <a aria-label="MyToolkit Home" class="mt-brand" href="index.html">
+        <div aria-hidden="true" class="mt-logo">M</div>
+        <div>
+          <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+          <span class="mt-brand-sub">Free Online Tools</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation" class="mt-nav" id="mtNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#mt-categories">Categories</a>
+        <a href="index.html#mt-tools">All Tools</a>
+        <a href="index.html#mt-features">Why MyToolkit</a>
+        <a class="mt-nav-button" href="index.html#mt-tools">Explore Tools</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="mt-menu-button" id="mtMenuButton" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="mt-content-section">
+    <div class="mt-container">
+      <div class="mt-blog-area">
+
+<div class="mt-tool-wrapper" id="mt-tool-image-compressor">
+
+  <nav class="mt-tool-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> &#8250;
+    <a href="index.html#mt-tools">Image Tools</a> &#8250;
+    <span>Image Compressor</span>
+  </nav>
+
+  <h1>Free Image Compressor</h1>
+  <p class="mt-tool-intro">
+    Upload a JPG, PNG or WebP image, choose a quality and an optional maximum size, and download a
+    smaller copy. The file size before and after is shown so you can see the result. Everything
+    happens locally in your browser &mdash; nothing is uploaded to a server.
+  </p>
+
+  <div class="mt-tool-card">
+    <label class="mt-drop-zone" id="mt-drop-zone" for="mt-img-input">
+      <div class="mt-drop-icon" aria-hidden="true">&#128444;</div>
+      <p><strong>Tap to choose an image</strong> or drag &amp; drop a JPG, PNG or WebP file</p>
+      <input type="file" id="mt-img-input" accept="image/jpeg,image/png,image/webp">
+    </label>
+
+    <div class="mt-img-file-bar" id="mt-img-file-bar" style="display:none;">
+      <span aria-hidden="true">&#128444;</span>
+      <span class="mt-img-file-name" id="mt-img-file-name"></span>
+      <span class="mt-img-file-meta" id="mt-img-file-meta"></span>
+      <button class="mt-img-file-remove" id="mt-btn-remove-file" type="button" aria-label="Remove image">&#10005;</button>
+    </div>
+
+    <p class="mt-field-error" id="mt-img-error" style="display:none;" aria-live="polite"></p>
+    <p class="mt-field-success" id="mt-img-success" style="display:none;" aria-live="polite"></p>
+    <p class="mt-img-loading" id="mt-img-loading" aria-live="polite">Compressing your image&hellip;</p>
+
+    <div class="mt-img-settings" id="mt-img-settings" style="display:none;">
+      <div class="mt-img-field">
+        <label for="mt-img-format">Output format</label>
+        <select id="mt-img-format" aria-describedby="mt-hint-format">
+          <option value="jpeg">JPEG (smallest, no transparency)</option>
+          <option value="webp">WebP (small, keeps transparency)</option>
+          <option value="png">PNG (lossless)</option>
+        </select>
+        <p class="mt-img-hint" id="mt-hint-format">PNG ignores the quality setting because it is lossless.</p>
+      </div>
+      <div class="mt-img-field">
+        <label for="mt-img-quality">Quality <span class="mt-img-value" id="mt-img-quality-value">80</span></label>
+        <input type="range" id="mt-img-quality" min="10" max="100" step="1" value="80" aria-describedby="mt-hint-quality">
+        <p class="mt-img-hint" id="mt-hint-quality">Lower quality gives a smaller file with less detail.</p>
+      </div>
+      <div class="mt-img-field">
+        <label for="mt-img-maxdim">Maximum width or height (px)</label>
+        <input type="number" id="mt-img-maxdim" min="1" max="10000" step="1" placeholder="Keep original size" inputmode="numeric" aria-describedby="mt-hint-maxdim">
+        <p class="mt-img-hint" id="mt-hint-maxdim">Leave empty to keep the original size. The longer side is scaled to this value.</p>
+      </div>
+    </div>
+
+    <div class="mt-img-result" id="mt-img-result" aria-live="polite">
+      <dl class="mt-img-stats">
+        <div>
+          <dt>Original size</dt>
+          <dd id="mt-res-orig-size">&ndash;</dd>
+        </div>
+        <div>
+          <dt>New size</dt>
+          <dd id="mt-res-new-size">&ndash;</dd>
+        </div>
+        <div>
+          <dt>Change</dt>
+          <dd id="mt-res-change">&ndash;</dd>
+        </div>
+        <div>
+          <dt>Dimensions</dt>
+          <dd id="mt-res-dims">&ndash;</dd>
+        </div>
+      </dl>
+      <div class="mt-img-preview" id="mt-img-preview"></div>
+      <p class="mt-img-verdict" id="mt-res-verdict"></p>
+    </div>
+
+    <div class="mt-tool-controls" id="mt-img-actions" style="display:none;">
+      <button class="mt-btn mt-btn-primary" id="mt-btn-compress" type="button">Compress Image</button>
+      <button class="mt-btn mt-btn-secondary" id="mt-btn-download" type="button" disabled>Download Compressed Image</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-reset" type="button">Reset Settings</button>
+      <button class="mt-btn mt-btn-ghost" id="mt-btn-clear" type="button">Clear</button>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">How It Works</h2>
+  <p>
+    After you choose an image, the browser decodes it and draws it onto an invisible canvas. If you
+    set a maximum size, the drawing is scaled down to that size. The canvas is then saved again in
+    the output format you picked, using the quality you chose for JPEG and WebP. The new file is
+    shown with its size compared to the original, and you can download it when you are happy with
+    the result. No step sends your image to a server.
+  </p>
+
+  <h2 class="mt-tool-section-title">Why Compress Images?</h2>
+  <div class="mt-features-grid">
+    <div class="mt-feature-box">
+      <h3>Faster websites</h3>
+      <p>Smaller images download faster, which helps pages load quickly on slow connections and mobile data.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>Easier uploads</h3>
+      <p>Many forms, portals and email services limit file size. A smaller copy is easier to attach or submit.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>Choose what you trade off</h3>
+      <p>Pick a quality level, a maximum size and a format, and see the size change before you download.</p>
+    </div>
+    <div class="mt-feature-box">
+      <h3>100% private</h3>
+      <p>Your photos stay on your device. The image is never sent to a server, so personal pictures stay private.</p>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Choosing the Right Settings</h2>
+  <p>
+    For photos, JPEG at a quality between 70 and 85 is a common starting point. It often reduces
+    the file a lot while the picture still looks sharp on screen. For screenshots, text and logos,
+    PNG is usually better because it is lossless, but it will not shrink much when re-saved. WebP
+    gives smaller files than JPEG at similar quality and keeps transparent areas. If your image is
+    much larger than the space you need, reducing the maximum size often saves more space than
+    lowering the quality.
+  </p>
+
+  <h2 class="mt-tool-section-title">Frequently Asked Questions</h2>
+  <div id="mt-img-faq">
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Does compressing an image reduce its quality?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>JPEG and WebP are lossy formats, so lower quality settings remove some fine detail. Resizing also reduces the number of pixels. PNG is lossless, so re-saving a PNG here keeps every pixel and usually saves little space.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Which image formats can I compress?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>You can upload JPEG, PNG and WebP files. You can save the result as JPEG, WebP or PNG, depending on what your browser supports.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Is my image uploaded to a server?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>No. The image is decoded, resized and encoded entirely in your browser. It is never uploaded anywhere.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Why is the compressed file sometimes bigger than the original?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>Images that are already optimised, or PNG files with many colours, can grow when they are re-encoded. Try a lower quality, a smaller maximum size or JPEG output. If the result is still larger, keep the original file.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Does the compressed image keep transparency?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>WebP and PNG output can keep transparent areas. JPEG has no transparency, so transparent areas are filled with white when you save as JPEG.</p>
+      </div>
+    </div>
+    <div class="mt-tool-faq-item">
+      <button class="mt-tool-faq-question" type="button" aria-expanded="false">
+        Why does WebP sometimes save as a different format?
+        <span class="mt-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="mt-tool-faq-answer">
+        <p>Some browsers cannot create WebP files. When that happens, the tool tells you and saves the image as JPEG instead, so you always know the real output format.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-tool-section-title">Final Thoughts</h2>
+  <p>
+    Compressing an image is most useful when you need a smaller file for a website, a form or an
+    email, and you can accept a small loss of detail. Check the preview and the size change before
+    you download. If the picture needs to stay exactly as it is, keep the original file.
+  </p>
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-footer">
+    <div class="mt-footer-main">
+      <div class="mt-container">
+        <div class="mt-footer-grid">
+
+          <div class="mt-footer-brand">
+            <a class="mt-brand" href="index.html">
+              <div aria-hidden="true" class="mt-logo">M</div>
+              <div>
+                <div class="mt-brand-name">MY<span>TOOLKIT</span></div>
+                <span class="mt-brand-sub">Free Online Tools</span>
+              </div>
+            </a>
+            <p>
+              Simple, fast and useful online tools for everyday digital tasks.
+              Built with a focus on clarity, speed and a better user experience.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Explore</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#mt-categories">Categories</a></li>
+              <li><a href="index.html#mt-tools">All Tools</a></li>
+              <li><a href="index.html#mt-features">Why MyToolkit</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Categories</h3>
+            <ul class="mt-footer-links">
+              <li><a href="index.html?cat=Text+%26+Writing#mt-tools">Text &amp; Writing</a></li>
+              <li><a href="index.html?cat=PDF+%26+Documents#mt-tools">PDF &amp; Documents</a></li>
+              <li><a href="index.html?cat=Image+Tools#mt-tools">Image Tools</a></li>
+              <li><a href="index.html?cat=Developer+Tools#mt-tools">Developer Tools</a></li>
+              <li><a href="index.html?cat=SEO+%26+Web#mt-tools">SEO &amp; Web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="mt-footer-title">Information</h3>
+            <ul class="mt-footer-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="disclaimer.html">Disclaimer</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-footer-bottom">
+      <div class="mt-container mt-footer-bottom-inner">
+        <small>&#169; <span id="mtYear">2026</span> MyToolkit. All rights reserved.</small>
+        <button aria-label="Back to top" class="mt-top-button" id="mtTopButton" type="button">&#8593;</button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="mt-tool-toast" id="mt-tool-toast" role="status"></div>
+
+<script src="site.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  var MAX_DIM_LIMIT = 10000;
+  var MIME = { jpeg: 'image/jpeg', webp: 'image/webp', png: 'image/png' };
+  var EXT = { jpeg: 'jpg', webp: 'webp', png: 'png' };
+
+  var fileInput = document.getElementById('mt-img-input');
+  var dropZone = document.getElementById('mt-drop-zone');
+  var fileBar = document.getElementById('mt-img-file-bar');
+  var fileNameEl = document.getElementById('mt-img-file-name');
+  var fileMetaEl = document.getElementById('mt-img-file-meta');
+  var btnRemoveFile = document.getElementById('mt-btn-remove-file');
+  var errorEl = document.getElementById('mt-img-error');
+  var successEl = document.getElementById('mt-img-success');
+  var loadingEl = document.getElementById('mt-img-loading');
+  var settingsEl = document.getElementById('mt-img-settings');
+  var resultEl = document.getElementById('mt-img-result');
+  var previewEl = document.getElementById('mt-img-preview');
+  var verdictEl = document.getElementById('mt-res-verdict');
+  var actionsRow = document.getElementById('mt-img-actions');
+  var formatSel = document.getElementById('mt-img-format');
+  var qualityInput = document.getElementById('mt-img-quality');
+  var qualityValue = document.getElementById('mt-img-quality-value');
+  var maxDimInput = document.getElementById('mt-img-maxdim');
+  var btnCompress = document.getElementById('mt-btn-compress');
+  var btnDownload = document.getElementById('mt-btn-download');
+  var btnReset = document.getElementById('mt-btn-reset');
+  var btnClear = document.getElementById('mt-btn-clear');
+  var toast = document.getElementById('mt-tool-toast');
+
+  var currentFile = null;
+  var sourceUrl = null;     // object URL of the original, revoked when replaced
+  var sourceImg = null;     // decoded original, decoded once on upload and reused
+  var resultUrl = null;     // object URL of the compressed output
+  var result = null;        // { blob, width, height, mime, format, requestedFormat }
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('mt-show');
+    setTimeout(function(){ toast.classList.remove('mt-show'); }, 2200);
+  }
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+    successEl.style.display = 'none';
+  }
+  function showSuccess(msg) {
+    successEl.textContent = msg;
+    successEl.style.display = 'block';
+    errorEl.style.display = 'none';
+  }
+  function clearMessages() {
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+  }
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+
+  function updateQualityLabel() {
+    var isLossy = formatSel.value !== 'png';
+    qualityInput.disabled = !isLossy;
+    qualityValue.textContent = qualityInput.value;
+    document.getElementById('mt-hint-quality').textContent = isLossy
+      ? 'Lower quality gives a smaller file with less detail.'
+      : 'Quality does not apply to PNG, which is lossless.';
+  }
+
+  function clearResult() {
+    if (resultUrl) { URL.revokeObjectURL(resultUrl); resultUrl = null; }
+    result = null;
+    previewEl.innerHTML = '';
+    resultEl.style.display = 'none';
+    verdictEl.textContent = '';
+    btnDownload.disabled = true;
+  }
+
+  function resetAll() {
+    if (sourceUrl) { URL.revokeObjectURL(sourceUrl); sourceUrl = null; }
+    sourceImg = null;
+    clearResult();
+    currentFile = null;
+    fileInput.value = '';
+    fileBar.style.display = 'none';
+    settingsEl.style.display = 'none';
+    actionsRow.style.display = 'none';
+    loadingEl.style.display = 'none';
+    clearMessages();
+  }
+
+  function loadImage(url) {
+    return new Promise(function(resolve, reject) {
+      var img = new Image();
+      img.onload = function(){ resolve(img); };
+      img.onerror = function(){ reject(new Error('decode')); };
+      img.src = url;
+    });
+  }
+
+  function encode(canvas, mime, quality) {
+    return new Promise(function(resolve, reject) {
+      try {
+        canvas.toBlob(function(blob) {
+          resolve(blob);
+        }, mime, quality);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  function handleFile(file) {
+    clearMessages();
+    if (!file) return;
+    var ok = /^image\/(jpeg|png|webp)$/.test(file.type) || /\.(jpe?g|png|webp)$/i.test(file.name);
+    if (!ok) {
+      showError('Please select a JPG, PNG or WebP image.');
+      return;
+    }
+    resetAll();
+    currentFile = file;
+    sourceUrl = URL.createObjectURL(file);
+    fileNameEl.textContent = file.name;
+    fileMetaEl.textContent = formatBytes(file.size);
+    fileBar.style.display = 'flex';
+
+    loadImage(sourceUrl).then(function(img) {
+      sourceImg = img;
+      document.getElementById('mt-img-file-meta').textContent =
+        formatBytes(file.size) + ' · ' + img.naturalWidth + ' × ' + img.naturalHeight + ' px';
+      settingsEl.style.display = 'grid';
+      actionsRow.style.display = 'flex';
+      updateQualityLabel();
+    }).catch(function() {
+      fileBar.style.display = 'none';
+      URL.revokeObjectURL(sourceUrl);
+      sourceUrl = null;
+      currentFile = null;
+      showError('This image could not be opened. It may be damaged or in an unsupported format.');
+    });
+  }
+
+  function readSettings() {
+    var q = parseInt(qualityInput.value, 10);
+    var maxRaw = maxDimInput.value.trim();
+    var maxDim = null;
+    if (maxRaw !== '') {
+      maxDim = Number(maxRaw);
+      if (!isFinite(maxDim) || Math.floor(maxDim) !== maxDim || maxDim < 1 || maxDim > MAX_DIM_LIMIT) {
+        return { error: 'Please enter a whole number between 1 and ' + MAX_DIM_LIMIT + ' for the maximum size, or leave it empty.' };
+      }
+    }
+    if (isNaN(q) || q < 10 || q > 100) {
+      return { error: 'Please choose a quality between 10 and 100.' };
+    }
+    return { quality: q / 100, maxDim: maxDim, format: formatSel.value };
+  }
+
+  function compress() {
+    clearMessages();
+    if (!currentFile || !sourceImg) {
+      showError('Please choose an image first.');
+      return;
+    }
+    var s = readSettings();
+    if (s.error) {
+      showError(s.error);
+      return;
+    }
+
+    btnCompress.disabled = true;
+    loadingEl.style.display = 'block';
+    clearResult();
+
+    Promise.resolve(sourceImg).then(function(img) {
+      var w = img.naturalWidth;
+      var h = img.naturalHeight;
+      if (s.maxDim && Math.max(w, h) > s.maxDim) {
+        var scale = s.maxDim / Math.max(w, h);
+        w = Math.max(1, Math.round(w * scale));
+        h = Math.max(1, Math.round(h * scale));
+      }
+
+      var canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      var ctx = canvas.getContext('2d');
+      if (s.format === 'jpeg') {
+        // JPEG has no transparency, so fill with white first
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+      }
+      ctx.drawImage(img, 0, 0, w, h);
+
+      var mime = MIME[s.format];
+      return encode(canvas, mime, s.quality).then(function(blob) {
+        if (!blob) throw new Error('encode');
+        // Some browsers cannot encode WebP and silently return PNG; fall back to JPEG and say so
+        if (blob.type !== mime) {
+          return encode(canvas, MIME.jpeg, s.quality).then(function(jpegBlob) {
+            if (!jpegBlob) throw new Error('encode');
+            return { blob: jpegBlob, format: 'jpeg', fallback: true, w: w, h: h };
+          });
+        }
+        return { blob: blob, format: s.format, fallback: false, w: w, h: h };
+      });
+    }).then(function(out) {
+      loadingEl.style.display = 'none';
+      btnCompress.disabled = false;
+      result = out;
+      resultUrl = URL.createObjectURL(out.blob);
+      showResult(out);
+      btnDownload.disabled = false;
+    }).catch(function(err) {
+      loadingEl.style.display = 'none';
+      btnCompress.disabled = false;
+      var isSize = err && /memory|size|area|canvas/i.test(String(err.message || err.name || ''));
+      showError(isSize
+        ? 'This image is too large for your browser to process. Try a smaller maximum size.'
+        : 'The image could not be compressed in this browser. Try a different format or a smaller maximum size.');
+    });
+  }
+
+  function showResult(out) {
+    var original = currentFile.size;
+    var newSize = out.blob.size;
+    document.getElementById('mt-res-orig-size').textContent = formatBytes(original);
+    document.getElementById('mt-res-new-size').textContent = formatBytes(newSize);
+    document.getElementById('mt-res-dims').textContent = out.w + ' × ' + out.h + ' px';
+
+    var changeEl = document.getElementById('mt-res-change');
+    var pct = Math.round(Math.abs(1 - newSize / original) * 100);
+    if (newSize < original) {
+      changeEl.textContent = 'Smaller by ' + pct + '%';
+      verdictEl.textContent = 'The compressed file is smaller than the original.';
+    } else if (newSize > original) {
+      changeEl.textContent = 'Larger by ' + pct + '%';
+      verdictEl.textContent = 'The compressed file is larger than the original. Try a lower quality, a smaller maximum size or JPEG output, or keep the original.';
+    } else {
+      changeEl.textContent = 'No change';
+      verdictEl.textContent = 'The compressed file is the same size as the original.';
+    }
+
+    var img = document.createElement('img');
+    img.src = resultUrl;
+    img.alt = 'Compressed preview of ' + currentFile.name;
+    previewEl.appendChild(img);
+    resultEl.style.display = 'block';
+
+    var fmtName = out.format === 'jpeg' ? 'JPEG' : out.format === 'webp' ? 'WebP' : 'PNG';
+    if (out.fallback) {
+      showSuccess('Your browser cannot create WebP files, so the image was saved as JPEG instead.');
+    } else {
+      showSuccess('Compressed to ' + fmtName + '. Ready to download.');
+    }
+  }
+
+  btnCompress.addEventListener('click', compress);
+
+  btnDownload.addEventListener('click', function() {
+    clearMessages();
+    if (!result || !resultUrl) {
+      showError('Compress the image first, then download it.');
+      return;
+    }
+    var baseName = currentFile ? currentFile.name.replace(/\.(jpe?g|png|webp)$/i, '') : 'image';
+    var a = document.createElement('a');
+    a.href = resultUrl;
+    a.download = baseName + '-compressed.' + EXT[result.format];
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('Download started');
+  });
+
+  btnReset.addEventListener('click', function() {
+    formatSel.value = 'jpeg';
+    qualityInput.value = '80';
+    maxDimInput.value = '';
+    updateQualityLabel();
+    clearMessages();
+    showToast('Settings restored to defaults');
+  });
+
+  formatSel.addEventListener('change', updateQualityLabel);
+  qualityInput.addEventListener('input', updateQualityLabel);
+
+  btnClear.addEventListener('click', resetAll);
+  btnRemoveFile.addEventListener('click', function(e) {
+    e.preventDefault();
+    resetAll();
+  });
+
+  fileInput.addEventListener('change', function(e) {
+    if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+  });
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropZone.classList.add('mt-drag');
+  });
+  dropZone.addEventListener('dragleave', function() {
+    dropZone.classList.remove('mt-drag');
+  });
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropZone.classList.remove('mt-drag');
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+
+  // FAQ accordion
+  var faqItems = document.querySelectorAll('#mt-img-faq .mt-tool-faq-item');
+  faqItems.forEach(function(item) {
+    var btn = item.querySelector('.mt-tool-faq-question');
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('mt-faq-open');
+      faqItems.forEach(function(other) {
+        other.classList.remove('mt-faq-open');
+        other.querySelector('.mt-tool-faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('mt-faq-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  updateQualityLabel();
+})();
+</script>
+
+</body>
+</html>
